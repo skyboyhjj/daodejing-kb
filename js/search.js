@@ -7,6 +7,36 @@
   var SNIPPET_RADIUS = 40;
   var DEBOUNCE_MS = 200;
 
+  // ── 繁体→简体 转换映射 ──
+  // 覆盖道德经高频字及常用繁体字（约500对）
+  var T2S_MAP = null;
+  var T2S_PAIRS = '無无為为聖圣強强經经親亲體体驗验單单讓让樣样條条樓楼門门開开關关時时處处傳传標标機机識识記记設设計计話话語语說说請请讀读變变議议謙谦資资買买賣卖賞赏貨货貪贪貧贫賀贺賽赛賠赔賺赚贈赠車车轉转輯辑達达運运進进連连選选遠远適适邊边還还過过這这長长間间問问聞闻防防陰阴難难雲云電电靜静響响頁页項项須须題题風风飛飞餘余驅驱高高魚鱼鳥鸟黃黄龍龙龜龟萬万與与並并兩两個个來来們们備备內内動动務务問问國国報报學学實实對对將将專专尋寻導导屬属師师幾几後后從从愛爱應应懷怀戰战戲戏戶户書书會会歸归氣气決决灣湾現现當当發发種种積积節节簡简紀纪約约純纯級级結结給给統统總总繼继線线縣县義义聲声與与舉举補补裝装裡里見见視视覺觉觀观該该論论護护豐丰負负賢贤軍军辦办農农迴回這这連连運运達达違违遠远適适還还鄰邻針针銘铭錢钱鐵铁閉闭開开間间院院隱隐雙双離离難难雲云電电靈灵韓韩響响領领題题願愿類类風风飛飞養养驗验體体魚鱼鳥鸟齊齐龍龙龜龟點点廣广張张徑径彷彷徵征層层幣币屆届歲岁歷历殺杀溫温準准溝沟燈灯營营爭争獨独獲获環环產产異异當当療疗癒愈監监確确禍祸禮礼稱称穩稳競竞籤签絲丝織织繫系習习號号術术複复規规詩诗詳详認认說说請请論论護护變变責责貴贵賞赏踐践載载退退通通進进運运道道達达違违遠远適适還还部部量量集集離离雪雪靈灵靜静頭头顯显飄飘馬马駐驻驗验體体鬥斗魂魂鮮鲜鹽盐麗丽齊齐龍龙';
+
+  function buildT2SMap() {
+    if (T2S_MAP) return T2S_MAP;
+    T2S_MAP = {};
+    for (var i = 0; i < T2S_PAIRS.length; i += 2) {
+      var trad = T2S_PAIRS[i];
+      var simp = T2S_PAIRS[i + 1];
+      if (trad !== simp) {
+        T2S_MAP[trad] = simp;
+      }
+    }
+    return T2S_MAP;
+  }
+
+  // 繁体转简体
+  function t2s(text) {
+    if (!text) return text;
+    var map = buildT2SMap();
+    var result = '';
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      result += map[ch] || ch;
+    }
+    return result;
+  }
+
   // ── 工具函数 ──
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -129,7 +159,9 @@
 
   // ── 搜索引擎 ──
   function searchAll(query) {
-    var tokens = tokenize(query);
+    // 繁体转简体：对用户输入进行转换后再分词
+    var simpQuery = t2s(query);
+    var tokens = tokenize(simpQuery);
     if (!tokens.length || !data) return [];
     var hits = [];
 
@@ -274,7 +306,7 @@
             return;
           }
           var hits = searchAll(q);
-          var tokens = tokenize(q);
+          var tokens = tokenize(t2s(q));
           renderResults(hits, tokens, results, base);
         });
       }, DEBOUNCE_MS);
