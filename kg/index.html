@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识图谱 - 道德经亲子体验营</title>
+    <link rel="stylesheet" href="../css/daodejing-styles.css">
+    <style>
+        .kg-svg-container {
+            width: 100%;
+            overflow-x: auto;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .relation-table { margin-top: 30px; }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 16px 0;
+            padding: 14px 20px;
+            background: rgba(46,95,95,0.04);
+            border-radius: 8px;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.88em; color: #555; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .legend-line { width: 30px; height: 3px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <nav class="chapter-nav">
+        <a href="../index.html" class="nav-home">回到主页</a>
+    </nav>
+
+    <!-- 搜索 -->
+    <div class="daodejing-search" id="daodejing-search">
+        <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
+        <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+    </div>
+
+
+    <h1>🕸️ 知识图谱<span class="subtitle">SPO V3.0概念网络 · 10大节点 · 21对交叉关系</span></h1>
+
+    <div class="intro">
+        <div class="intro-content">
+            <p>
+                基于《道德经》81章全部分析构建的<b>SPO V3.0概念网络</b>，以"道"为核心节点辐射10大一级概念，
+                每个节点由SPO谓词链（主语-谓语-宾语）连接，形成完整的语义网络。点击节点可查看该概念的SPO关系链与关联章节。
+            </p>
+        </div>
+    </div>
+
+    <!-- 图例 -->
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#2e5f5f;"></div> 核心概念</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#5a8f6e;"></div> 实践概念</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6a5e8a;"></div> 修养概念</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8a7a5e;"></div> 社会概念</div>
+        <div class="legend-item"><div class="legend-line" style="background:#2e5f5f;"></div> 体用关系</div>
+        <div class="legend-item"><div class="legend-line" style="background:#d4af37;"></div> 因果关系</div>
+        <div class="legend-item"><div class="legend-line" style="background:#8a5a2e; border:1px dashed #8a5a2e; background:transparent;"></div> 克制关系</div>
+    </div>
+
+    <!-- SVG知识图谱 -->
+    <div class="kg-svg-container">
+        <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:900px; margin:0 auto; display:block;">
+            <!-- 连线 -->
+            <!-- 道-自然 (体用) -->
+            <line x1="450" y1="350" x2="250" y2="180" stroke="#2e5f5f" stroke-width="2.5" opacity="0.5"/>
+            <!-- 道-无为 (体用) -->
+            <line x1="450" y1="350" x2="650" y2="180" stroke="#2e5f5f" stroke-width="2.5" opacity="0.5"/>
+            <!-- 道-德 (体用) -->
+            <line x1="450" y1="350" x2="450" y2="130" stroke="#2e5f5f" stroke-width="2.5" opacity="0.5"/>
+            <!-- 道-柔弱 (体用) -->
+            <line x1="450" y1="350" x2="150" y2="350" stroke="#5a8f6e" stroke-width="2" opacity="0.5"/>
+            <!-- 道-反 (体用) -->
+            <line x1="450" y1="350" x2="750" y2="350" stroke="#5a8f6e" stroke-width="2" opacity="0.5"/>
+            <!-- 道-朴 (体用) -->
+            <line x1="450" y1="350" x2="200" y2="520" stroke="#6a5e8a" stroke-width="2" opacity="0.5"/>
+            <!-- 道-一 (体用) -->
+            <line x1="450" y1="350" x2="450" y2="580" stroke="#6a5e8a" stroke-width="2" opacity="0.5"/>
+            <!-- 道-玄 (体用) -->
+            <line x1="450" y1="350" x2="700" y2="520" stroke="#6a5e8a" stroke-width="2" opacity="0.5"/>
+            <!-- 道-静 (体用) -->
+            <line x1="450" y1="350" x2="300" y2="580" stroke="#8a7a5e" stroke-width="2" opacity="0.5"/>
+            <!-- 道-下 (体用) -->
+            <line x1="450" y1="350" x2="600" y2="580" stroke="#8a7a5e" stroke-width="2" opacity="0.5"/>
+
+            <!-- 因果关系连线 -->
+            <!-- 无为-无不为 -->
+            <line x1="650" y1="180" x2="780" y2="120" stroke="#d4af37" stroke-width="2" stroke-dasharray="6,3" opacity="0.6"/>
+            <!-- 柔弱-刚强 (克制) -->
+            <line x1="150" y1="350" x2="80" y2="280" stroke="#8a5a2e" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.5"/>
+            <!-- 德-无为 -->
+            <line x1="450" y1="130" x2="650" y2="180" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.4"/>
+            <!-- 有-无 (互生) -->
+            <line x1="750" y1="350" x2="80" y2="480" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.4"/>
+
+            <!-- 中心节点: 道 -->
+            <circle cx="450" cy="350" r="55" fill="#2e5f5f" opacity="0.9"/>
+            <text x="450" y="345" text-anchor="middle" fill="white" font-size="28" font-weight="700" font-family="serif">道</text>
+            <text x="450" y="372" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">37章 · 核心</text>
+
+            <!-- 自然 -->
+            <circle cx="250" cy="180" r="35" fill="#5a8f6e" opacity="0.85"/>
+            <text x="250" y="177" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="serif">自然</text>
+            <text x="250" y="197" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">5章</text>
+
+            <!-- 无为 -->
+            <circle cx="650" cy="180" r="35" fill="#5a8f6e" opacity="0.85"/>
+            <text x="650" y="177" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="serif">无为</text>
+            <text x="650" y="197" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">10章</text>
+
+            <!-- 德 -->
+            <circle cx="450" cy="130" r="35" fill="#4a7878" opacity="0.85"/>
+            <text x="450" y="127" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="serif">德</text>
+            <text x="450" y="147" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">16章</text>
+
+            <!-- 柔弱 -->
+            <circle cx="150" cy="350" r="30" fill="#7a9e8e" opacity="0.85"/>
+            <text x="150" y="347" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">柔弱</text>
+            <text x="150" y="365" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">7章</text>
+
+            <!-- 反 -->
+            <circle cx="750" cy="350" r="30" fill="#7a9e8e" opacity="0.85"/>
+            <text x="750" y="347" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">反</text>
+            <text x="750" y="365" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">8章</text>
+
+            <!-- 朴 -->
+            <circle cx="200" cy="520" r="28" fill="#6a5e8a" opacity="0.85"/>
+            <text x="200" y="517" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">朴</text>
+            <text x="200" y="535" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">5章</text>
+
+            <!-- 一 -->
+            <circle cx="450" cy="580" r="28" fill="#6a5e8a" opacity="0.85"/>
+            <text x="450" y="577" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">一</text>
+            <text x="450" y="595" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">5章</text>
+
+            <!-- 玄 -->
+            <circle cx="700" cy="520" r="28" fill="#6a5e8a" opacity="0.85"/>
+            <text x="700" y="517" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">玄</text>
+            <text x="700" y="535" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">6章</text>
+
+            <!-- 静 -->
+            <circle cx="300" cy="580" r="28" fill="#8a7a5e" opacity="0.85"/>
+            <text x="300" y="577" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">静</text>
+            <text x="300" y="595" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">5章</text>
+
+            <!-- 下 -->
+            <circle cx="600" cy="580" r="28" fill="#8a7a5e" opacity="0.85"/>
+            <text x="600" y="577" text-anchor="middle" fill="white" font-size="16" font-weight="600" font-family="serif">下</text>
+            <text x="600" y="595" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">4章</text>
+
+            <!-- 辅助标注: 无不为 -->
+            <text x="800" y="118" text-anchor="middle" fill="#d4af37" font-size="13" font-weight="600" font-family="serif">无不为</text>
+            <text x="800" y="134" text-anchor="middle" fill="#999" font-size="9">因果</text>
+
+            <!-- 辅助标注: 刚强 -->
+            <text x="60" y="272" text-anchor="middle" fill="#8a5a2e" font-size="13" font-weight="600" font-family="serif">刚强</text>
+            <text x="60" y="288" text-anchor="middle" fill="#999" font-size="9">克制</text>
+        </svg>
+    </div>
+
+    <!-- SPO关系链详表 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>📊 SPO谓词关系链</h2>
+            <div class="section-desc">10大一级节点的核心SPO关系链</div>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr><th>一级节点</th><th>核心SPO谓词链</th><th>关键章</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>自然</strong></td>
+                    <td>道法自然 → 辅万物之自然 → 百姓皆谓我自然 → 莫之命而常自然</td>
+                    <td>25, 64, 17, 51</td>
+                </tr>
+                <tr>
+                    <td><strong>无为</strong></td>
+                    <td>道常无为而无不为 → 圣人处无为之事 → 为无为则无不治 → 损之又损以至于无为</td>
+                    <td>37, 2, 3, 48</td>
+                </tr>
+                <tr>
+                    <td><strong>德</strong></td>
+                    <td>道生之德畜之 → 上德不德 → 含德之厚比于赤子 → 修之于身其德乃真</td>
+                    <td>51, 38, 55, 54</td>
+                </tr>
+                <tr>
+                    <td><strong>柔弱</strong></td>
+                    <td>弱者道之用 → 柔之胜刚 → 天下之至柔驰骋天下之至坚 → 柔弱处上</td>
+                    <td>40, 36, 43, 76, 78</td>
+                </tr>
+                <tr>
+                    <td><strong>反</strong></td>
+                    <td>反者道之动 → 有无相生 → 曲则全 → 将欲歙之必固张之</td>
+                    <td>40, 2, 22, 36, 25</td>
+                </tr>
+                <tr>
+                    <td><strong>朴</strong></td>
+                    <td>道常无名朴虽小 → 见素抱朴 → 复归于朴 → 镇以无名之朴</td>
+                    <td>32, 19, 28, 37, 15</td>
+                </tr>
+                <tr>
+                    <td><strong>一</strong></td>
+                    <td>道生一 → 天得一以清 → 圣人抱一为天下式 → 载营魄抱一</td>
+                    <td>42, 39, 22, 10, 14</td>
+                </tr>
+                <tr>
+                    <td><strong>玄</strong></td>
+                    <td>玄之又玄众妙之门 → 涤除玄览 → 是谓玄德 → 是谓玄同</td>
+                    <td>1, 10, 10/51/65, 56, 6</td>
+                </tr>
+                <tr>
+                    <td><strong>静</strong></td>
+                    <td>致虚极守静笃 → 归根曰静 → 清静为天下正 → 牝常以静胜牡</td>
+                    <td>16, 16, 45, 37, 61</td>
+                </tr>
+                <tr>
+                    <td><strong>下</strong></td>
+                    <td>江海善下故能为百谷王 → 贵以贱为本 → 大国者下流 → 上善若水居下</td>
+                    <td>66, 39, 61, 8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 交叉关系表 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a5e7f 0%, #5a7090 100%);">
+            <h2>🔗 概念交叉关系</h2>
+            <div class="section-desc">21对概念间的关系类型与核心命题</div>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr><th>概念对</th><th>关系类型</th><th>核心SPO谓词</th><th>关键章</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>道—德</td><td>体用</td><td>道生之德畜之</td><td>21, 38, 51</td></tr>
+                <tr><td>道—无为</td><td>体用</td><td>道常无为</td><td>2, 37, 48</td></tr>
+                <tr><td>无为—无不为</td><td>因果</td><td>无为而无不为</td><td>37, 48</td></tr>
+                <tr><td>柔弱—刚强</td><td>克制</td><td>柔胜刚/弱胜强</td><td>36, 43, 78</td></tr>
+                <tr><td>有—无</td><td>互生</td><td>有无相生</td><td>1, 2, 11, 40</td></tr>
+                <tr><td>朴—器</td><td>对立</td><td>朴散则为器</td><td>28, 32</td></tr>
+                <tr><td>慈—勇</td><td>因果</td><td>慈故能勇</td><td>67</td></tr>
+                <tr><td>俭—广</td><td>因果</td><td>俭故能广</td><td>67</td></tr>
+                <tr><td>知足—富</td><td>等价</td><td>知足者富</td><td>33</td></tr>
+                <tr><td>知止—不殆</td><td>因果</td><td>知止不殆</td><td>32, 44</td></tr>
+                <tr><td>得一—正</td><td>因果</td><td>得一以正</td><td>39</td></tr>
+                <tr><td>不争—莫能争</td><td>因果</td><td>夫唯不争故莫能争</td><td>22, 66</td></tr>
+                <tr><td>上德—下德</td><td>对立</td><td>上德不德/下德不失德</td><td>38</td></tr>
+                <tr><td>大道—仁义</td><td>退化因果</td><td>大道废有仁义</td><td>18, 38</td></tr>
+                <tr><td>天之道—人之道</td><td>对立</td><td>天之道损有余补不足/人之道损不足以奉有余</td><td>77</td></tr>
+                <tr><td>虚—实</td><td>互补</td><td>虚其心实其腹</td><td>3</td></tr>
+                <tr><td>静—躁</td><td>克制</td><td>静胜躁</td><td>26, 45</td></tr>
+                <tr><td>牝—牡</td><td>克制</td><td>牝常以静胜牡</td><td>61</td></tr>
+                <tr><td>曲—全</td><td>转化</td><td>曲则全</td><td>22</td></tr>
+                <tr><td>信—美</td><td>对立</td><td>信言不美</td><td>81</td></tr>
+                <tr><td>为学—为道</td><td>对立</td><td>为学日益/为道日损</td><td>48</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="site-footer">
+        道德经亲子体验营 · 知识图谱 · 最后更新：2026-05-05
+    </div>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+</body>
+</html>

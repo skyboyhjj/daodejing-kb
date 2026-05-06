@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1章 道可道非常道 - 道德经亲子体验营</title>
+    <link rel="stylesheet" href="../css/daodejing-styles.css">
+    <style>
+        .five-step-nav {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .five-step-nav a {
+            flex: 1;
+            text-align: center;
+            padding: 10px 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
+        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
+        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
+        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
+        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
+        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .original-text {
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-left: 4px solid #d4af37;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 2.2;
+            color: #2c2c2c;
+        }
+
+        .step-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+        }
+        .step-section h3 {
+            color: #2e5f5f;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8e0d0;
+        }
+
+        .concept-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.82em;
+            font-weight: 500;
+            margin: 2px 4px;
+        }
+        .concept-tag.dao { background: #2e5f5f; color: white; }
+        .concept-tag.wuwei { background: #6b8e7a; color: white; }
+        .concept-tag.xuan { background: #6a5e8a; color: white; }
+        .concept-tag.fan { background: #8faa9a; color: white; }
+
+        .nav-chapters {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        .nav-chapters a {
+            padding: 8px 16px;
+            background: rgba(46,95,95,0.08);
+            border: 1px solid rgba(46,95,95,0.2);
+            border-radius: 6px;
+            color: #2e5f5f;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-chapters a:hover {
+            background: #2e5f5f;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="chapter-nav">
+        <a href="../index.html" class="nav-home">回到主页</a>
+        <a href="../concepts/index.html">概念索引</a>
+        <a href="../paths/index.html">阅读路径</a>
+    </nav>
+
+    <!-- 搜索 -->
+    <div class="daodejing-search" id="daodejing-search">
+        <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
+        <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+    </div>
+
+
+    <h1>
+        📜 第1章 · 道可道非常道
+        <span class="subtitle">上经 · 道体论 · 总纲 · 五步读解</span>
+    </h1>
+
+    <!-- 五步导航 -->
+    <div class="five-step-nav">
+        <a href="#step1">📖 文本细读</a>
+        <a href="#step2">🏛️ 语境建构</a>
+        <a href="#step3">⚔️ 争议辨析</a>
+        <a href="#step4">🔗 逻辑验证</a>
+        <a href="#step5">💡 意义转化</a>
+    </div>
+
+    <!-- 原文 -->
+    <div class="original-text">
+        道可道，非常道；名可名，非常名。<br>
+        无名，天地之始；有名，万物之母。<br>
+        故常无欲，以观其妙；常有欲，以观其徼。<br>
+        此两者同出而异名，同谓之玄。<br>
+        玄之又玄，众妙之门。
+    </div>
+
+    <div style="margin: 10px 0;">
+        <span class="concept-tag dao">道</span>
+        <span class="concept-tag xuan">玄</span>
+        <span class="concept-tag wuwei">无</span>
+        <span class="concept-tag fan">有</span>
+    </div>
+
+    <!-- 第一步 -->
+    <div class="step-section" id="step1">
+        <h3>📖 第一步：文本细读</h3>
+        <p><strong>核心命题：</strong>道不可被语言完整把握，名不可被概念固定定义。"无"是天地之始，"有"是万物之母，两者同出而异名，共同构成玄妙的认知之门。</p>
+        <p style="margin-top:12px;"><strong>逐句解析：</strong></p>
+        <ul style="padding-left:20px; line-height:2;">
+            <li><strong>"道可道，非常道"</strong>——可以说出来的道，不是永恒的道。"可道"之"道"为动词（言说），"常道"为恒常不变的本体之道。</li>
+            <li><strong>"名可名，非常名"</strong>——可以命名的名，不是永恒的名。语言和概念永远是有限的标签。</li>
+            <li><strong>"无名，天地之始"</strong>——"无"的状态是天地创生的起点。</li>
+            <li><strong>"有名，万物之母"</strong>——"有"的状态是万物化生的根源。</li>
+            <li><strong>"常无欲以观其妙"</strong>——以无欲之心观照道之微妙。</li>
+            <li><strong>"常有欲以观其徼"</strong>——以有欲之心观照道之边界与显现。</li>
+            <li><strong>"此两者同出而异名"</strong>——无与有同源而异名，不是两个东西。</li>
+            <li><strong>"玄之又玄，众妙之门"</strong>——深而又深，是一切奥妙的总门。</li>
+        </ul>
+    </div>
+
+    <!-- 第二步 -->
+    <div class="step-section" id="step2">
+        <h3>🏛️ 第二步：语境建构</h3>
+        <p><strong>思想史语境：</strong>第1章作为全书开篇，具有总纲地位。"道"的提出回应了春秋战国时期对宇宙本源的追问，但与同时代思想家的区别在于——老子不仅提出本体，更强调本体的不可言说性。这一立场使道家与其他诸子（尤其是儒家的正名思想）形成鲜明对照。</p>
+        <p style="margin-top:12px;"><strong>文本内部语境：</strong>第1章建立了道→无→有→玄的概念框架，此框架在全书反复展开：第14章从感知角度证道体之超验性，第21章从实证角度证道体之真实性，第25章从宇宙论角度证道之先在性，第40章从辩证角度论道之运动律，第42章从生成角度论道之创生性。</p>
+    </div>
+
+    <!-- 第三步 -->
+    <div class="step-section" id="step3">
+        <h3>⚔️ 第三步：争议辨析</h3>
+        <p><strong>争议一："道可道"之"道"是否为言说？</strong></p>
+        <p>主流观点（王弼、河上公）："道"为言说。少数观点认为"道"为"行/践行"。主流观点更优，因下文"名可名"与之对仗，形成"言说—命名"的双关结构。</p>
+        <p style="margin-top:12px;"><strong>争议二："无名/有名"断句</strong></p>
+        <p>王安石断为"无，名天地之始；有，名万物之母"（以无/有为概念）；王弼断为"无名，天地之始；有名，万物之母"（以无名/有名为状态）。从帛书甲乙本与上下文逻辑看，王弼断法更优——"无名"与"有名"是道的两种显现方式，而非对"无"和"有"的命名。</p>
+    </div>
+
+    <!-- 第四步 -->
+    <div class="step-section" id="step4">
+        <h3>🔗 第四步：逻辑验证</h3>
+        <p><strong>概念链：</strong>道 → 不可道（超越语言） → 无名/有名（两种显现） → 妙/徼（两种认知） → 同出异名（统一） → 玄（认知之极） → 众妙之门（智慧入口）</p>
+        <p style="margin-top:12px;"><strong>内在一致性验证：</strong></p>
+        <ul style="padding-left:20px; line-height:2;">
+            <li>与第14章一致：视之不见、听之不闻、搏之不得 → 道之超感知性 = 第1章"不可道"之延伸</li>
+            <li>与第40章一致：有生于无 → 第1章"无名天地之始"之展开</li>
+            <li>与第42章一致：道生一 → 第1章"有名万物之母"之生成论展开</li>
+            <li>与第56章一致：知者不言 → 第1章"道可道非常道"之实践延伸</li>
+        </ul>
+    </div>
+
+    <!-- 第五步 -->
+    <div class="step-section" id="step5">
+        <h3>💡 第五步：意义转化</h3>
+        <p><strong>日常赋能：</strong></p>
+        <ul style="padding-left:20px; line-height:2;">
+            <li><strong>放下标签</strong>——对人对事不急于贴标签（"名可名非常名"），保持开放</li>
+            <li><strong>双重视角</strong>——遇到问题时，既观其"妙"（深层本质），又观其"徼"（表面呈现）</li>
+            <li><strong>容纳矛盾</strong>——"同出而异名"，对立面可能是同一根源的不同面相</li>
+        </ul>
+        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
+        <ul style="padding-left:20px; line-height:2;">
+            <li>🏠 <strong>家庭实践：</strong>选一个日常场景（如吃饭），不贴"好吃/难吃"标签，只是体验</li>
+            <li>🎨 <strong>儿童活动：</strong>"给一样东西取三个不同的名字"——体会"名可名非常名"</li>
+            <li>💬 <strong>对话练习：</strong>"这个问题的妙在哪里？徼在哪里？"——训练双重视角</li>
+        </ul>
+    </div>
+
+    <!-- 上下章导航 -->
+    <div class="nav-chapters">
+        <a href="../index.html">← 回到总览</a>
+        <a href="ch02.html">第2章 天下皆知美之为美 →</a>
+    </div>
+
+    <div class="site-footer">
+        道德经亲子体验营 · 第1章五步读解 · 最后更新：2026-05-05
+    </div>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+</body>
+</html>
