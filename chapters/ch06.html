@@ -7,6 +7,7 @@
     <title>第6章 谷神不死 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
+        /* ===== 五步导航条 ===== */
         .five-step-nav {
             display: flex;
             gap: 0;
@@ -53,6 +54,7 @@
             background: #6aaaa0;
         }
 
+        /* ===== 原文区块 ===== */
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -65,6 +67,7 @@
             color: #2c2c2c;
         }
 
+        /* ===== 步骤区块 ===== */
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -80,6 +83,121 @@
             border-bottom: 2px solid #e8e0d0;
         }
 
+        /* ===== 认知层级选择器 ===== */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        /* ===== 分层内容块 ===== */
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        /* L1 大白话版 — 绿色系 */
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        /* L2 精读版 — 金色系 */
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        /* L3 应用版 — 蓝绿色系 */
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        /* L4 学术版 — 紫色系 */
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        /* 亲子赋能 — 始终可见，不分层级 */
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        /* 初始显示策略：默认显示L2+L3，隐藏L1+L4 */
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        /* ===== 概念标签 ===== */
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -101,6 +219,11 @@
 
         .concept-tag.wuwei {
             background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
             color: white;
         }
 
@@ -149,6 +272,78 @@
             color: white;
         }
 
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        /* ===== 金句区块 ===== */
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        /* ===== 跨章验证表 ===== */
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
+        /* ===== 章节导航 ===== */
         .nav-chapters {
             display: flex;
             justify-content: space-between;
@@ -185,9 +380,8 @@
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🌀 第6章 · 谷神不死
+        🌊 第6章 · 谷神不死
         <span class="subtitle">上经 · 道体论 · 五步读解</span>
     </h1>
 
@@ -200,329 +394,313 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         谷神不死，是谓玄牝。<br>
         玄牝之门，是谓天地根。<br>
-        绵绵若存，用之不勤。<br>
-
+        绵绵若存，用之不勤。
     </div>
 
     <div style="margin: 10px 0;">
-        <span class="concept-tag dao">道</span>
         <span class="concept-tag xuan">玄</span>
+        <span class="concept-tag rouruo">柔弱</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步：文本细读与语义锚定 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>逐句解析：</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:12px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:25%;">原文</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">逐字训释与哲学涵义</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">谷神</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>谷</strong>（山谷）——空旷、低洼、容纳万物的空间，象征着虚静与接纳；<strong>神</strong>（神妙/灵性）——非人格神，而是指那不可测度的妙用之力。"谷神"合称，喻指道体如山谷般虚空却能化生万物的神妙功能——那空灵的、滋养一切的本源空间。
-                    </td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">不死</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>不</strong>（否定前缀）、<strong>死</strong>（消亡、终结）。"不死"并非生物学意义上的永生，而是指道的生生之机永不枯竭、永不中断——它是永恒的创生之力，超越一切生灭现象。
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">玄牝</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>玄</strong>（深远幽微）——承续第一章"同谓之玄"的深奥之义；<strong>牝</strong>（雌性动物）——生殖与养育的象征。"玄牝"即"玄妙的雌性"，是宇宙创生的子宫。老子以女性生殖原理隐喻道的化育功能，这是先秦哲学中独一无二的女性意象。
-                    </td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">玄牝之门</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>门</strong>（门户、通道）。"玄牝之门"即那玄妙雌性的门户——万物从无到有的出口。这个"门"的意象极其重要：它既是通道，又是界限；既是虚无与存在的交汇点，又是一切生命的诞生之处。
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">天地根</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>天地</strong>（宇宙万有）、<strong>根</strong>（根本、源头）。天地万物虽然浩瀚无穷，但追溯其本源，就是这"玄牝之门"——它不是天地之外的某个外在实体，而是天地之所以为天地的内在根基。
-                    </td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">绵绵若存</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>绵绵</strong>（连绵不断、丝缕不绝），<strong>若</strong>（似乎、仿佛），<strong>存</strong>（存在）。道的作用绵延不绝，却又若有若无——你无法抓住它，但它确实无时无刻不在运作。这正是"无状之状，无物之象"（第14章）的体验式表述。
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8; font-weight:bold;">用之不勤</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>用之</strong>（取用它、运用它），<strong>不勤</strong>（不会穷尽）。此处"勤"字不可误解为"勤奋"——在先秦古汉语中，"勤"通"尽"，义为枯竭、用尽。"用之不勤"意为：道的作用无穷无尽，取之不尽、用之不竭。第5章"虚而不屈，动而愈出"正是此义的先声。
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="margin-top:14px;">
-            <strong>句法结构：</strong>全章仅三句，却构成一个严密的逻辑链条——首句提出命题（谷神=玄牝），次句展开推演（玄牝之门=天地根），末句描述性状（绵绵若存，用之不勤）。三句环环相扣，从本体论到宇宙论再到实践论，一气呵成。
-        </p>
-    </div>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
 
-    <!-- 第二步 -->
-    <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-
-        <p style="margin-top:12px;"><strong>（一）思想史语境：女性原则的哲学升华</strong></p>
-        <p>以"牝"（雌性）作为宇宙本源的核心隐喻，这在先秦哲学中是极为罕见的思想姿态。同一时期的儒家主流话语以"君君臣臣父父子子"构建了明确的父权秩序；而老子却将宇宙的创生之源归于"玄牝"——那幽深而神秘的雌性生殖力。这不是生物学层面的崇拜，而是哲学层面的根本翻转：<strong>柔弱、虚空、接纳——这些被视为"阴性"的品质，被老子提升为宇宙第一原理。</strong>
-        </p>
-        <p>更值得注意的是"谷"的意象。山谷因其虚空而能容纳水流、孕育草木、回响声音。"谷"之所以"神"，正因其"无"——这直接呼应第11章"有之以为利，无之以为用"。山谷不主动生产什么，但一切生命都在其中生发。这是一种极其深刻的生态智慧：<strong>真正的创造力不在于施加控制，而在于提供一个容受的空间。</strong>
-        </p>
-        <p>在同时代的其他文本中，我们找不到将"山谷"与"雌性"结合为宇宙创生本源的类似表述。这一思想遗产对后世道教的内丹学、风水学中的"藏风聚气"观念，乃至中国美学中的"空灵"概念，都产生了深远影响。</p>
-
-        <p style="margin-top:14px;"><strong>（二）《道德经》内部互文网络</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">关联方向</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">关联章节</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">关联内容</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">承前深化</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第1章</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "玄之又玄"——本章"玄牝"之"玄"直接承接第1章"同谓之玄"的深奥义，将抽象的"玄"落实为具象的"牝"。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;">承前深化</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第4章</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "道冲而用之或不盈，渊兮似万物之宗"——第4章以"冲"（虚）、"渊"（深）描摹道体；本章以"谷"替代"冲"与"渊"，三者都是虚空的变奏。</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">承前深化</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第5章</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "天地之间，其犹橐籥乎？虚而不屈，动而愈出"——风箱（橐籥）的空虚产生无穷风力；本章"用之不勤"即"动而愈出"的另一表述。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;">启后铺垫</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第25章</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "有物混成，先天地生……可以为天地母"——"天地根"之喻在第25章展开为"天地母"，意象从"根"到"母"，创生性更加饱满。</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">启后铺垫</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第42章</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "道生一，一生二，二生三，三生万物"——本章的"玄牝"生育隐喻，在第42章获得了完整的宇宙生成论表达。</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 第三步 -->
-    <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-
-        <p style="margin-top:12px;"><strong>争议一："谷神"究竟何指？</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:28%;">解释路径</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">代表人物/观点</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">评析</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>山谷之神（神格化解读）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        河上公注："谷，养也。人能养神则不死也。"将"谷"释为动词"养"，"神"为人之精神。部分民间道教传统将其人格化为"谷神"崇拜。</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        河上公以"养"解"谷"属声训，虽自成体系，但与"谷"的字形本义不符。人格神解读更偏离了老子哲学的非人格化倾向。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>谷与神并列（二元结构）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">严遵《老子指归》倾向于将"谷"与"神"视为两种道之属性并列。</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">割裂了"谷神"作为一个有机隐喻的整体性；且与下文"玄牝"的单称结构不一致。</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>山谷之灵（哲学隐喻）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        王弼注："谷神，谷中央无谷也。无形无影，无逆无违，处卑不动，守静不衰，谷以之成而不见其形，此至物也。"今人陈鼓应、刘笑敢等均主此说。</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        <strong>此解最合老子本义。</strong>以山谷的虚空容受、低卑守静来隐喻道的妙用，与第4章"道冲"、第5章"橐籥"、第11章"无之以为用"构成严密的概念群。目前学界主流支持此说。
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p style="margin-top:14px;"><strong>争议二："牝"作为女性原则——女神崇拜还是哲学普遍性？</strong></p>
-        <p>当代一些女权主义和生态女性主义学者（如Joanna Macy、Ellen
-            Chen）将"玄牝"解读为远古母神崇拜的遗存，或老子对女性价值的刻意彰显。而传统注家如王弼则将"牝"视为纯粹的功能性比喻——"牝"只是道的创生功能的象喻，不涉及性别政治。</p>
-        <p><strong>综合评析：</strong>两种解读各有价值。从文本内部看，老子确实以"牝常以静胜牡"（第61章）表达了以柔弱胜刚强的思想，这在中国古代思想中具有特殊的颠覆性。但将"牝"过度政治化也未必符合老子的本意——他更关注的是"道"的永恒创生性本身，而非性别议题。"玄牝"的核心在"玄"（深邃幽远）而非"牝"（雌性性别）。
-        </p>
-
-        <p style="margin-top:14px;"><strong>争议三：本章是独立残篇还是有机整体？</strong></p>
-        <p>高亨等学者曾质疑本章仅有25字，风格高度浓缩近乎箴言体，与前后章关系松散，推测可能为古佚文拼合而成。但更多学者（如徐梵澄、李零）指出：第4至第7章构成了一个关于"空虚—生成—永恒"的精巧序列——第4章论道之"冲"（虚空）、第5章论"橐籥"（风箱之空）、第6章论"谷神"（山谷之空）、第7章论"天长地久"（虚空之果）。本章在此序列中不可或缺，是第5章"虚而不屈"向第7章"不自生故能长生"的逻辑桥梁。
-        </p>
-    </div>
-
-    <!-- 第四步 -->
-    <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-
-        <p style="margin-top:12px;"><strong>（一）本章内部概念链</strong></p>
-        <div style="background:#fafaf5; border:1px solid #d4c9a8; border-radius:6px; padding:16px; margin-top:8px;">
-            <p style="text-align:center; line-height:2.4; font-size:1.05em;">
-                <strong>谷神</strong>（山谷之虚空灵妙）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>不死</strong>（永恒创生力）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>玄牝</strong>（玄妙雌性本源）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>玄牝之门</strong>（万物生成之通道）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>天地根</strong>（宇宙总根源）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>绵绵若存</strong>（连续不断、若无若有）
-                <span style="color:#2e5f5f; margin:0 8px;">→</span>
-                <strong>用之不勤</strong>（取用无尽、永不枯竭）
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在这一章说了一件非常神秘又非常美的事：山谷有一种永远不会死的灵性，这就是"玄妙的妈妈"。这个玄妙的妈妈有一道门——所有的东西都是从这扇门里生出来的，它就是天和地的根。它一直都在，软绵绵的，好像有又好像没有，但你用它的力量永远用不完。老子把"道"描绘成一个温柔、静静的妈妈，用山谷和妈妈这两个意象告诉我们：最大的力量不是大喊大叫，而是安静、虚空、柔软地滋养一切。
             </p>
         </div>
-        <p style="margin-top:10px;">此链条展示了严密的逻辑推进：从<strong>本体特征</strong>（谷神之虚空与不死）→ <strong>生成功能</strong>（玄牝之创生）→
-            <strong>具体机制</strong>（玄牝之门为通道）→ <strong>宇宙论定位</strong>（天地之根）→ <strong>存在状态</strong>（绵绵若存的持续性）→
-            <strong>实践效果</strong>（用之不勤的无穷性）。每一步都有严格的语义支撑。
-        </p>
 
-        <p style="margin-top:14px;"><strong>（二）跨章验证矩阵</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:20%;">本章命题</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:18%;">验证章节</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">相互印证关系</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>谷神（虚空之妙）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第4章"道冲"<br>第5章"橐籥"<br>第11章"无之以为用"</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        第4章的"冲"（虚空）、第5章的"橐籥"（风箱之空）、第11章的"毂"（轮毂之空）与本章"谷神"共同构成"虚空即大用"的核心命题——这是道德经中最具原创性的思想之一。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>玄牝（女性创生）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        第1章"玄之又玄"<br>第25章"天地母"<br>第52章"天下母"<br>第61章"牝常以静胜牡"</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        第1章确立"玄"的哲学范畴，第25、52章将"母"意象持续展开，第61章回归"牝"的柔弱胜刚强之道。母性隐喻贯穿全书，构成一套完整的阴性哲学。</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>天地根（宇宙本源）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第25章"先天地生"<br>第42章"道生一"</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        第25章"有物混成，先天地生"为"天地根"提供了时间维度的展开；第42章"道生一，一生二，二生三，三生万物"则从生成序列的角度补全了从本源到万物的路径。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>用之不勤（永不枯竭）</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">第4章"或不盈"<br>第5章"虚而不屈，动而愈出"<br>第45章"大盈若冲，其用不穷"
-                    </td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "不盈"→"不屈"→"不勤"→"不穷"，四个否定式表述刻画出道的无限性与永不枯竭的本质——这是一个贯穿全书的根本命题。</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p>本章以25字的精炼篇幅构建了《道德经》中最富诗意的道体意象——<strong>谷神</strong>（山谷之虚空灵妙）→<strong>玄牝</strong>（玄妙雌性本源）→<strong>天地根</strong>（宇宙总根源）的三重递进。
+            </p>
+            <p><strong>"谷神不死，是谓玄牝"：</strong>"谷"是空旷、低洼、容纳万物的空间——山谷因其虚空而能容纳流水、孕育草木、回响声音。"神"非人格神，而是指不可测度的妙用之力。"谷神"合称，喻道体如山谷般虚空却能化生万物的神妙功能。"不死"指道之生生之机永不枯竭。"玄牝"——"玄"（深远幽微）承续第1章"同谓之玄"，"牝"（雌性）是创生与养育的象征。老子以女性生殖原理隐喻道的化育功能——这是先秦哲学中独一无二的女性意象。
+            </p>
+            <p><strong>"玄牝之门，是谓天地根"：</strong>"门"是通道与界限——是虚无与存在的交汇点。万物从这个"玄牝之门"中源源不断地生出，恰如婴儿从母体中诞生。</p>
+            <p><strong>"绵绵若存，用之不勤"：</strong>"绵绵"指连续不断如丝缕不绝；"若存"——似乎存在又似乎不存在；"不勤"通"不尽"，意为永不枯竭。第5章"虚而不屈，动而愈出"正是此义的先声。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>场景：当你感到"能量枯竭""被透支"时——</strong></p>
+            <p>"用之不勤"揭示了一个深刻的可持续性原理：道的运作是"绵绵若存"——持续的、柔和的、永不枯竭的。它不像洪水那样暴烈而后干涸，而像溪流一样长流不断。你的能量管理也应该如此：不是猛冲猛干然后瘫倒，而是保持"绵延"的节奏——每天做一点，不强求立竿见影。
+            </p>
+            <p><strong>行动：</strong>检视你本周的工作节奏：是否总是冲刺模式？尝试调整为"绵延模式"——每工作50分钟，给自己10分钟"空谷时刻"（完全放空，不刷手机）。记录感受：哪个模式让你更持久？更满足？
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong>本章帛书与通行本基本一致，为《道德经》中文字最稳定的章节之一。仅"用之不勤"处，部分传世本"勤"作"堇"，均可训为"尽"。</p>
+            <p><strong>字词溯源：</strong>"谷"——山谷，甲骨文象山谷之形，象征虚空与容纳；"神"——非人格神，《易传》"阴阳不测之谓神"，指妙用不可测度；"牝"——雌性，生殖与养育的象征；"玄"——深远幽微，第1章"玄之又玄"的先声；"勤"——在先秦古汉语中通"尽"，义为枯竭、用尽（非今义"勤奋"）。
+            </p>
+            <p><strong>句式辨析：</strong>全章仅三句，构成严密逻辑链：首句"谷神不死，是谓玄牝"（提出命题——虚空妙用=母性本源）；次句"玄牝之门，是谓天地根"（展开推演——母性之门=宇宙根源）；末句"绵绵若存，用之不勤"（描述性状——持续运作、永不枯竭）。三句从本体论到宇宙论再到实践论，一气呵成。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第二步：语境构建与哲学推演 ===== -->
+    <div class="step-section" id="step2">
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章在整本书里特别美，因为它用"妈妈"来比喻"道"。在老子那个时代，大家都是用"天"啊"上帝"啊这些很威严的男性形象来想世界的源头。但老子偏要用"山谷"（空空的、低低的）和"妈妈"（软软的、养育人的）——这两种都是阴性意象。他想说：真正的力量不是强硬的，而是柔软、接纳、滋养的。就像妈妈的力量不是拳头，而是怀抱。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>母性隐喻在道德经中的地位：</strong>以"牝"（雌性）作为宇宙本源的核心隐喻，在先秦哲学中极为罕见。同时期儒家以"君君臣臣父父子子"构建父权秩序；而老子将宇宙创生之源归于"玄牝"——柔弱、虚空、接纳这些被视为"阴性"的品质，被提升为宇宙第一原理。
+            </p>
+            <p><strong>中观语境：</strong>本章与第1章"万物之母"、第25章"天地母"、第52章"天下有始以为天下母"共同构成全书的"母性意象群"。从第1章的"有名万物之母"（功能性母），到本章的"玄牝"（本体性母），再到第25章"可以为天地母"（宇宙论母），意象逐层深化。
+            </p>
+            <p><strong>第4-7章虚空序列中的定位：</strong>第4章论道之"冲"（虚空）、第5章论"橐籥"（风箱之空）、第6章论"谷神"（山谷之空）、第7章论"天长地久"（虚空之果）。本章在此序列中是不可或缺的逻辑桥梁——从橐籥的机械意象过渡到山谷的自然意象，从虚空到创生。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>"谷神"意象为道之虚空性提供了最富诗意的自然载体。山谷不主动生产什么，但一切生命都在其中生发——这是一种极其深刻的生态智慧：真正的创造力不在于施加控制，而在于提供一个容受的空间。
+            </p>
+            <p><strong>思想史意义：</strong>本章的女性原则对后世道教内丹学（"玄牝"即丹田）、风水学（"藏风聚气"即谷神之象）、中国美学（"空灵"概念）均产生深远影响。在当代女性主义哲学和深层生态学中，本章的"母性/虚空/创生"三维结构提供了古老而鲜活的思想资源。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>天道维度：</strong>道之虚空（谷）兼具神妙（神）与创生（牝）两种属性。"谷神"即道的虚空妙用，"玄牝"即道的创生母性，"天地根"即道的宇宙论根源功能。天道=虚空（谷）+妙用（神）+创生（牝）+根源（天地根）。
+            </p>
+            <p><strong>人道维度：</strong>人效法道之"玄牝"——以柔弱、接纳、滋养为处世之本。"绵绵若存"是人道实践的节奏原则——不求暴烈冲刺，但求细水长流。人道=接纳柔顺+持续绵延。</p>
+            <p><strong>天人合一维度：</strong>人通过"内心虚空"（如山谷）接通道之"创生母性"（如玄牝）。"用之不勤"是天人合一的实践验证——当人接通了道之根源，其能量便不再枯竭。天人合一=人之虚谷+道之玄牝=同一创生。
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== 第三步：争议辨析 ===== -->
+    <div class="step-section" id="step3">
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于"谷神"是什么，学者们争了好久。有人说它是一个真的神灵——山谷里的神，永远不死。但更多人觉得老子不是这个意思——他是用山谷打比方：山谷空空的，却能发出回声；山谷低低的，溪水都往它那儿流。这就是"道"的样子——空、低、软，却最有力量。还有"玄牝"——有人说老子在崇拜女神，有人说只是比喻。其实不管怎样解释，核心意思都差不多：最厉害的力量是柔软的、接纳的。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议一："谷神"——宗教化解读vs哲学化解读</strong></p>
+            <p>河上公注："谷，养也。人能养神则不死也。"将"谷"训为动词"养"，"神"为人之精神——此属养生学解读。部分民间道教传统将其人格化为"谷神"崇拜。但王弼注："谷神，谷中央无谷也。无形无影，无逆无违，处卑不动，守静不衰……此至物也。"以山谷虚空隐喻道之妙用。今人陈鼓应、刘笑敢等均主此说。综合：哲学隐喻说更合老子非人格化的整体倾向。
+            </p>
+            <p><strong>争议二："玄牝"——女性主义解读vs功能性比喻</strong></p>
+            <p>部分女性主义和生态女性主义学者（如Ellen
+                Chen）将"玄牝"解读为远古母神崇拜的遗存，或老子对女性价值的刻意彰显。传统注家则视"牝"为纯粹功能性比喻——只是道的创生功能的象喻，不涉及性别政治。综合评析：老子以"牝常以静胜牡"（第61章）表达柔弱胜刚强之思想，确有性别维度的颠覆性；但"玄牝"的核心在"玄"（深邃）而非"牝"（性别），过度政治化可能偏离本义。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>不同解读路径对实践的启示差异：</strong></p>
+            <p>若采<strong>王弼"虚空妙用"</strong>路径→"谷神"即内心的虚空——保持心灵如空谷，自然能容纳新事物、产生新想法。适合创造力枯竭者。</p>
+            <p>若采<strong>河上公"养神修身"</strong>路径→"谷神"即养护精神——通过减少消耗来保持生命活力。适合精力透支者。</p>
+            <p>若采<strong>女性主义"阴性智慧"</strong>路径→"玄牝"即柔软、接纳、滋养的领导方式。适合习惯强势风格的管理者探索另一种可能。</p>
+            <p><strong>实践建议：</strong>三者可以整合——在内心留空（王弼）、养护精力（河上公）、以柔克刚（女性主义），形成立体的"谷神实践"。从每天15分钟"空谷时刻"开始。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>争议一："谷神"的训诂学辨析</strong></p>
+            <p>解"谷"为动词（养）：河上公以声训释"谷"为"养"，虽自成一体，但与"谷"字形本义不符。解"谷神"为二元并列：严遵《老子指归》将"谷"与"神"视为两种道之属性并列，但割裂了"谷神"作为一个有机隐喻的整体性。解"谷神"为山谷之灵：王弼首倡，今人陈鼓应、刘笑敢支持——此解最合老子本义，与第4章"道冲"、第5章"橐籥"构成严密概念群。
+            </p>
+            <p><strong>争议二：本章的独立性与序列定位</strong></p>
+            <p>高亨等学者曾质疑本章仅25字、风格高度浓缩、与前后章关系松散，推测可能为古佚文拼合。但更多学者（徐梵澄、李零）指出：第4至第7章构成关于"空虚—生成—永恒"的精巧序列——本章是第5章"虚而不屈"向第7章"不自生故能长生"的逻辑桥梁。从概念链条的严密性看，不应视为残篇。
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== 第四步：逻辑验证 ===== -->
+    <div class="step-section" id="step4">
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章说的道理，和书里其他地方说的一模一样。第1章说"有名万物之母"——道的另一个名字叫"万物之母"，和这里的"玄牝"完全一致。第4章说"渊兮似万物之宗"——道像深渊一样，是万物的源头。第25章说"可以为天地母"——道可以做天地的母亲。第42章说"道生一，一生二，二生三，三生万物"——道生出了所有东西。第52章说"天下有始，以为天下母"——天下的开端，就是天下的母亲。整本书用不同的方式在说同一个道理！
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>本章概念链（内在逻辑）：</strong></p>
+            <p>谷神（虚空之妙）→ 不死（永恒创生）→ 玄牝（母性本源）→ 玄牝之门（生成通道）→ 天地根（宇宙总根源）→ 绵绵若存（持续运作）→
+                用之不勤（永不枯竭）。从本体特征到生成功能、到具体机制、到宇宙论定位、到存在状态、到实践效果——每一步都有严格语义支撑。</p>
+            <table class="verify-table">
+                <tr>
+                    <th>引用章节</th>
+                    <th>核心命题</th>
+                    <th>与本章的逻辑关联</th>
+                </tr>
+                <tr>
+                    <td>第1章</td>
+                    <td>有名万物之母</td>
+                    <td>"玄牝"即"万物之母"的本体化意象——从功能性称谓升华为形象性隐喻</td>
+                </tr>
+                <tr>
+                    <td>第4章</td>
+                    <td>道冲而用之或不盈，渊兮似万物之宗</td>
+                    <td>"谷神"即"道冲"（虚空）与"渊"（深渊）的意象整合——山谷既是空的又是深的</td>
+                </tr>
+                <tr>
+                    <td>第25章</td>
+                    <td>可以为天地母</td>
+                    <td>"玄牝"之母性在宇宙论层面展开——道不但是母，且是天地之母</td>
+                </tr>
+                <tr>
+                    <td>第42章</td>
+                    <td>道生一，一生二，二生三，三生万物</td>
+                    <td>"玄牝"的创生功能获得了完整的生成序列描述</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽检验：</strong>"谷神"（虚空）与"天地根"（根源）是否矛盾？表面看，虚空是无，根源是有。但老子的精妙在于："虚空"本身即创生之"根源"——正如子宫是中空的，却是生命诞生之处。空与有不是对立，而是同一创生结构的两个方面：空是条件，有是结果。
+            </p>
+            <p><strong>跨章实践验证：</strong>将第6章的"绵绵若存"与第5章"虚而不屈，动而愈出"联合使用：在你的工作节奏中刻意保持"绵延"而非"冲刺"。不是一天做10小时然后三天瘫倒，而是每天稳定做3小时——这正是"用之不勤"的现代实践。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>完整跨章验证表：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>引用章节</th>
+                    <th>核心命题</th>
+                    <th>与第6章的逻辑关联</th>
+                    <th>验证力</th>
+                </tr>
+                <tr>
+                    <td>第1章</td>
+                    <td>有名万物之母；玄之又玄</td>
+                    <td>"玄牝"之"玄"直接承续第1章，将抽象的"玄"落实为具象的"牝"</td>
+                    <td>强</td>
+                </tr>
+                <tr>
+                    <td>第4章</td>
+                    <td>道冲；渊兮似万物之宗</td>
+                    <td>"谷神"即"道冲"（虚空）+ "渊"（深渊）的意象融合——山谷兼具二者</td>
+                    <td>极强</td>
+                </tr>
+                <tr>
+                    <td>第5章</td>
+                    <td>虚而不屈，动而愈出</td>
+                    <td>"用之不勤"即"虚而不屈"的另一表述；"绵绵若存"即"动而愈出"的绵延版</td>
+                    <td>极强</td>
+                </tr>
+                <tr>
+                    <td>第25章</td>
+                    <td>可以为天地母</td>
+                    <td>"玄牝"的母性在第25章获得宇宙论层面的确认</td>
+                    <td>极强</td>
+                </tr>
+                <tr>
+                    <td>第42章</td>
+                    <td>道生一，一生二，二生三，三生万物</td>
+                    <td>"玄牝"的生育隐喻在第42章展开为完整的宇宙生成论</td>
+                    <td>强</td>
+                </tr>
+                <tr>
+                    <td>第52章</td>
+                    <td>天下有始，以为天下母</td>
+                    <td>"天下母"与"玄牝"构成同一命题的反复强化</td>
+                    <td>强</td>
+                </tr>
+                <tr>
+                    <td>第61章</td>
+                    <td>牝常以静胜牡</td>
+                    <td>"牝"的柔弱胜刚强之道——从本体论下降到人生论</td>
+                    <td>中</td>
+                </tr>
+            </table>
+            <p><strong>奥卡姆剃刀检验：</strong>若将"谷神"理解为道的虚空创生妙用，则全章概念均可由此推导：虚空（谷）→妙用（神）→不死（永恒）→创生（玄牝）→通道（门）→根源（天地根）→持续（绵绵若存）→无尽（用之不勤）。概念链简洁优美。"不盈"→"不屈"→"不勤"→"不穷"，四个否定式表述刻画出道的无限性与永不枯竭的本质——贯穿全书的根本命题。
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== 第五步：意义转化 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
 
-        <p style="margin-top:12px;"><strong>（一）日常赋能：三道生活实践</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:12%;">本章智慧</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:25%;">生活启示</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">具体实践</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>谷神——虚空以容受</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        现代人日程填满、信息过载，"谷神"的智慧提醒我们：<strong>真正的创造力来自留白。</strong>谷因空而能容，人因虚而能受。学会"不做"与"不填满"，才能让新的可能性进入。</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        每天留出15分钟的"空谷时刻"：不看手机、不做计划、不填内容。只是安静地坐在那里，像一座空谷一样，允许任何感受和念头自然地来、自然地去。</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>绵绵若存——可持续的节奏</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        道的运化"绵绵若存"，不是暴风雨式的激情，而是细水长流的持续性。这对抗了当代盛行的"冲刺文化"——过度努力必然导致枯竭，而真正的力量来自持久的、若有若无的坚持。</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        检视自己的学习或工作节奏：是否总是猛冲猛干然后瘫倒？调整为"绵延"模式——每天做一点，不强求立竿见影。像溪流一样持续流动，而不是像洪水一样冲垮堤坝。</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>天地根——回到本源</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        当我们在日常琐事和焦虑中迷失时，"天地根"提醒我们：<strong>一切都有一个更深的源头。</strong>与其在枝叶问题上反复纠结，不如回到根部——那些真正重要的事情：健康、关系、内心的宁静。
-                    </td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        感到迷茫时问自己："这件事的'根'是什么？"追溯到最根本的关切——往往发现很多焦虑只是表面的枝叶，根部其实是朴素而稳定的。</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在父权秩序确立的周代文明中，老子以"玄牝"的母性意象为宇宙本源赋形。这不是对生殖的朴素崇拜，而是在哲学上确认"柔弱、虚空、接纳"为宇宙第一原理——这是一种极其大胆的思想翻转。
+            </p>
+            <p><strong>普遍义：</strong>"绵绵若存，用之不勤"揭示了可持续运作的根本法则——最大的力量不是爆发力而是持久力。一个总是爆发的人终将枯竭，一个细水长流的人历久弥新。</p>
+            <p><strong>现代义：</strong>在"冲刺文化"盛行的当代，"绵绵若存"是对过度努力的解毒剂。在"彰显文化"中，"山谷之虚"提醒我们：真正的创造力来自留白。在"父权式管理"中，"玄牝"的母性智慧提供了另一种领导模型——以接纳替代指令，以滋养替代索取。
+            </p>
+        </div>
 
-        <p style="margin-top:14px;"><strong>（二）亲子共修：三个家庭体验活动</strong></p>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-            <thead>
-                <tr style="background:#f0ebe0;">
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:15%;">活动名称</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:15%;">对应本章概念</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left; width:30%;">操作步骤</th>
-                    <th style="padding:8px; border:1px solid #d4c9a8; text-align:left;">亲子对话引导</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>🏔️ 山谷回音</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">谷神（空谷之妙）</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        找一个类似山谷的封闭空间（楼道、走廊、或真正的山谷）。让孩子对着空旷的空间大声喊一句话，仔细听回声。然后讨论：声音从哪里来？为什么空的地方反而能产生声音？</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "如果我们把这里塞满东西，还会有回声吗？""你觉得'空'是好还是不好？""道就像这个空山——看起来什么也没有，却能回应我们的一切。你觉得你心里也有这样一个'空山'吗？"</td>
-                </tr>
-                <tr style="background:#fafaf5;">
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>🌱 种子发芽观察</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">玄牝（养育之本）</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        准备一个花盆、泥土和豆类种子（绿豆或黄豆最易发芽）。让孩子亲手把种子埋入土中，每天浇水、观察。记录种子破土而出的每一天，画下变化。讨论：泥土像不像"玄牝"？它安静、不声张，却孕育出了新生命。
-                    </td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "泥土做了什么神奇的事情才让种子发芽？""泥土像不像妈妈？它不声不响，却孕育了一切。""老子说'玄牝'就是道的妈妈力——你身边有什么东西也是安静、不争抢但能创造很多生命的？"</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px; border:1px solid #d4c9a8;"><strong>🎨 画一画"天地根"</strong></td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">天地根（宇宙根源）</td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        给孩子一张大纸和彩色笔，提出问题："如果万物都有一个共同的根，你觉得它长什么样？"不设限制，让孩子自由发挥——它可能是一棵树根、一个漩涡、一道光、一个圆圈……重要的是让孩子用自己的方式表达"本源"的意象。
-                    </td>
-                    <td style="padding:8px; border:1px solid #d4c9a8;">
-                        "你画的是什么？为什么你觉得万物的根是这个样子？""老子说'天地根'——天地也有根，就像大树有根一样。如果没有根，树会怎样？如果没有'天地根'，万物会怎样？""你觉得你跟自己内心的'根'有没有连结？什么时候你感觉最有力量？最安心？"
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养——"空谷时刻"练习：</strong>每天留出15分钟作为"空谷时刻"——不看手机、不做计划、不填内容。只是安静地坐着，像一座空谷一样，允许任何感受和念头自然地来、自然地去。行动：从今天开始连续7天，观察"空谷时刻"对你的创造力和情绪稳定性的影响。
+            </p>
+            <p><strong>人际关系——"母性倾听"实践：</strong>在与家人或同事交流时，尝试"玄牝式倾听"——不是准备反驳，而是像山谷接纳溪流一样完全容纳对方的话语。不说话打断，不用表情评判。行动：本周刻意做三次"完全倾听"——只听不说，观察对方的反应和你的感受。
+            </p>
+            <p><strong>工作方式——"绵延工作法"：</strong>将你的工作节奏从"冲刺模式"（猛干然后瘫倒）调整为"绵延模式"（每天稳步推进一小步）。行动：选择一项长期项目，承诺每天只做30分钟——不多做。一个月后评估：持续的效果是否超越了间歇的冲刺？
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>天道维度：</strong>道之创生即"玄牝"——以虚空（谷）为体，以妙用（神）为性，以创生（牝）为用。"谷神不死"是道之体（虚空）与道之性（永恒）的统一。"玄牝之门"是道之用（创生）的具体机制描述。
+            </p>
+            <p><strong>人道维度：</strong>人效法道之"玄牝"——以虚空之心容纳万物（谷），以柔弱之态应对世界（牝），以绵延之节奏持续前进（绵绵若存）。人道=容受+柔弱+绵延。</p>
+            <p><strong>天人合一维度：</strong>"用之不勤"是天人合一的实践验证——当人像山谷一样虚空、像玄牝一样接纳，其创造力和生命力便不再枯竭。因为人已接通道之根源——"天地根"。天人合一=接通根源=不再枯竭。
+            </p>
+            <p><strong>"母性智慧"与当代领导力模型的对话：</strong>现代管理学中"服务型领导"（Servant
+                Leadership）强调领导者应当如"仆人"般为团队服务——这与"玄牝"的滋养模式高度一致。将"牝"的哲学转化为管理语言：最有效的领导不是英雄式的冲锋，而是母性的承载——为团队创造一个安全的"山谷"，让他们在其中自主生长。
+            </p>
+        </div>
+
+        <!-- 亲子赋能 — 始终可见 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层——"山谷回音实验"（感受"谷神"）：</strong>找一个类似山谷的封闭空间（楼道、走廊，或真正的山谷）。让孩子对着空旷的空间大声喊一句话，仔细听回声。然后讨论：声音从哪里来？"为什么空的地方反而能产生声音？""如果我们把这里塞满东西，还会有回声吗？"引导孩子理解："空"不是"没用"——最空的地方，恰好能产生最奇妙的声音。道就像这个空山——看起来什么也没有，却能回应我们的一切。
+            </p>
+            <p><strong>🧘
+                    体验层——"种子发芽观察"（感受"玄牝"，适合4-12岁）：</strong>准备一个花盆、泥土和豆类种子（绿豆或黄豆最易发芽）。让孩子亲手把种子埋入土中，每天浇水、观察。画下种子每一天的变化。第7天左右种子破土而出时，问孩子："泥土做了什么事才让种子发芽？""泥土像不像妈妈？它不声不响，却孕育了一切。""老子说'玄牝'就是道的妈妈力——你身边还有什么东西也是安静、不争抢但能创造生命的？"
+            </p>
+            <p><strong>💬
+                    对话层——"妈妈的爱像什么"讨论（探索"玄牝"）：</strong>和孩子一起讨论："妈妈的爱有什么特点？"可能的答案：安静、一直在、不求回报、像大地一样承托。"老子说'道'就像全宇宙的妈妈——你觉得这是什么意思？""如果'道'是每个人的妈妈，她希望她的孩子们怎样生活？"这个对话帮助孩子从"妈妈的爱"理解"道"——不是威严的法官，而是温柔的本源。
+            </p>
+            <p><strong>📋
+                    画一画"天地根"（适合全年龄段）：</strong>给孩子一张大纸和彩色笔，提出问题："如果万物都有一个共同的根，你觉得它长什么样？"不设限制，让孩子自由发挥——它可能是一棵树根、一个漩涡、一道光、一个圆圈、一团软绵绵的光……重要的是让孩子用自己的方式表达"本源"的意象。然后问："你画的是什么？为什么你觉得万物的根是这个样子？""如果没有根，树会怎样？如果没有'天地根'，万物会怎样？""你觉得你跟自己内心的'根'有没有连结？什么时候你感觉最有力量？最安心？"
+            </p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「谷神不死，是谓玄牝。玄牝之门，是谓天地根。」</div>
+        <div class="quote-interp">——虚空如山谷的神灵永不消亡，这就是玄妙的母性。这玄妙母性的门，就是天地的根源。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -537,6 +715,7 @@
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 </body>
 
 </html>
