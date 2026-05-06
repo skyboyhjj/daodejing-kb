@@ -1,0 +1,302 @@
+{
+    "concept_tag_system": {
+        "version": "2.0",
+        "description": "道德经亲子体验营知识库 — 概念标签与CSS类名映射表",
+        "design_system": {
+            "primary": "#2e5f5f",
+            "gold": "#d4af37",
+            "paper": "#faf8f0"
+        }
+    },
+    "tags": {
+        "dao": {
+            "class": "dao",
+            "label_zh": "道",
+            "label_en": "Dao/Way",
+            "color": "#2e5f5f",
+            "text_color": "white",
+            "description": "宇宙本体、万物本源与运行规律",
+            "key_chapters": [
+                1,
+                4,
+                14,
+                21,
+                25,
+                34,
+                37,
+                40,
+                42
+            ]
+        },
+        "de": {
+            "class": "de",
+            "label_zh": "德",
+            "label_en": "De/Virtue",
+            "color": "#4a7878",
+            "text_color": "white",
+            "description": "道在万物中的体现与作用",
+            "key_chapters": [
+                10,
+                38,
+                51,
+                65
+            ]
+        },
+        "wuwei": {
+            "class": "wuwei",
+            "label_zh": "无为",
+            "label_en": "Wuwei/Non-coercive action",
+            "color": "#6b8e7a",
+            "text_color": "white",
+            "description": "不妄为、不强为的处事原则",
+            "key_chapters": [
+                2,
+                3,
+                10,
+                37,
+                38,
+                43,
+                48,
+                57,
+                63,
+                64
+            ]
+        },
+        "ziran": {
+            "class": "ziran",
+            "label_zh": "自然",
+            "label_en": "Ziran/Spontaneity",
+            "color": "#7a9e8e",
+            "text_color": "white",
+            "description": "自己如此、本然状态",
+            "key_chapters": [
+                5,
+                17,
+                23,
+                25,
+                51,
+                64
+            ]
+        },
+        "xuan": {
+            "class": "xuan",
+            "label_zh": "玄",
+            "label_en": "Xuan/Profound",
+            "color": "#6a5e8a",
+            "text_color": "white",
+            "description": "幽深、玄远、超越对立的统一性",
+            "key_chapters": [
+                1,
+                6,
+                10,
+                15,
+                51,
+                65
+            ]
+        },
+        "fan": {
+            "class": "fan",
+            "label_zh": "反",
+            "label_en": "Fan/Reversal",
+            "color": "#8faa9a",
+            "text_color": "white",
+            "description": "道的反向运动律则",
+            "key_chapters": [
+                25,
+                40,
+                65,
+                78
+            ]
+        },
+        "rouruo": {
+            "class": "rouruo",
+            "label_zh": "柔弱",
+            "label_en": "Rouruo/Softness",
+            "color": "#7a9e8e",
+            "text_color": "white",
+            "description": "柔弱胜刚强的辩证力量",
+            "key_chapters": [
+                36,
+                43,
+                55,
+                76,
+                78
+            ]
+        },
+        "pu": {
+            "class": "pu",
+            "label_zh": "朴",
+            "label_en": "Pu/Uncarved Block",
+            "color": "#a3b8a0",
+            "text_color": "#3a4a3a",
+            "description": "原始质朴、未经雕琢的本真状态",
+            "key_chapters": [
+                15,
+                19,
+                28,
+                32,
+                37,
+                57
+            ]
+        },
+        "yi": {
+            "class": "yi",
+            "label_zh": "抱一",
+            "label_en": "Baoyi/Embrace the One",
+            "color": "#b5c8b2",
+            "text_color": "#3a4a3a",
+            "description": "持守大道之统一",
+            "key_chapters": [
+                10,
+                14,
+                22,
+                39,
+                42
+            ]
+        },
+        "jing": {
+            "class": "jing",
+            "label_zh": "静",
+            "label_en": "Jing/Stillness",
+            "color": "#5e6a8a",
+            "text_color": "white",
+            "description": "虚静、清静的修养工夫",
+            "key_chapters": [
+                16,
+                26,
+                37,
+                45,
+                57,
+                61
+            ]
+        },
+        "xia": {
+            "class": "xia",
+            "label_zh": "处下",
+            "label_en": "Chuxia/Lowness",
+            "color": "#8a7a5e",
+            "text_color": "white",
+            "description": "谦下、处低位的处世智慧",
+            "key_chapters": [
+                7,
+                8,
+                61,
+                66
+            ]
+        },
+        "zhizu": {
+            "class": "zhizu",
+            "label_zh": "知足/知止/功遂身退",
+            "label_en": "Zhizu/Contentment",
+            "color": "#8a7a5e",
+            "text_color": "white",
+            "description": "知足不辱、知止不殆、功成身退",
+            "key_chapters": [
+                9,
+                33,
+                44,
+                46
+            ]
+        },
+        "buzheng": {
+            "class": "buzheng",
+            "label_zh": "不争",
+            "label_en": "Buzheng/Non-contention",
+            "color": "#5e7a8a",
+            "text_color": "white",
+            "description": "不争之争、以不争为争",
+            "key_chapters": [
+                3,
+                8,
+                22,
+                66,
+                68,
+                73,
+                81
+            ]
+        },
+        "qiantui": {
+            "class": "qiantui",
+            "label_zh": "谦退",
+            "label_en": "Qiantui/Humility",
+            "color": "#7a8a6e",
+            "text_color": "white",
+            "description": "谦逊退让的处世态度",
+            "key_chapters": [
+                7,
+                9,
+                34
+            ]
+        },
+        "yinger": {
+            "class": "yinger",
+            "label_zh": "婴儿",
+            "label_en": "Yinger/Infant",
+            "color": "#d4af37",
+            "text_color": "#3a4a3a",
+            "description": "纯真未凿、元气充足的原始状态",
+            "key_chapters": [
+                10,
+                20,
+                28,
+                55
+            ]
+        },
+        "shouzhong": {
+            "class": "shouzhong",
+            "label_zh": "守中",
+            "label_en": "Shouzhong/Keep the Center",
+            "color": "#4a6a6a",
+            "text_color": "white",
+            "description": "持守中道、虚中以待",
+            "key_chapters": [
+                5
+            ]
+        }
+    },
+    "chapter_tag_mapping": {
+        "1": [
+            "dao",
+            "xuan"
+        ],
+        "2": [
+            "wuwei",
+            "dao",
+            "buzheng"
+        ],
+        "3": [
+            "wuwei",
+            "buzheng"
+        ],
+        "4": [
+            "dao"
+        ],
+        "5": [
+            "ziran",
+            "shouzhong"
+        ],
+        "6": [
+            "xuan",
+            "rouruo"
+        ],
+        "7": [
+            "qiantui",
+            "xia"
+        ],
+        "8": [
+            "buzheng",
+            "xia",
+            "rouruo"
+        ],
+        "9": [
+            "zhizu",
+            "qiantui"
+        ],
+        "10": [
+            "xuan",
+            "yi",
+            "yinger",
+            "wuwei"
+        ]
+    }
+}

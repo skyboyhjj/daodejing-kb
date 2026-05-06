@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第N章 [核心命题] - 道德经亲子体验营</title>
+    <link rel="stylesheet" href="../css/daodejing-styles.css">
+    <style>
+        /* ===== 五步导航条 ===== */
+        .five-step-nav {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .five-step-nav a {
+            flex: 1;
+            text-align: center;
+            padding: 10px 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
+        /* ===== 原文区块 ===== */
+        .original-text {
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-left: 4px solid #d4af37;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 2.2;
+            color: #2c2c2c;
+        }
+
+        /* ===== 步骤区块 ===== */
+        .step-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+        }
+
+        .step-section h3 {
+            color: #2e5f5f;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8e0d0;
+        }
+
+        /* ===== 认知层级选择器 ===== */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        /* ===== 分层内容块 ===== */
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        /* L1 大白话版 — 绿色系 */
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        /* L2 精读版 — 金色系 */
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        /* L3 应用版 — 蓝绿色系 */
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        /* L4 学术版 — 紫色系 */
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        /* 亲子赋能 — 始终可见，不分层级 */
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        /* 初始显示策略：默认显示L2+L3，隐藏L1+L4（未来由JS动态控制） */
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        /* ===== 概念标签 ===== */
+        .concept-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.82em;
+            font-weight: 500;
+            margin: 2px 4px;
+        }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        /* ===== 金句区块 ===== */
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        /* ===== 跨章验证表 ===== */
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
+        /* ===== 章节导航 ===== */
+        .nav-chapters {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+
+        .nav-chapters a {
+            padding: 8px 16px;
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
+            border-radius: 6px;
+            color: #2e5f5f;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-chapters a:hover {
+            background: #2e5f5f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="chapter-nav">
+        <a href="../index.html" class="nav-home">回到主页</a>
+        <a href="../concepts/index.html">概念索引</a>
+        <a href="../paths/index.html">阅读路径</a>
+    </nav>
+
+    <!-- 搜索 -->
+    <div class="daodejing-search" id="daodejing-search">
+        <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
+        <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+    </div>
+
+    <h1>
+        [EMOJI] 第N章 · [核心命题]
+        <span class="subtitle">[上经/下经] · [主题分类] · 五步读解</span>
+    </h1>
+
+    <!-- 五步导航 -->
+    <div class="five-step-nav">
+        <a href="#step1">📖 文本细读</a>
+        <a href="#step2">🏛️ 语境建构</a>
+        <a href="#step3">⚔️ 争议辨析</a>
+        <a href="#step4">🔗 逻辑验证</a>
+        <a href="#step5">💡 意义转化</a>
+    </div>
+
+    <!-- 认知层级选择器（UI占位，供未来JS启用） -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
+    <!-- 原文 -->
+    <div class="original-text">
+        [原文，繁体，每句以<br>分隔]
+    </div>
+
+    <div style="margin: 10px 0;">
+        <!-- 概念标签，3-5个 -->
+        <span class="concept-tag [CLASS]">[标签名]</span>
+    </div>
+
+    <!-- ===== 第一步 ===== -->
+    <div class="step-section" id="step1">
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>[L1: 2-3句生活化解读，零术语，用比喻]</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p>[L2: 原文翻译 + 关键术语解释 + 段落逻辑]</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>[L3: 现实场景应用，含案例]</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>[L4: 版本比对、字词溯源、句式辨析、内证网络]</p>
+        </div>
+    </div>
+
+    <!-- ===== 第二步 ===== -->
+    <div class="step-section" id="step2">
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>[L1: 一句话概括本章主题定位]</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p>[L2: 微观语境 + 相关章节简介]</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>[L3: 体系定位 + 思想史意义]</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>[L4: 微观/中观/宏观三层语境 + 战国思想史背景]</p>
+        </div>
+    </div>
+
+    <!-- ===== 第三步 ===== -->
+    <div class="step-section" id="step3">
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>[L1: "关于这句话，不同的人有不同的理解..."]</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p>[L2: 争议点概述 + 主流解读]</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>[L3: 不同解读对实践的启示差异]</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>[L4: 完整争议揭示 + 选项陈列 + 证据权衡]</p>
+        </div>
+    </div>
+
+    <!-- ===== 第四步 ===== -->
+    <div class="step-section" id="step4">
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>[L1: "这一章和道德经其他章节的道理是一致的..."]</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p>[L2: 简化的跨章验证表]</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>[L3: 内部自洽 + 详细跨章验证]</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>[L4: 完整验证表 + 外部兼容 + 奥卡姆剃刀]</p>
+        </div>
+    </div>
+
+    <!-- ===== 第五步 ===== -->
+    <div class="step-section" id="step5">
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p>[L2: 历史义 → 普遍义 → 现代义]</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p>[L3: 个人修养 + 组织管理 + 文明批判]</p>
+        </div>
+
+        <!-- 亲子赋能 — 始终可见，不分层级 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯 认知层：</strong>[引发孩子好奇的问题]</p>
+            <p><strong>🧘 体验层：</strong>[一起做的活动]</p>
+            <p><strong>💬 对话层：</strong>[家庭讨论话题]</p>
+        </div>
+    </div>
+
+    <!-- 本章金句（层级无关，始终可见） -->
+    <div class="golden-quote">
+        <div class="quote-text">「[原文金句]」</div>
+        <div class="quote-interp">——[现代解读一句话]</div>
+    </div>
+
+    <!-- 上下章导航 -->
+    <div class="nav-chapters">
+        <a href="ch[PREV].html">← 第[PREV]章</a>
+        <a href="ch[NEXT].html">第[NEXT]章 →</a>
+    </div>
+
+    <div class="site-footer">
+        道德经亲子体验营 · 第N章五步读解 · 最后更新：[DATE]
+    </div>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+</body>
+
+</html>
