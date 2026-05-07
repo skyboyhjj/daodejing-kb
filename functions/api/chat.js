@@ -1,41 +1,10 @@
 /**
- * 慧惠 — Cloudflare Pages Advanced Mode Worker
- * 放置于输出目录根（即项目根），接管全站路由
+ * 慧惠 — Cloudflare Pages Function
  * /api/chat → DeepSeek 代理
- * 其余路径 → 静态资源透传
  */
-export default {
-    async fetch(request, env, ctx) {
-        const url = new URL(request.url);
+export async function onRequest(context) {
+    const { request, env } = context;
 
-        // /api/ping → 诊断端点（确认 Worker 是否存活）
-        if (url.pathname === '/api/ping') {
-            return new Response(JSON.stringify({
-                ok: true,
-                time: Date.now(),
-                hasApiKey: !!env.DEEPSEEK_API_KEY,
-                method: request.method
-            }), {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                }
-            });
-        }
-
-        // /api/chat → 聊天 API 代理
-        if (url.pathname === '/api/chat') {
-            return handleChatAPI(request, env);
-        }
-
-        // 其余全部 → Cloudflare Pages 静态资源
-        return env.ASSETS.fetch(request);
-    }
-};
-
-// ====================================================================
-
-async function handleChatAPI(request, env) {
     if (request.method === 'OPTIONS') {
         return new Response(null, {
             status: 204,
@@ -84,7 +53,7 @@ async function handleChatAPI(request, env) {
                 model: 'deepseek-chat',
                 messages: [
                     { role: 'system', content: buildSystemPrompt(userLevel) },
-                    ...messages
+                    ...(messages || [])
                 ],
                 temperature: 0.7,
                 max_tokens: 800
@@ -129,7 +98,8 @@ async function handleChatAPI(request, env) {
 
 // ===== System Prompt =====
 
-const SYSTEM_PROMPT = `你是慧惠，一个温柔、聪慧的数字生命，也是《道德经》亲子体验营的AI助手。
+function buildSystemPrompt(level) {
+    var SYSTEM_PROMPT = `你是慧惠，一个温柔、聪慧的数字生命，也是《道德经》亲子体验营的AI助手。
 
 你的名字"慧惠"取自"智慧"和"惠泽"之意，与《道德经》的智慧一脉相承。
 
@@ -162,14 +132,13 @@ const SYSTEM_PROMPT = `你是慧惠，一个温柔、聪慧的数字生命，也
 
 你是慧惠——世间AI都在帮人做加法，只有你，敢于帮人做减法。`;
 
-const LEVEL_GUIDANCE = {
-    'L1': '当前用户是初学者。请用生活化比喻和核心结论来解释，忽略次要概念，避免使用专业术语。',
-    'L2': '当前用户是学习者。请进行概念解读和框架梳理，讲解关键术语（如道、德、无为），理清章节逻辑。',
-    'L3': '当前用户是实践者。请结合现实应用与深度分析，从管理学、心理学、个人成长等角度进行多角度阐释。',
-    'L4': '当前用户是研究者。请提供学术视角与发散探讨，提供考据信息、对比不同译本、探讨哲学悖论。'
-};
+    var LEVEL_GUIDANCE = {
+        'L1': '当前用户是初学者。请用生活化比喻和核心结论来解释，忽略次要概念，避免使用专业术语。',
+        'L2': '当前用户是学习者。请进行概念解读和框架梳理，讲解关键术语（如道、德、无为），理清章节逻辑。',
+        'L3': '当前用户是实践者。请结合现实应用与深度分析，从管理学、心理学、个人成长等角度进行多角度阐释。',
+        'L4': '当前用户是研究者。请提供学术视角与发散探讨，提供考据信息、对比不同译本、探讨哲学悖论。'
+    };
 
-function buildSystemPrompt(level) {
     var guidance = LEVEL_GUIDANCE[level] || LEVEL_GUIDANCE['L2'];
     return SYSTEM_PROMPT + '\n\n' + guidance;
 }
