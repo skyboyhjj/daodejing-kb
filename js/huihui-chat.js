@@ -7,7 +7,7 @@
     'use strict';
 
     // ===== 常量 =====
-    var API_URL = '/api/chat';
+    var API_URL = 'https://daodejing-kb.vercel.app/api/chat';
     var WELCOME_TEXT = '你好呀！我是慧惠。关于《道德经》，有什么想聊的？';
 
     // ===== 匿名用户 ID =====
