@@ -8,6 +8,21 @@ export default {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
+        // /api/ping → 诊断端点（确认 Worker 是否存活）
+        if (url.pathname === '/api/ping') {
+            return new Response(JSON.stringify({
+                ok: true,
+                time: Date.now(),
+                hasApiKey: !!env.DEEPSEEK_API_KEY,
+                method: request.method
+            }), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+        }
+
         // /api/chat → 聊天 API 代理
         if (url.pathname === '/api/chat') {
             return handleChatAPI(request, env);
