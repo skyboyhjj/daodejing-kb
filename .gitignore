@@ -27,3 +27,5 @@ node_modules/
 # Cloudflare Wrangler
 .wrangler/
 wrangler.jsonc
+.vercel
+nul
