@@ -1,0 +1,9 @@
+{
+    "name": "daodejing-kb",
+    "version": "1.0.0",
+    "private": true,
+    "description": "道德经亲子体验营 - AI驱动的经典知识图谱",
+    "scripts": {
+        "dev": "node server.js"
+    }
+}
