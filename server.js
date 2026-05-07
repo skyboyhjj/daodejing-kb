@@ -182,7 +182,8 @@ function handleChatAPI(req, res) {
                     ].concat(messages),
                     temperature: 0.7,
                     max_tokens: 800
-                })
+                }),
+                signal: AbortSignal.timeout(15000)  // 15 秒超时
             })
                 .then(function (apiResp) {
                     if (!apiResp.ok) {
@@ -200,11 +201,15 @@ function handleChatAPI(req, res) {
                     res.end(JSON.stringify(data));
                 })
                 .catch(function (err) {
+                    var errMsg = err.message || '未知错误';
+                    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
+                        errMsg = 'DeepSeek API 响应超时，请稍后重试。';
+                    }
                     res.writeHead(502, {
                         'Content-Type': 'application/json; charset=utf-8',
                         'Access-Control-Allow-Origin': '*'
                     });
-                    res.end(JSON.stringify({ error: err.message }));
+                    res.end(JSON.stringify({ error: errMsg }));
                 });
         } catch (err) {
             res.writeHead(400, {

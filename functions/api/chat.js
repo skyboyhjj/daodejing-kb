@@ -8,7 +8,20 @@ export async function onRequest(context) {
     const { request, env } = context;
 
     if (request.method !== 'POST') {
-        return new Response('Method not allowed', { status: 405 });
+        return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+            status: 405,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+
+    // 检查 API 密钥是否已配置
+    if (!env.DEEPSEEK_API_KEY) {
+        return new Response(JSON.stringify({
+            error: 'DEEPSEEK_API_KEY 环境变量未配置。请在 Cloudflare Pages 控制台设置该变量。'
+        }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 
     try {
@@ -30,7 +43,8 @@ export async function onRequest(context) {
                 ],
                 temperature: 0.7,
                 max_tokens: 800
-            })
+            }),
+            signal: AbortSignal.timeout(15000)  // 15 秒超时
         });
 
         if (!resp.ok) {
@@ -46,7 +60,10 @@ export async function onRequest(context) {
             headers: { 'Content-Type': 'application/json' }
         });
     } catch (err) {
-        return new Response(JSON.stringify({ error: err.message }), {
+        const errMsg = err.name === 'TimeoutError' || err.name === 'AbortError'
+            ? 'DeepSeek API 响应超时，请稍后重试。'
+            : err.message;
+        return new Response(JSON.stringify({ error: errMsg }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });

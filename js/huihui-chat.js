@@ -191,7 +191,10 @@
         sendBtn.disabled = true;
         var typingEl = addTypingIndicator();
 
-        // 调用 API
+        // 调用 API（10 秒超时保护）
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function () { controller.abort(); }, 10000);
+
         fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -199,15 +202,28 @@
                 messages: getMessages(),
                 user_id: userId,
                 level: getSavedLevel()
-            })
+            }),
+            signal: controller.signal
         })
             .then(function (resp) {
-                if (!resp.ok) {
-                    return resp.json().then(function (err) {
-                        throw new Error(err.error || '服务器出了点问题');
-                    });
-                }
-                return resp.json();
+                clearTimeout(timeoutId);
+                // 先用 text() 读取，避免 resp.json() 直接崩溃
+                return resp.text().then(function (text) {
+                    var data = null;
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch (e) {
+                        // 响应体不是有效 JSON
+                        if (!resp.ok) {
+                            throw new Error('服务器返回异常（' + resp.status + '），请稍后重试。');
+                        }
+                        throw new Error('服务器返回了无法解析的数据，请稍后重试。');
+                    }
+                    if (!resp.ok) {
+                        throw new Error(data.error || '服务器出了点问题（' + resp.status + '）');
+                    }
+                    return data;
+                });
             })
             .then(function (data) {
                 // 移除打字指示器
@@ -226,8 +242,13 @@
                 inputEl.focus();
             })
             .catch(function (err) {
+                clearTimeout(timeoutId);
                 removeTypingIndicator(typingEl);
-                addError(err.message || '网络连接失败，请稍后重试。');
+                if (err.name === 'AbortError') {
+                    addError('请求超时，慧惠正在思考中，请稍后重试。');
+                } else {
+                    addError(err.message || '网络连接失败，请稍后重试。');
+                }
                 isSending = false;
                 sendBtn.disabled = false;
             });
