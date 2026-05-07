@@ -17,4 +17,6 @@ desktop.ini
 .idea/
 *.swp
 *.swo
-/n# Windows reserved device name/nnul/n
+
+# 环境变量（含密钥，不能入库）
+.env

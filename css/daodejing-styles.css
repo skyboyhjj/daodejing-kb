@@ -774,7 +774,7 @@ h1 .subtitle {
 .back-to-top {
   position: fixed;
   right: 24px;
-  bottom: 36px;
+  bottom: 84px;
   width: 46px;
   height: 46px;
   border: none;
@@ -795,7 +795,7 @@ h1 .subtitle {
   transform: translateY(12px);
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease,
     background-color 0.25s ease, box-shadow 0.25s ease;
-  z-index: 9999;
+  z-index: 9990;
 }
 
 .back-to-top.visible {
@@ -847,7 +847,7 @@ h1 .subtitle {
     width: 40px;
     height: 40px;
     right: 16px;
-    bottom: 24px;
+    bottom: 68px;
     font-size: 17px;
   }
 

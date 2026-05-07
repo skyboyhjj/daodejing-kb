@@ -71,15 +71,13 @@
             var matchBtn = selector.querySelector('.level-btn[data-level="' + stored + '"]');
             if (matchBtn) {
                 applyLevel(stored);
-                return;
+                return stored;
             }
         }
 
-        // 无存储偏好或按钮不存在时，使用 CSS 默认状态
-        // CSS 默认：L2+L3 可见，按钮 active 标记为 L3
-        // 此处仅需同步按钮状态，无需再操作 DOM 显示（CSS 已处理）
-        // 但为了一致性，显式应用 L3
-        applyLevel('l3');
+        // 无存储偏好时，默认精读 L2（与聊天框一致）
+        applyLevel('l2');
+        return 'l2';
     }
 
     // ── 事件绑定 ──
@@ -89,11 +87,37 @@
             var level = btn.getAttribute('data-level');
             if (level) {
                 applyLevel(level);
+                // 仅 L1-L4 时同步聊天框，'all' 不影响聊天框
+                if (level !== 'all') {
+                    window.dispatchEvent(new CustomEvent('huihui-level-changed', {
+                        detail: { level: level.toUpperCase() }
+                    }));
+                }
             }
         });
     });
 
     // ── 初始化 ──
 
-    restorePreference();
+    var restoredLevel = restorePreference();
+
+    // 初始化时同步聊天框（"全部"模式不触发）
+    if (restoredLevel && restoredLevel !== 'all') {
+        window.dispatchEvent(new CustomEvent('huihui-level-changed', {
+            detail: { level: restoredLevel.toUpperCase() }
+        }));
+    }
+
+    // ── 监听聊天框层级变化，双向同步 ──
+    window.addEventListener('huihui-level-changed', function (e) {
+        var chatLevel = e.detail && e.detail.level;
+        if (chatLevel && chatLevel !== 'ALL') {
+            var pageLevel = chatLevel.toLowerCase();
+            // 确保对应按钮存在
+            if (selector.querySelector('.level-btn[data-level="' + pageLevel + '"]')) {
+                applyLevel(pageLevel);
+            }
+        }
+    });
+
 })();
