@@ -1,8 +1,8 @@
 # 慧惠聊天组件 · 部署文档
 
-> **版本**：v2.1
+> **版本**：v2.2
 > **日期**：2026-05-08
-> **当前主部署平台**：Cloudflare Pages（`daodejing-skill.pages.dev`）
+> **当前主部署平台**：Cloudflare Pages（自定义域名 `hui-skill.org` / 默认域名 `daodejing-skill.pages.dev`）
 > **备用/历史部署**：Vercel（`huihui-skill.org`）
 
 ---
@@ -11,11 +11,11 @@
 
 本项目在部署过程中经历了三个阶段的演进：
 
-| 阶段 | 平台 | 方式 | 结果 | 说明 |
-|------|------|------|------|------|
-| **第一阶段** | Cloudflare | Workers | 存在问题 | 使用 Cloudflare Workers 方式部署 API 代理，遇到 Workers 配置和路由问题，未能正常工作 |
-| **第二阶段** | Vercel | Serverless Functions | 可用 | 切换到 Vercel，`api/chat.js` 作为 Serverless Function 成功代理 DeepSeek API，绑定域名 `huihui-skill.org` |
-| **第三阶段（当前）** | Cloudflare Pages | Pages Functions | 正常运行 | 新建 `daodejing-kb` Pages 项目，`functions/api/chat.js` 代理 DeepSeek API，`https://daodejing-skill.pages.dev` 一切正常 |
+| 阶段                 | 平台             | 方式                 | 结果     | 说明                                                                                                                    |
+| -------------------- | ---------------- | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **第一阶段**         | Cloudflare       | Workers              | 存在问题 | 使用 Cloudflare Workers 方式部署 API 代理，遇到 Workers 配置和路由问题，未能正常工作                                    |
+| **第二阶段**         | Vercel           | Serverless Functions | 可用     | 切换到 Vercel，`api/chat.js` 作为 Serverless Function 成功代理 DeepSeek API，绑定域名 `huihui-skill.org`                |
+| **第三阶段（当前）** | Cloudflare Pages | Pages Functions      | 正常运行 | 新建 `daodejing-kb` Pages 项目，`functions/api/chat.js` 代理 DeepSeek API，`https://daodejing-skill.pages.dev` 一切正常 |
 
 **关键教训**：Cloudflare Workers 与 Cloudflare Pages Functions 是两种不同的产品。Workers 需要独立的路由配置和部署流程，在本项目中遇到了兼容性问题。而 Cloudflare Pages Functions（`functions/` 目录）是 Pages 平台原生的 serverless 能力，与静态站点共享同一域名和部署流程，配置更简单、运行更稳定。
 
@@ -35,12 +35,91 @@
    │ API: functions/api/   │         │ API: api/chat.js         │
    │      chat.js          │         │                          │
    │                       │         │                          │
-   │ https://daodejing-    │         │ https://huihui-skill.org │
-   │ skill.pages.dev       │         │                          │
+   │ 🌐 hui-skill.org      │         │ 🌐 huihui-skill.org      │
+   │    daodejing-skill    │         │                          │
+   │    .pages.dev         │         │                          │
    └──────────────────────┘         └──────────────────────────┘
 ```
 
 两个平台各自独立运行，共用同一套代码。前端 `API_URL = '/api/chat'`（相对路径）在两个平台上均指向各自的 Functions 端点，无需切换。
+
+Cloudflare Pages 部署已绑定自定义域名 `hui-skill.org`，中国用户可通过此域名直接访问。
+
+---
+
+## 自定义域名配置（hui-skill.org）
+
+### 为什么需要自定义域名？
+
+- `pages.dev` 是 Cloudflare 的共享域名，可能在某些网络环境下受限
+- 自定义域名更短、更好记，提升用户信任感
+- 便于中国用户访问（独立域名比共享域名解析更稳定）
+
+### 配置步骤
+
+#### 1. Cloudflare Pages 中添加域名
+
+```
+Cloudflare Dashboard → Workers & Pages → daodejing-kb → Custom Domains
+→ Set up a custom domain → 输入 hui-skill.org → Continue
+```
+
+#### 2. DNS 验证
+
+**如果 hui-skill.org 的 DNS 托管在 Cloudflare**（与 Pages 同账户）：
+
+Cloudflare 自动完成全部操作——验证所有权 → 添加 DNS 记录 → 签发 SSL 证书，全程 **2-5 分钟**。
+
+**如果 DNS 在其他注册商**：
+
+添加以下 CNAME 记录：
+
+| 类型  | 名称                      | 目标                        |
+| ----- | ------------------------- | --------------------------- |
+| CNAME | `@`（或 `hui-skill.org`） | `daodejing-skill.pages.dev` |
+
+等待 5-30 分钟 DNS 传播，然后回到 Pages 页面点击 "Check DNS" 验证。
+
+#### 3. SSL 证书
+
+Cloudflare Pages 自动签发免费 Universal SSL 证书：
+- 添加域名后 **2-5 分钟**生效
+- Custom Domains 页面显示 `Active` 即已就绪
+- 访问 `https://hui-skill.org` 应显示 🔒
+
+#### 4. 验证
+
+```bash
+# 首页
+curl -s -o /dev/null -w "%{http_code}" https://hui-skill.org/
+# 预期: 200
+
+# API 端点
+curl -s -o /dev/null -w "%{http_code}" \
+  -X POST https://hui-skill.org/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"道"}],"level":"L2"}'
+# 预期: 200
+```
+
+### 中国用户访问优化
+
+| 措施                         | 说明                                                             |
+| ---------------------------- | ---------------------------------------------------------------- |
+| Cloudflare Proxy（橙色云朵） | 静态资源自动缓存至全球边缘节点（香港/新加坡）                    |
+| 静态资源 CDN 缓存            | CSS、JS、HTML 被 Cloudflare 自动缓存，回访加速                   |
+| 保留 `pages.dev` 备用        | 主域名 DNS 出问题时用户仍可通过 `daodejing-skill.pages.dev` 访问 |
+| 无需备案                     | `.org` 域名无法在国内备案，通过 Cloudflare 境外节点直接访问      |
+
+### 注意事项
+
+- **DNS 传播需等待** 5-30 分钟，如果访问失败请稍等
+- **SSL 证书自动签发**，不要手动安装证书
+- **www 子域名**：添加 CNAME `www` → `hui-skill.org` + Cloudflare Redirect Rule 301 重定向
+- **无需修改任何代码**：`API_URL = '/api/chat'` 相对路径自动适配新域名
+- **与 huihui-skill.org 区分**：`hui-skill.org` 指向 Cloudflare Pages，`huihui-skill.org` 指向 Vercel，两个域名独立运行
+
+Cloudflare Pages 部署已绑定自定义域名 `hui-skill.org`，中国用户可通过此域名直接访问。
 
 ---
 
@@ -601,28 +680,31 @@ node server.js
 
 ### A.2 当前部署信息
 
-| 项目              | 值                                 |
-| ----------------- | ---------------------------------- |
-| 生产域名          | `https://huihui-skill.org`         |
-| Vercel 默认域名   | `https://daodejing-kb.vercel.app`  |
-| Vercel Project ID | `prj_DVEqiGI9EVVJ0alImyXDXP9L2Z3l` |
-| Vercel Org ID     | `team_AvPcpWYRMheafrkVD05CQoti`    |
-| Vercel 账号       | `skyboyhjj`                        |
-| DNS 提供商        | Cloudflare                         |
-| DNS 记录          | A → 76.76.21.21 (DNS only)         |
-| 环境变量          | `DEEPSEEK_API_KEY` (Production)    |
-| Node.js 版本      | Vercel 默认最新                    |
+| 项目                   | 值                                                             |
+| ---------------------- | -------------------------------------------------------------- |
+| **主域名（CF Pages）** | `https://hui-skill.org`                                        |
+| CF Pages 默认域名      | `https://daodejing-skill.pages.dev`                            |
+| Vercel 自定义域名      | `https://huihui-skill.org`                                     |
+| Vercel 默认域名        | `https://daodejing-kb.vercel.app`                              |
+| Vercel Project ID      | `prj_DVEqiGI9EVVJ0alImyXDXP9L2Z3l`                             |
+| Vercel Org ID          | `team_AvPcpWYRMheafrkVD05CQoti`                                |
+| Vercel 账号            | `skyboyhjj`                                                    |
+| CF Pages DNS           | CNAME `hui-skill.org` → `daodejing-skill.pages.dev`（Proxied） |
+| Vercel DNS             | A → 76.76.21.21（DNS only，Cloudflare）                        |
+| 环境变量               | `DEEPSEEK_API_KEY`（CF Pages + Vercel 分别配置）               |
 
 ### A.3 故障排查
 
-| 问题                            | 原因                           | 解决                                                |
-| ------------------------------- | ------------------------------ | --------------------------------------------------- |
-| 浏览器 "Failed to fetch"        | 前端 JS 缓存了旧版本           | Ctrl+Shift+R 强制刷新                               |
-| API 返回 500 + "环境变量未配置" | `DEEPSEEK_API_KEY` 未持久化    | `vercel env add` + 重新部署                         |
-| HTTP 525 (SSL Handshake Failed) | Cloudflare Worker 记录拦截流量 | 删除 DNS 中所有 Worker 记录                         |
-| 首页无聊天按钮                  | `huihui-chat.js` 加载失败      | 检查 `<script>` 引入路径，确认文件在 `js/` 目录下   |
-| Vercel CLI 登录失败             | OAuth token 过期               | `vercel logout` → `vercel login` 重新认证           |
-| DNS 不生效                      | A 记录 Name 设置错误           | Name 应设为 `huihui-skill.org` 或 `@`，不能是其他值 |
+| 问题                            | 原因                                   | 解决                                                                   |
+| ------------------------------- | -------------------------------------- | ---------------------------------------------------------------------- |
+| 浏览器 "Failed to fetch"        | 前端 JS 缓存了旧版本                   | Ctrl+Shift+R 强制刷新                                                  |
+| API 返回 500 + "环境变量未配置" | `DEEPSEEK_API_KEY` 未配置              | CF Pages Dashboard → Settings → Environment Variables → 添加后重新部署 |
+| HTTP 525 (SSL Handshake Failed) | Worker 记录拦截流量（Vercel 历史问题） | 删除 DNS 中所有 Worker 记录                                            |
+| 自定义域名 SSL 证书未生效       | 刚添加域名，证书签发中                 | 等待 2-5 分钟，刷新 Custom Domains 页面                                |
+| 自定义域名无法访问              | DNS 传播未完成                         | 等待 5-30 分钟，或检查 CNAME 记录是否正确                              |
+| 首页无聊天按钮                  | `huihui-chat.js` 加载失败              | 检查浏览器 Network 面板，确认 JS/CSS 文件 200                          |
+| Vercel CLI 登录失败             | OAuth token 过期                       | `vercel logout` → `vercel login` 重新认证                              |
+| Git push 不触发 CF Pages 部署   | GitHub webhook 失效                    | CF Pages Dashboard → 重新连接 GitHub 仓库                              |
 
 ---
 
