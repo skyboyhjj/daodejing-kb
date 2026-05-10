@@ -35,3 +35,6 @@ nul
 # Test artifacts
 scripts/test-write.txt
 scripts/test-py-write.txt
+
+# GA 子模块（不入库）
+docs/GA评估资料/GenericAgent/
