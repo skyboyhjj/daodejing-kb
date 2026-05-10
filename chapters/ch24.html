@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,28 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🤝 第24章 · 企者不立
+        ⚡ 第24章 · 企者不立
         <span class="subtitle">上经 · 处世论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章超级短但超级犀利！老子用了很多生动的比喻告诉我们：踮脚站不稳、迈大步走不远、自夸的人没功劳。这些"过度表现"在道看来，就像吃剩饭、长赘肉——多余又讨嫌。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,61 +391,302 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
-        企者不立，跨者不行；自见者不明，自是者不彰，自伐者无功，自矜者不长。<br>
-        其在道也，曰余食赘行。<br>
-        物或恶之，故有道者不处。<br>
-        
+        企者不立，跨者不行。<br>
+        自见者不明，自是者不彰，自伐者无功，自矜者不长。<br>
+        其在道也，曰余食赘形。<br>
+        物或恶之，故有道者不处。
     </div>
 
     <div style="margin: 10px 0;">
-        <span class="concept-tag fan">处世</span>
-        <span class="concept-tag xia">谦退</span>
+        <span class="concept-tag qiantui">谦退</span>
+        <span class="concept-tag buzheng">不争</span>
+        <span class="concept-tag dao">道</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>四不 · 企者不立·跨者不行·自见不明·自伐无功 · 馀食赘行</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于处世论范畴，位于上经。核心内容为"企者不立"，展现了老子关于处世论的深层思考。全章围绕处世的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>踮着脚尖站着，反而站不稳；迈大步赶路，反而走不远。总是炫耀自己的人，反而不被别人认可。这些"过分努力表现"的行为，在道看来就像吃剩饭、长肉瘤一样——多余的、让人讨厌的。所以有智慧的人不会这么做。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>企者不立</strong>——踮脚站立的人反而站不稳。"企"是踮脚。比喻刻意拔高自己的人不能持久。</li>
+                <li><strong>跨者不行</strong>——迈大步的人反而走不远。比喻急功近利、想一步登天的人无法持续前行。</li>
+                <li><strong>自见者不明</strong>——自我炫耀的人反而不明智。（第22章正面说"不自见故明"）</li>
+                <li><strong>自是者不彰</strong>——自以为是的人反而不被彰显。</li>
+                <li><strong>自伐者无功</strong>——自夸功劳的人反而得不到功绩的认可。</li>
+                <li><strong>自矜者不长</strong>——自高自大的人反而不能长久。</li>
+                <li><strong>其在道也，曰余食赘形</strong>——从道的角度看，这些行为就像剩饭（余食）和赘生的肿瘤（赘形）——多余且有害。</li>
+                <li><strong>物或恶之，故有道者不处</strong>——万物都厌恶这些多余的东西，所以有道之人不会这样做。"不处"=不安居于这种状态。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>身体比喻（企/跨）→ 四"自"反证 → 道的评判（余食赘形）→
+                结论（有道者不处）。全章是第22章"四不自"的反面重述。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>自然界中"多余"的东西会被淘汰——肿瘤被免疫系统攻击，过度膨胀的气泡会破裂，过重的树枝会折断。"余食赘形"是天道自动清除的对象。</p>
+            <p><strong>人道维度：</strong>人的"过度表现"（自见自是自伐自矜）违背了自然的节制原则，必然招致反效果——越想被看见越被忽视，越想证明自己越遭怀疑。</p>
+            <p><strong>现实应用：</strong>"企者不立"是对职场过度包装的精准批判——过分美化简历、过度营销自己的人，往往经不起检验。"自伐者无功"提醒我们：真正的功绩不需要自己来说，说出来反而会贬值。在社交媒体时代，"晒"得越多的人往往越不幸福——这正是"自见者不明"。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"余食赘行"</li>
+                <li><strong>帛书甲本：</strong>"曰余食赘形"（"形"非"行"）</li>
+                <li><strong>帛书乙本：</strong>"余食赘形"</li>
+                <li><strong>关键差异：</strong>"赘行"vs"赘形"——"行"（行为）vs"形"（身体上的赘肉）。帛书用"形"更生动具体，通行本"行"可能为"形"之讹。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"企"</strong>：《说文》"企，举踵也"——踮起脚跟。引申为企图/企盼（向上伸展以望到更远处）。</li>
+                <li><strong>"赘"</strong>：赘生物，多余的肉瘤。《庄子·骈拇》"附赘县疣"用法相同——多余的附属物。</li>
+                <li><strong>"物或恶之"</strong>：有些注家断为"物或恶之"（万物有时厌恶），也有断为"物或恶（wù）之"（被视为恶物）。前者更自然。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>与第22章的结构关系：</strong>第22章："不自见故明，不自是故彰，不自伐故有功，不自矜故长"（正面）。本章："自见者不明，自是者不彰，自伐者无功，自矜者不长"（反面）。两章形成完美的正-反互文对，表明道德经的编排有严密的结构设计。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"处世论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了处世的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：处世、谦退，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>上一章（第22章）说了正面的道理——"不自夸所以有功"。这一章翻过来说反面——"自夸的人没功"。就像硬币的两面，前后两章放在一起看更清楚。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第24章是第22章"四不自"的反面展开。第22章从"不自见故明"的正面表述→本章从"自见者不明"的反面论证，形成正反互文。第23章"希言自然"→本章"企者不立"延续"少做少说"的主旨。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第22章"不自见故明…不自矜故长"——正面互文</li>
+                <li>第9章"功遂身退天之道也"——功成不居的正面策略</li>
+                <li>第30章"果而勿矜，果而勿伐"——同样批评"矜"和"伐"</li>
+                <li>第44章"甚爱必大费"——过度追求的代价</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经"反自我中心"思想的集中批判。在第22章正面描述"不自"的美德后，本章从反面警示"自我中心"的危害。"余食赘形"这个意象强烈的比喻，将"自我炫耀"定性为违背道的"多余物"——不是可有可无，而是有害的寄生。
+            </p>
+            <p><strong>思想史意义：</strong>本章"企者不立跨者不行"的具身性比喻，开创了中国哲学中"身体修辞"的传统——用身体经验来论证抽象的处世原则。这种"近取诸身"的论证方式影响了后来的气功理论、太极拳哲学和中医养生观。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>"企者不立，跨者不行"使用身体动作的失败来类比精神层面的失败——踮脚（追求高位）→站不稳；大跨步（急于求成）→走不远。这是"近取诸身"的隐喻结构，身体经验为抽象道理提供直觉基础。
+            </p>
+            <p><em>中观层：</em>本章与第22章构成道德经中最完美的"正反对照对"之一。22章"不自见故明"→24章"自见者不明"，逐句对应。这种编排暗示道德经并非零散格言的随机汇编，而有精心的结构安排。</p>
+            <p><em>宏观层：</em>"余食赘形物或恶之"的评判方式值得注意——老子不说"这是不道德的"（伦理判断），而说"这是多余的/万物厌恶的"（自然美学判断）。老子的批判从来不基于道德说教，而基于"自然的审美标准"：多余即丑，节制即美。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"企者不立"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>有人问：老子是不是在说"不能有上进心"？不是的。他批评的不是"努力"，而是"过度表现"和"急功近利"。踮脚是为了看起来高（假的），而真正长高需要慢慢成长（真的）。区别在于：是真的在成长，还是只是想"看起来"厉害？
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："企者不立"是批判进取心还是批判虚张声势？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>批判虚张声势说</strong>（主流）：批评的是"不依靠真实能力而靠虚假抬高"</li>
+                <li><strong>批判过度进取说</strong>：一切主动追求（企图）都违背道的自然——应"无为"而待</li>
+                <li><strong>方法论说</strong>：不是否定目标，而是说"急切的方法不可持续"</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议点二："余食赘形"vs"余食赘行"</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"赘形"说</strong>（帛书）：像身体上的赘肉肿瘤——多余的形体</li>
+                <li><strong>"赘行"说</strong>（通行本）：像多余的行为——无用的举动</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践差异：</strong>如果老子批评的是"虚张声势"，则现代启示是：不必过度包装自己，用真实能力说话。如果批评的是"过度进取"，则启示是：减少对速度和效率的盲目追求，接受自然的节奏。实际上两者可以统一：问题不在于"有目标"，而在于用"不可持续的方式"去追求。
+            </p>
+            <p><strong>管理启示：</strong>"企者不立"是对"面子工程"和"政绩冲动"的精准批评——为了短期数据好看而透支长期资源（踮脚），为了快速出成绩而跳过必要过程（跨步），最终都不可持续。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"余食赘形"的美学批判：</strong></p>
+            <p>老子用"余食"（吃剩的食物）和"赘形"（身体的赘肉）来评价"自见自是自伐自矜"，这不是伦理判断而是美学判断——不是说"不道德"而是说"不美""多余""令人厌恶"。这种评判方式体现了老子独特的哲学风格：他不建立道德体系（不像儒家的仁义礼），而是用自然审美来引导行为——符合道的就是美的、简洁的；违背道的就是丑的、多余的。
+            </p>
+            <p><strong>正反互文的编辑学意义：</strong></p>
+            <p>第22章与第24章的完美正反对应，以及中间夹了第23章"希言自然"，暗示22-24章可能是一个有意设计的"三章组"：22章（正面原则）→ 23章（自然论证）→
+                24章（反面警示）。这种编排在郭店竹简中是否保持相同顺序，因竹简残缺无法确认。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：处世→谦退</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在第9章说"功成身退是天之道"，第30章说"成功了不要骄傲不要吹嘘"，第44章说"太贪心一定会付出大代价"——都跟这一章说的"不要自夸自大"是一个意思。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>验证章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>自见者不明…（四自）</td>
+                    <td>第22章"不自见故明…"</td>
+                    <td>完美正反互文</td>
+                </tr>
+                <tr>
+                    <td>企者不立（急功近利不可持续）</td>
+                    <td>第23章"飘风不终朝"</td>
+                    <td>不可持续性一致</td>
+                </tr>
+                <tr>
+                    <td>自伐者无功</td>
+                    <td>第9章"功遂身退"、第30章"果而勿伐"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>余食赘形物或恶之</td>
+                    <td>第44章"甚爱必大费多藏必厚亡"</td>
+                    <td>过度=有害，一致</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>"企者不立"与第76章"强大处下柔弱处上"——强行拔高（企）=处于"强大"位置=死之徒</li>
+                <li>"余食赘形"与第12章"五色令人目盲"——过度感官刺激也是一种"多余"</li>
+                <li>"有道者不处"与第2章"圣人处无为之事"——"不处"（不停留于错误状态）=处无为</li>
+                <li>全章的"自"系列与第7章"非以其无私邪"——"无私"是"不自"的同义表达</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>概念</th>
+                    <th>本章表述</th>
+                    <th>其他章节</th>
+                    <th>关系</th>
+                </tr>
+                <tr>
+                    <td>四自（反面）</td>
+                    <td>自见不明/自是不彰/自伐无功/自矜不长</td>
+                    <td>第22章（正面四不自）</td>
+                    <td>完美正反互文</td>
+                </tr>
+                <tr>
+                    <td>急功不持久</td>
+                    <td>企者不立/跨者不行</td>
+                    <td>第23章"飘风不终朝"</td>
+                    <td>不可持续性原理一致</td>
+                </tr>
+                <tr>
+                    <td>功成不伐</td>
+                    <td>自伐者无功</td>
+                    <td>第9/30/34/77章</td>
+                    <td>贯穿全书</td>
+                </tr>
+                <tr>
+                    <td>过度=恶</td>
+                    <td>余食赘形物或恶之</td>
+                    <td>第12/44/46章</td>
+                    <td>过度=违道</td>
+                </tr>
+                <tr>
+                    <td>有道者</td>
+                    <td>有道者不处</td>
+                    <td>第31章"有道者不处"（同句）</td>
+                    <td>重复出现</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;">
+                <strong>奥卡姆检验：</strong>本章可由一个核心原则推出：道崇尚"适度"和"自然"（第25章"道法自然"）→一切"过度"/"非自然"的行为都是"余食赘形"→企、跨、四自都是"过度"的表现→故有道者不处。不需要额外假设。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"企者不立"提醒我们在日常生活中保持对处世的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"企者不立"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在春秋战国各国急于称霸、诸侯急功近利的背景下，"企者不立跨者不行"是对急躁冒进政治的直接批判。"自伐者无功"也可能针对当时频繁"邀功请赏"的臣子文化。</p>
+            <p><strong>普遍义：</strong>一切"超出自然节奏"的行为都不可持续——无论是个人的虚张声势，组织的大跃进，还是社会的过度消费。"适度"不是平庸，而是合乎事物本性的最优状态。</p>
+            <p><strong>现代义：</strong>在"人设经济"和"注意力经济"时代，"自见者不明"就是对过度个人品牌打造的警示。Instagram上精心设计的"完美生活"就是"企者不立"——踮脚站立的形象终将崩塌。"余食赘形"则是对信息过载的精确比喻——太多无用信息就像未消化的剩饭，让心灵臃肿不堪。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>检视自己的生活中有哪些"余食赘形"——不必要的社交应酬、不真心的朋友圈点赞、为了形象而做的消费、为了"看起来忙"而做的无效工作。删减这些"赘肉"，让生活回归精简。
+            </p>
+            <p><strong>组织管理：</strong>"企者不立"警告创业者和管理者：不要为了融资而虚报数据（企），不要为了快速增长而牺牲产品质量（跨）。"自伐者无功"提醒：好的业绩不需要PPT来证明——如果你必须不停地向上级"汇报功劳"，可能恰恰说明功劳并不明显。
+            </p>
+            <p><strong>文明批判：</strong>"跨者不行"是对"大跃进"式发展的永恒警示——试图跳过必经阶段的"超常发展"终将付出代价。无论是经济泡沫、教育抢跑还是技术冒进，凡违背"循序渐进"自然节奏的，都是"跨者"——走不远的。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>让孩子试试踮脚站立1分钟（企者不立）和正常站立1分钟——哪个更稳、更轻松？再试试大跨步跑（跨者不行）和正常步伐走——哪个能走得更远？通过身体体验理解"自然节奏"的力量。
+            </p>
+            <p><strong>🧘
+                    体验层：</strong>"吹牛vs真做"游戏——一个人说"我能做到XXX"（自伐），另一个人不说话直接做。最后比较：谁的"功"被大家记住了？体验"自伐者无功"——说出来的功劳反而被打折扣。</p>
+            <p><strong>💬 对话层：</strong>"你觉得一个总是夸自己厉害的人和一个从不夸自己但做得很好的人，你更喜欢哪一个？为什么？"讨论"真正的厉害"和"装出来的厉害"的区别。</p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「企者不立，跨者不行。」</div>
+        <div class="quote-interp">——踮脚的人站不稳，急躁的人走不远。真正的高度来自扎根，真正的远方需要耐心。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -186,14 +696,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第24章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第24章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

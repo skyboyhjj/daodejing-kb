@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🏛️ 第32章 · 道常无名
-        <span class="subtitle">上经 · 治国论 · 五步读解</span>
+        🌊 第32章 · 道常无名
+        <span class="subtitle">上经 · 道论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章老子又回到了他最爱的话题——道！道没有名字，像一块未经雕刻的原木（朴），虽然看起来小、不起眼，但天下没有谁能让它臣服。更精彩的是"知止"的智慧：知道什么时候该停下来，就不会有危险。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,6 +392,15 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         道常无名，朴虽小，天下莫能臣。<br>
@@ -129,58 +408,345 @@
         天地相合，以降甘露，民莫之令而自均。<br>
         始制有名，名亦既有，夫亦将知止。<br>
         知止可以不殆。<br>
-        譬道之在天下，犹川谷之于江海。<br>
-        
+        譬道之在天下，犹川谷之于江海。
     </div>
 
     <div style="margin: 10px 0;">
-        <span class="concept-tag pu">朴</span>
         <span class="concept-tag dao">道</span>
-        <span class="concept-tag zhizu">知止</span>
+        <span class="concept-tag pu">朴</span>
+        <span class="concept-tag zhizu">知足</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>道常无名·朴虽小天下莫能臣 · 侯王若能守之万物将自宾 · 知止不殆</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于治国论范畴，位于上经。核心内容为"道常无名"，展现了老子关于治国论的深层思考。全章围绕朴的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>道一直以来都没有名字（因为它太大了，没有任何名字装得下它）。它就像一块没刻过的原木——虽然看起来又小又不起眼，但天下没有谁能让它听命。</p>
+            <p>如果国王能守住这个道（不折腾），万物就会自己来归顺。天和地配合得好，就会降下甘甜的雨露——不需要谁下命令，雨水自己就均匀地洒下来。</p>
+            <p>当世界开始有了各种名称和制度的时候（朴→散→器），名称既然已经有了，就要知道什么时候该停下来（不要无限制地分类和命名下去）。知道停下来就不会有危险。</p>
+            <p>道存在于天下的方式，就像所有河流最终流入大海一样——自然而然。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>道常无名</strong>——道永恒地没有固定的名称。"常"=永恒/一直；"无名"=没有固定的名称=不可被概念化完全捕获。与第1章"道可道非常道名可名非常名"呼应。</li>
+                <li><strong>朴虽小，天下莫能臣</strong>——道的"朴"（原始/未分化状态）虽然看起来微小/不显眼，但天下没有谁能使它臣服/驾驭它。"朴"=道的具象化比喻（原木）；"小"=不显眼/谦卑/微妙；"莫能臣"=无人能使之称臣。
+                </li>
+                <li><strong>侯王若能守之，万物将自宾</strong>——侯王如果能守住这个道（保持无为），万物就会自动来归附。"守之"=持守道/不妄为；"自宾"=自己来做宾客=自愿归附。</li>
+                <li><strong>天地相合，以降甘露，民莫之令而自均</strong>——天地阴阳和合，就降下甘甜的露水；没有人下命令，它自然均匀地分配。这是"无为而治"在自然界的具体例证。</li>
+                <li><strong>始制有名</strong>——（道散化之后）开始有了制度/名分。"始制"=开始制作/制定；"有名"=有了名称和区分。这呼应第28章"朴散则为器"——朴散化为器就有了名称。</li>
+                <li><strong>名亦既有，夫亦将知止</strong>——名称既然已经有了（制度已经建立），就应该知道在哪里停止。"知止"=知道边界/限度——不要无限制地增加制度和名分。</li>
+                <li><strong>知止可以不殆</strong>——知道停止就不会有危险。"殆"=危险/疲惫。</li>
+                <li><strong>譬道之在天下，犹川谷之于江海</strong>——比如道在天下中的存在方式，就像山川河谷对于江海——所有溪流最终汇入大海，万物最终归于道。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>道的本体（无名/朴/小而不可臣）→ 治理效果（守之则自宾/自均）→ 文明发展（始制有名）→ 智慧原则（知止不殆）→
+                比喻总结（川谷归海）。从形而上学到政治到认识论到自然比喻。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>"天地相合以降甘露民莫之令而自均"——自然界的资源分配不需要中央计划：雨水自然均匀、阳光普照万物、氧气充满大气。这就是道的"自均"——不需要命令，系统自己达到平衡。
+            </p>
+            <p><strong>人道维度：</strong>"始制有名名亦既有夫亦将知止"——文明发展需要制度（名），但制度不能无限膨胀。知道什么时候停止增加规则/层级/分类，是治理智慧的核心。</p>
+            <p><strong>天人合一：</strong>"譬道之在天下犹川谷之于江海"——道不是在天下"之上"统治天下，而是在天下"之中"如水汇流。这暗示了一种非等级制的、自然流动的治理模型。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"道常无名朴虽小天下莫能臣"</li>
+                <li><strong>帛书甲本：</strong>"道恒无名朴虽小而天下弗敢臣"（"恒"而非"常"——汉代避刘恒讳改"恒"为"常"的证据；"弗敢臣"比"莫能臣"语气更强）</li>
+                <li><strong>河上公本：</strong>大致同王弼本</li>
+                <li><strong>关键差异：</strong>帛书"弗敢臣"=不敢使之臣服（有敬畏感），通行本"莫能臣"=无人能使之臣服（强调能力不足）。帛书版更突出万物对道的敬畏，通行本更突出道的不可征服性。
+                </li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"朴虽小"</strong>：此处"小"不是物理大小，而是"不显眼/谦卑"。与第34章"万物归焉而不为主可名于小"的"小"相同——道因为不自大所以被称为"小"。道的"大"在于其功能（万物归焉），道的"小"在于其姿态（不为主）。
+                </li>
+                <li><strong>"始制有名"</strong>：学术界对"制"字有争议——(1)制度（政治制度）；(2)裁割（制作/分割）。两者在语义上关联：制度=对无名之朴的命名和分割。</li>
+                <li><strong>"自宾""自均"</strong>：两个"自"字是关键——万物"自己"归附、雨露"自己"均匀。这就是"无为而治"的精确定义：不是统治者"做"了什么，而是万物"自己"达到了秩序。
+                </li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>思想史意义：</strong>"知止可以不殆"后来成为儒家《大学》的核心概念——"知止而后有定"。但老子的"知止"侧重于制度/名分的界限（不要过度制度化），《大学》的"知止"侧重于人生目标的确定（知道人生该追求什么）。同一术语在不同思想体系中发生了语义迁移。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"治国论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了朴的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：朴、道、知止，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>第28章说"朴散则为器"（原木被加工成器具），本章进一步说"始制有名"——当朴被散化之后就有了各种名字和制度。但老子警告说：够了就停！（知止）如果无限地增加名目和规矩，就会出危险。就像你收集卡片——收集到一定数量很开心，但如果变成强迫症地收集每一张就会很痛苦。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第32章位于上经末端（上经共37章），是对"道"的一次重要总结。前有第28章"朴散则为器"（朴→器→名），本章接续讨论"名"出现后的问题——"名亦既有夫亦将知止"。这构成了一条完整的文明发展链：道（无名/朴）→
+                散化（始制有名）→ 知止（不要过度）。</p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第1章"道可道非常道名可名非常名"——道与名的关系的总纲</li>
+                <li>第25章"吾不知其名强字之曰道"——道的命名困境</li>
+                <li>第28章"朴散则为器"——从朴到名的过程</li>
+                <li>第37章"道常无为无不为侯王若能守之万物将自化"——几乎平行的表述</li>
+                <li>第44章"知足不辱知止不殆"——知止主题的另一表述</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>"自宾""自均"的自组织原理：</strong>本章两个"自"字揭示了无为治理的核心机制——不是"让"万物归顺/均匀，而是万物在没有外部干预时"自己"达到平衡。这是中国思想史中最早的"自组织"概念表述之一。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章完成了道德经对"道→名→制度"这一文明发展过程的哲学概括：道本无名（原始）→ 朴散为器始制有名（文明发展）→
+                知止不殆（文明限度的自觉）。它建立了一个"文明发展三阶段论"和一个"制度限度论"。</p>
+            <p><strong>"知止"的管理哲学：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>组织膨胀：</strong>公司从几个人发展到几千人，需要越来越多的制度（始制有名）。但制度过多=官僚化=效率下降。"知止"=知道制度够用了就停止增加</li>
+                <li><strong>产品功能：</strong>产品不断添加功能（始制有名），功能过多=臃肿复杂。"知止"=知道核心功能够了就不再堆砌</li>
+                <li><strong>市场扩张：</strong>企业不断扩张市场/品类（始制有名），过度扩张=资源分散。"知止"=专注核心能力不盲目多元化</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>本章的论证逻辑是"道的属性→政治推论→文明反思→比喻总结"。值得注意的是"天地相合以降甘露"这一自然现象的引入——它不仅是修辞比喻，更是论证的关键环节：证明"无为"不是空谈，自然界本身就在实践"莫之令而自均"。
+            </p>
+            <p><em>中观层：</em>"道常无名朴"是对第1章"无名天地之始"和第25章"吾不知其名"的回应和综合。在第32章，"无名"不再仅仅是认识论困境（我们无法命名道），而上升为存在论命题（道的本性就是无名=不可被任何概念穷尽）。"朴"成为"无名之道"的最佳喻体——未经雕刻=未被命名=保持开放性。
+            </p>
+            <p><em>宏观层：</em>"始制有名名亦既有夫亦将知止"在先秦思想史中具有独特的"命名批判"意义。名家（公孙龙等）追求精确的命名和定义，儒家通过"正名"来维护社会秩序。老子则警告：命名本身虽有必要，但必须有限度——无限的命名/分类最终会远离道的整体性。这是对"概念暴力"的最早批判之一。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"道常无名"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>最有趣的争论是关于"朴虽小"——道既然那么厉害（天下莫能臣），为什么说它"小"呢？答案是：小不是说它真的小，而是说它不爱出风头。就像班上最有实力的同学如果不爱表现，别人可能觉得他"不起眼"（小），但他的能力谁也比不过（莫能臣）。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："朴虽小"中"小"的含义</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"谦卑不显"说</strong>（主流）：小=不显眼/低调。道因为不自彰所以显得"小"，但力量巨大。与第34章"可名于小"一致。</li>
+                <li><strong>"微观基础"说</strong>：小=道作为万物最基本的元素/原理，是微观的、基础性的</li>
+                <li><strong>文本校勘说</strong>：有学者认为"朴虽小"可能为衍文或错简，原文可能是"朴，天下莫能臣"（无"虽小"二字）</li>
+            </ul>
+            <p><strong>争议点二："始制有名"的指涉</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>政治制度说</strong>：指社会政治制度的建立——官职、法律、礼仪的命名和设定</li>
+                <li><strong>认知分化说</strong>：指人类认知对世界的分类和命名——从无差别的整体到有差别的部分</li>
+                <li><strong>宇宙发生说</strong>：指道散化为万物后，万物获得各自的"名"（形式/规定性）</li>
+            </ul>
+            <p><strong>争议点三："知止"的对象</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>止于制度</strong>：知道制度/法规应该在哪里停止——不要无限制地增加规则</li>
+                <li><strong>止于欲望</strong>：知道欲望应该在哪里停止——与"知足"同义</li>
+                <li><strong>止于名/概念</strong>：知道命名/分析应该在哪里停止——承认语言的限度</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"万物将自宾"vs强制归顺：</strong></p>
+            <p>本章提出了两种截然不同的治理模式：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>强制模式</strong>：制定规则→执法→惩罚违规→维持秩序（耗能巨大）</li>
+                <li><strong>自宾模式</strong>：守道→创造条件→万物自然归附→秩序涌现（低能耗）</li>
+            </ul>
+            <p>现代案例："自宾"型企业文化——Netflix的"自由与责任"文化不靠规则约束员工，而是靠清晰的价值观吸引认同者自愿加入（自宾），不认同者自然离开。vs传统企业靠考勤/KPI/惩罚来约束（强制归顺）。</p>
+            <p style="margin-top:12px;">
+                <strong>"知止"的实践边界：</strong>在"够了就停"和"不够努力"之间的界限在哪里？老子的标准是"殆"——如果继续下去会带来危险/疲惫，就应该停。这不是懒惰的借口，而是对过度的警醒。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"道常无名"的语言哲学意义：</strong></p>
+            <p>维特根斯坦说"凡不可言说的必须保持沉默"，老子说"道常无名"——两者都指向语言的极限。但老子走得更远：不仅承认语言有极限，而且主张对命名活动本身进行限制（"知止"）。这不是反智主义，而是"认知节制"——承认不是所有存在都需要被命名/概念化。
+            </p>
+            <p style="margin-top:12px;"><strong>"犹川谷之于江海"的比喻学分析：</strong></p>
+            <p>本章以水的汇流来比喻道在天下中的存在方式。关键不在于"道像海"（大/深），而在于"川谷→江海"的流动关系——万物向道流动，如百川归海，是自然的、向下的、不需要外力的。这与第28章"为天下溪"、第66章"江海所以能为百谷王者以其善下之"形成完整的"水流比喻"系统。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：朴→道→知止</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑验证与跨章互文</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>验证：第1章说"道可道非常道名可名非常名"，本章说"道常无名"——一致！第28章说"朴散则为器"，本章说"始制有名"——一致（散=开始有名）！第44章说"知足不辱知止不殆"，本章说"知止可以不殆"——完全一样！老子的"朴→名→知止"思想线索从头到尾贯穿。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>内在逻辑验证：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>命题</th>
+                    <th>本章表述</th>
+                    <th>互文章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>道不可命名</td>
+                    <td>道常无名</td>
+                    <td>第1章"名可名非常名"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>朴的力量</td>
+                    <td>朴虽小天下莫能臣</td>
+                    <td>第28章"复归于朴"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>无为而治</td>
+                    <td>侯王守之万物自宾</td>
+                    <td>第37章"侯王若能守万物将自化"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>自然均衡</td>
+                    <td>民莫之令而自均</td>
+                    <td>第57章"我无为而民自化"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>知止智慧</td>
+                    <td>知止可以不殆</td>
+                    <td>第44章"知止不殆"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>川谷归海</td>
+                    <td>犹川谷之于江海</td>
+                    <td>第66章"江海为百谷王"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;"><strong>逻辑链：</strong>道常无名（本体）→ 朴小而不可臣（力量）→ 守道则万物自宾（治理）→ 莫之令而自均（效果）→ 始制有名（文明发展）→
+                知止不殆（限度自觉）→ 川谷归海（自然比喻）。完美自洽。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>跨域验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>生态学：</strong>"莫之令而自均"——生态系统在没有人类干预时自然达到平衡（食物链/物质循环/气候调节）。人类"令之"（干预）反而破坏均衡。✓</li>
+                <li><strong>经济学：</strong>"万物将自宾"——亚当·斯密"看不见的手"——市场参与者追求各自利益时，资源"自动"达到有效配置。✓</li>
+                <li><strong>信息学：</strong>"始制有名名亦既有夫亦将知止"——数据库设计中"过度规范化"（too many tables/fields）反而降低性能。好的架构要"知止"。✓</li>
+                <li><strong>语言学：</strong>"道常无名"——索绪尔符号学：能指（名）与所指（物/道）之间永远有间隙。名永远不等于实。✓</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系内验证："无名"→"有名"→"知止"的三段论</strong></p>
+            <p>道德经建立了一个关于"名"的完整哲学：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第1章：道不可被常名所穷尽（名的限度）</li>
+                <li>第25章：勉强给道起名（强字之曰道=命名的尝试性）</li>
+                <li>第28章：朴散为器=无名状态被分化为有名状态（命名的起源）</li>
+                <li>第32章：始制有名→知止（命名的必要限度）</li>
+                <li>第41章：道隐无名（最终回归无名）</li>
+            </ul>
+            <p>这构成了一个完整的"名的哲学"：名是必要的（始制有名）但有限的（知止）且不能取代道本身（道常无名/道隐无名）。这是中国哲学史上最系统的"命名批判"。</p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"道常无名"提醒我们在日常生活中保持对朴的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"道常无名"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与生活实践</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>今天就能用的道理：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>不要给人或事太多"标签"（名）——你觉得他是"差生"，但也许只是还没发现他的长处</li>
+                <li>"知止"=知道什么时候该停——作业写完了就停、游戏打够了就停、吃饱了就停</li>
+                <li>最厉害的力量看起来不显眼（朴虽小）——空气看不见但我们离了它活不了</li>
+                <li>不需要别人命令，好的事情自然会发生（自均）——家里每个人自觉做好自己的事</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>日常赋能：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"朴虽小"的低调力量：</strong>不需要通过外在的声势和标签来证明自己的价值。真正的实力往往是安静的——最深的河流表面最平静。</li>
+                <li><strong>"自宾"的领导力：</strong>不要试图"令"（命令）人归附，而要通过自身的品质和环境的营造让人"自愿"聚集。好的老师不是强迫学生学习，而是让学生自己想学。</li>
+                <li><strong>"知止"的日常练习：</strong>每天问自己一次"够了吗？"——工作够了吗？消费够了吗？追求够了吗？"知止"不是放弃，是清醒。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道转化：</strong>雨水"莫之令而自均"——没有中央调度，水循环（蒸发→云→降雨→河流→海）自动运转了数十亿年。人类试图"令"水（修坝/改道/人工降雨）虽然短期有效，但长期往往导致新问题。最好的水利是"辅助自均"而非"取代自均"。
+            </p>
+            <p><strong>人道转化：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>家庭管理：</strong>不要对孩子事事下"令"——创造好的环境和榜样，让好习惯"自然"形成（自宾/自均）</li>
+                <li><strong>团队管理：</strong>"知止"型领导=知道什么时候不要再加规则/流程/会议——做减法比做加法需要更高的智慧</li>
+                <li><strong>个人发展：</strong>"始制有名"=给自己设定目标和标签（我是XX），但要"知止"——不要被标签困住，保持灵活性和开放性</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>哲学转化：</strong></p>
+            <p>"道常无名"与"始制有名"之间的张力是人类文明的根本困境——我们必须命名（否则无法认知/交流/组织），但命名同时也是遮蔽（名≠道）。维特根斯坦后期的"家族相似性"概念试图解决类似问题——概念的边界是模糊的，我们不应期待精确的定义。老子的"知止"是更根本的解决——不是改进命名方式，而是对命名活动本身设限。
+            </p>
+            <p style="margin-top:12px;">
+                <strong>"自宾""自均"的政治哲学遗产：</strong>本章的"自"字政治学对后世影响深远。黄老学派据此发展出"因循无为"的治术；魏晋玄学据此发展出"自然名教"之辨；当代新道家据此对话自由主义政治哲学中的"自发秩序"理论。"自宾""自均"作为政治理想，在每个时代都有新的对话者。
+            </p>
+        </div>
+
+        <div class="level-block level-always">
+            <h4>👨‍👩‍👧 亲子共修活动</h4>
+            <p><strong>活动一："无名"游戏——看到而不命名</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>带孩子去户外，看到东西不许说名字，只能描述感受（"那个绿色的、摇摇晃晃的、软软的"而不说"树"）</li>
+                <li>体验：当不用名字时，你看到的世界有什么不同？是不是看到了更多细节？</li>
+                <li>讨论："名字"帮我们认识世界，但有时候也让我们忽略了细节——因为一说"树"就不再仔细看了</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动二："知止"挑战赛</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>给孩子一碗糖果/一盘点心——规则是"你自己决定吃多少"（不限制也不鼓励）</li>
+                <li>吃完后讨论：你在什么时候感觉到"够了"？真的停下来了吗？停下来难不难？</li>
+                <li>把这个感觉推广：学习/看电视/玩游戏/购物——能不能也感受到"够了"并停下来？</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动三："自均"家庭实验</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>选一天实行"无命令日"——家长不下达任何指令（起床/刷牙/做作业等都不催促）</li>
+                <li>观察：孩子在没有命令时的行为是怎样的？有没有"自均"的表现？</li>
+                <li>讨论：哪些事情不需要命令也能做好？哪些事情确实需要提醒？找到"自均"的边界</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">知止可以不殆</div>
+        <div class="quote-interp">知道什么时候该停下来，就不会陷入危险——"够了"是最高的智慧</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -190,14 +756,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第32章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第32章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

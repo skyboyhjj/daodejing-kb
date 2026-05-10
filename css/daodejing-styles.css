@@ -866,3 +866,66 @@ h1 .subtitle {
   border-top: 1px solid #d4c9a8;
   margin-top: 40px;
 }
+
+/* ── 认知层级内容块（全局备用） ── */
+.level-block {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+/* ── 金句区块 ── */
+.golden-quote {
+  background: #fffef5;
+  border: 1px solid #d4af37;
+  border-left: 5px solid #d4af37;
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.golden-quote .quote-text {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #2e5f5f;
+  line-height: 2;
+  margin-bottom: 8px;
+}
+
+.golden-quote .quote-interp {
+  font-size: 0.95em;
+  color: #7a6e4e;
+  font-style: italic;
+}
+
+/* ── 跨章验证表 ── */
+.verify-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: #fffef5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.verify-table th {
+  background: #2e5f5f;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.verify-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e8e0d0;
+  font-size: 0.88em;
+  line-height: 1.7;
+}
+
+.verify-table tr:hover td {
+  background: #f8f5e8;
+}

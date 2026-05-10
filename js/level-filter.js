@@ -2,6 +2,8 @@
 // 功能：根据用户选择的 L1-L4 认知深度，动态显示/隐藏对应内容块
 // 依赖：页面需包含 .level-btn（按钮）和 .level-block[data-level]（内容块）
 //       .level-block[data-level="all"] 为始终可见的亲子赋能内容
+// 增强（v2）：支持 URL 参数 ?level=l1 ~ l4 | all，导航链接自动携带层级参数
+//       L1 模式下自动注入 l1-mode.css，设置 body class 用于 CSS 作用域
 (function () {
     'use strict';
 
@@ -20,9 +22,124 @@
         return Array.prototype.slice.call(nodeList);
     }
 
+    // ── 新增：URL 参数解析 ──
+
+    function getURLLevel() {
+        try {
+            var params = new URLSearchParams(window.location.search);
+            var level = params.get('level');
+            if (level && ['l1', 'l2', 'l3', 'l4', 'all'].indexOf(level) !== -1) {
+                return level;
+            }
+        } catch (e) {
+            // URLSearchParams 不可用（极旧浏览器）
+        }
+        return null;
+    }
+
+    // ── 新增：更新 URL 参数（不创建历史记录）──
+
+    function updateURL(level) {
+        try {
+            var params = new URLSearchParams(window.location.search);
+            params.set('level', level);
+            var newSearch = params.toString();
+            var newURL = window.location.pathname + (newSearch ? '?' + newSearch : '');
+            history.replaceState(null, '', newURL);
+        } catch (e) {
+            // 静默忽略
+        }
+    }
+
+    // ── 新增：设置 body class 用于 CSS 作用域 ──
+
+    function setBodyClass(level) {
+        var cls = document.body.classList;
+        cls.remove('level-l1', 'level-l2', 'level-l3', 'level-l4', 'level-all');
+        cls.add('level-' + level);
+    }
+
+    // ── 新增：按需注入 L1 儿童友好样式 ──
+
+    function injectL1CSS() {
+        if (document.getElementById('l1-mode-css')) return;
+
+        var link = document.createElement('link');
+        link.id = 'l1-mode-css';
+        link.rel = 'stylesheet';
+
+        // 根据页面路径深度计算 stylesheet 的相对路径
+        var path = window.location.pathname;
+        if (path.indexOf('/chapters/') !== -1 || path.indexOf('/l1/') !== -1) {
+            link.href = '../css/l1-mode.css';
+        } else {
+            link.href = 'css/l1-mode.css';
+        }
+
+        document.head.appendChild(link);
+    }
+
+    // ── 新增：重写导航链接，保持层级上下文 ──
+
+    function rewriteNavLinks(level) {
+        var allLinks = document.querySelectorAll(
+            '.nav-chapters a, .chapter-nav a, .back-home a'
+        );
+
+        toArray(allLinks).forEach(function (link) {
+            var href = link.getAttribute('href');
+            if (!href || href.indexOf('#') === 0) {
+                return; // 跳过空链接和页内锚点
+            }
+
+            // ── 识别"回到主页"链接（仅匹配顶层 index.html，不匹配子目录如 concepts/index.html）──
+            if (href === 'index.html' || href === '../index.html' || href === '../../index.html') {
+
+                // 保存原始 href 以便后续恢复
+                if (!link.getAttribute('data-orig-href')) {
+                    link.setAttribute('data-orig-href', href);
+                }
+
+                if (level === 'l1') {
+                    // L1 模式下重定向到儿童首页
+                    link.setAttribute('href', href.replace(/index\.html$/, 'l1/index.html'));
+                } else {
+                    // 非 L1 模式下恢复原始链接
+                    var orig = link.getAttribute('data-orig-href');
+                    if (orig) {
+                        link.setAttribute('href', orig);
+                    }
+                }
+                return;
+            }
+
+            // ── 章节间链接（相对路径 chXX.html）──
+            if (/^ch\d{1,2}\.html/.test(href)) {
+                if (!link.getAttribute('data-orig-href')) {
+                    link.setAttribute('data-orig-href', href);
+                }
+                // 清除已有的 level 参数，追加新的
+                var clean = href.replace(/[?&]level=[a-z0-9]+/g, '');
+                link.setAttribute('href', clean + '?level=' + level);
+                return;
+            }
+
+            // ── chapters.html 目录页链接 ──
+            if (/chapters\.html/.test(href)) {
+                if (!link.getAttribute('data-orig-href')) {
+                    link.setAttribute('data-orig-href', href);
+                }
+                var cleanCh = href.replace(/[?&]level=[a-z0-9]+/g, '');
+                var sep = cleanCh.indexOf('?') === -1 ? '?' : '&';
+                link.setAttribute('href', cleanCh + sep + 'level=' + level);
+                return;
+            }
+        });
+    }
+
     // ── 核心过滤逻辑 ──
 
-    function applyLevel(level) {
+    function applyLevel(level, fromURL) {
         // 更新按钮 active 状态
         toArray(buttons).forEach(function (btn) {
             if (btn.getAttribute('data-level') === level) {
@@ -32,12 +149,12 @@
             }
         });
 
-        // 收集所有内容块
+        // 收集所有 level-block 内容块
         var blocks = document.querySelectorAll('.level-block[data-level]');
         toArray(blocks).forEach(function (block) {
             var blockLevel = block.getAttribute('data-level');
             if (level === 'all') {
-                // "全部"模式：显示所有块，包括 L1-L4 和始终可见块
+                // "全部"模式：显示所有块
                 block.style.display = 'block';
             } else if (blockLevel === 'all' || blockLevel === level) {
                 // 匹配当前层级 或 始终可见块
@@ -48,17 +165,38 @@
             }
         });
 
-        // 持久化偏好
-        try {
-            localStorage.setItem(STORAGE_KEY, level);
-        } catch (e) {
-            // localStorage 不可用，静默忽略
+        // 设置 body CSS class（用于 l1-mode.css 等层级作用域样式）
+        setBodyClass(level);
+
+        // L1 模式下注入儿童友好样式表
+        if (level === 'l1') {
+            injectL1CSS();
         }
+
+        // 持久化偏好（URL 参数触发的初始化不写入 localStorage）
+        if (!fromURL) {
+            try {
+                localStorage.setItem(STORAGE_KEY, level);
+            } catch (e) {
+                // localStorage 不可用，静默忽略
+            }
+        }
+
+        // 重写导航链接，保持层级上下文
+        rewriteNavLinks(level);
     }
 
     // ── 偏好恢复 ──
 
     function restorePreference() {
+        // ① URL 参数优先（本次访问专属，不持久化）
+        var urlLevel = getURLLevel();
+        if (urlLevel) {
+            applyLevel(urlLevel, true);
+            return urlLevel;
+        }
+
+        // ② localStorage 偏好
         var stored = null;
         try {
             stored = localStorage.getItem(STORAGE_KEY);
@@ -66,17 +204,16 @@
             // localStorage 不可用
         }
 
-        // 验证存储值对应的按钮存在
         if (stored) {
             var matchBtn = selector.querySelector('.level-btn[data-level="' + stored + '"]');
             if (matchBtn) {
-                applyLevel(stored);
+                applyLevel(stored, false);
                 return stored;
             }
         }
 
-        // 无存储偏好时，默认精读 L2（与聊天框一致）
-        applyLevel('l2');
+        // ③ 无偏好时，默认精读 L2（与聊天框一致）
+        applyLevel('l2', false);
         return 'l2';
     }
 
@@ -86,7 +223,9 @@
         btn.addEventListener('click', function () {
             var level = btn.getAttribute('data-level');
             if (level) {
-                applyLevel(level);
+                applyLevel(level, false);
+                // 更新 URL 参数
+                updateURL(level);
                 // 仅 L1-L4 时同步聊天框，'all' 不影响聊天框
                 if (level !== 'all') {
                     window.dispatchEvent(new CustomEvent('huihui-level-changed', {
@@ -115,7 +254,8 @@
             var pageLevel = chatLevel.toLowerCase();
             // 确保对应按钮存在
             if (selector.querySelector('.level-btn[data-level="' + pageLevel + '"]')) {
-                applyLevel(pageLevel);
+                applyLevel(pageLevel, false);
+                updateURL(pageLevel);
             }
         }
     });

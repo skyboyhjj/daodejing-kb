@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第13章 宠辱若惊 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
+        /* ===== 五步导航条 ===== */
         .five-step-nav {
             display: flex;
             gap: 0;
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +27,34 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
+        /* ===== 原文区块 ===== */
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +66,8 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
+        /* ===== 步骤区块 ===== */
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +75,123 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        /* ===== 认知层级选择器 ===== */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        /* ===== 分层内容块 ===== */
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        /* ===== 概念标签 ===== */
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +200,167 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        /* ===== 金句区块 ===== */
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        /* ===== 跨章验证表 ===== */
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
+        /* ===== 章节导航 ===== */
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -107,11 +374,22 @@
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🤝 第13章 · 宠辱若惊
-        <span class="subtitle">上经 · 处世论 · 五步读解</span>
+        <span class="subtitle">上经 · 处世论 · 超越得失 · 五步读解</span>
     </h1>
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章我们一起来读。你可以先看看"白话版"，轻松感受一下老子想说什么。如果有兴趣，再用"精读版"深挖。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,61 +400,262 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         宠辱若惊，贵大患若身。<br>
         何谓宠辱若惊？宠为下，得之若惊，失之若惊，是谓宠辱若惊。<br>
-        何谓贵大患若身？吾所以有大患者，为吾有身，及吾无身，吾有何患？故贵以身为天下，若可寄天下；爱以身为天下，若可托天下。<br>
-        
+        何谓贵大患若身？吾所以有大患者，为吾有身，及吾无身，吾有何患？<br>
+        故贵以身为天下，若可寄天下；爱以身为天下，若可托天下。
     </div>
 
     <div style="margin: 10px 0;">
-        <span class="concept-tag de">修身</span>
-        <span class="concept-tag fan">处世</span>
+        <span class="concept-tag qiantui">谦退</span>
+        <span class="concept-tag de">德</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步：文本细读与语义锚定 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>宠辱若惊 · 贵大患若身 · 及吾无身吾有何患 · 贵以身为天下</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于处世论范畴，位于上经。核心内容为"宠辱若惊"，展现了老子关于处世论的深层思考。全章围绕修身的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章老子在说：别人夸你或者骂你，你都会心跳加速、紧张害怕——这是为什么呢？因为你太在乎"我"了。就像你特别宝贝一个玩具，别人碰一下你就紧张。如果你能放下这个"太在乎自己"的心情，就不会那么害怕了。老子说：真正能把天下治好的人，是那种像爱护自己身体一样爱护天下人的人。我们可以学到的是：放下输赢得失，心里反而更平静。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心概念解释：</strong></p>
+            <p><strong>"宠辱若惊"</strong>——受到恩宠（被表扬、被提拔）和受到屈辱（被批评、被贬谪），内心都惊恐不安。"若惊"是一种焦虑状态。关键是：为什么"宠"也让人"惊"？因为得到恩宠的人立刻担心失去（"得之若惊，失之若惊"）——有了才怕丢，这就是"宠为下"。
+            </p>
+            <p><strong>"宠为下"</strong>——受宠本身就是卑下的处境。为什么？因为你的喜怒完全取决于给你宠的人——你失去了自主性，成了别人赐予的被动接受者。</p>
+            <p><strong>"贵大患若身"</strong>——人之所以有大忧患，是因为有"这个身体/这个自我"。一切恐惧的根源是"我有东西可以失去"。如果我连"身"（自我执着）都放下了，还有什么可以威胁我？</p>
+            <p><strong>"贵以身为天下"</strong>——能够像珍视自己身体一样珍视天下人（而非把天下当作满足私欲的工具），这样的人才值得被托付天下的重任。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"宠辱若惊"在现代工作中的体现：</strong></p>
+            <p><strong>绩效焦虑：</strong>升职时怕保不住位置（宠→惊），降级时怕以后更差（辱→惊）。无论升降，焦虑程度相同——因为你把自我价值绑定在了外部评价上。</p>
+            <p><strong>社交媒体心态：</strong>发一条朋友圈后反复查看点赞数（宠），没人点赞就焦虑（辱）——宠辱若惊的数字化版本。</p>
+            <p><strong>"贵以身为天下"的领导力启示：</strong>真正的领导者不是利用团队来成就自己（把天下当工具），而是像爱护自己一样爱护团队成员（以身为天下）。前者是"驱动型管理"，后者是"服务型领导"。
+            </p>
+            <p><strong>实践方法：</strong>当你因为得失而心跳加速时，问自己："如果我把'我'从这件事中拿掉，还有什么值得紧张的？"这就是"及吾无身，吾有何患"的自省练习。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong></p>
+            <p>帛书甲本作"龙辱若惊，贵大梡若身"。"龙"为"宠"之古字。"梡"通"患"。帛书乙本"宠辱若惊"同王弼本。关键异文在末句：帛书甲本作"故贵为身于为天下，若可以托天下矣；爱以身为天下，若可以寄天下矣"，"寄""托"二字互换。王弼本"贵以身为天下，若可寄天下；爱以身为天下，若可托天下"。语义无本质差别，但句式更对称。
+            </p>
+            <p><strong>字词溯源：</strong></p>
+            <p>"宠"字从宀从龙，《说文》："尊居也。"本义为在房屋中受到尊崇。"辱"字从辰从寸，《说文》："耻也。"本义为降格之耻。"宠辱"对举，涵盖人际评价的正面和负面极端。</p>
+            <p>"惊"——《说文》："马骇也。"本义为马受惊。用于人则指内心受到冲击而失去稳定。"若惊"不是"像被惊吓一样"，而是"确实处于惊恐状态"——"若"在此为"如此"义。</p>
+            <p><strong>句式辨析：</strong>本章采用"设问—自答"结构（"何谓X？...是谓X"），这是先秦论说文的经典解释性格式。两个"何谓"构成递进关系：先解"宠辱若惊"（现象层），再解"贵大患若身"（根源层），最后"故"字引出结论（应用层）。逻辑线：现象→根因→对策。
+            </p>
+            <p><strong>内证网络：</strong>本章"及吾无身"与第7章"后其身而身先，外其身而身存"形成呼应——放下自我执着反而保全了自我。与第44章"名与身孰亲？身与货孰多？得与亡孰病？"形成递进——第13章提出"身是大患"的命题，第44章以三问追问具体取舍。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步：语境构建与哲学推演 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"处世论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了修身的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：修身、处世，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章在整本书里是讲"别太在乎别人怎么看你"的。老子觉得，不管别人夸你还是骂你，你的心都不用跟着上下起伏。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第12章讲外在感官刺激对人的损害（五色、五音、五味），第13章进一步深入——连"宠"和"辱"这样的人际评价也是一种"外在刺激"，同样会让人失去内心平静。两章共同构建了"去外取内"的修身路径。
+            </p>
+            <p><strong>中观语境：</strong>上经第10-14章形成"修身五论"：第10章（六问自省）→第11章（留空智慧）→第12章（感官节制）→第13章（超越得失）→第14章（道体玄妙）。第13章处于"从人事到道体"的过渡位置——从具体的"宠辱"出发，推导出"无身"这一接近道体层面的洞见。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>思想体系定位：</strong>本章在《道德经》体系中担任"心理学枢纽"的角色——它不仅诊断了人类焦虑的根源（自我执着），还开出了处方（"贵以身为天下"=将个人价值放在服务更大整体的框架中）。这是从个人心理到社会伦理的桥梁章。
+            </p>
+            <p><strong>与现代心理学的对话：</strong>本章的核心洞见与ACT（接纳承诺疗法）的"认知脱钩"技术高度一致——不是消灭焦虑，而是改变与焦虑的关系：观察"我有焦虑"，而非被焦虑淹没。"及吾无身"不是肉体消亡，而是"从自我执着中脱钩"。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>宏观语境——先秦"身"概念的哲学意涵：</strong></p>
+            <p>先秦哲学中"身"不仅指肉体，更指"自我之整体存在"（包含身份、名声、社会角色）。杨朱学派"贵身"是保全个体生命；老子"贵身"则有双重含义——既珍视自我（"贵以身为天下"），又超越自我（"及吾无身"）。这一矛盾的统一在于：真正珍视自己的人不会把自己绑定在外部评价上（超越了"宠辱"），因此才有能力去服务天下（不是牺牲自己，而是超越小我后的自然流露）。
+            </p>
+            <p><strong>天道-人道-天人合一：</strong></p>
+            <p><strong>天道维度：</strong>天地不因万物的"宠辱"而动摇——日月运行不因人的赞美或诅咒而改变。天道是超越好恶评判的。</p>
+            <p><strong>人道维度：</strong>人若能效法天地的超然，就能从"宠辱若惊"的困境中解脱。但老子不是教人冷漠——结论是"爱以身为天下"，是带着超越之后的爱去服务。</p>
+            <p><strong>天人合一：</strong>天地无私而生万物（第5章），人无私（无身）而能承天下——超越自我之后，人的行为与天道的"生而不有、为而不恃"合一。</p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步：争议显化与诠释选项分析 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"宠辱若惊"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于这句话"宠为下"，不同的人有不同的理解。有人说"被宠爱本身就是不好的"，有人说"受宠的人总害怕失去，所以心里反而低人一等"。不管哪种理解，老子最想说的是：别被别人的评价牵着走。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议："宠为下"如何理解？</strong></p>
+            <p><strong>解读一：</strong>"宠"和"辱"都是卑下的——受宠是卑下（因为你依赖别人的赐予），受辱也是卑下（因为你被贬低）。所以"得之若惊，失之若惊"——无论得宠还是失宠，本质上你都处于"下"的位置。王弼注倾向此解。
+            </p>
+            <p><strong>解读二：</strong>"宠为下"是说在"宠"这件事中，受宠者是处于下位的。施宠者在上，受宠者在下——你越是依赖别人的恩宠，就越是处于被动地位。河上公注："宠者尊荣，辱者挫折...得之若惊者，处下位得宠，惊骇是祸将及也。"
+            </p>
+            <p><strong>解读三：</strong>"宠为下"断句为"宠，为下。得之若惊，失之若惊"——"宠"是低下的处境（下一句解释为什么低下：因为得到害怕失去，失去害怕更糟）。这是对"宠"的价值判断——真正高贵的人不需要别人的"宠"。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三种解读的实践差异：</strong></p>
+            <p><strong>解读一的启示：</strong>无论处境好坏，只要你的情绪被外界控制，你就处于"下"位。练习：当你接到表扬或批评时，先暂停3秒，观察自己的情绪反应，而非立刻被情绪驱动。</p>
+            <p><strong>解读二的启示：</strong>依赖他人的认可就是放弃自主权。练习：列出你做某件事的原因——哪些是"因为别人会认可我"，哪些是"因为我真的想做"？减少前者。</p>
+            <p><strong>解读三的启示：</strong>追求"宠"本身就不值得。练习：当你发现自己在"求宠"（讨好、表演、求赞）时，停下来问：即使没有人看到、没有人认可，我还会做这件事吗？</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>争议的文本学根源：</strong></p>
+            <p>本章争议的核心在于"宠为下"三字的句法归属。主要有三种断句方案：</p>
+            <p>（A）"宠辱若惊。宠为下，得之若惊，失之若惊，是谓宠辱若惊。"（王弼本标点）——"宠为下"是对"宠辱若惊"的解释性补充。</p>
+            <p>（B）帛书甲本作"龙辱若惊。贵大梡若身。何谓龙辱若惊？龙之为下也，得之若惊，失之若惊，是谓龙辱若惊。""龙之为下也"比通行本多一"之"字和"也"字，使句法更清晰——"宠这件事，是处于下位的。"</p>
+            <p><strong>证据权衡：</strong>帛书本的"龙之为下也"提供了更完整的句法信息，支持将"宠为下"理解为"受宠=处下"（解读二）。从全章逻辑看：先说"宠=下位"（因为你依赖施宠者），再推出"得失都惊"（因为处于被动），最后上升到"贵大患若身"（根源是自我执着）——层层递进，逻辑自洽。
+            </p>
+            <p><strong>末句"寄天下/托天下"辨析：</strong>"寄"侧重暂时托付，"托"侧重长久依托。两个动词并用，表达"天下可以暂时交给他，也可以长久托付于他"——这是对理想统治者的最高信任表达。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步：逻辑一致性与体系兼容性校验 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：修身→处世</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章和道德经其他章节说的道理是一致的。第7章说"把自己放在后面反而能到前面"，第44章说"太在乎名声和钱，就会失去更重要的东西"——都在教我们放下"太在乎我自己"的心态。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <thead>
+                    <tr>
+                        <th>本章命题</th>
+                        <th>对应章节</th>
+                        <th>互证内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>宠辱若惊</td>
+                        <td>第44章</td>
+                        <td>"名与身孰亲？得与亡孰病？"——同一心理现象的追问</td>
+                    </tr>
+                    <tr>
+                        <td>及吾无身，吾有何患</td>
+                        <td>第7章</td>
+                        <td>"后其身而身先，外其身而身存"——无身反而保身</td>
+                    </tr>
+                    <tr>
+                        <td>贵以身为天下</td>
+                        <td>第10章</td>
+                        <td>"生之畜之，生而不有"——玄德=无私服务</td>
+                    </tr>
+                    <tr>
+                        <td>超越得失</td>
+                        <td>第9章</td>
+                        <td>"功遂身退，天之道也"——不执着于功名</td>
+                    </tr>
+                    <tr>
+                        <td>不依赖外部评价</td>
+                        <td>第12章</td>
+                        <td>"为腹不为目"——不追逐外在认可</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽检验：</strong></p>
+            <p>本章核心命题"超越宠辱→无身→可托天下"在全书中得到充分支持：</p>
+            <p>1. <strong>第7章：</strong>"后其身而身先"——放下自我执着不仅不会让人消失，反而让人获得更高的地位和影响力（"可寄天下"）。</p>
+            <p>2. <strong>第22章：</strong>"不自见，故明；不自是，故彰"——不自我标榜的人反而显明——这正是"无身"之人的社会效果。</p>
+            <p>3. <strong>第81章：</strong>"圣人不积，既以为人己愈有"——给予他人（以身为天下）反而让自己更富足——这与第13章结论完全一致。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>外部兼容性：</strong></p>
+            <p><strong>《庄子·逍遥游》：</strong>"至人无己，神人无功，圣人无名。"——庄子将老子"无身"的思想推向极致。"无己"是"及吾无身"的彻底化。</p>
+            <p><strong>《韩非子·解老》：</strong>"人无毛羽，不衣则不犯寒...所以贵身者，以其有身也，及其有患也亦以身有。"韩非对"贵大患若身"做了法家式解读——承认身体是患的根源，但主张以制度来保护身体而非超越身体。这代表了对老子思想的另一走向。
+            </p>
+            <p><strong>奥卡姆剃刀：</strong>本章论证假设：（1）人有自我保存的本能（事实层）；（2）宠辱触发这一本能引发焦虑（心理层）；（3）如果能超越自我本能，焦虑即消（推论层）。三层假设均可在心理学中找到对应证据（自我威胁理论、自我超越体验研究等）。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步：意义转化与现代启示提炼 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"宠辱若惊"提醒我们在日常生活中保持对修身的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"宠辱若惊"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在等级分明的封建社会中，君主的"宠"与"辱"直接关系到臣子的身家性命。老子提出"无身"思想，是为那些深陷政治旋涡的人指出一条超脱之路。</p>
+            <p><strong>普遍义：</strong>人类社会永远存在外部评价系统（考试排名、薪资等级、社会地位）。这些评价会引发"宠辱若惊"的心理反应——这是人性的普遍困境。老子的解法不是逃避评价，而是改变与评价的关系。
+            </p>
+            <p><strong>现代义：</strong>在社交媒体时代，"宠辱若惊"被无限放大——一条评论就能让人喜怒交加。"贵以身为天下"则提供了正向出路：把注意力从"我被怎么评价"转向"我能为他人做什么"，焦虑自然减轻。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>建立"内在评价系统"——每天晚上问自己三个问题：今天我做了什么有价值的事？今天我对他人有什么善意的影响？今天我有没有违背自己的原则？这三个问题的答案不依赖任何外部评价，构建自己的"内在记分牌"。
+            </p>
+            <p><strong>组织管理：</strong>"去宠辱化管理"——好的团队文化不是让成员争宠（互相竞争老板认可），而是建立基于价值创造的客观评估体系。减少主观的"宠/辱"信号，增加客观的价值反馈。360度评估比单一上级评价更能减少"宠辱焦虑"。
+            </p>
+            <p><strong>社会文明：</strong>"注意力从评价转向贡献"——一个健康的社会不应该过度强调排名和竞争（制造宠辱），而应该强调每个人的独特贡献。教育改革的方向也是如此——从"分数排名"（宠辱系统）转向"能力发展"（内在成长）。
+            </p>
+        </div>
+
+        <!-- 亲子赋能 — 始终可见 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>和孩子玩"表扬/批评不影响我"的游戏：让孩子站好，你先夸他"你太棒了！"，观察他的表情和身体反应。然后说"你做错了！"再观察。问他："你发现了什么？你的心是不是跟着我说的话上上下下的？"然后一起想：如果你的心像一面湖水，别人说好说坏就像往里面扔石子——石子会激起水花，但湖水过一会儿就平静了。
+            </p>
+            <p><strong>🧘
+                    体验层：</strong>"自我评价卡"——和孩子一起各做一张卡片，上面写3件"我觉得自己做得好的事"和1件"我想改进的事"。关键是：这些判断来自自己，不来自老师或同学的评价。放在枕头下面，一周后再看——感受"自己给自己打分"的踏实感。
+            </p>
+            <p><strong>💬
+                    对话层：</strong>"你有没有特别想让某个人夸你的时候？那时候你心里是什么感觉？如果那个人没夸你呢？"引导孩子发现：当我们把快乐交给别人（等别人夸），我们就把快乐的开关放在了别人手里。把快乐的开关拿回自己手里，就不怕了。
+            </p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「及吾无身，吾有何患？」</div>
+        <div class="quote-interp">——放下对"自我"的执着，恐惧就没有了立足之地。不是消灭自己，而是不再被自己困住。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -186,14 +665,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第13章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第13章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

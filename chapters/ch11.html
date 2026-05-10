@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第11章 三十辐共一毂 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
+        /* ===== 五步导航条 ===== */
         .five-step-nav {
             display: flex;
             gap: 0;
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +27,34 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
+        /* ===== 原文区块 ===== */
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +66,8 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
+        /* ===== 步骤区块 ===== */
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +75,129 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        /* ===== 认知层级选择器 ===== */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        /* ===== 分层内容块 ===== */
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        /* L1 大白话版 — 绿色系 */
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        /* L2 精读版 — 金色系 */
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        /* L3 应用版 — 蓝绿色系 */
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        /* L4 学术版 — 紫色系 */
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        /* 亲子赋能 — 始终可见，不分层级 */
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        /* 初始显示策略：默认显示L2+L3，隐藏L1+L4 */
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        /* ===== 概念标签 ===== */
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +206,167 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        /* ===== 金句区块 ===== */
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        /* ===== 跨章验证表 ===== */
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
+        /* ===== 章节导航 ===== */
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -107,11 +380,22 @@
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🏛️ 第11章 · 三十辐共一毂
-        <span class="subtitle">上经 · 治国论 · 五步读解</span>
+        <span class="subtitle">上经 · 有无辩证 · 五步读解</span>
     </h1>
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章我们一起来读。你可以先看看"白话版"，轻松感受一下老子想说什么。如果有兴趣，再用"精读版"深挖。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,62 +406,260 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         三十辐共一毂，当其无，有车之用。<br>
         埏埴以为器，当其无，有器之用。<br>
         凿户牖以为室，当其无，有室之用。<br>
-        故有之以为利，无之以为用。<br>
-        
+        故有之以为利，无之以为用。
     </div>
 
     <div style="margin: 10px 0;">
-        <span class="concept-tag dao">有</span>
-        <span class="concept-tag dao">无</span>
+        <span class="concept-tag dao">道</span>
+        <span class="concept-tag wuwei">无为</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步：文本细读与语义锚定 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>有之以为利·无之以为用 · 埏埴为器·凿户牖为室 · 当其无有车之用</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于治国论范畴，位于上经。核心内容为"三十辐共一毂"，展现了老子关于治国论的深层思考。全章围绕有的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章老子在说：空的地方才是最有用的地方。就像一个杯子，如果杯子里面是实心的，它就装不了水了。车轮中间那个空洞、房子里面的空间、碗里面的空——都是"空"在起作用。我们可以学到的是：看得见的东西给我们方便，看不见的"空"才是真正让东西好用的秘密。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心概念解释：</strong></p>
+            <p><strong>"三十辐共一毂"</strong>——"辐"是车轮的辐条（从轮圈连接到中心的木条），"毂"（gǔ）是车轮中央的圆筒。三十根辐条聚集到一个毂上形成车轮。"当其无，有车之用"——正因为毂中间是空的（可以插入车轴），车轮才能转动，车才能用。
+            </p>
+            <p><strong>"埏埴以为器"</strong>——"埏"（shān）即揉捏，"埴"（zhí）即黏土。揉捏黏土做成器皿（杯、碗、罐等）。"当其无，有器之用"——正因为器皿中间是空的，才能盛放东西。</p>
+            <p><strong>"凿户牖以为室"</strong>——"户"是门，"牖"（yǒu）是窗。开凿门窗建造房间。"当其无，有室之用"——正因为房间内部是空的，人才能住进去。</p>
+            <p><strong>"有之以为利，无之以为用"</strong>——这是本章的核心命题。"有"（实体部分：辐条、毂筒壁、陶壁、墙壁）提供了条件和便利；"无"（空虚部分：毂孔、器腔、室内空间）才是发挥功用的关键所在。"利"与"用"构成互补关系——利是基础条件，用是实际功能。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>有无辩证在现实中的体现：</strong></p>
+            <p><strong>空间设计原则：</strong>好的建筑不是堆满装饰，而是留出合理的"空"。极简主义设计的核心就是"无之以为用"——留白比填满更重要。一个好的办公空间，关键不是摆满了什么，而是为人的活动留出了多少"空"。
+            </p>
+            <p><strong>团队管理：</strong>管理者的"有"是制度、流程、目标设定；管理者的"无"是留给团队成员的自主空间。过度管理（填满了所有"空"）反而让组织失去活力。最好的管理是搭好框架后，给人"空间"去发挥。
+            </p>
+            <p><strong>时间管理：</strong>日程表排满（纯"有"）反而低效。真正高效的时间管理需要留出"空白时间"——用于思考、恢复和应对突发事件。"无"的时间才是创造力和灵感涌现的空间。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong></p>
+            <p>王弼本作"三十辐共一毂"，帛书甲本作"卅辐同一毂"，乙本作"三十辐同一毂"。"共"与"同"义近但有微妙差异："共"侧重聚合的物理过程，"同"侧重统一于同一点的逻辑关系。河上公本与王弼本同。</p>
+            <p><strong>字词溯源：</strong></p>
+            <p>"毂"字从"殻"省声，本义为车轮中心的圆形木筒。《说文》："毂，辐所凑也。"先秦车轮标准为三十辐，《周礼·考工记》："轮辐三十，以象日月也。"三十之数对应月相周期。</p>
+            <p>"埏埴"——《说文》："埏，以水和土也。"段玉裁注："埏之言延也，和水于土中延展之。""埴"，《说文》："黏土也。"二字连用专指制陶揉泥工序。</p>
+            <p><strong>句式辨析：</strong>本章采用严格的三段排比结构（车→器→室），由小到大，由专业到日常，最后以"故"字引出总结性命题。这是先秦论说文的经典"举例—归纳"论证模式。三例均为"取有形之物以证无形之用"，论证方向一致、力度递增。
+            </p>
+            <p><strong>内证网络：</strong>本章"有""无"关系直接回应第1章"无名天地之始，有名万物之母"的本体论设定，将抽象的有无关系落实为具体器物中的功能性论证。与第40章"天下万物生于有，有生于无"构成呼应链：第1章（本体层）→第11章（功能层）→第40章（生成层）。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步：语境构建与哲学推演 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"治国论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了有的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：有、无，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章在整本书里是讲"空的价值"的——老子想告诉我们，看不见的东西往往比看得见的东西更重要。就像你能看到杯子的壁，但让杯子能装水的，是里面那个看不见的"空"。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>本章紧接第10章"载营魄抱一"的修身论，从个人修养的抽象层面转入日常器物的具象层面。第10章讲"虚其心"（内在层面的空），第11章用三个实物例子论证"空"的功能价值。这是从修身到格物的延伸。
+            </p>
+            <p><strong>中观语境：</strong>第11章处于上经第一组核心论述（第1-14章）的中段。第1章确立"有无"的本体论地位，第2章展开有无的辩证关系，第4章以"冲"（虚空）描述道体，第5章以"橐籥"（风箱的中空）为喻，到第11章以"毂、器、室"三例做最彻底的"有无功用论"展开。这构成一个从抽象到具体的认知递进链。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>思想体系定位：</strong>本章是《道德经》"有无辩证"的功能论核心。如果说第1章回答"有无是什么"（本体论），第40章回答"有无怎么来的"（生成论），那么第11章回答的是"有无怎么用"（功能论）。
+            </p>
+            <p><strong>现代意义：</strong>这一章为"减法思维"提供了哲学基础——在信息过载的时代，删除（创造"无"）比添加（堆积"有"）更需要智慧。产品设计中的"少即是多"、心理学中的"留白效应"、管理学中的"授权赋能"，都是"无之以为用"的现代展开。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>宏观语境——战国思想史：</strong>先秦诸子中，老子最系统地论证了"无"的正面价值。儒家重"有"（仁义礼乐皆为"有"的建构），墨家重"用"（实用功利），法家重"实"（名实相符）。老子独辟蹊径，指出"无"不是"有"的缺失，而是"有"得以发挥功能的前提条件。这一洞见在哲学史上具有开创性。
+            </p>
+            <p><strong>天道-人道-天人合一：</strong></p>
+            <p><strong>天道维度：</strong>道体本身是"冲而用之或不盈"（第4章），道以虚空为本质特征，万物在道的"空"中得以生成和运动。</p>
+            <p><strong>人道维度：</strong>人应效法道的"虚空"品质——虚心、留白、不满。"有之以为利"对应人的技能、知识、资源积累；"无之以为用"对应人的开放心态、留有余地、不自满。</p>
+            <p><strong>天人合一：</strong>道以"无"生万物，人以"无"成万事。器物的"无"是物理空间，道的"无"是形而上的创生场域，人的"无"是心灵的开放空间——三者同构。</p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步：争议显化与诠释选项分析 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"三十辐共一毂"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于这一章，大家基本上都同意老子在说"空的地方很重要"。不过有一个小小的讨论：老子是只在说"空有用"呢，还是在说"空比实更重要"呢？最重要的是记住：有和空是一对好搭档，谁也离不开谁。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议：</strong>"有之以为利，无之以为用"中，"有"和"无"的关系究竟是平等互补还是有主次之分？</p>
+            <p><strong>解读一（互补论）：</strong>有和无地位平等，各有分工。"有"提供物质条件（利），"无"实现功能目的（用）。二者缺一不可，如同硬币的两面。代表学者：王弼——"有之所以为利，皆赖无以为用也。"
+            </p>
+            <p><strong>解读二（无本论）：</strong>"无"的地位高于"有"。老子之所以特意强调"无"，是因为世人通常只重视"有"而忽略"无"。本章的论证目的是纠偏——强调"无"才是根本。代表：河上公注——"无之以为用，器中空虚，故得有所盛受。"
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>两种解读对实践的不同启示：</strong></p>
+            <p><strong>互补论的实践：</strong>如果有无平等互补，那么我们既要重视"做加法"（积累技能、建立制度），也要重视"做减法"（留白、授权、简化）。关键是找到平衡点。</p>
+            <p><strong>无本论的实践：</strong>如果"无"更根本，那么当我们感到人生拥挤、效率下降时，优先行动应该是"减"——减少信息输入、减少承诺、减少目标。先创造"空间"，功能自然浮现。</p>
+            <p><strong>综合应用：</strong>在实践中，两种解读可以结合——日常运营中保持有无平衡（互补论），遇到瓶颈时以"减法"为优先（无本论）。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>争议揭示：</strong></p>
+            <p>本章的诠释史争议焦点有二：（1）"利"与"用"的语义关系；（2）老子的论证意图是描述性的还是规范性的。</p>
+            <p><strong>选项一：描述性-互补论（王弼系）</strong></p>
+            <p>王弼《老子注》："有之所以为利，皆赖无以为用也。"此解将本章视为对"有无互依关系"的客观描述。"利"是有形条件提供的便利，"用"是无形空间发挥的功能。二者是功能性互补，非价值性高下。</p>
+            <p><strong>选项二：规范性-无本论（河上公/严遵系）</strong></p>
+            <p>河上公注着重"无"的根本性。严遵《老子指归》："有无相生，而无者有之本也。"此解认为本章是规范性命题——世人重有轻无，老子纠之。论证策略是"以有为引导，以无为归结"。</p>
+            <p><strong>选项三：功能主义解读（当代）</strong></p>
+            <p>陈鼓应认为本章纯属"功用论"，不涉及本体高下问题。"利"和"用"是日常功能描述，不应过度哲学化。"无"在此仅指物理空间（中空、虚空），不应等同于形而上的"无"。</p>
+            <p><strong>证据权衡：</strong>从全书文脉看，第40章"有生于无"明确表述了"无"的本源性优先地位。第11章作为功能层论证，与第40章的生成层论证相互支撑，倾向于支持"无本论"（选项二）。但陈鼓应的警告也有道理——不应将具体器物层面的"无"（物理空间）与宇宙论层面的"无"（道的未显状态）简单等同。合理的综合是：本章在功能层面论证了"无"的不可或缺性，为第40章的本体论主张提供了经验性支撑。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步：逻辑一致性与体系兼容性校验 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：有→无</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章和道德经其他章节说的道理是一致的，都在讲"空和虚的东西很有价值"。第1章说"无是万物的开始"，第5章说"天地像一个大风箱，中间是空的，但一直能吹出风来"，第11章用三个例子（车轮、碗、房子）来证明这个道理。它们说的都是一件事！
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <thead>
+                    <tr>
+                        <th>本章命题</th>
+                        <th>对应章节</th>
+                        <th>互证内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>无之以为用</td>
+                        <td>第1章</td>
+                        <td>"无名天地之始"——无是根源</td>
+                    </tr>
+                    <tr>
+                        <td>有之以为利</td>
+                        <td>第1章</td>
+                        <td>"有名万物之母"——有是显现</td>
+                    </tr>
+                    <tr>
+                        <td>当其无，有X之用</td>
+                        <td>第5章</td>
+                        <td>"天地之间，其犹橐籥乎？虚而不屈"——虚空产生动力</td>
+                    </tr>
+                    <tr>
+                        <td>有无互依</td>
+                        <td>第2章</td>
+                        <td>"有无相生"——有无互为条件</td>
+                    </tr>
+                    <tr>
+                        <td>无为根本</td>
+                        <td>第40章</td>
+                        <td>"天下万物生于有，有生于无"——无是最终本源</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽检验：</strong></p>
+            <p>本章的核心命题"有之以为利，无之以为用"与《道德经》的以下核心主张完全自洽：</p>
+            <p>1. <strong>有无相生（第2章）：</strong>有和无互相依存、互相产生——第11章正是展示了这种依存关系在器物层面的具体呈现。</p>
+            <p>2. <strong>道冲而用之（第4章）：</strong>道本身以"冲"（虚空）为特征，使用时永不会满——与第11章"毂的空才让车能用"异曲同工。</p>
+            <p>3. <strong>无为而无不为（第48章）：</strong>"无为"是方法论层面的"创造无"——不强加干预（创造管理的"空"），反而什么都做得成。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>外部兼容性检验：</strong></p>
+            <p><strong>《庄子》呼应：</strong>《庄子·人间世》中"无用之用"的论述是第11章的直接延伸。庄子以"大树无用故得终其天年"为例，从"器物之无"拓展到"存在之无"。思想逻辑一脉相承。</p>
+            <p><strong>《文子》呼应：</strong>《文子·道原》："有之以为利，无之以为用，有无相通也。"直接引用本章文句，并补充"相通"一词，明确了有无互通的关系。</p>
+            <p><strong>奥卡姆剃刀检验：</strong></p>
+            <p>本章的论证假设层级极少：（1）有形实体存在（事实层）；（2）空间使实体获得功能（功能层）；（3）由此可归纳出"有无互用"的一般原则（归纳层）。三层假设均可直接验证，无需引入任何不可检验的形而上假设。本章的论证力正来自于此——以最日常、最可验证的经验为据，推出最深刻的哲学洞见。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步：意义转化与现代启示提炼 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"三十辐共一毂"提醒我们在日常生活中保持对有的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"三十辐共一毂"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在先秦手工业社会中，老子通过观察日常器物（车轮、陶器、房屋），发现了"空"的功能价值——这在"实用主义"主导的时代是极具洞见的观察。</p>
+            <p><strong>普遍义：</strong>形式（有）与功能（用）之间存在辩证关系。任何系统要运转良好，都需要"空间"（空余、弹性、冗余）。纯粹的"满"等于"死"，适度的"空"才是"活"。</p>
+            <p><strong>现代义：</strong>在信息过载、时间碎片化、空间拥挤的现代社会，"创造空"是一种核心能力——留白设计、断舍离、冥想、授权、极简主义，都是"无之以为用"的当代实践形态。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>"留白"是最高级的自我管理。每天留出10-30分钟的"无目的时间"（不看手机、不做事、不思考特定问题），让大脑进入"默认模式网络"——这是创造力和自我整合发生的空间。日程表里的"空"不是浪费，而是让其他时间更有效的前提。
+            </p>
+            <p><strong>组织管理：</strong>好的制度像好的房子——框架（墙壁=规则）要清晰坚固，但内部空间（=自主权）要充足。Google的"20%自由时间"政策就是"无之以为用"的企业实践：用制度性的"空"来激发创新。反面案例：过度微管理=把房间填满了砖头，人无法居住。
+            </p>
+            <p><strong>社会文明：</strong>一个健康的社会需要"公共空间"（物理的和精神的）。城市需要公园和广场（物理的"无"），社会需要言论自由和学术自由（思想的"无"）。当所有空间都被占满、所有思想都被规定，社会就失去了自我更新的能力。
+            </p>
+        </div>
+
+        <!-- 亲子赋能 — 始终可见，不分层级 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>问孩子："你觉得杯子最重要的部分是什么？"等孩子回答后，引导他们想：如果杯子里面是实心的（没有空间），它还能装水吗？然后一起找找家里还有哪些东西"因为空才有用"——书包、衣柜、冰箱、甚至嘴巴！
+            </p>
+            <p><strong>🧘 体验层：</strong>一起做一个"找空游戏"——在家里或公园里走一圈，比赛谁能找到更多"因为空才好用"的东西。可以用手机拍照记录。最后一起讨论：如果这些"空"都被填满了，会怎样？
+            </p>
+            <p><strong>💬
+                    对话层：</strong>"你觉得我们的生活里，有没有什么地方需要多留一些'空'？比如时间上的'空'（休息时间）、空间上的'空'（整理房间）、心里的'空'（不要想太多事情）？"引导孩子理解：留白不是偷懒，而是让生活更好用的智慧。
+            </p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「有之以为利，无之以为用」</div>
+        <div class="quote-interp">——看得见的给我们条件，看不见的给我们功能。真正让事物好用的，是那些"空"。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -187,14 +669,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第11章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第11章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

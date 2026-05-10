@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第65章 古之善为道者 - 道德经亲子体验营</title>
+    <title>第65章 玄德深远 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
         .five-step-nav {
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,14 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +88,94 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #5c4a72;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #8b6b3d;
+            color: white;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +183,33 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🏛️ 第65章 · 古之善为道者
-        <span class="subtitle">下经 · 下经治国 · 五步读解</span>
+        👶 第65章 · 玄德深远
+        <span class="subtitle">下经 · 治道 · 五步读解</span>
     </h1>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章老子提出了一个很有争议的观点——"以愚治国"。听起来好像在说"让老百姓变笨"？其实不是！老子说的"愚"是"朴实、不耍小聪明"——就像一个人不算计别人、不投机取巧，反而活得更自在。老子认为：用太多机巧来治国，反而把国家搞乱了；保持朴素诚实，才是真正的福气。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,82 +220,336 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn active" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button data-level="all" class="level-btn active">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         古之善为道者，非以明民，将以愚之。<br>
         民之难治，以其智多。<br>
-        以智治国，国之贼；不以智治国，国之福。<br>
+        故以智治国，国之贼；<br>
+        不以智治国，国之福。<br>
         知此两者亦稽式。<br>
         常知稽式，是谓玄德。<br>
-        玄德深矣，远矣，与物反矣，然后乃至大顺。<br>
-        
+        玄德深矣，远矣，与物反矣，<br>
+        然后乃至大顺。
     </div>
 
-    <div style="margin: 10px 0;">
+    <div style="margin:10px 0;">
         <span class="concept-tag de">德</span>
-        <span class="concept-tag wuwei">治国</span>
         <span class="concept-tag xuan">玄</span>
+        <span class="concept-tag buzheng">不争</span>
     </div>
 
     <!-- 第一步 -->
     <div class="step-section" id="step1">
         <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>非以明民将以愚之 · 民之难治以其智多 · 以智治国国之贼 · 玄德深矣远矣</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于下经治国范畴，位于下经。核心内容为"古之善为道者"，展现了老子关于下经治国的深层思考。全章围绕德的概念展开，层层递进。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>白话翻译：</strong></p>
+            <p>古代善于按"道"行事的人，不是让老百姓变得聪明诡诈，而是让他们保持朴实。老百姓之所以难以治理，是因为他们耍的小聪明太多了。所以用机巧智术来治国，是国家的祸害；不用机巧来治国，是国家的福气。知道这两种方式的区别，就是一个标准。经常记住这个标准，就叫做"玄德"（深远的德行）。玄德啊，深远得很，和一般事物的方向相反——先往回走（回到朴素），然后才能达到真正的和顺。
+            </p>
+            <p style="margin-top:10px;"><strong>一句话总结：</strong>不耍小聪明、保持朴实诚恳，比什么花样都管用——这就是最深的智慧。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句精读：</strong></p>
+            <ul style="padding-left:20px;line-height:2.2;">
+                <li><strong>"古之善为道者，非以明民，将以愚之"</strong>——"明"在此指机巧、狡黠；"愚"指朴实、诚实。善于行道的治理者不是让民众变得机巧多智，而是引导他们回归朴实。注意：这里的"愚"不是"愚笨"，而是"朴素不做作"。
+                </li>
+                <li><strong>"民之难治，以其智多"</strong>——人民之所以难以治理，是因为他们的巧智（算计、投机）太多。老子认为社会乱象源于人心的机巧化。</li>
+                <li><strong>"以智治国，国之贼"</strong>——"贼"即祸害。用机巧权术来治国，是国家的祸害——因为上行下效，统治者越用计谋，民众也越学会算计。</li>
+                <li><strong>"不以智治国，国之福"</strong>——不用机巧来治国（即以朴实、诚信、无为来治理），是国家的福气。</li>
+                <li><strong>"知此两者亦稽式"</strong>——"稽式"即法则、标准。知道"以智"和"不以智"这两种对比，本身就是一个准则。</li>
+                <li><strong>"常知稽式，是谓玄德"</strong>——能经常把握这个准则的，就叫做"玄德"——幽深微妙的德行。"玄德"一词在第10章、第51章也出现过。</li>
+                <li><strong>"玄德深矣，远矣，与物反矣"</strong>——"与物反"即与一般事物的方向相反。常人追求"更聪明"，玄德追求"更朴素"——方向完全反过来。</li>
+                <li><strong>"然后乃至大顺"</strong>——这样反过来走，最终才能达到"大顺"——真正的和顺、通达。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>应用视角：</strong></p>
+            <p><strong>"以智治国，国之贼"——制度简明性原则：</strong>法规越复杂，钻空子的空间越大——这就是"以智治国"的陷阱。最好的规则是简洁、透明、人人能懂的。税法越复杂，避税产业越发达；KPI越花哨，数据造假越猖獗。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"非以明民，将以愚之"——组织信任文化：</strong>如果团队中每个人都在"耍聪明"（推诿责任、邀功、政治博弈），效率极低。最高效的组织是"朴素"的——每个人做好自己的事，不需要防备同事。Netflix的"自由与责任"文化就是一种"以愚治国"——减少规则和控制，信任员工的朴素善意。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"与物反矣，然后乃至大顺"——逆向思维：</strong>真正的突破往往来自与常识相反的方向。别人追求"更多功能"时，苹果追求"更少按钮"；别人追求"更快增长"时，好的企业追求"更深的根基"——逆向行动反而达到了真正的成功。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术注释：</strong></p>
+            <p>帛书本"古之善为道者，非以明民也，将以愚之也"——多了两个语气词"也"，使判断更加明确。帛书本"国之贼"作"国之贱"，"国之福"作"国之德"——用"贱/德"对比代替"贼/福"对比，含义相近但语气不同。</p>
+            <p style="margin-top:10px;">
+                "愚"字在此章的训诂是老子学中的长期争议焦点。传统注家多将"愚之"解为"使民朴实"（如河上公注："不以道教民明智巧诈"），但五四以来的现代学者（如梁启超、胡适）曾批评此为"愚民政策"。当代学者（如陈鼓应）基本恢复了传统解读——"愚"非"使人愚笨"，而是"去除机巧心"，使人回归朴素天性。
+            </p>
+            <p style="margin-top:10px;">
+                "玄德"概念在《道德经》中出现三次（第10、51、65章），构成了老子"德论"的最高层次。"玄"表示幽深、微妙、不可见；"玄德"即"深不可测的德行"——一种超越常规因果逻辑（"与物反"）的德性运作方式。这一概念后来被道教发展为修行论的核心术语。
+            </p>
+        </div>
     </div>
 
     <!-- 第二步 -->
     <div class="step-section" id="step2">
         <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"下经治国"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了德的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：德、治国、玄，这些概念在SPO V3.0网络中形成紧密关联。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>简单背景：</strong></p>
+            <p>老子生活的那个时代，各国之间经常打仗，大家都在比谁更"聪明"——用更多的计谋、更复杂的规则。老子发现：越是这样，社会反而越乱！因为你耍聪明，别人也跟着耍聪明，最后大家都在互相算计。不如大家都朴实一点，反而相处得更好。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>思想史定位：</strong></p>
+            <p>本章是老子政治哲学中最具争议性的篇章之一——"愚民"论述。它与第3章"常使民无知无欲"、第80章"使民复结绳而用之"共同构成了老子的"简政"理想。核心主张不是"让人民变笨"，而是"减少社会的机巧化程度"——认为过度的智巧竞争会摧毁社会信任。
+            </p>
+            <p style="margin-top:10px;"><strong>与儒家"教化"的对比：</strong></p>
+            <p>儒家主张"教民"——通过教育让人民明辨善恶；老子主张"不以明民"——不是不教，而是不教那些增加心机、激发欲望的东西。两者的分歧不在于"要不要教育"，而在于"教什么"。</p>
+            <p style="margin-top:10px;"><strong>与第57章的关联：</strong></p>
+            <p>第57章"人多伎巧，奇物滋起"——技巧越多，奇怪的东西越多。这与本章"以智治国，国之贼"同一逻辑：机巧增生导致社会复杂化和信任崩溃。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>当代语境映射：</strong></p>
+            <p><strong>信息过载与认知朴素：</strong>现代社会信息泛滥，各种"聪明"的营销话术、操纵技巧充斥日常——这正是老子所担忧的"智多"状态。"数字断舍离""极简主义"运动可以理解为对"智多"的现代反抗——回归朴素认知。
+            </p>
+            <p style="margin-top:10px;"><strong>高信任社会 vs.
+                    低信任社会：</strong>社会学家福山（Fukuyama）研究发现：高信任社会（如北欧）经济效率远高于低信任社会。信任的基础是"朴素"——人们不需要防备彼此。当全社会都"很聪明"（充满算计），交易成本（防欺诈、打官司、签复杂合同）就极高。这正是"以智治国，国之贼"的社会学注解。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"与物反"的创新策略：</strong>在竞争红海中，"与物反"往往是最有效的差异化策略——当所有人向右时向左走。西南航空删除所有"聪明功能"（选座、商务舱、里程兑换）反而成为最赚钱的航空公司。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术语境：</strong></p>
+            <p><strong>"愚"的哲学内涵：</strong>在老子哲学体系中，"愚"与"智"构成一对辩证概念。"智"（巧智）属于"人为"领域——社会化习得的算计能力；"愚"（朴实）属于"自然"领域——未被社会化污染的本真状态。老子的"将以愚之"是一种"逆社会化"主张——帮助人们从过度社会化的状态中解脱出来。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"大顺"的形上含义：</strong>"然后乃至大顺"的"大顺"是老子哲学中的一个重要概念——不是指事事如意的"顺利"，而是指与道的深层秩序完全合拍的状态。"与物反"是达到"大顺"的路径：先逆（逆于常人的方向），后顺（顺于道的方向）。这是"反者道之动"（第40章）在实践论上的展开。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>政治哲学比较：</strong>柏拉图《理想国》主张"哲人王"——最有智慧的人来统治；老子主张"不以智治国"——最好的治理者恰恰不用"智"。这一东西方根本性差异反映了对"知识与权力关系"的截然不同的理解。柏拉图信任知识的善用；老子质疑知识本身在权力场域中的变质倾向。
+            </p>
+        </div>
     </div>
 
     <!-- 第三步 -->
     <div class="step-section" id="step3">
         <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"古之善为道者"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>有人不同意老子：</strong></p>
+            <p>很多人批评老子："你让人不要聪明，那不是让人变笨吗？"其实老子不是说不要学习、不要思考，他是说：不要变得"太滑头"——不算计别人、不投机取巧、不耍小聪明。这种"朴实"不是笨，而是一种更高级的选择。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议一：老子是否主张"愚民政策"？</strong></p>
+            <p><strong>愚民说（批判性解读）：</strong>五四运动时期的学者（胡适、梁启超等）批评老子的"愚之"是反对启蒙、维护愚昧统治。这一解读受当时反传统思潮影响较大。</p>
+            <p><strong>朴民说（传统解读/当代主流）：</strong>"愚"不是"愚蠢"而是"朴素"。证据：（1）同章"不以智治国"的"智"是"巧智/权术"，非"知识/智慧"；（2）第20章"我愚人之心也哉"——老子以"愚"自称，显然不是自贬为笨，而是自认朴实。
+            </p>
+            <p style="margin-top:12px;"><strong>核心争议二："与物反"是否意味着反对一切进步？</strong></p>
+            <p><strong>反进步说：</strong>老子追求退回原始状态，否定一切文明发展。</p>
+            <p><strong>超越说（主流）：</strong>"与物反"是方向性的反——不是回到原始，而是超越"机巧化"的误区。如同螺旋上升而非简单倒退。"大顺"是更高层次的和谐，不是原始的混沌。</p>
+            <p style="margin-top:12px;"><strong>核心争议三："以智治国"批判的对象是谁？</strong></p>
+            <p><strong>批判法家：</strong>法家主张以法术势（机巧权术）治国——这正是"以智治国"的典型。</p>
+            <p><strong>批判所有制度设计：</strong>更广义的理解是批判一切试图用"设计"来控制社会的企图——认为社会有其自发秩序，过度设计反而破坏。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践中的张力：</strong></p>
+            <p><strong>"朴素管理"与现代企业的复杂性：</strong>现代企业面对全球化竞争，似乎"必须"用复杂策略。但研究显示：规则越简单的组织（如"只雇牛人并信任他们"）反而执行力更强。矛盾的解决：对外可以应对复杂，对内保持朴素——内部文化是"不以智治国"的领域。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"信任"与"制度"的平衡：</strong>完全的"以愚治国"（纯信任、无制度）在大规模社会中不可行；但完全的"以智治国"（纯制度、无信任）则效率极低。最佳实践是：用简明的制度建立基础保障，在此之上培育信任文化。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术争论：</strong></p>
+            <p>韩非子《解老》将本章解读为"使民无用智之地"——通过制度设计让人民没有投机取巧的空间。这实际上是法家对道家文本的改造——将老子的"自然主义"转化为"制度主义"。</p>
+            <p style="margin-top:10px;">
+                刘笑敢区分了"描述性"（descriptive）和"规范性"（prescriptive）两种解读：描述性解读认为老子在描述理想状态（"古之善为道者"是对过去的追忆）；规范性解读认为老子在提出政策建议（"应该这样治国"）。两种解读的政治含义截然不同。
+            </p>
+            <p style="margin-top:10px;">
+                从语言哲学角度看，"智"在先秦语境中有两个维度：（1）认知能力（知识、理解）——中性；（2）社会策略（机巧、算计）——负面。老子本章的"智"显然指后者——社会性的机巧策略，而非认知能力本身。将两者混淆是"愚民政策"误读的根源。
+            </p>
+        </div>
     </div>
 
     <!-- 第四步 -->
     <div class="step-section" id="step4">
         <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：德→治国→玄</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>这些道理一致吗？</strong></p>
+            <p>老子在很多地方都说：简单的比复杂的好，朴素的比花哨的好。这一章说"不耍聪明反而是福气"，和其他章说"大巧若拙"（真正的巧妙看起来像笨拙）是一回事——都在告诉我们：真正厉害的东西，往往看起来很简单。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>跨章逻辑验证：</strong></p>
+            <table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9em;">
+                <tr style="background:#f5f5f0;">
+                    <th style="padding:8px;border:1px solid #d4c9a8;">本章命题</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">相关章节</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">一致性</th>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">将以愚之</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第3章"常使民无知无欲"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——减少机巧欲望</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">以智治国，国之贼</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第57章"人多伎巧，奇物滋起"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——机巧增多引发混乱</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">与物反矣</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第40章"反者道之动"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——"反"是道的运动规律</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">玄德</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第10、51章"玄德"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——同一概念的不同展开</td>
+                </tr>
+            </table>
+            <p style="margin-top:10px;">
+                <strong>内部自洽检验：</strong>本章"玄德深矣远矣"与第10章"生而不有，为而不恃，长而不宰，是谓玄德"含义一致——都指一种"不显山露水"的深层德行。"与物反"看似极端，但与全书"柔弱胜刚强""大巧若拙"的辩证逻辑完全吻合。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践逻辑：</strong></p>
+            <p><strong>"朴素→信任→大顺"的因果链：</strong>本章的实践逻辑可以表述为：减少机巧（将以愚之）→ 增强社会信任（国之福）→
+                系统运行顺畅（大顺）。现代制度经济学也证实了这一逻辑：社会信任度每提高一个标准差，经济增长率提高约0.5个百分点。</p>
+            <p style="margin-top:10px;">
+                <strong>治理复杂度悖论：</strong>为了应对复杂问题而增加的"智慧"（制度、规则、监管），本身会创造新的复杂性和新的"钻空子"机会。这形成了一个恶性循环："以智治国"→ 更多问题 → 更多"智"
+                → 更多问题……打破此循环的方式正是"不以智治国"——简化、信任、还权于自然秩序。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系兼容性：</strong></p>
+            <p><strong>"玄德"在老子德论体系中的位置：</strong>老子的"德"有层次之分：（1）普通之德——有为有得；（2）上德——"上德不德"（第38章），无为而无不为；（3）玄德——"生而不有，为而不恃"（第10章），超越了有为/无为的对立。本章将"玄德"与"与物反"和"大顺"联系起来，表明它是一种超越常规因果逻辑的德性运作。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>《庄子》中的"坐忘"对应：</strong>庄子"堕肢体，黜聪明，离形去知，同于大通"（《大宗师》）——"黜聪明""去知"正是"将以愚之"的个人修行版。"同于大通"则对应"然后乃至大顺"——两者都描述了超越常规认知后达到的更高状态。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>认识论问题：</strong>如果"以智治国"有害，那么老子自己用来论证此命题的"智慧"难道不也是一种"智"吗？这是一个自指性悖论。可能的解消：老子区分了"关于智的智慧"（元认知）和"操作性的巧智"（策略算计）——前者用来消解后者，如同梯子用来爬上去后可以扔掉。
+            </p>
+        </div>
     </div>
 
     <!-- 第五步 -->
     <div class="step-section" id="step5">
         <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"古之善为道者"提醒我们在日常生活中保持对德的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"古之善为道者"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>生活启示：</strong></p>
+            <p>你有没有见过这种人：总是耍小聪明、想占别人便宜——结果最后大家都不跟他玩了？老子说：不耍聪明的人，反而朋友最多、活得最开心。因为大家都信任他。就像班里那个从不说谎、老老实实的同学——虽然看起来不太"聪明"，但其实他是最有福气的人。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>三层意义萃取：</strong></p>
+            <p><strong>哲学层：</strong>"玄德深矣远矣与物反矣"揭示了一个深刻的悖论——最深的智慧看起来像愚拙，最高的德行看起来不像德行，最好的治理看起来像没在治理。表象与本质的颠倒，是整部《道德经》的核心洞见之一。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>方法层：</strong>"稽式"（准则）的内容是"以智/不以智"的区分——在任何决策场景中都可以用这个准则自检：我是在增加系统的机巧复杂度，还是在减少它？前者往往是"贼"，后者往往是"福"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>心态层：</strong>允许自己"不聪明"——不需要在每个场合都展示机智、不需要每次都"赢"。放下对"聪明"的执着，反而获得了更深层的安宁和力量。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三维情境迁移：</strong></p>
+            <p><strong>个人修养：</strong>在社交中减少"表演聪明"的冲动——不为了赢得论辩而辩，不为了显示知识而卖弄。将精力从"如何让别人觉得我聪明"转向"如何真正理解对方"。真诚的"愚"比精巧的"智"更能赢得持久的尊重。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>组织管理：</strong>定期做"规则审计"——有多少规则是"为了防止少数人耍聪明"而制定的？这些规则是否给所有诚实的人增加了不必要的负担？好的管理减少规则而非增加规则——用文化和信任取代监控和惩罚。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>教育理念：</strong>培养"朴实的聪明"而非"机巧的聪明"——教孩子解决真问题，而非教他们如何考试得高分（应试技巧就是"以智"）。鼓励孩子说"不知道"而非编造答案——诚实面对不知道，比装聪明更有价值。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术延伸：</strong></p>
+            <p><strong>博弈论视角：</strong>在重复博弈中，"朴素策略"（如tit-for-tat）往往比"聪明策略"（复杂的条件判断）表现更好——这正是"不以智治国，国之福"的博弈论证明。Axelrod的经典锦标赛证实：简单、透明、合作优先的策略在长期演化中胜出。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>反智主义（Anti-intellectualism）辨析：</strong>需要明确区分老子的"不以智"与现代"反智主义"。反智主义敌视知识和专家；老子批判的是"巧智"（strategic
+                intelligence）——用知识作为操纵工具。老子本人的论证恰恰展现了极高的思辨能力——他反对的不是"知"（认知），而是"智"（算计）。</p>
+            <p style="margin-top:10px;">
+                <strong>福柯的"治理术"对照：</strong>福柯（Foucault）分析了现代社会如何通过越来越精细的知识-权力体系（统计、分类、监控）来治理人口——这正是"以智治国"的极端形式。老子的"不以智治国"可以理解为对这种"治理术"的预见性批判——两千多年前就警告了知识被权力征用后的危险。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <p><strong>🎯 亲子赋能活动：朴实的力量</strong></p>
+            <p><strong>认知活动——"聪明vs.朴实"小辩论：</strong>和孩子讨论两个场景：（1）一个孩子总是耍小聪明逃避做家务，但被发现后再也没人信他了；（2）一个孩子老老实实做完该做的事，虽然看起来"笨"，但大家都信任他。问孩子：哪个更好？为什么？引入老子的话："不以智治国，国之福。"
+            </p>
+            <p style="margin-top:10px;">
+                <strong>体验活动——"简单规则"游戏设计：</strong>全家一起发明一个游戏，但规则不能超过3条。发现：规则越简单，游戏越好玩、越公平。然后试着把规则加到10条——发现变得混乱、无趣、总有人钻空子。体验"以智治国，国之贼"的含义。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>对话活动——"什么时候不耍聪明更好"：</strong>和孩子轮流分享一个"选择朴实而不是耍聪明"的真实经历。比如：考试时选择老实做题而不是抄同学的，虽然分数低了但心里踏实。讨论：朴实有什么好处？为什么老子说这是"大顺"？
+            </p>
+        </div>
     </div>
 
-    <!-- 上下章导航 -->
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「古之善为道者，非以明民，将以愚之。」</div>
+        <div class="quote-interp">——古代善于行道的人，不是教人民巧诈精明，而是引导人民回归淳朴敦厚。</div>
+    </div>
+
     <div class="nav-chapters">
         <a href="ch64.html">← 第64章</a>
         <a href="ch66.html">第66章 →</a>
     </div>
 
-    <div class="site-footer">
-        道德经亲子体验营 · 第65章五步读解 · 最后更新：2026-05-05
-    </div>
-    <script src="../data/search-data.js"></script>
-    <script src="../js/search.js"></script>
-    <script src="../js/back-to-top.js"></script>
+    <footer style="text-align:center;padding:20px;color:#999;font-size:0.85em;">
+        <p>道德经亲子体验营 · 五步读解 · 第65章</p>
+    </footer>
 
-    <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
+    <div class="site-footer">
+        道德经亲子体验营 · 第65章五步读解 · 最后更新：2026-05-09
+    </div>
+
     <script src="/js/huihui-chat.js"></script>
+    <script src="../js/level-filter.js"></script>
 </body>
+
 </html>

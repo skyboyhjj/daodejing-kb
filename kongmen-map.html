@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>孔门地图 - 袭明每日镜鉴 · 慧惠数字伴侣</title>
+
+    <!-- 主站样式 -->
+    <link rel="stylesheet" href="css/daodejing-styles.css">
+    <!-- 孔门地图专属样式 -->
+    <link rel="stylesheet" href="css/kongmen-map.css">
+
+    <!-- 预加载字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* 页面级微调：确保 body 在孔门地图页面无多余边距 */
+        body.kongmen-page {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 隐藏主站导航中不适用的元素 */
+        body.kongmen-page>.chapter-nav,
+        body.kongmen-page>.daodejing-search {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="kongmen-page">
+
+    <!-- ============================================================
+       顶栏 (V2 §三·3.1)
+       ============================================================ -->
+    <header class="kongmen-topbar">
+        <a href="index.html" class="kongmen-back">← 袭明镜鉴</a>
+        <span class="kongmen-huihui-status">慧惠在</span>
+    </header>
+
+    <!-- ============================================================
+       慧惠问候区 (V2 §三·3.1 · 占屏幕 12-15%)
+       ============================================================ -->
+    <section class="kongmen-greeting" id="kongmen-greeting">
+        <div class="kongmen-huihui-avatar" aria-label="慧惠">🌿</div>
+        <div>
+            <p class="kongmen-greeting-text" id="greeting-text">
+                早安。这儿有十位先哲，孔子门下最好的弟子。不急。哪天想认识谁，告诉我。
+            </p>
+            <p class="kongmen-recommendation" id="recommendation-text"></p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       树图区域 (V2 §三·3.1 · 占屏幕 55-60%)
+       ============================================================ -->
+    <section class="kongmen-tree-container" id="kongmen-tree">
+        <svg id="tree-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- 由 JS 动态渲染 -->
+        </svg>
+    </section>
+
+    <!-- ============================================================
+       浮层卡片 (V2 §三·3.1 · 底部滑入)
+       ============================================================ -->
+    <div class="kongmen-card-overlay" id="card-overlay" style="display:none;">
+        <div class="kongmen-card" id="card-content">
+            <!-- 由 JS 动态填充 -->
+        </div>
+    </div>
+
+    <!-- ============================================================
+       慧惠对话式确认弹窗 (V2 §二·2.4)
+       ============================================================ -->
+    <div class="kongmen-dialog-overlay" id="dialog-overlay">
+        <div class="kongmen-dialog" id="dialog-content">
+            <!-- 由 JS 动态填充 -->
+        </div>
+    </div>
+
+    <!-- ============================================================
+       轻声推荐 Toast (V2 §五·5.4)
+       ============================================================ -->
+    <div class="kongmen-toast" id="kongmen-toast"></div>
+
+    <!-- ============================================================
+       脚本 (遵循主站加载顺序)
+       ============================================================ -->
+    <script src="js/kongmen-map.js"></script>
+
+    <!-- 慧惠聊天组件 (与主站一致) -->
+    <link rel="stylesheet" href="css/huihui-chat.css">
+    <script src="js/huihui-chat.js"></script>
+
+    <!-- 回到顶部 -->
+    <script src="js/back-to-top.js"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🤝 第33章 · 知人者智
-        <span class="subtitle">上经 · 处世论 · 五步读解</span>
+        🪞 第33章 · 知人者智
+        <span class="subtitle">上经 · 修身论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章只有短短四句话，却是道德经中最有名的格言之一！老子说了四组对比：了解别人vs了解自己、打败别人vs打败自己、满足vs坚持、活着vs不朽。每一组都是"向内"比"向外"更难、更了不起。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,62 +392,355 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         知人者智，自知者明。<br>
         胜人者有力，自胜者强。<br>
         知足者富，强行者有志。<br>
-        不失其所者久，死而不亡者寿。<br>
-        
+        不失其所者久，死而不亡者寿。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag zhizu">知足</span>
-        <span class="concept-tag de">修身</span>
+        <span class="concept-tag de">德</span>
+        <span class="concept-tag dao">道</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>自知者明 · 自胜者强 · 知足者富 · 死而不亡者寿</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于处世论范畴，位于上经。核心内容为"知人者智"，展现了老子关于处世论的深层思考。全章围绕知足的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>能看透别人的人，算聪明（智）；能看清自己的人，才是真正的明白（明）——因为看清自己比看清别人难多了！</p>
+            <p>能打败别人的人，算有力量；能战胜自己（坏习惯/懒惰/贪心）的人，才是真正的强者——因为最难战胜的敌人就是自己！</p>
+            <p>知道满足的人，就是富有的人（因为他不觉得缺什么）；坚持努力的人，有志气（不轻言放弃）。</p>
+            <p>不离开自己该在的位置（不忘初心）的人能长久；死了但精神/影响还在的人，才是真正的长寿（虽死犹生）。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>知人者智，自知者明</strong>——了解他人的叫做"智"（聪颖），了解自己的叫做"明"（通透）。"智"=外向的认知能力；"明"=内在的自我觉照。明>智，因为"明"需要穿透自我的幻象和自欺。
+                </li>
+                <li><strong>胜人者有力，自胜者强</strong>——战胜他人的叫做"有力"，战胜自己的叫做"强"。"有力"=拥有力量（外在的）；"强"=真正的强大（内在的）。外在的力量可以被超越，内在的强大才是持久的。
+                </li>
+                <li><strong>知足者富，强行者有志</strong>——知道满足的人就是富有的（因为不感到匮乏），坚持力行的人有志气。"富"不是物质上拥有多少，而是心理上不感到缺乏。"强行"=勉力而行/坚持不懈；"有志"=有意志力/志向坚定。
+                </li>
+                <li><strong>不失其所者久，死而不亡者寿</strong>——不失去自己本分/根基的人能够长久，身体死了但（道德/精神/影响）不消亡的人才是真正的长寿。"所"=处所/本分/位置；"亡"=消失/遗忘。"死而不亡"≠肉体不死，=精神永存/道德流传。
+                </li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>四组对比排列，每组都是"外在vs内在"的对照，且"内在"都高于"外在"。结构为：认知（智→明）→ 力量（有力→强）→
+                财富（富）/意志（有志）→ 持久（久）/永恒（寿）。从低到高、从世俗到超越。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>自然界的"自知"——树木不会试图变成石头，鱼不会试图飞翔。每种存在都"知道"自己的本性并安住其中（不失其所）。自然界没有"比较"——只有人类才焦虑于"别人比我好"。
+            </p>
+            <p><strong>人道维度：</strong>四组对比构成了一个完整的修身路径图：(1)先自知（明白自己是谁）→ (2)再自胜（克服内在弱点）→ (3)知足（不再被欲望驱动）→ (4)不失其所（安住于道）→
+                (5)死而不亡（超越个体存在）。</p>
+            <p><strong>天人合一：</strong>"知足者富"是老子对"财富"的重新定义——真正的富有不在于拥有多少，而在于感到满足。这打破了"更多=更好"的线性思维，回归到"够=好"的自然状态。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"知足者富，强行者有志"</li>
+                <li><strong>帛书甲本：</strong>"知足者富也，强行者有志也"（多"也"字，语气更确定）</li>
+                <li><strong>帛书乙本：</strong>同甲本</li>
+                <li><strong>关键问题：</strong>"强行者有志"在前三组"外→内"递进逻辑中显得突兀——前三组都是"内在>外在"，但"强行有志"似乎是肯定"外在的努力"。这引发了句序和逻辑的争论。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"明"vs"智"</strong>：在先秦语境中，"明"高于"智"。"智"是辨别外物的能力（=聪明），"明"是洞察本质/自性的能力（=智慧）。"明"在道德经中多次出现（第16章"知常曰明"、第27章"是谓袭明"、第52章"见小曰明"），都指向内在的根本性认知。
+                </li>
+                <li><strong>"死而不亡"</strong>：不是道教"长生不死"的肉体长存，而是精神/道德/影响的不朽。这是道德经罕见的涉及死亡的段落，且其态度是坦然的——不追求肉体不死，追求精神不亡。与庄子"生死如昼夜"的坦然一脉相承。
+                </li>
+                <li><strong>"不失其所"</strong>："所"=位置/根据地。有两解：(1)不失去自己的本分/角色（安于其位）；(2)不失去道/根基（不离道）。两者在深层逻辑上统一——安于其位的根基就是道。
+                </li>
+            </ul>
+            <p style="margin-top:12px;"><strong>与苏格拉底的比较：</strong>"自知者明"与苏格拉底"认识你自己"（gnothi
+                seauton）高度对应。但两者的"自知"内涵不同：苏格拉底的自知侧重认知层面（知道自己的无知），老子的自知侧重存在层面（明了自己的本性/位置）。一个是认识论的，一个是存在论的。</p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"处世论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了知足的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：知足、修身，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>前面好几章都在讲"治国"和"用兵"的大道理，这一章突然回到个人修养。为什么？因为老子认为：如果你连自己都不了解、连自己都管不住（自知/自胜），怎么可能管好国家或团队？所以先修身，再治国——这是老子的核心逻辑。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第33章位于第29-32章的"治国/兵论"板块之后，从宏观政治回归微观修身。这不是跑题，而是老子的典型手法——政治章节之后往往紧跟修身章节，强调"治国的基础是治己"。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第16章"知常曰明"——"明"的来源是认识到永恒的规律（常）</li>
+                <li>第44章"知足不辱知止不殆"——知足/知止主题的扩展</li>
+                <li>第46章"祸莫大于不知足"——不知足的危害</li>
+                <li>第24章"自见者不明自是者不彰"——缺乏自知的表现</li>
+                <li>第10章"专气致柔能如婴儿乎"——自胜的修养方法</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>四组对比的递进关系：</strong>智→明（认知升级）；有力→强（力量升级）；知足→有志（心态确定）；久→寿（存在升级=从有限到永恒）。每一组都从世俗评价（智/有力/富/久）上升到道的评价（明/强/有志/寿）。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经"修身论"的核心格言，提供了四个维度的自我评估标准：认知（自知？）、力量（自胜？）、心态（知足？）、根基（不失所？）。它将修身目标从世俗的"比别人强"转向超越的"比自己强"。
+            </p>
+            <p><strong>"自知者明"的领导力应用：</strong>领导力的第一步不是了解团队，而是了解自己——自己的优势/盲点/触发点/价值观。没有自知的领导者会把个人情绪当作团队问题、把个人偏好当作组织方向。
+            </p>
+            <p><strong>"知足者富"的现代困境：</strong>消费社会的核心驱动力就是"不知足"——广告的本质是创造不满足感。"知足"不是停止进步，而是区分"真需要"和"被制造的需要"。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>本章是道德经中最具"格言体"特征的章节——四组对仗工整、韵律感强（智/明、力/强、富/志、久/寿）。这种形式暗示可能来自更古老的口传智慧传统，被老子（或编者）收入并赋予道家哲学的语境。
+            </p>
+            <p><em>中观层：</em>"自知者明"中的"明"在道德经体系中具有特殊地位——它是修道的标志性成果。第16章"知常曰明"定义了"明"的来源（知道永恒规律），本章定义了"明"的方向（自我认知），第52章"见小曰明"定义了"明"的特征（洞察微小）。三处合起来构成"明"的完整定义：知常+自知+见小=明。
+            </p>
+            <p><em>宏观层：</em>"死而不亡者寿"涉及先秦的"不朽"观念。儒家有"三不朽"（立德/立功/立言），道家此处的"不亡"侧重于"德"的流传——通过合道的生活方式留下永恒的影响。这与道教后来发展出的肉体长生追求截然不同——老子的"不亡"是精神性的，不是生物性的。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"知人者智"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>最有趣的争论是："强行者有志"这句跟其他三句好像风格不一样。其他三句都是说"向内比向外好"（自知>知人，自胜>胜人，知足>不知足），但"强行有志"好像是在说"向外努力也很好"？学者们对此有不同理解——也许老子在这里想说：既要内在修养（知足），也要外在坚持（强行），两者并不矛盾。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："强行者有志"的定位</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>肯定说</strong>（主流）：老子同时肯定"知足"和"强行"——"知足"是内心富足不贪婪，"强行"是行动上不放弃不懈怠。两者不矛盾。</li>
+                <li><strong>对比说</strong>：与"知足者富"对举——"知足"是内在的满足（静），"强行"是外在的坚持（动）。两者互补：心态知足但行动不松懈。</li>
+                <li><strong>贬义说</strong>（少数）："强行"=勉强行事=不自然，与道德经"自然"思想矛盾——但此解释在上下文中不太通顺。</li>
+            </ul>
+            <p><strong>争议点二："死而不亡者寿"的理解</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>精神不朽说</strong>（主流）：死=肉体死亡，不亡=精神/影响/道德永存。"寿"不是生物寿命长，而是影响力持久。</li>
+                <li><strong>道体不灭说</strong>：与道合一者，其"道性"部分不会随肉体消亡——因为道本身是永恒的。</li>
+                <li><strong>后世影响说</strong>：通过行为/著作/影响留下遗产——类似儒家"三不朽"。</li>
+            </ul>
+            <p><strong>争议点三：本章是"向内"还是"内外并重"？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>纯内向说</strong>：全章都在说"内在>外在"——智→明、有力→强、知足=内在富、不失所=守内、死而不亡=精神超越</li>
+                <li><strong>内外平衡说</strong>："强行者有志"的存在打破了纯内向的解读——老子也肯定外在的坚持和努力。道家不是消极避世。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"自知"在现代心理学中：</strong></p>
+            <p>自我认知（self-awareness）在现代领导力研究中被视为核心能力：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>Daniel Goleman的情商模型：自我认知是情商五要素之首</li>
+                <li>Johari Window（约哈里窗）：区分"自己知道+别人知道""自己不知道+别人知道"等四个象限</li>
+                <li>盲点效应：人对自己的缺点有系统性的忽视（=不自知）</li>
+            </ul>
+            <p style="margin-top:12px;">老子的"自知者明"在2500年前就指出了核心问题：认知他人容易（信息在外），认知自己困难（自我欺骗/盲点/防御机制）。现代心理学用了大量研究来验证这一古老洞见。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"智"与"明"的认识论差异：</strong></p>
+            <p>在先秦哲学语境中，"智"和"明"代表两种不同的认知方式：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"智"</strong>（zhì）：分析性/外向性认知。通过观察、推理、比较来认识对象。属于主客二分的认知模式。</li>
+                <li><strong>"明"</strong>（míng）：整体性/内向性认知。通过直觉、体悟、反观来认识自身/本源。属于主客合一的认知模式。</li>
+            </ul>
+            <p>这一区分与当代认识论中"命题知识"（knowing that）和"亲知"（knowing by
+                acquaintance）的区分有结构同构性。"知人"是命题知识（关于他人的信息），"自知"是亲知（对自己的直接体验和洞察）。</p>
+            <p style="margin-top:12px;">
+                <strong>"死而不亡"与海德格尔"向死而生"：</strong>海德格尔认为面对死亡（Being-toward-death）是人获得本真存在的前提。老子的"死而不亡者寿"暗含类似逻辑——正是因为接受了死的必然性（死），才能超越对死的恐惧而追求"不亡"的永恒价值。不执着于肉体存续，才能真正活出超越肉体的存在。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：知足→修身</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑验证与跨章互文</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>验证：第24章说"自见者不明"（只看自己好的一面的人不算"明"），本章说"自知者明"——方向一致！第44章说"知足不辱"，本章说"知足者富"——一致！第16章说"知常曰明"，本章说"自知者明"——都是关于"明"的。老子的修身哲学从头到尾都在强调：向内比向外重要。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>内在逻辑验证：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>命题</th>
+                    <th>本章表述</th>
+                    <th>互文章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>自知=明</td>
+                    <td>自知者明</td>
+                    <td>第24章"自见者不明"</td>
+                    <td>完全一致（反面） ✓</td>
+                </tr>
+                <tr>
+                    <td>知足=富</td>
+                    <td>知足者富</td>
+                    <td>第44章"知足不辱"、第46章</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>自胜=强</td>
+                    <td>自胜者强</td>
+                    <td>第76章"柔弱者生之徒"</td>
+                    <td>逻辑一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>不失所=久</td>
+                    <td>不失其所者久</td>
+                    <td>第16章"归根曰静"</td>
+                    <td>方向一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>精神不朽</td>
+                    <td>死而不亡者寿</td>
+                    <td>第7章"以其无私故能成其私"</td>
+                    <td>逻辑一致 ✓</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;"><strong>逻辑链：</strong>知常（第16章）→ 自知（明/本章）→ 自胜（克服私欲）→ 知足（不贪）→ 不失所（安住于道）→
+                死而不亡（超越个体）。这是一条从认知到修养到超越的完整修身路径。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>跨域验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>心理学：</strong>"自知者明"——Dunning-Kruger效应证明：能力越低的人越高估自己（不自知=不明）。真正的专家反而更谦虚（自知=明）。✓</li>
+                <li><strong>体育：</strong>"自胜者强"——顶级运动员最大的对手不是别人而是自己的伤痛、疲惫、心理瓶颈。突破PB（personal best）比赢比赛更有成就感。✓</li>
+                <li><strong>财务：</strong>"知足者富"——行为金融学证明：主观幸福感与收入的关系在基本需求满足后就趋于平坦。年薪从50万到500万对幸福感的提升远小于从5万到50万。知足确实≈富。✓
+                </li>
+                <li><strong>历史：</strong>"死而不亡者寿"——孔子、老子、释迦牟尼肉体早已消亡，但影响延续2500年。他们是真正的"寿"。✓</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系内验证："明"概念的统一</strong></p>
+            <p>"明"在道德经中是核心修养概念，多次出现：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第16章"知常曰明"——明的来源=认知恒常规律</li>
+                <li>第27章"是谓袭明"——明的运用=含蓄内敛</li>
+                <li>第33章"自知者明"——明的方向=自我认知</li>
+                <li>第52章"见小曰明"——明的特征=洞察微细</li>
+                <li>第55章"知和曰常知常曰明"——明的深层=知和谐/恒常</li>
+            </ul>
+            <p>综合以上，"明"=知常+自知+见小+袭（内敛）=一种全面的、内向的、觉照性的认知能力。它不是分析（智），而是直观（照）——如镜映照一切（包括自身），不取不舍。</p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"知人者智"提醒我们在日常生活中保持对知足的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"知人者智"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与生活实践</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>今天就能用的道理：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>不要只看别人的优缺点，每天也想想自己做得好和不好的地方（自知者明）</li>
+                <li>真正的强大不是打赢谁，而是管住自己——比如管住自己不看手机、管住自己按时睡觉（自胜者强）</li>
+                <li>不要总觉得自己缺什么（新玩具/新衣服/更多零花钱），想想自己已经有什么（知足者富）</li>
+                <li>做一个就算离开了别人也会记得你的好的人（死而不亡者寿）</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>日常赋能：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"自知"练习：</strong>每周花10分钟诚实问自己：这周我的盲点是什么？我避免面对什么？我对自己有什么自欺？——这比分析别人的问题有价值得多。</li>
+                <li><strong>"自胜"挑战：</strong>选择一个自己知道应该改但一直没改的习惯（拖延/暴食/刷手机），每天只战胜它一次——这就是"自胜者强"的具体实践。</li>
+                <li><strong>"知足者富"的感恩清单：</strong>每晚写三样今天让你感到满足的事物——科学研究证明这种"感恩练习"能显著提升幸福感。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道转化：</strong>自然界的每种生物都"不失其所"——鱼在水中、鸟在天上、根在地下。失所（离开自己该在的生态位）的生物会迅速衰亡。对人而言，"不失其所"=不离开自己的核心价值和使命。
+            </p>
+            <p><strong>人道转化：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>领导力：</strong>"自知者明"=领导者的第一修炼。360度反馈、教练对话、正念冥想都是促进"自知"的现代工具</li>
+                <li><strong>企业文化：</strong>"知足者富"不是说不追求增长，而是不被"永远不够"的焦虑驱动——区分"健康增长"和"焦虑驱动的扩张"</li>
+                <li><strong>职业发展：</strong>"不失其所者久"=找到并坚守自己的核心能力区（circle of competence）——不被热点诱惑离开自己的优势领域</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>哲学转化：</strong></p>
+            <p>"自知者明"作为修养功夫论：在中国哲学传统中，"自知"不是静态的自我认知（know yourself），而是动态的自我觉照（self-awareness as ongoing
+                practice）。它更接近佛教的"正念"（mindfulness/sati）——对自己当下状态的持续觉察。不是"我知道我是什么样的人"（一劳永逸的自我定义），而是"我觉察到自己此刻在做什么/想什么/感受什么"（持续的反观）。
+            </p>
+            <p style="margin-top:12px;">
+                <strong>"死而不亡"的存在论意义：</strong>本句暗示了老子对"个体"的相对化——"死"是个体层面的终结，"不亡"是超个体层面的延续。这意味着真正有价值的不是个体性的存在（必死），而是超个体性的存在（道/德/影响）。个体是道的临时载体，载体消亡但道延续=死而不亡。这是中国哲学中"个体融入整体"思想的早期表达。
+            </p>
+        </div>
+
+        <div class="level-block level-always">
+            <h4>👨‍👩‍👧 亲子共修活动</h4>
+            <p><strong>活动一："自知"镜像游戏</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>家人轮流说：你觉得自己的一个优点和一个缺点是什么？</li>
+                <li>然后其他家人补充：我看到的你的优点和需要改进的地方</li>
+                <li>对比："自己认为的自己"和"别人眼中的自己"有什么不同？哪个更准确？</li>
+                <li>体验：自知需要勇气（敢面对缺点）和他人的帮助（盲点需要别人指出）</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动二："自胜"打卡挑战</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>每个家庭成员选一个自己想"战胜"的小习惯（早起/不拖延/少吃糖...）</li>
+                <li>做一个家庭打卡表，每天成功"自胜"就画一个星</li>
+                <li>一周后总结：哪天最难？是什么帮助你成功的？失败了怎么重新开始？</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动三："知足感恩"晚餐仪式</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>每天晚餐前，每个人说一样今天让自己感到"知足"/"富有"的事（可以很小：阳光/一杯水/朋友的微笑）</li>
+                <li>坚持一周后讨论：这个习惯有没有让你感觉更"富有"？</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">知人者智，自知者明；胜人者有力，自胜者强</div>
+        <div class="quote-interp">了解别人是聪明，了解自己才是智慧；打败别人是力量，战胜自己才是真强</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -187,14 +750,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第33章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第33章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

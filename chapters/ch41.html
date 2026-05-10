@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,14 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +88,154 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +243,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🤝 第41章 · 上士闻道
-        <span class="subtitle">下经 · 下经处世 · 五步读解</span>
+        🌟 第41章 · 上士闻道
+        <span class="subtitle">下经 · 道论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章超级有意思——老子说真正厉害的道理，普通人听了会大笑，觉得"这什么玩意儿"。为什么呢？因为道的特点恰恰跟我们平时的想法反着来：最亮的看起来暗，最好听的像没有声音，最大的方形反而没有棱角。准备好被"反转"了吗？
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,79 +276,273 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
-    <!-- 原文 -->
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn active" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button data-level="all" class="level-btn active">📋 全部</button>
+    </div>
+
     <div class="original-text">
-        上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。<br>
-        不笑不足以为道。<br>
-        故建言有之：明道若昧，进道若退，夷道若颣，上德若谷，大白若辱，广德若不足，建德若偷，质真若渝，大方无隅，大器晚成，大音希声，大象无形，道隐无名。<br>
-        夫唯道，善贷且成。<br>
-        
+        上士闻道，勤而行之；<br>
+        中士闻道，若存若亡；<br>
+        下士闻道，大笑之。不笑不足以为道。<br>
+        故建言有之：<br>
+        明道若昧，进道若退，夷道若颣，<br>
+        上德若谷，广德若不足，建德若偷，质真若渝，<br>
+        大白若辱，大方无隅，大器晚成，<br>
+        大音希声，大象无形，道隐无名。<br>
+        夫唯道，善贷且成。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag dao">道</span>
         <span class="concept-tag de">德</span>
+        <span class="concept-tag fan">反</span>
+        <span class="concept-tag xuan">玄</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- 第一步：文本细读 -->
     <div class="step-section" id="step1">
         <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>三士反应 · 建言有之·明道若昧·进道若退 · 大象无形 · 道隐无名</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于下经处世范畴，位于下经。核心内容为"上士闻道"，展现了老子关于下经处世的深层思考。全章围绕道的概念展开，层层递进。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p><strong>简单来说：</strong>聪明人听到道，马上努力去做；普通人听到道，半信半疑；笨人听到道，哈哈大笑。如果没人笑，那就说明这个道理不够深刻！</p>
+            <p style="margin-top:10px;">道的特点就是反着来的：最光明的看起来暗淡，前进的看起来在后退，最大的方形没有角，最大的声音听不到，最大的形象看不见。</p>
+            <p style="margin-top:10px;">
+                <strong>打个比方：</strong>就像一个人很厉害但从不炫耀，别人看了觉得"他也没什么嘛"——其实是太高了、太深了，表面看起来反而平淡。真正的好东西往往不张扬。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心命题：</strong>三等闻道 + "建言"系列悖论格言 + 道隐无名</p>
+            <p style="margin-top:10px;"><strong>结构分析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>第一段（三等闻道）：</strong>"上士"至"不笑不足以为道"——人对道的接受度与其认知层次成正比。"下士大笑"恰恰反证道的深邃——若浅薄之辈也能轻易认同，那就不是真正的道。
+                </li>
+                <li><strong>第二段（建言系列）：</strong>"故建言有之"引出一系列悖论式格言，说明道/德的特征都是"看起来像它的反面"：
+                    <ul style="margin-top:5px;">
+                        <li>明道若昧——光明之道看似晦暗</li>
+                        <li>进道若退——前进之道看似后退</li>
+                        <li>夷道若颣——平坦之道看似崎岖</li>
+                        <li>上德若谷——最高的德像山谷（空虚）</li>
+                        <li>大白若辱——极白看似污浊</li>
+                        <li>大方无隅——极大的方形没有角落</li>
+                        <li>大器晚成——伟大的器物最晚完成</li>
+                        <li>大音希声——最大的声音几乎无声</li>
+                        <li>大象无形——最大的形象没有形状</li>
+                    </ul>
+                </li>
+                <li><strong>第三段（总结）：</strong>"道隐无名"+"善贷且成"——道因为隐而无名，所以不被人理解（下士大笑）；但道善于给予万物并成就万物。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"大音希声"的管理学意涵：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>领导力：</strong>最有影响力的领导者往往不是声音最大的。"大音希声"式的领导——通过榜样、文化、制度来影响人，比命令和训话更深远。</li>
+                <li><strong>产品设计：</strong>"大象无形"——最好的设计让你感觉不到设计的存在。苹果的交互设计追求的正是这种"无形"的自然感。</li>
+                <li><strong>教育：</strong>"大器晚成"提醒我们不要急于给孩子"贴标签"。有些孩子的才华需要更长的时间来显现。爱因斯坦4岁才会说话，牛顿在学校成绩平平。</li>
+            </ul>
+            <p style="margin-top:10px;"><strong>"下士大笑"的现代启示：</strong>真正有价值的想法最初往往被嘲笑。如果你的想法从来没人质疑，也许它还不够创新。</p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"大器晚成"——通行本标准。</li>
+                <li><strong>帛书甲乙本：</strong>"大器免成"——"免"通"晚"？或训为"不"？若为"大器不成"（伟大的器物不刻意造就），则意义大异，更接近"无为"思想。</li>
+                <li><strong>郭店楚简：</strong>"大器曼成"——"曼"可训为"晚"，支持通行本；也可训为"广大"，则意为"大器广大地成就"。</li>
+                <li><strong>"建言"</strong>：即"立言"。"建言有之"意为"古人立下格言说"，表明以下内容是老子引用前人（或假托前人）的话。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>"大器晚/免成"争议：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>若取"晚成"：伟大事物需要长时间磨练——鼓励耐心。</li>
+                <li>若取"免成/不成"：最伟大的"器"根本不是人为"成就"的，而是自然生成的——更符合无为思想。</li>
+                <li>从上下文看，其他格言都是"X若非X"的悖论结构。"大器晚成"略显格格不入（没有悖论性）；"大器免成"（大器不是造成的）则与"大音希声""大象无形"更一致。</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- 第二步：语境建构 -->
     <div class="step-section" id="step2">
         <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"下经处世"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了道的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：道、德，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>这一章在道德经里的位置很重要——它解释了为什么道这么好的东西却不被大多数人理解。因为道的特点恰恰是"反着来"的，所以只有真正用心的人才能"听懂"。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>结构定位：</strong>本章承接40章"反者道之动"，用具体格言展示"反"如何体现在道与德的各个层面。如果40章是"总纲"，41章就是"展开论证"。</p>
+            <p style="margin-top:10px;"><strong>概念网络：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>与第40章（反者道之动）：40章言"反"的原则→41章以"明若昧""进若退"具体展示</li>
+                <li>与第2章（有无相生）：2章"有无""难易""长短"对立互成→41章扩展到"道"与"德"层面的悖论</li>
+                <li>与第45章（大成若缺）：45章"大成若缺""大巧若拙"与本章"大音希声"形成系列</li>
+                <li>与第70章（吾言甚易知）：70章"知我者希，则我者贵"呼应本章"下士大笑"</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>认知层次模型：</strong>"三等闻道"构成了一个认知阶梯——理解深奥智慧需要准备度（readiness）。在教育中，如果学生"大笑"一个道理，不一定是道理错了，可能是学生还没准备好。教师的任务不是简化道理（降格），而是提升学生的"闻道能力"。
+            </p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>思想史定位：</strong>"建言有之"这一引用格式表明此处格言可能有更古老的来源。有学者认为这些悖论式格言属于先秦民间智慧传统（类似箴言集），被老子编入道德经以论证"反者道之动"。本章的文学性在道德经中独树一帜，排比结构显示出强烈的口诵文学特征。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- 第三步：争议辨析 -->
     <div class="step-section" id="step3">
         <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"上士闻道"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>学者们争论最多的是"大器晚成"这句话——有的古代版本写的是"大器不成"。如果是"不成"，意思就变成了"真正伟大的东西不是刻意造出来的"。两种说法都有道理。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议："大器晚成"还是"大器免成"？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"晚成"（通行本）：</strong>伟大的才能/事业需要长时间积淀。鼓励耐心与厚积薄发。</li>
+                <li><strong>"免成"（帛书本）：</strong>真正伟大的东西根本不是"制造"出来的。与"大音希声""大象无形"的逻辑更一致——大到极致就超越了那个范畴本身。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议二："上士""中士""下士"是固定身份还是流动状态？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>固定说：</strong>人天生有认知资质的高低，闻道反应是先天禀赋的反映。</li>
+                <li><strong>流动说：</strong>"上中下"是修养阶段而非先天等级。同一个人可以从"下士"成长为"上士"。此解更符合教育精神。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>取"流动说"的实践意义更大——每个人都曾是某些智慧面前的"下士"。关键是：被嘲笑的东西不一定是错的，可能只是你还没有理解。保持开放心态，从"大笑"到"若存若亡"再到"勤行之"，就是一段认知升级之旅。</p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"颣"字考：</strong>"夷道若颣"之"颣"，王弼本作"颣"（丝结不平之义），帛书作"类"。"夷道若颣"意为平坦之道看似崎岖不平。另有学者读为"夷道若费"（通行本异体），训为"平坦之道看似废弃"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"建德若偷"：</strong>"偷"训为苟且、不认真。"建德若偷"意为建立德行的人看起来好像漫不经心——因为真正的德行是自然而然的，不刻意、不做作。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- 第四步：逻辑验证 -->
     <div class="step-section" id="step4">
         <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：道→德</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>这一章说"好东西看起来像反面"的道理，和道德经其他很多章节一模一样——第2章说"美和丑是相对的"，第45章说"最完美的看起来有缺陷"，第78章说"最柔软的水胜过最坚硬的东西"。整本书都在讲这个"反着来"的大道理。
+            </p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>呼应章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>大音希声</td>
+                    <td>第2章"音声相和"</td>
+                    <td>一致——声音的对立统一</td>
+                </tr>
+                <tr>
+                    <td>大白若辱</td>
+                    <td>第28章"知其白守其黑"</td>
+                    <td>一致——白与黑的辩证</td>
+                </tr>
+                <tr>
+                    <td>上德若谷</td>
+                    <td>第15章"旷兮其若谷"</td>
+                    <td>一致——"谷"作为包容象征</td>
+                </tr>
+                <tr>
+                    <td>大方无隅</td>
+                    <td>第58章"方而不割"</td>
+                    <td>一致——超越方圆的辩证</td>
+                </tr>
+                <tr>
+                    <td>道隐无名</td>
+                    <td>第1章"无名天地之始"</td>
+                    <td>一致——道以"无名"为本质</td>
+                </tr>
+            </table>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>系统一致性：</strong>本章的12条格言全部是40章"反者道之动"的具体展开。逻辑链：道的本质是"反"→道/德的表现与常识相反→只有"上士"能看穿表象→"下士"被表象迷惑故大笑。整章逻辑自洽。
+            </p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>内部验证：</strong>"善贷且成"——道善于给予（贷）万物并成就（成）万物——与第34章"衣养万物而不为主"、第51章"道生之德畜之"完全一致，确认道的"善贷"本质在道德经体系中有稳固地位。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- 第五步：意义转化 -->
     <div class="step-section" id="step5">
         <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"上士闻道"提醒我们在日常生活中保持对道的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"上士闻道"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>历史义：</strong>老子时代，"强""显""快"被视为正面价值。本章颠覆了这套价值观——真正的道恰恰是"弱""隐""慢"的。这是对当时政治文化（争霸、炫耀、急功近利）的深刻批判。
+                </li>
+                <li><strong>普遍义：</strong>"表象与本质的不一致"是一切深度认知的起点。科学发现（地球不是平的、时间不是绝对的）、心理洞察（越自信的人越不需要证明自己）都体现了"明道若昧"的真理。
+                </li>
+                <li><strong>现代义：</strong>在信息爆炸时代，喧嚣的往往浅薄，沉默的可能深邃。"大音希声"是对流量文化、标题党的古老预言和解毒剂。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>个人修养：</strong>"建德若偷"——真正在修养品德的人不会到处宣扬自己在修养品德。反思：我是否总需要别人看到我的努力？能否像"大音希声"一样安静地成长？</li>
+                <li><strong>组织管理：</strong>"大器晚成"——不要过早否定"慢热型"人才。很多行业的顶尖人物都经历过漫长的沉寂期。Netflix给创作者宽松deadline，就是对"大器晚成"的信任。
+                </li>
+                <li><strong>教育：</strong>"不笑不足以为道"——如果孩子对某个道理"大笑"或不理解，不代表该放弃教育，而是说明这个道理确实有深度。我们需要耐心等待认知准备度的到来。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层（引发好奇）：</strong>"如果老师说'最大的声音是没有声音'，你是会像'上士'一样认真想想为什么，还是会像'下士'一样哈哈大笑？来，我们一起来找找生活中那些'看起来像反面'的东西吧！"
+            </p>
+            <p style="margin-top:10px;"><strong>🧘
+                    体验层（一起做）：</strong>【"大音希声"实验】找一个很安静的环境（深夜、公园角落），闭上眼睛仔细听。你能听到多少平时听不到的声音？小虫子？风？自己的心跳？讨论：是不是安静的时候反而能"听到"更多？最大的声音果然是"希声"。
+            </p>
+            <p style="margin-top:10px;"><strong>💬 对话层（家庭讨论）：</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>你有没有一开始觉得很傻的道理，后来发现其实很有道理？</li>
+                <li>"大器晚成"——你知道哪些厉害的人小时候并不起眼？这给你什么启发？</li>
+                <li>班上最受欢迎的同学，和最安静但最靠谱的同学，哪个更像"大音希声"？</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- 上下章导航 -->
+    <div class="golden-quote">
+        <div class="quote-text">「大音希声，大象无形」</div>
+        <div class="quote-interp">——真正宏大的力量不需要喧嚣来证明自己</div>
+    </div>
+
     <div class="nav-chapters">
-        <a href="ch40.html">← 第40章</a>
-        <a href="ch42.html">第42章 →</a>
+        <a href="ch40.html">&larr; 第40章</a>
+        <a href="ch42.html">第42章 &rarr;</a>
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第41章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第41章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
-    <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

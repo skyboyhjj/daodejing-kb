@@ -1,0 +1,839 @@
+/* ============================================================
+   孔门地图 (Kongmen Map) - 水墨风格样式
+   设计依据：《孔门地图 V2.0 · 设计方案》
+   风格统一：道德经亲子网站 水墨配色体系
+   ============================================================ */
+
+/* ---- CSS 变量 — 设计依据：《孔门地图 · Qoder执行提示词》+《四科十哲方位五行推演》 ---- */
+:root {
+    --km-primary: #2e5f5f;
+    --km-primary-light: #3a7a6a;
+    --km-gold: #C9A96E;
+    /* 金色：孔子描边 (执行提示词) */
+    --km-gold-light: #d4c9a8;
+    --km-paper: #FAF8F0;
+    /* 宣纸白 (执行提示词) */
+    --km-paper-warm: #fffef5;
+    --km-text: #2B3B3B;
+    /* 墨绿近黑 (执行提示词) */
+    --km-text-light: #555;
+    --km-text-muted: #aab8b0;
+    --km-border: #d4c9a8;
+    --km-border-light: #e8e0d0;
+
+    /* 四科配色 — 依方位五行 (执行提示词色值) */
+    --km-dexing: #4A7C59;
+    /* 东·德行·木·青 */
+    --km-yanyu: #B85450;
+    /* 南·言语·火·赤 */
+    --km-zhengshi: #8B7D6B;
+    /* 西·政事·金·石褐 */
+    --km-wenxue: #3D4F60;
+    /* 北·文学·水·靛灰 */
+    --km-kongzi-gold: #C9A96E;
+    /* 中·孔子·土·金 */
+    --km-bound-glow: rgba(255, 255, 255, 0.15);
+    /* 已绑定微光 (执行提示词) */
+
+    --km-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --km-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* 页面字体 */
+    --km-font: "Noto Serif SC", "Source Han Serif SC", "Microsoft YaHei", "SimHei", serif;
+    --km-font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+/* ---- 页面基础 ---- */
+body.kongmen-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background: var(--km-paper);
+    color: var(--km-text);
+    font-family: var(--km-font);
+    line-height: 1.8;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   顶栏
+   ============================================================ */
+.kongmen-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--km-gold-light);
+    background: var(--km-paper-warm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.kongmen-back {
+    color: var(--km-primary);
+    text-decoration: none;
+    font-size: 0.95em;
+    font-family: var(--km-font-sans);
+    transition: color var(--km-transition);
+    letter-spacing: 0.5px;
+}
+
+.kongmen-back:hover {
+    color: var(--km-gold);
+}
+
+.kongmen-huihui-status {
+    color: var(--km-text-muted);
+    font-size: 0.85em;
+    font-family: var(--km-font-sans);
+    letter-spacing: 1px;
+}
+
+/* ============================================================
+   慧惠问候区 (占屏幕 12-15% · 宪法第六条)
+   ============================================================ */
+.kongmen-greeting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px 18px;
+    text-align: center;
+    min-height: 12vh;
+    position: relative;
+}
+
+.kongmen-huihui-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--km-primary) 0%, var(--km-primary-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+    color: var(--km-paper);
+    box-shadow: 0 2px 12px rgba(46, 95, 95, 0.15);
+    user-select: none;
+}
+
+.kongmen-greeting-text {
+    font-size: 1.05em;
+    color: var(--km-text);
+    line-height: 1.9;
+    max-width: 480px;
+    margin: 0;
+    letter-spacing: 0.5px;
+    transition: opacity 0.4s ease;
+}
+
+.kongmen-recommendation {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: var(--km-text-light);
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 480px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.kongmen-recommendation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   树图容器 (占屏幕 55-60%)
+   ============================================================ */
+.kongmen-tree-container {
+    position: relative;
+    width: 100%;
+    min-height: 55vh;
+    background: var(--km-paper);
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.kongmen-tree-container:active {
+    cursor: grabbing;
+}
+
+.kongmen-tree-container.panning {
+    cursor: grabbing;
+}
+
+#tree-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---- 树图 SVG 元素 ---- */
+.sage-root {
+    cursor: default;
+}
+
+.sage-root circle {
+    fill: var(--km-paper-warm);
+    stroke: var(--km-gold);
+    stroke-width: 2.5;
+    transition: stroke var(--km-transition);
+}
+
+.sage-root text {
+    fill: var(--km-primary);
+    font-family: var(--km-font);
+    font-size: 16px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+}
+
+/* 枝干线 */
+.sage-branch-line {
+    fill: none;
+    stroke-width: 1;
+    stroke-dasharray: 4 3;
+    transition: stroke-opacity var(--km-transition), stroke-width var(--km-transition);
+}
+
+.sage-branch-line.dimmed {
+    stroke-opacity: 0.3;
+}
+
+.sage-branch-line.focused {
+    stroke-width: 2;
+    stroke-opacity: 1;
+    stroke-dasharray: none;
+}
+
+.sage-branch-label {
+    font-family: var(--km-font);
+    font-size: 12px;
+    text-anchor: middle;
+    fill: var(--km-text-light);
+    pointer-events: none;
+    transition: opacity var(--km-transition);
+}
+
+.sage-branch-label.dimmed {
+    opacity: 0.3;
+}
+
+/* 叶片 (叶节点) */
+.sage-leaf-group {
+    cursor: pointer;
+    transition: transform var(--km-transition);
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.sage-leaf-group:hover {
+    transform: scale(1.05);
+}
+
+.sage-leaf-group:hover .sage-leaf-circle {
+    fill-opacity: 0.9;
+}
+
+.sage-leaf-group.bound .sage-leaf-circle {
+    fill-opacity: 0.6;
+    stroke: var(--km-gold);
+    stroke-width: 2;
+}
+
+.sage-leaf-group.glow .sage-leaf-circle {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+.sage-leaf-circle {
+    fill-opacity: 0.75;
+    stroke-width: 1.5;
+    transition: all var(--km-transition);
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+/* 四科叶片颜色 */
+.sage-leaf-circle.dexing {
+    fill: var(--km-dexing);
+    stroke: var(--km-dexing);
+}
+
+.sage-leaf-circle.yanyu {
+    fill: var(--km-yanyu);
+    stroke: var(--km-yanyu);
+}
+
+.sage-leaf-circle.zhengshi {
+    fill: var(--km-zhengshi);
+    stroke: var(--km-zhengshi);
+}
+
+.sage-leaf-circle.wenxue {
+    fill: var(--km-wenxue);
+    stroke: var(--km-wenxue);
+}
+
+.sage-leaf-name {
+    font-family: var(--km-font);
+    font-size: 12px;
+    text-anchor: middle;
+    fill: var(--km-text);
+    pointer-events: none;
+    transition: fill var(--km-transition);
+}
+
+.sage-leaf-quality {
+    font-family: var(--km-font);
+    font-size: 9px;
+    text-anchor: middle;
+    fill: var(--km-text-muted);
+    pointer-events: none;
+    transition: fill var(--km-transition);
+}
+
+/* 叶子呼吸动画 */
+@keyframes leaf-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 0.7;
+    }
+}
+
+.sage-leaf-group.breathing .sage-leaf-circle {
+    animation: leaf-breathe 3s ease-in-out infinite;
+}
+
+/* ---- 聚焦一枝动画 (执行提示词: scale1.08/opacity0.35) ---- */
+.sage-branch-group {
+    transition: opacity 0.4s ease, transform 0.4s ease-out;
+    transform-origin: var(--km-svg-cx) var(--km-svg-cy);
+}
+
+.sage-branch-group.dimmed {
+    opacity: 0.35;
+}
+
+.sage-branch-group.focused {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+/* ---- 枝铭 tooltip (300ms延迟浮现) ---- */
+.km-branch-tooltip {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity 0.25s ease 0.3s, transform 0.25s ease 0.3s;
+    background: var(--km-text);
+    color: var(--km-paper);
+    font-family: var(--km-font);
+    font-size: 0.85em;
+    padding: 8px 16px;
+    border-radius: 6px;
+    max-width: 320px;
+    text-align: center;
+    line-height: 1.6;
+    white-space: normal;
+    z-index: 50;
+    letter-spacing: 0.5px;
+}
+
+.km-branch-tooltip.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---- 慧惠低语 bubble ---- */
+.km-branch-whisper {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, 6px);
+    transition: opacity 0.35s ease 0.5s, transform 0.35s ease 0.5s;
+    background: var(--km-paper-warm);
+    border: 1px solid var(--km-gold-light);
+    color: var(--km-text-light);
+    font-family: var(--km-font);
+    font-size: 0.85em;
+    font-style: italic;
+    padding: 8px 16px;
+    border-radius: 10px;
+    max-width: 280px;
+    z-index: 49;
+    line-height: 1.7;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.km-branch-whisper.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---- 缩放状态 ---- */
+.kongmen-tree-container.zooming {
+    cursor: zoom-in;
+}
+
+/* ============================================================
+   浮层卡片
+   ============================================================ */
+.kongmen-card-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.kongmen-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--km-paper-warm);
+    border: 1px solid var(--km-gold-light);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+    padding: 20px 24px 28px;
+    pointer-events: auto;
+    transform: translateY(100%);
+    transition: transform 0.35s var(--km-spring);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.kongmen-card.visible {
+    transform: translateY(0);
+}
+
+.kongmen-card-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--km-border);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+}
+
+.kongmen-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.kongmen-card-name {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--km-primary);
+    letter-spacing: 1px;
+}
+
+.kongmen-card-quality {
+    font-size: 1.1em;
+    color: var(--km-gold);
+    font-weight: 600;
+}
+
+.kongmen-card-info {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.kongmen-card-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.82em;
+    font-family: var(--km-font-sans);
+    background: #f0f5f3;
+    color: var(--km-primary);
+    border: 1px solid var(--km-border-light);
+}
+
+.kongmen-card-tag.axis {
+    background: var(--km-paper);
+    border-color: var(--km-gold-light);
+    color: #7a6e4e;
+}
+
+.kongmen-card-bio {
+    font-size: 0.92em;
+    line-height: 1.8;
+    color: var(--km-text-light);
+    margin-bottom: 14px;
+    padding: 12px 16px;
+    background: #f8f5e8;
+    border-left: 3px solid var(--km-gold-light);
+    border-radius: 4px;
+}
+
+.kongmen-card-insight {
+    font-size: 0.9em;
+    line-height: 1.7;
+    color: var(--km-text);
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: #f0f5f3;
+    border-left: 3px solid var(--km-primary);
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.kongmen-card-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.kongmen-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-family: var(--km-font);
+    cursor: pointer;
+    transition: all var(--km-transition);
+    letter-spacing: 0.5px;
+}
+
+.kongmen-btn-primary {
+    background: linear-gradient(135deg, var(--km-primary) 0%, var(--km-primary-light) 100%);
+    color: var(--km-paper);
+    box-shadow: 0 2px 8px rgba(46, 95, 95, 0.2);
+}
+
+.kongmen-btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(46, 95, 95, 0.3);
+    transform: translateY(-1px);
+}
+
+.kongmen-btn-secondary {
+    background: var(--km-paper);
+    color: var(--km-primary);
+    border: 1px solid var(--km-gold-light);
+}
+
+.kongmen-btn-secondary:hover {
+    background: #f0ede0;
+    border-color: var(--km-primary);
+}
+
+/* 已绑定状态 */
+.kongmen-card .bound-indicator {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.82em;
+    background: var(--km-primary);
+    color: var(--km-paper);
+    font-family: var(--km-font-sans);
+    margin-bottom: 12px;
+}
+
+/* ============================================================
+   慧惠对话式确认弹窗 (替代系统弹窗)
+   ============================================================ */
+.kongmen-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.kongmen-dialog-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.kongmen-dialog {
+    width: 90%;
+    max-width: 420px;
+    background: var(--km-paper-warm);
+    border: 1px solid var(--km-gold-light);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(24px);
+    transition: transform 0.35s var(--km-spring);
+}
+
+.kongmen-dialog-overlay.active .kongmen-dialog {
+    transform: translateY(0);
+}
+
+.kongmen-dialog-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--km-primary), var(--km-primary-light));
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    color: var(--km-paper);
+}
+
+.kongmen-dialog-text {
+    font-size: 1em;
+    line-height: 1.9;
+    color: var(--km-text);
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+}
+
+.kongmen-dialog-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.kongmen-dialog-btn {
+    padding: 10px 28px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95em;
+    font-family: var(--km-font);
+    cursor: pointer;
+    transition: all var(--km-transition);
+    letter-spacing: 0.5px;
+}
+
+.kongmen-dialog-btn.confirm {
+    background: var(--km-primary);
+    color: var(--km-paper);
+}
+
+.kongmen-dialog-btn.confirm:hover {
+    background: #1a3b2e;
+}
+
+.kongmen-dialog-btn.cancel {
+    background: var(--km-paper);
+    color: var(--km-text-light);
+    border: 1px solid var(--km-border);
+}
+
+.kongmen-dialog-btn.cancel:hover {
+    border-color: var(--km-primary);
+    color: var(--km-primary);
+}
+
+/* ============================================================
+   道别确认弹窗 (换绑道别)
+   ============================================================ */
+.kongmen-farewell-text {
+    font-size: 0.95em;
+    line-height: 1.9;
+    color: var(--km-text);
+    margin-bottom: 8px;
+}
+
+.kongmen-farewell-highlight {
+    font-size: 1.05em;
+    color: var(--km-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   轻声推荐提示条
+   ============================================================ */
+.kongmen-toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--km-paper-warm);
+    border: 1px solid var(--km-gold-light);
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-size: 0.9em;
+    color: var(--km-text-light);
+    font-style: italic;
+    font-family: var(--km-font);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    z-index: 250;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    max-width: 400px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.kongmen-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width: 768px) {
+    .kongmen-greeting {
+        padding: 20px 16px 12px;
+        min-height: 12vh;
+    }
+
+    .kongmen-greeting-text {
+        font-size: 0.95em;
+    }
+
+    .kongmen-huihui-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+
+    .kongmen-tree-container {
+        min-height: 50vh;
+    }
+
+    .kongmen-card {
+        border-radius: 12px 12px 0 0;
+        padding: 16px 18px 24px;
+        max-height: 55vh;
+    }
+
+    .kongmen-card-name {
+        font-size: 1.3em;
+    }
+
+    .kongmen-btn {
+        padding: 10px 16px;
+        font-size: 0.88em;
+    }
+
+    .kongmen-dialog {
+        padding: 20px 16px;
+    }
+
+    .kongmen-topbar {
+        padding: 10px 16px;
+    }
+
+    .sage-leaf-name {
+        font-size: 10px;
+    }
+
+    .sage-leaf-quality {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .kongmen-greeting {
+        padding: 16px 12px 10px;
+        min-height: 10vh;
+    }
+
+    .kongmen-greeting-text {
+        font-size: 0.88em;
+    }
+
+    .kongmen-tree-container {
+        min-height: 45vh;
+    }
+
+    .kongmen-card {
+        max-width: 100%;
+    }
+
+    .kongmen-card-actions {
+        flex-direction: column;
+    }
+
+    .kongmen-btn {
+        min-width: auto;
+    }
+
+    .kongmen-dialog-actions {
+        flex-direction: column;
+    }
+
+    .sage-root text {
+        font-size: 13px;
+    }
+
+    .sage-branch-label {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .kongmen-card {
+        position: fixed;
+        bottom: auto;
+        top: 50%;
+        right: 24px;
+        left: auto;
+        transform: translate(120%, -50%);
+        border-radius: 12px;
+        width: 360px;
+        max-height: 70vh;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .kongmen-card.visible {
+        transform: translate(0, -50%);
+    }
+
+    .kongmen-card-handle {
+        display: none;
+    }
+
+    .kongmen-greeting {
+        flex-direction: row;
+        gap: 16px;
+        padding: 24px 32px 16px;
+        text-align: left;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: auto;
+    }
+
+    .kongmen-huihui-avatar {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .kongmen-greeting-text {
+        text-align: left;
+    }
+}

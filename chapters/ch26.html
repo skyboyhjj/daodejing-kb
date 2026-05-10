@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,28 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🧘 第26章 · 重为轻根
+        ⚖️ 第26章 · 重为轻根
         <span class="subtitle">上经 · 修身论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章讲了一对特别重要的关系：重和轻、静和躁。老子说"稳重是轻浮的根本，安静是急躁的主人"。一个领导者如果轻浮急躁，就像没有根的树——再大的风一吹就倒了。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,62 +391,300 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         重为轻根，静为躁君。<br>
         是以君子终日行不离辎重。<br>
         虽有荣观，燕处超然。<br>
-        奈何万乘之主，而以身轻天下？轻则失根，躁则失君。<br>
-        
+        奈何万乘之主，而以身轻天下？<br>
+        轻则失根，躁则失君。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag jing">静</span>
-        <span class="concept-tag de">修身</span>
+        <span class="concept-tag de">德</span>
+        <span class="concept-tag qiantui">谦退</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>重为轻根静为躁君 · 终日行不离辎重 · 轻则失根躁则失君</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于修身论范畴，位于上经。核心内容为"重为轻根"，展现了老子关于修身论的深层思考。全章围绕静的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>重的东西是轻的东西的根基（没有重的底盘，轻的顶部就会翻倒），安静是急躁的"老大"（能控制急躁的人才是真正有力量的）。所以真正有本事的人走到哪里都保持沉稳——即使住在华丽的酒店也不会飘飘然。如果一个大国领导轻浮急躁，那他就完了。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>重为轻根</strong>——重厚是轻浮的根基。如同树的根必须深重才能支撑轻盈的枝叶。重=稳定、深沉、厚实。</li>
+                <li><strong>静为躁君</strong>——宁静是急躁的主宰/统帅。"君"=主宰者。能掌控自己急躁情绪的（静），才是真正的君主。</li>
+                <li><strong>是以君子终日行不离辎重</strong>——所以有德之人一整天行动都不离开他的"辎重"（沉重的行囊/根基）。"辎重"既是行军的后勤物资，也比喻内在的稳重修养。</li>
+                <li><strong>虽有荣观，燕处超然</strong>——即使面对荣华富贵的景象，也能安然自处、超脱其上。"荣观"=华丽壮观之处；"燕处"=安然自在地处于。</li>
+                <li><strong>奈何万乘之主，而以身轻天下</strong>——为何有些大国的君主，竟然以轻浮的态度对待天下！"万乘之主"=拥有万辆战车的大国君主。"以身轻天下"=用自身的轻率来轻慢天下。</li>
+                <li><strong>轻则失根，躁则失君</strong>——轻浮就会失去根基，急躁就会失去主宰地位。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>哲学原理（重/静为根/君）→ 君子实践（不离辎重、超然）→ 反面批判（万乘之主轻天下）→
+                警示结论（轻失根躁失君）。从原理到实践到批判到警示，逻辑完整。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>自然界中，大地（重）承载万物（轻）——重是轻的基础。大海（静/深）掌控波浪（躁/表面）——深层的宁静主导表面的躁动。</p>
+            <p><strong>人道维度：</strong>领导者的内在修养（重/静）决定了其决策和行为（轻/躁）的质量。一个内心浮躁的领导者无法做出深思熟虑的决策。</p>
+            <p><strong>现实应用：</strong>在快节奏的商业环境中，"不离辎重"意味着无论外部环境多热闹、诱惑多大（荣观），核心团队的基本功（辎重）不能丢。"虽有荣观燕处超然"就是保持战略定力——不被短期风口吹跑。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"虽有荣观，燕处超然"</li>
+                <li><strong>帛书甲本：</strong>"虽有环观，燕处则昭若"（"环观"非"荣观"，"昭若"非"超然"）</li>
+                <li><strong>帛书乙本：</strong>"虽有环官，燕处则超若"</li>
+                <li><strong>关键差异：</strong>"荣观"vs"环观"——"环观"可能指军队宿营的环形营帐/了望台，"荣观"指华丽的宫殿楼台。帛书更具军事语境，通行本更具政治语境。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"辎重"</strong>：原指军队行军中的粮草物资车辆。引申为"根基""底蕴"。用军事术语比喻修养，暗示老子思想中"军事-政治-修养"的类比结构。</li>
+                <li><strong>"君"</strong>：此处不仅是"君主"，更是"主宰者"。"静为躁君"=静是躁的主宰=静能驾驭躁。</li>
+                <li><strong>"燕"</strong>：通"宴"，安闲。"燕处"=安闲自在地处于。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>军事隐喻的思想史意义：</strong>本章使用"辎重""万乘"等军事术语，暗示老子可能有军事思想的背景。这与第30、31、57、69章的兵论形成呼应，构成道德经的"军事哲学"板块。"终日行不离辎重"在军事上指不冒进、保持后勤保障——推广为修身原则就是"不脱离根基地冒险"。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"修身论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了静的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：静、修身，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>前面第16章说"守静笃"（要保持安静），这一章进一步说"静是躁的老大"——安静不是弱，是控制力的表现。就像武侠高手越厉害越沉稳，急躁乱动的反而是菜鸟。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第26章位于修身论板块。第25章刚确立了宇宙论的宏大框架（道天地人四大），本章立即回落到具体的修身-治国实践——领导者如何在宏大视野下保持个人修养的稳重。前有第16章"守静笃"的修养方法，本章将其转化为处世原则。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第16章"致虚极守静笃"——静的修养方法论</li>
+                <li>第45章"清静为天下正"——静的治理效用</li>
+                <li>第37章"不欲以静天下将自正"——静的政治效果</li>
+                <li>第76章"坚强者死之徒柔弱者生之徒"——重/轻、柔/刚的辩证</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经"静-重"思想的核心表述——将第16章的修养功夫（守静）扩展为领导力原则（静为躁君）。它建立了一个重要的领导力公式：领导力=内在的重厚+外在的沉静。失去任何一个（轻→失根/躁→失君），领导力就崩溃。
+            </p>
+            <p><strong>思想史意义：</strong>本章"重为轻根静为躁君"确立了中国政治文化中对"稳重"的推崇传统。从汉代的"持重"品评标准到唐代的"沉毅"评语，到现代的"稳字当头"，都可追溯到本章的价值取向。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>本章结构紧凑，用"重/轻""静/躁"两对范畴贯穿。前半为正面论述（原理+君子实践），后半为反面批判（万乘之主+警示）。"奈何"一词暴露了老子的现实批判——他看到了当时的诸侯君主轻浮急躁的弊病。
+            </p>
+            <p><em>中观层：</em>"静为躁君"与第16章"致虚极守静笃"、第37章"不欲以静"、第45章"清静为天下正"构成"静"概念族。"静"在道德经中不仅是心理状态，更是宇宙论层面的根本秩序——道本身就是"寂兮寥兮"（第25章）的，静是道的本然状态。
+            </p>
+            <p><em>宏观层：</em>本章对"万乘之主"的批判暗示了春秋晚期诸侯僭越、穷兵黩武的时代背景。老子批评的可能是当时频繁征战、追求扩张的大国君主——他们"以身轻天下"，用自己的冒险欲望来赌国家命运。</p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"重为轻根"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>学者们对"虽有荣观燕处超然"有不同理解：是说君子"看到豪华场面也不动心"？还是说"即使在行军中有华丽的营帐也保持简朴"？不管哪种理解，核心意思都是一样的：不被外在的热闹和荣华带跑。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："辎重"的比喻对象</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>内在修养说</strong>（王弼）：辎重比喻内在的道德根基——君子无论走到哪里都不脱离自己的修养底蕴</li>
+                <li><strong>国家根本说</strong>（河上公）：辎重比喻国家的根本——君主行事不能脱离国家的根本利益</li>
+                <li><strong>军事实义说</strong>：就是军事上的后勤保障——引申为做事不能脱离基本条件和准备</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议点二："以身轻天下"的结构</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"以身轻-天下"说</strong>：用自身的轻浮来轻慢天下（动宾结构）</li>
+                <li><strong>"以身-轻天下"说</strong>：拿自身去轻视天下（把个人凌驾于天下之上）</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践差异：</strong>"内在修养说"意味着领导者需要持续的自我修炼来保持稳重；"国家根本说"则强调决策不能脱离基本盘。两者结合来看："辎重"既是个人的内在定力（不被外在诱惑动摇），也是组织的基本面（不为追逐风口而丢掉核心业务）。
+            </p>
+            <p><strong>当代管理启示：</strong>不少互联网公司创始人在公司高速增长期变得"轻浮"——频繁跨界、过度扩张、忽视基本运营——这就是"万乘之主以身轻天下"的现代版。保持"不离辎重"的定力，才能在风口退去后依然站稳。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"环观"vs"荣观"的文本学考辨：</strong></p>
+            <p>帛书"环观"（环形了望台/军营）与"辎重"的军事语境一致，暗示全章可能原为军事箴言后被引申为政治-修身原则。通行本"荣观"（荣华之观/壮丽宫殿）则更偏向政治-伦理语境。从章内逻辑看，"终日行"暗示旅途在行进中，"环观"（行军中的营寨）比"荣观"（固定宫殿）更合"行"的语境。
+            </p>
+            <p><strong>"重/轻""静/躁"的辩证法问题：</strong></p>
+            <p>本章看似将重/静绝对化为正面价值，但需注意老子的措辞——"重为轻根"不是说"轻不好"，而是说"轻依赖于重才能存在"。同理"静为躁君"不是否定行动（躁），而是说行动需要以宁静/深思为前提和主导。这是"主从关系"而非"取舍关系"。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：静→修身</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在第16章说"致虚极守静笃"，在第45章说"清静为天下正"——都是说"静"的力量。本章"静为躁君"跟这些完全一致。另外第76章说"柔弱胜刚强"，也是同一个道理——稳重（重）比轻浮（轻）更有力量。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>验证章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>静为躁君</td>
+                    <td>第16章"守静笃"、第45章"清静为天下正"</td>
+                    <td>静的主导地位一致</td>
+                </tr>
+                <tr>
+                    <td>重为轻根</td>
+                    <td>第76章"柔弱处上坚强处下"</td>
+                    <td>下方/根基的支配性一致</td>
+                </tr>
+                <tr>
+                    <td>虽有荣观燕处超然</td>
+                    <td>第12章"五色令人目盲"</td>
+                    <td>不被外在荣华吸引，一致</td>
+                </tr>
+                <tr>
+                    <td>轻则失根</td>
+                    <td>第24章"企者不立"</td>
+                    <td>轻浮/踮脚=不稳定，一致</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>"静为躁君"与第16章"致虚极守静笃"——静是修养的根本方法，一致</li>
+                <li>"重为轻根"与第25章"寂兮寥兮独立不改"——道本身就是"重/静"的终极表现</li>
+                <li>"虽有荣观燕处超然"与第20章"众人熙熙…我独泊兮"——不被世俗热闹吸引</li>
+                <li>"轻则失根"与第24章"企者不立跨者不行"——轻浮急躁的后果一致</li>
+                <li>"万乘之主以身轻天下"与第13章"贵以身为天下"——正反对照</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>概念</th>
+                    <th>本章表述</th>
+                    <th>其他章节</th>
+                    <th>关系</th>
+                </tr>
+                <tr>
+                    <td>静</td>
+                    <td>静为躁君</td>
+                    <td>第16章"守静笃"、第37章"不欲以静"、第45章"清静为天下正"</td>
+                    <td>核心概念一致</td>
+                </tr>
+                <tr>
+                    <td>重/根基</td>
+                    <td>重为轻根/不离辎重</td>
+                    <td>第25章"寂兮寥兮"、第39章"贵以贱为本高以下为基"</td>
+                    <td>根基性原理一致</td>
+                </tr>
+                <tr>
+                    <td>超然不动</td>
+                    <td>燕处超然</td>
+                    <td>第20章"我独泊兮"、第12章"圣人为腹不为目"</td>
+                    <td>不被外物动摇</td>
+                </tr>
+                <tr>
+                    <td>轻浮之害</td>
+                    <td>轻则失根</td>
+                    <td>第24章"企者不立"</td>
+                    <td>因果逻辑一致</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;">
+                <strong>奥卡姆检验：</strong>本章可由一个基本原则推出：道以"寂寥"（重/静）为本性（第25章已确立）→效法道的人应以重/静为主导→轻/躁违背道的本性→故有道者不轻不躁。逻辑简洁，不需要额外假设。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"重为轻根"提醒我们在日常生活中保持对静的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"重为轻根"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>春秋战国时期诸侯争霸，不少君主好大喜功、频繁征战、奢靡无度——这些都是"以身轻天下"的表现。老子以"辎重"比喻告诫：真正的力量不在于冲锋在前的轻骑兵，而在于稳定的后勤补给线。
+            </p>
+            <p><strong>普遍义：</strong>任何系统中，"重心"决定稳定性。物理上，重心越低越稳；心理上，内在越充实（重）的人越不易被外在冲击动摇（轻）。急躁的决策（躁）必须有深思熟虑的基础（静），否则必然失控。
+            </p>
+            <p><strong>现代义：</strong>在信息时代的快节奏中，"重为轻根"提醒我们：快速迭代需要底层架构的稳定（技术债不能太重）；日更的内容需要深厚的知识储备；频繁的社交需要独处的时间来补充能量。"静为躁君"在注意力经济时代意味着：能控制自己注意力的人（静），才能主导信息洪流（躁）而非被它淹没。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>检视自己的"辎重"——你的核心价值观、长期目标、深度关系是否还在？如果为了追逐一个新机会而丢掉了这些基本面（离辎重），就是"轻则失根"。实践："不离辎重"可以是每天固定时间的深度阅读/冥想/运动——无论外部多忙碌，这些"重"的活动不能丢。
+            </p>
+            <p><strong>组织管理：</strong>"静为躁君"是决策层的核心修养——在团队panic、市场动荡、舆论压力中，领导者的"静"（冷静判断力）是组织最需要的东西。如果领导者自己先慌了（躁），整个组织就失去了主心骨（失君）。"虽有荣观燕处超然"提醒：市场泡沫期不跟风扩张，这需要极强的战略定力。
+            </p>
+            <p><strong>文明批判：</strong>当代文明整体呈现"轻"的趋势——信息碎片化（轻阅读）、关系快餐化（轻社交）、承诺短期化（轻承诺）。"重为轻根"警告：如果底层的"重"（深度思考、长期关系、可靠承诺）持续流失，整个文明的表面繁荣就会失去根基。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>做一个"不倒翁"实验——把重物放在玩具底部，它怎么推都不倒（重为轻根）。如果把重物放在顶部呢？一碰就倒。问孩子："人的'重心'在哪里？什么东西让你'推不倒'？"（可能是家人的爱、自信心、好习惯……）
+            </p>
+            <p><strong>🧘
+                    体验层：</strong>"静坐挑战"——全家人比赛谁能安静坐着不动最久。讨论："安静很难吗？为什么？"然后试试在安静之后再做事——是不是更专注了？体验"静为躁君"——安静下来后再行动，行动的质量更高。
+            </p>
+            <p><strong>💬 对话层：</strong>"你觉得一个很急、做事很快但常出错的人厉害，还是一个很慢但几乎不出错的人厉害？在什么情况下'快'更重要？在什么情况下'稳'更重要？"</p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「重为轻根，静为躁君。」</div>
+        <div class="quote-interp">——沉稳是一切轻盈的基础，宁静是掌控急躁的力量。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -187,14 +694,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第26章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第26章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>慧惠 · 小朋友的《道德经》探索营</title>
+    <link rel="stylesheet" href="../css/daodejing-styles.css">
+    <link rel="canonical" href="/index.html">
+    <style>
+        /* ===== 小朋友专属首页样式 ===== */
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ── 英雄区 ── */
+        .huihui-hero {
+            text-align: center;
+            padding: 44px 20px 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* 水墨叶子图标 */
+        .huihui-icon-wrap {
+            display: inline-block;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .huihui-icon-outer {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, rgba(74, 138, 94, 0.22) 0%, rgba(46, 95, 95, 0.12) 40%, rgba(212, 201, 168, 0.10) 70%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: huihui-breathe 5s ease-in-out infinite;
+        }
+
+        .huihui-icon-inner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 40%, rgba(74, 138, 94, 0.28) 0%, rgba(74, 138, 94, 0.10) 50%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .huihui-icon-inner svg {
+            width: 56px;
+            height: 56px;
+            fill: none;
+            stroke: #4a8a5e;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.85;
+        }
+
+        @keyframes huihui-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 问候语 */
+        .huihui-greeting-main {
+            font-size: 2em;
+            font-weight: 700;
+            color: #4a8a5e;
+            margin: 0 0 14px;
+            letter-spacing: 3px;
+            border: none;
+            padding: 0;
+        }
+
+        .huihui-greeting-sub {
+            font-size: 1.1em;
+            color: #5a7a6a;
+            margin: 0 0 10px;
+            line-height: 1.8;
+        }
+
+        .huihui-greeting-guide {
+            font-size: 1.05em;
+            color: #888;
+            margin: 0 0 8px;
+            letter-spacing: 1px;
+        }
+
+        .huihui-greeting-guide .emoji-bulb {
+            display: inline-block;
+            animation: bulb-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bulb-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* ── 三张入口卡片 ── */
+        .entry-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 36px 0 40px;
+            max-width: 720px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .entry-card {
+            flex: 1 1 200px;
+            min-width: 180px;
+            max-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px 26px;
+            border-radius: 14px;
+            background: #f0f7f4;
+            border: 2px solid #a3c9b8;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            font-family: inherit;
+            font-size: inherit;
+            text-align: center;
+        }
+
+        .entry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(74, 138, 94, 0.16);
+            border-color: #7ab898;
+            background: #eaf5ed;
+        }
+
+        .entry-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 138, 94, 0.12);
+        }
+
+        .entry-card .card-icon {
+            font-size: 2.4em;
+            margin-bottom: 14px;
+        }
+
+        .entry-card .card-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #4a8a5e;
+            margin-bottom: 8px;
+        }
+
+        .entry-card .card-desc {
+            font-size: 0.9em;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ── 关于这个网站 ── */
+        .about-section {
+            max-width: 620px;
+            width: 100%;
+            margin: 0 20px 30px;
+            padding: 24px 28px;
+            background: #f0f7f4;
+            border-radius: 8px;
+            border-left: 4px solid #4a8a5e;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .about-section h2 {
+            color: #4a8a5e;
+            font-size: 1.1em;
+            margin: 0 0 12px;
+            letter-spacing: 2px;
+        }
+
+        .about-section p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.9;
+            margin: 0 0 10px;
+        }
+
+        .about-section .ai-disclaimer {
+            color: #888;
+            font-size: 0.85em;
+            line-height: 1.7;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #a3c9b8;
+        }
+
+        /* ── 回到大人版 ── */
+        .back-to-main {
+            text-align: center;
+            margin: 16px 0 28px;
+        }
+
+        .back-to-main a {
+            display: inline-block;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid #d4c9a8;
+            transition: all 0.2s;
+        }
+
+        .back-to-main a:hover {
+            color: #2e5f5f;
+            border-color: #2e5f5f;
+            background: #fffef5;
+        }
+
+        /* ── 搜索栏 ── */
+        .search-mini {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 20px 36px;
+        }
+
+        .search-mini .daodejing-search {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .search-mini .daodejing-search input[type="search"] {
+            font-size: 0.95em;
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+
+        /* ── 移动端适配 ── */
+        @media (max-width: 768px) {
+            .huihui-hero {
+                padding: 32px 16px 6px;
+            }
+
+            .huihui-icon-wrap {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 22px;
+            }
+
+            .huihui-icon-outer {
+                width: 100px;
+                height: 100px;
+            }
+
+            .huihui-icon-inner {
+                width: 60px;
+                height: 60px;
+            }
+
+            .huihui-icon-inner svg {
+                width: 44px;
+                height: 44px;
+            }
+
+            .huihui-greeting-main {
+                font-size: 1.6em;
+                letter-spacing: 2px;
+            }
+
+            .huihui-greeting-sub {
+                font-size: 1em;
+            }
+
+            .entry-cards {
+                gap: 14px;
+                margin: 28px 0 32px;
+                padding: 0 12px;
+            }
+
+            .entry-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+                flex-direction: row;
+                text-align: left;
+                padding: 18px 16px;
+                gap: 14px;
+                align-items: center;
+            }
+
+            .entry-card .card-icon {
+                font-size: 2em;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .about-section {
+                margin: 0 12px 24px;
+                padding: 18px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .huihui-icon-wrap {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 18px;
+            }
+
+            .huihui-icon-outer {
+                width: 80px;
+                height: 80px;
+            }
+
+            .huihui-icon-inner {
+                width: 48px;
+                height: 48px;
+            }
+
+            .huihui-icon-inner svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            .huihui-greeting-main {
+                font-size: 1.35em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ 慧惠英雄区 ═══════ -->
+    <div class="huihui-hero">
+        <div class="huihui-icon-wrap">
+            <div class="huihui-icon-outer">
+                <div class="huihui-icon-inner">
+                    <!-- 水墨叶子 SVG（绿色版） -->
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 46 C25 46 10 38 10 26 C10 16 20 4 25 4 C25 4 26 18 35 22 C42 25 44 38 25 46Z"
+                            stroke-width="2" fill="rgba(74,138,94,0.08)" />
+                        <path d="M25 46 C28 38 32 30 25 20" stroke-width="1.2" opacity="0.5" />
+                        <path d="M25 46 C22 40 18 34 25 26" stroke-width="1.2" opacity="0.4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="huihui-greeting-main">嗨，小朋友！我是慧惠 🌱</h1>
+        <p class="huihui-greeting-sub">我是一只会讲古代智慧的小叶子。<br>这里有81个老爷爷留下的故事，我用你能听懂的话讲给你听。</p>
+        <p class="huihui-greeting-guide">
+            <span class="emoji-bulb">💡</span> 今天，我们先从哪里开始？
+        </p>
+    </div>
+
+    <!-- ═══════ 三张入口卡片 ═══════ -->
+    <div class="entry-cards">
+        <!-- 卡片一：开始读故事 -->
+        <a href="../chapters/ch01.html?level=l1" class="entry-card">
+            <span class="card-icon">📖</span>
+            <span>
+                <div class="card-title">开始读故事</div>
+                <div class="card-desc">从第一个故事开始，像翻绘本一样</div>
+            </span>
+        </a>
+
+        <!-- 卡片二：看看有哪些故事 -->
+        <a href="../chapters.html?level=l1" class="entry-card">
+            <span class="card-icon">🗺️</span>
+            <span>
+                <div class="card-title">看看有哪些故事</div>
+                <div class="card-desc">81个故事，选一个你好奇的</div>
+            </span>
+        </a>
+
+        <!-- 卡片三：问慧惠 -->
+        <button class="entry-card" onclick="openChatWithPreset('慧惠，用小朋友能听懂的话告诉我，《道德经》讲了什么？')" type="button">
+            <span class="card-icon">💬</span>
+            <span>
+                <div class="card-title">问慧惠</div>
+                <div class="card-desc">有不懂的？直接问我！</div>
+            </span>
+        </button>
+    </div>
+
+    <!-- ═══════ 关于这个网站 ═══════ -->
+    <div class="about-section">
+        <h2>给爸爸妈妈的话</h2>
+        <p>
+            这是《道德经》亲子体验营的<strong>儿童版</strong>。
+            所有内容用孩子能理解的语言写成——没有难懂的古文词，没有复杂的学术讨论。
+            每一章都是一个小故事，适合5-12岁的小朋友和家长一起读。
+        </p>
+        <p class="ai-disclaimer">
+            ⚠️ 本项目的解读由 AI 辅助生成，经人工审核。我们正在持续修正中。
+            如果你和小朋友发现哪里讲得不对，欢迎通过慧惠聊天框告诉我们。
+        </p>
+    </div>
+
+    <!-- ═══════ 搜索 ═══════ -->
+    <div class="search-mini">
+        <div class="daodejing-search" id="daodejing-search">
+            <input type="search" id="search-input" placeholder="搜索你感兴趣的故事（如：水 柔弱 爱）" autocomplete="off">
+            <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+        </div>
+    </div>
+
+    <!-- ═══════ 回到大人版 ═══════ -->
+    <div class="back-to-main">
+        <a href="../index.html">👨‍👩‍👧 这是小朋友的版本。爸爸妈妈看这里 →</a>
+    </div>
+
+    <!-- ═══════ 页脚 ═══════ -->
+    <div class="site-footer">
+        道德经亲子体验营 &middot; 儿童版 &middot; 慧惠陪你读经典<br>
+        最后更新：2026-05-09
+    </div>
+
+    <!-- ═══════ 脚本 ═══════ -->
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+    <script>
+        function openHuihuiChat() {
+            var btn = document.getElementById('huihui-chat-btn');
+            if (btn) btn.click();
+        }
+
+        function openChatWithPreset(msg) {
+            var btn = document.getElementById('huihui-chat-btn');
+            if (!btn) return;
+            btn.click();
+            setTimeout(function () {
+                var input = document.getElementById('hui-input');
+                var sendBtn = document.getElementById('hui-send-btn');
+                if (input && sendBtn) {
+                    input.value = msg;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    sendBtn.click();
+                }
+            }, 400);
+        }
+    </script>
+
+    <!-- 慧惠 AI 聊天组件 -->
+    <link rel="stylesheet" href="/css/huihui-chat.css">
+    <script src="/js/huihui-chat.js"></script>
+</body>
+
+</html>

@@ -148,12 +148,12 @@ Within each `.step-section`, wrap content in level-tagged containers:
 </div>
 ```
 
-### Level Selector Bar (UI placeholder for future JS)
+### Level Selector Bar (controlled by level-filter.js)
 
 Add this HTML immediately after the five-step navigation bar:
 
 ```html
-<div class="level-selector" id="level-selector" style="display:none;">
+<div class="level-selector" id="level-selector">
   <span>认知深度：</span>
   <button data-level="l1" class="level-btn">👶 白话</button>
   <button data-level="l2" class="level-btn">📚 精读</button>
@@ -163,7 +163,7 @@ Add this HTML immediately after the five-step navigation bar:
 </div>
 ```
 
-This is hidden by default (`display:none`) and will be activated by future JavaScript. The CSS for `.level-selector`, `.level-btn`, and default visibility rules must be included in the `<style>` block.
+Visibility is controlled dynamically by `level-filter.js` — do NOT add `style="display:none;"` to the selector. The script handles showing/hiding based on localStorage preference.
 
 ### CSS Additions (in `<style>` block)
 

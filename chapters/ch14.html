@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,27 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🌀 第14章 · 视之不见名曰夷
         <span class="subtitle">上经 · 道体论 · 五步读解</span>
     </h1>
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章我们一起来读。你可以先看看"白话版"，轻松感受一下老子想说什么。如果有兴趣，再用"精读版"深挖。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,6 +390,16 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         视之不见名曰夷，听之不闻名曰希，搏之不得名曰微。<br>
@@ -129,58 +407,253 @@
         其上不皦，其下不昧，绳绳兮不可名，复归于无物。<br>
         是谓无状之状，无物之象，是谓惚恍。<br>
         迎之不见其首，随之不见其后。<br>
-        执古之道，以御今之有，能知古始，是谓道纪。<br>
-        
+        执古之道，以御今之有，能知古始，是谓道纪。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag dao">道</span>
         <span class="concept-tag xuan">玄</span>
-        <span class="concept-tag yi">一</span>
+        <span class="concept-tag yi">抱一</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>道体的超感知性 · 夷·希·微 · 混而为一 · 无状之状 · 迎之不见首</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于道体论范畴，位于上经。核心内容为"视之不见名曰夷"，展现了老子关于道体论的深层思考。全章围绕道的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章老子在说：宇宙最根本的东西（"道"），你用眼睛看不到，用耳朵听不到，用手也抓不住。就像空气一样——你知道它在，但你看不见它、抓不住它。老子说，这个看不见摸不着的东西，没有开头也没有结尾，但所有东西都是从它来的。就像一条河流，你找不到它第一滴水在哪里，但它一直在流。我们可以学到的是：世界上最重要的东西往往是看不见的——比如爱、信任、规律。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心概念解释：</strong></p>
+            <p><strong>"夷、希、微"</strong>——这三个字分别描述道在三种感官维度上的不可把握性：夷（视觉不可见）、希（听觉不可闻）、微（触觉不可得）。它们不是三种不同的东西，而是同一个"道"在三个认知通道上的表现。
+            </p>
+            <p><strong>"混而为一"</strong>——不可见、不可闻、不可触这三个特征不能被分开追究（"不可致诘"），因为它们混融为一个不可分割的整体。这个"一"就是道。</p>
+            <p><strong>"其上不皦，其下不昧"</strong>——"皦"（jiǎo）即明亮。道的上方并不明亮耀眼，下方也不晦暗模糊——它超越了光明与黑暗的对立。</p>
+            <p><strong>"绳绳兮不可名，复归于无物"</strong>——"绳绳"（mǐn mǐn）形容延绵不断、若有若无。道连绵不绝地运行却无法用任何名称来指称，最终回归到"无物"的状态。</p>
+            <p><strong>"无状之状，无物之象"</strong>——没有形状的形状，没有实物的形象。道有其"存在方式"（状/象），但不是任何具体的形状或物体。</p>
+            <p><strong>"惚恍"</strong>——恍惚、若有若无的状态。这是体验道时的认知状态描述——不是清晰的"知道"，而是模糊的"感到"。</p>
+            <p><strong>"执古之道，以御今之有"</strong>——把握住从古就存在的道的法则，以此来驾驭当今的万事万物。"道纪"——道的纲纪（核心法则）。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"不可见但可用"的现代启示：</strong></p>
+            <p><strong>底层规律的力量：</strong>引力看不见摸不着（"夷、希、微"），但它支配所有物体的运动。市场经济的供需规律看不见，但它决定了价格和资源分配。最有力量的东西往往是"无状之状"——没有固定形态但无处不在。
+            </p>
+            <p><strong>"执古之道，以御今之有"的智慧：</strong>底层法则是恒久的（"古之道"），而具体事务是变化的（"今之有"）。掌握不变的原则，用以应对变化的现实——这是战略思维的核心。好的领导者不追逐每一个热点，而是把握住几条不变的原则（如：用户价值、诚信、长期主义）。
+            </p>
+            <p><strong>接受"不确定性"：</strong>"惚恍"状态不是认知的失败，而是面对终极实在时的正当认知态度。在复杂系统中，最真实的认知往往是"我大概知道方向，但无法精确预测"——这正是"惚恍"的现代形态。强求确定性（试图把一切搞清楚）反而偏离了事物的本来面目。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong></p>
+            <p>帛书甲本此章与通行本差异较大。帛书作"视之而弗见，名之曰微。听之而弗闻，名之曰希。捪之而弗得，名之曰夷。"三个名称的对应关系与通行本不同——帛书中"微"对应视觉，"希"对应听觉，"夷"对应触觉；而通行本中"夷"对应视觉，"希"对应听觉，"微"对应触觉。学界对此有争议，但从语义学角度看差异不大，因为老子的核心论点是"三者混而为一"——名称的具体分配次要于"三位一体"的整体结构。
+            </p>
+            <p><strong>字词溯源：</strong></p>
+            <p>"夷"——《说文》："平也。"引申为"无差别、无形迹"。"希"——《说文》："寡也。"引申为"稀微、无声"。"微"——《说文》："隐行也。"本义为隐秘行动，引申为细微不可察。三字合观：道是平坦无痕（无形）、稀少无声（无声）、隐秘不可触（无体）的——全面否定了感官认知的有效性。
+            </p>
+            <p>"绳绳"——通行本作"绳绳"（shéng shéng），帛书作"寻寻"（mǐn mǐn）。段玉裁认为应读为"泯泯"——形容渺茫不可辨识。此字的读音和释义历来有争议，但核心语义为"延绵不断而又难以把握"。</p>
+            <p><strong>内证网络：</strong>本章是道体论的集中表述，与第1章（"道可道，非常道"——道不可言说）、第4章（"道冲而用之或不盈"——道的虚空本质）、第21章（"道之为物，惟恍惟惚"——道的恍惚状态）、第25章（"有物混成，先天地生"——道的先在性）构成完整的道体论体系。本章独特贡献：从认识论角度（感官三维度）论证道的不可认知性，并引出"执古御今"的方法论结论。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"道体论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了道的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：道、玄、一，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章在整本书里是讲"道长什么样"的——答案是：它不长任何样子！但正因为它不是任何一样东西，所以它能变成所有东西。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第13章从"身"（个体存在）的层面超越了宠辱得失，第14章则从认识论层面探讨：那个超越一切的"道"究竟如何存在？这是从修身论到道体论的跨越——前面章节教人"如何做"，本章揭示"道是什么"。
+            </p>
+            <p><strong>中观语境：</strong>本章是上经道体论的核心篇章之一（第1、4、14、21、25章构成"道体五论"）。它在全书中的独特位置：第1章说道"不可言说"，第4章以"冲"描写道的"虚"，第14章则从视/听/触三个维度全面论证道超越感官，并以"执古御今"将道体论转化为方法论。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>思想体系定位：</strong>本章确立了《道德经》的核心认识论立场——道不是通过感官认知获得的对象，而是通过"体悟"（惚恍）接近的终极实在。这为后续所有修身、治国的具体教导提供了认识论基础：既然道不可见不可闻，那么执着于表象（第12章的五色五音）就是偏离道的表现。
+            </p>
+            <p><strong>"执古御今"的战略应用：</strong>在变化剧烈的商业环境中，"执古之道"不是复古主义，而是把握住那些跨越时代不变的原则。亚马逊贝佐斯说"我更关注十年后什么不会变"——这就是"执古之道，以御今之有"的商业版。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>宏观语境——先秦认识论的独特贡献：</strong></p>
+            <p>先秦诸子中，老子最早系统否定了感官认识的终极有效性。墨子重"三表法"（经验验证），名家重逻辑推理，儒家重"格物致知"——都在认知框架内工作。老子独树一帜，指出终极实在不在认知范围内——它是"无状之状"，不是认知的对象而是认知的前提。这一立场与后来佛教"不可思议"、康德"物自体不可知"有结构性相似，但老子的独特之处在于：他不因此陷入怀疑主义，而是提出"执古御今"的实践方案——虽然道不可完全认知，但可以通过"纪"（纲纪/法则）来把握其运行模式。
+            </p>
+            <p><strong>天道-人道-天人合一：</strong></p>
+            <p><strong>天道维度：</strong>道的存在方式是"惚恍"——超越有无、明暗、首尾的对立。它不是事物中的一个，而是所有事物之所以可能的基础。</p>
+            <p><strong>人道维度：</strong>人认识道的方式不是"看清楚"，而是"恍惚地体会"。修道不是追求确定性，而是安住于不确定性——这与第10章"涤除玄览"的内省方法一致。</p>
+            <p><strong>天人合一：</strong>"执古之道，以御今之有"——人通过体悟道的法则（天道层面的"纪"），获得驾驭现实的智慧（人道层面的"御"）。天人合一不是神秘的融合，而是人对道之规律的体认和运用。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"视之不见名曰夷"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于这一章，不同的人有不同的理解。有人觉得老子说的"道"就像一种能量，虽然看不见但真的存在。也有人觉得老子是在说一种"规律"——看不见但一直在起作用。最重要的是：就算说不清它是什么，我们也能感觉到它、学习它。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议：</strong>"惚恍"是一种存在状态（道本身的属性）还是一种认知状态（人体验道时的感受）？</p>
+            <p><strong>解读一（存在论）：</strong>"惚恍"是道本身的存在方式——道就是恍恍惚惚的，不是因为我们看不清，而是它本身就是那样。代表：王弼——"不可得而定也。"</p>
+            <p><strong>解读二（认识论）：</strong>"惚恍"是人认识道时的主观状态——道本身可能是确定的，但人的感官无法把握它，所以体验为"惚恍"。代表：河上公注重"功用"层面的解读。</p>
+            <p><strong>解读三（合一论）：</strong>在道的层面，存在状态和认知状态是同一回事。道"是"惚恍（存在论），体验道的人也处于惚恍状态（认识论）——主客合一。代表：当代诠释学进路。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三种解读的实践差异：</strong></p>
+            <p><strong>存在论路径：</strong>接受世界的底层是"不确定的"——这与量子力学的测不准原理有共鸣。实践含义：不要追求绝对确定性，学会在模糊中行动。</p>
+            <p><strong>认识论路径：</strong>承认人的认知有局限——无论技术多先进，某些本质性问题无法被"看清"。实践含义：保持认知谦虚，尊重"不知道"的状态。</p>
+            <p><strong>合一论路径：</strong>在不确定中行动本身就是合道——"惚恍"不是问题而是答案。实践含义：与其等到"完全想清楚"再行动，不如在"大致明白"的状态下就开始——这就是"执古之道，以御今之有"。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>争议的哲学史背景：</strong></p>
+            <p>王弼（226-249）以"贵无"立场注此章，将"惚恍"视为道的本体属性——"欲言无邪，而物由以成；欲言有邪，而不见其形。"这一诠释奠定了魏晋玄学"以无为本"的学术基调。</p>
+            <p>成玄英（约601-690）从道教修炼经验出发，将"惚恍"解为入定时的意识状态——介于有念和无念之间的觉知模式。这一解读将本章从纯粹的哲学思辨引向了修证经验。</p>
+            <p><strong>"执古之道"的诠释分歧：</strong>"古"是指时间上的"古老"（太古之道），还是逻辑上的"根本"（原初法则）？河上公倾向时间义（"圣人能知太古始生之道"），王弼倾向逻辑义（"以无形无名始万物"）。从帛书"能知古始"来看，"古始"作为复合词出现，更倾向逻辑义——道的"开始点"不是时间概念，而是逻辑概念。
+            </p>
+            <p><strong>与第21章"惚恍"的互文：</strong>第21章"道之为物，惟恍惟惚。惚兮恍兮，其中有象；恍兮惚兮，其中有物"——在惚恍中却有象有物。第14章说道是"无物之象"，第21章补充说惚恍中"有物"——这不矛盾：道不是"什么都没有"（虚无主义），而是"不是任何具体的物但包含一切可能性"。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：道→玄→一</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章和道德经其他章节说的道理是一致的。第1章说道"说不出来"，这一章说道"看不见、听不到、抓不住"——都在说同一件事：最根本的东西不能用普通的方式去了解它，但它确确实实在那里。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <thead>
+                    <tr>
+                        <th>本章命题</th>
+                        <th>对应章节</th>
+                        <th>互证内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>道不可感知</td>
+                        <td>第1章</td>
+                        <td>"道可道，非常道"——道不可言说</td>
+                    </tr>
+                    <tr>
+                        <td>混而为一</td>
+                        <td>第25章</td>
+                        <td>"有物混成，先天地生"——道混融一体</td>
+                    </tr>
+                    <tr>
+                        <td>惚恍</td>
+                        <td>第21章</td>
+                        <td>"道之为物，惟恍惟惚"——道的恍惚存在</td>
+                    </tr>
+                    <tr>
+                        <td>复归于无物</td>
+                        <td>第40章</td>
+                        <td>"天下万物生于有，有生于无"——万物归无</td>
+                    </tr>
+                    <tr>
+                        <td>道超越对立</td>
+                        <td>第4章</td>
+                        <td>"道冲而用之或不盈"——道的虚空不满</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽检验：</strong></p>
+            <p>本章"道不可感知但可运用"的命题在全书中得到系统支持：</p>
+            <p>1. <strong>第1章确立前提：</strong>"道可道，非常道"——道不在语言范围内。第14章从感官层面补充：道也不在视/听/触的范围内。二者合看=道超越一切感知和表达方式。</p>
+            <p>2. <strong>第35章确认方法：</strong>"执大象，天下往"——虽然道无形无象（第14章"无物之象"），但"执"住它（第14章"执古之道"）就能让天下归附。"不可见"不等于"不可用"。</p>
+            <p>3. <strong>第47章呼应路径：</strong>"不出户，知天下"——对道的体认不依赖感官外求，而是内观自省。这与第14章"感官无效"的判断完全一致。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>外部兼容性：</strong></p>
+            <p><strong>《庄子·知北游》：</strong>"道不可闻，闻而非也；道不可见，见而非也；道不可言，言而非也。知形形之不形乎？道不当名。"庄子直接引申了第14章的三维否定式（不见/不闻/不得），并加上"不可言"（第1章的论点），构成四维否定。
+            </p>
+            <p><strong>《文子·道原》：</strong>"所谓道者...视之不见其形，听之不闻其声，谓之幽冥。"几乎直接引用本章文句，以"幽冥"代"惚恍"。</p>
+            <p><strong>跨文化比较：</strong>本章的"否定神学"方法（通过否定来描述终极实在）与基督教传统中的"否定之路"（via
+                negativa）有结构性相似：上帝"不是X，不是Y，不是Z..."。印度教《奥义书》中的"neti neti"（非此非此）也是同一方法论。这表明人类面对终极实在时，否定式描述是跨文化的认知策略。</p>
+            <p><strong>奥卡姆剃刀：</strong>本章的逻辑结构极为简洁：（1）道在三种感官维度上不可把握（事实/体验层）；（2）因此道超越感官世界（推论层）；（3）但可以通过把握其"纪"（法则/规律）来运用它（方法层）。没有引入任何多余的假设实体。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"视之不见名曰夷"提醒我们在日常生活中保持对道的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"视之不见名曰夷"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在万物有灵论和多神崇拜的时代，老子提出一个超越具体形象的终极实在——这是人类思想史上最早的"去人格化"哲学探索之一，将宗教性的敬畏转化为哲学性的追问。</p>
+            <p><strong>普遍义：</strong>人类最重要的认知对象（真理、规律、意义）往往无法直接感知，只能通过其"效果"（"以御今之有"）来间接把握。这是一种"功能性认知"——你不需要"看见"引力才能利用它。
+            </p>
+            <p><strong>现代义：</strong>在大数据和AI时代，我们越来越依赖"不可直接理解但可以有效运用"的模式——深度学习模型就是"无状之状"：我们无法解释它为什么有效（不可见其首尾），但可以用它来"御今之有"（解决实际问题）。这提醒我们：有效运用和完全理解是两回事。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>学会接受"不完全理解"的状态。人生中很多重要决定（结婚、创业、转行）永远无法在"完全想清楚"之后再做——因为那个"完全清楚"的时刻永远不会来（"迎之不见其首"）。在"大致对"的方向上行动，比等待"完全对"更接近道。
+            </p>
+            <p><strong>组织管理：</strong>"执古之道，以御今之有"的战略思维——辨别出组织中不变的东西（核心价值观、用户本质需求、人性规律）和在变的东西（技术、渠道、竞争格局）。战略锚定在"不变"上，战术灵活应对"变"。
+            </p>
+            <p><strong>社会文明：</strong>承认社会规律的"惚恍"本质——经济学、社会学的"规律"永远不像物理定律那样精确。政策制定不应追求"精确控制"，而应设定方向、建立反馈机制、保持调整能力——这就是以"道纪"御"今之有"。
+            </p>
+        </div>
+
+        <!-- 亲子赋能 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>"找不到但确实在"的游戏——问孩子："你能看见风吗？你能用手抓住风吗？"不能。"那你怎么知道有风？"因为树叶动了、头发飘了、脸凉凉的。引导发现：很多东西看不见、抓不住，但我们通过它的"效果"知道它在——老子说的"道"就是这样的东西。
+            </p>
+            <p><strong>🧘
+                    体验层：</strong>"蒙眼感受"——让孩子闭上眼睛一分钟，不看任何东西，然后问他们感受到了什么（温度、气味、声音、身体的感觉）。引导理解：闭上眼睛并不是"什么都没有"——只是换了一种感受方式。有些东西，不用眼睛反而感觉更清楚。
+            </p>
+            <p><strong>💬
+                    对话层：</strong>"你觉得什么东西是看不见但很重要的？"引导孩子列举：爱、友谊、勇气、时间、规则……发现："看不见的东西"往往比"看得见的东西"更影响我们的生活。那我们是不是应该多关心那些看不见但很重要的东西呢？
+            </p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「执古之道，以御今之有，能知古始，是谓道纪」</div>
+        <div class="quote-interp">——把握住恒久不变的法则，就能驾驭眼前变化的一切。不变应万变，这就是道的核心。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -190,14 +663,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第14章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第14章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

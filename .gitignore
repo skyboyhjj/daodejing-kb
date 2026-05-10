@@ -20,6 +20,7 @@ desktop.ini
 
 # 环境变量（含密钥，不能入库）
 .env
+.dev.vars
 
 # 依赖
 node_modules/
@@ -28,4 +29,9 @@ node_modules/
 .wrangler/
 wrangler.jsonc
 .vercel
+.vercel-tmp
 nul
+
+# Test artifacts
+scripts/test-write.txt
+scripts/test-py-write.txt

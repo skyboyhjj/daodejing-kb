@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🌀 第21章 · 孔德之容
         <span class="subtitle">上经 · 道体论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章老子要回答一个大问题："道"到底长什么样？看不见摸不着的"道"，真的存在吗？老子的回答是：它虽然恍恍惚惚，但里面确实有东西——有形象、有实质、有精华、有真实的信息。一起来"看见"看不见的道吧！
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,14 +392,23 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         孔德之容，惟道是从。<br>
         道之为物，惟恍惟惚。<br>
-        惚兮恍兮，其中有象；恍兮惚兮，其中有物；窈兮冥兮，其中有精；其精甚真，其中有信。<br>
+        惚兮恍兮，其中有象；恍兮惚兮，其中有物。<br>
+        窈兮冥兮，其中有精；其精甚真，其中有信。<br>
         自古及今，其名不去，以阅众甫。<br>
-        吾何以知众甫之状哉？以此。<br>
-        
+        吾何以知众甫之状哉？以此。
     </div>
 
     <div style="margin: 10px 0;">
@@ -138,48 +417,290 @@
         <span class="concept-tag xuan">玄</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>道的真实存在 · 恍兮惚兮 · 有象·有物·有精·有信 · 以阅众甫</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于道体论范畴，位于上经。核心内容为"孔德之容"，展现了老子关于道体论的深层思考。全章围绕道的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>"道"就像一个看不见的大宝箱：你打开它，里面有图画（象）、有东西（物）、有精华（精）、还有可靠的信息（信）。它从古到今一直存在，是万物的起点。我怎么知道万物是怎么开始的？就是靠观察"道"的这些特征。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>孔德之容，惟道是从</strong>——最大的德（能量/表现），完全以道为准则来运作。"孔"是大、极；"容"是形态、表现；"从"是顺从、遵循。</li>
+                <li><strong>道之为物，惟恍惟惚</strong>——道作为一种存在，是恍恍惚惚、若有若无的。"恍惚"不是虚无，而是超越感官但确有其实的状态。</li>
+                <li><strong>惚兮恍兮，其中有象</strong>——在这恍惚之中，有形象/意象（万物的原型或模式）。</li>
+                <li><strong>恍兮惚兮，其中有物</strong>——有实际的东西/实质。</li>
+                <li><strong>窈兮冥兮，其中有精</strong>——在深远幽暗中，有精华/精微之气。"窈冥"形容深远不可见。</li>
+                <li><strong>其精甚真，其中有信</strong>——这精华非常真实，可以被验证（有"信"=可信、可证验）。</li>
+                <li><strong>自古及今，其名不去</strong>——从古到今，道的名号不曾消失——它一直是解释万物的根本原理。</li>
+                <li><strong>以阅众甫</strong>——用它来考察万物的起源。"阅"是考察；"甫"通"父"（起始）。</li>
+                <li><strong>吾何以知众甫之状哉？以此</strong>——我如何知道万物起源的状态？就是凭借（对道的观察）。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>开篇立论（德从道）→ 道的总体特征（恍惚）→ 层层深入道的内容（象→物→精→信）→ 道的时间维度（自古及今）→
+                认识论结论（以此知众甫）。是一篇"道的存在论证明"。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>道虽然不可直接感知（恍惚窈冥），但它确实蕴含万物的"设计图"（象）、"原材料"（物）、"核心能量"（精）和"可验证的规律"（信）。这是老子的宇宙论声明：世界的根源是可信的、有序的。
+            </p>
+            <p><strong>人道维度：</strong>"孔德之容惟道是从"告诉我们：最伟大的品德/能力不是人为创造的，而是顺从道的表达。人的修养目标是让自己的"德"回归"道"的方向。</p>
+            <p><strong>现实应用：</strong>很多真正重要的东西（如信任、文化、士气）都是"恍惚"的——你无法直接量化它们，但"其精甚真，其中有信"——它们确确实实存在，并且可以被感知和验证。管理者需要学会"看见"这些看不见的力量。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"孔德之容，惟道是从"</li>
+                <li><strong>帛书甲本：</strong>"孔德之容，唯道是从"（同）</li>
+                <li><strong>帛书乙本：</strong>"孔德之容，唯道是从"（同）</li>
+                <li><strong>河上公本：</strong>"孔德之容，唯道是从"（同）</li>
+                <li><strong>关键差异：</strong>帛书"以顺众父"（甫=父），通行本"以阅众甫"——"阅"vs"顺"有差异</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"孔"</strong>：《尔雅》"孔，甚也"。大、甚之义。非"孔子"之"孔"。</li>
+                <li><strong>"德"</strong>：此处"德"是道的显现形态/功能。道是隐的本体，德是显的作用——第38章"上德不德"进一步展开此关系。</li>
+                <li><strong>"象""物""精""信"</strong>四层递进：从外到内、从粗到精。"象"是可感的模式，"物"是实体性，"精"是最微细的本质，"信"是可验证性。这构成一个认识论的"深度钻探"结构。
+                </li>
+                <li><strong>"甫"</strong>：高亨考证"甫"通"父"，万物之始。帛书作"父"。"众甫"= 万物的起源/始祖。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>内证网络：</strong>本章"道之为物惟恍惟惚"与第14章"视之不见名曰夷…是谓恍惚"直接呼应，两章共同构建"道的感知特征"。第14章从"不可感知"切入，本章从"虽恍惚但确有内容"切入，形成互补。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"道体论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了道的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：道、德、玄，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>前面第14章说"道看不见摸不着"，现在第21章进一步说"虽然看不见，但里面确实有东西"——就像Wi-Fi信号：你看不见它，但它确确实实在传送信息。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第21章位于上经"道体论"板块。第14章从否定面描述道（不可视、不可听、不可触），本章从肯定面描述道（有象、有物、有精、有信）。两章形成"否定→肯定"的完整论证。接下来第22章"曲则全"转入方法论。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第14章"视之不见…是谓恍惚"——道的不可感知性（否定描述）</li>
+                <li>第1章"常无欲以观其妙"——观察道的方法论</li>
+                <li>第25章"有物混成先天地生"——道的存在论另一表述</li>
+                <li>第4章"渊兮似万物之宗"——道作为万物根源</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经"道论"的核心之一——它回答了一个关键质疑："如果道恍恍惚惚看不见，你怎么知道它存在？"老子的回答是四层证明：有象（有模式可循）→有物（有实质效果）→有精（有精微本质）→有信（可被验证）。这为整部道德经的形而上学立场提供了认识论辩护。
+            </p>
+            <p><strong>思想史意义：</strong>本章是中国哲学"道"概念从神话走向理性的关键节点。老子既不说道是拟人化的神（殷周天命观），也不说它纯粹虚无（虚无主义），而是提出一种"超感官但可验证的实在"——这是一种独特的形而上学立场，后来影响了气论（张载"太虚即气"）、理学（朱熹"理"）等中国哲学的核心发展。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>"孔德之容惟道是从"作为开篇，确立了"德-道"的从属关系。这与第38章"上德不德是以有德…失德而后仁"的展开形成首尾呼应——第21章正面定义德与道的关系，第38章从退化角度展示德的层次分化。
+            </p>
+            <p><em>中观层：</em>本章"象→物→精→信"的四层结构与第14章"夷→希→微→混而为一"的三层否定结构互为正反面。14章说"无法分割地认知道"，21章说"但道确有可验证的内容"。两章构成道德经认识论的"否定之否定"辩证。
+            </p>
+            <p><em>宏观层：</em>在战国思想背景下，本章对"恍惚中有真实"的主张，区别于名家"坚白同异"的分析路径和墨家"三表法"的经验验证路径。老子提出的是第三种认识方式：通过"致虚守静"（第16章）进入恍惚状态后的直觉把握——一种"体认"而非"分析"的知识形态。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"孔德之容"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>学者们争论：道里面的"象、物、精、信"到底是什么？有人说是万物的种子（创世说），有人说是认识道的方法/层次（认识论说）。其实这就像问"种子里有什么"——你说有未来的花朵也对，说有DNA信息也对。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："象、物、精、信"的性质</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>宇宙发生说</strong>（河上公）：道中蕴含万物的原型（象）和质料（物），精气（精）和规律（信）——道是万物诞生前的"胚胎"</li>
+                <li><strong>认识论层次说</strong>（王弼）：象、物、精、信描述的是人认识道的四个递进层次——从模糊的形象到确定的验证</li>
+                <li><strong>道的属性说</strong>（当代学者）：四者是道的四种属性——有结构性（象）、有实在性（物）、有精微性（精）、有确定性（信）</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议点二："孔德"的理解</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>大德说</strong>：孔=大，"孔德"是最高的德性</li>
+                <li><strong>空德说</strong>：孔=空/虚，"孔德"是虚空之德（合第11章"无"的用）</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践差异：</strong>如果采"宇宙发生说"，本章告诉我们道中蕴含一切可能——创新者需要进入"恍惚"的直觉状态才能接触到原始创意。如果采"认识论说"，本章教的是如何一层层深入理解抽象事物——从模糊印象（象）到实际观察（物）到提炼精华（精）到验证确认（信）。
+            </p>
+            <p><strong>管理决策启示：</strong>"其精甚真其中有信"提醒决策者：即使目前只有模糊的直觉（恍惚），也不要轻视——深入挖掘后很可能找到真实可靠的洞察。好的战略往往起源于"恍兮惚兮"的灵感，但必须通过"其中有信"的验证才能落地。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"象"的哲学史意涵：</strong></p>
+            <p>"象"在先秦思想中具有特殊地位。《周易·系辞》"圣人立象以尽意"——"象"是超越语言的意义载体。老子说道中"有象"，暗示道虽不可言说但可通过"象"来把握——这可能是后来《易传》象学的哲学源头之一。</p>
+            <p><strong>"信"的多义分析：</strong></p>
+            <p>王弼注"信，信验也"——可验证性。河上公注"有信，有人之信也"——诚信/信实。从上下文看，"其精甚真，其中有信"的"信"更接近"可信验"义——道不是空想，它的存在可以被验证（通过万物的运行规律来反推道的存在）。这构成了老子形而上学的"间接验证法"——无法直接观察道，但可以通过观察道的效果（万物生成的规律）来确认道的存在。
+            </p>
+            <p><strong>与第14章的对读：</strong></p>
+            <p>第14章："迎之不见其首，随之不见其后"——道在时间维度上不可把握。本章："自古及今其名不去"——道在时间维度上恒常存在。两者看似矛盾，实则互补：道的"不可把握"是认知层面的（人无法框定它），道的"不去"是存在层面的（它一直在起作用）。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：道→德→玄</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在其他章节也说过：道是万物的"妈妈"（第1章、第25章），道虽然看不见但深不可测（第4章）。本章说"道里面有东西"完全对得上——道不是空的，它是万物的源头。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>验证章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>道恍惚但有内容</td>
+                    <td>第14章"是谓恍惚"（恍惚同词）</td>
+                    <td>概念一致，本章补充正面内容</td>
+                </tr>
+                <tr>
+                    <td>道是万物之源</td>
+                    <td>第1章"万物之母"、第25章"天下母"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>德从道（惟道是从）</td>
+                    <td>第38章"上德不德是以有德"</td>
+                    <td>德-道关系一致</td>
+                </tr>
+                <tr>
+                    <td>自古及今不去</td>
+                    <td>第4章"渊兮似万物之宗…吾不知谁之子"</td>
+                    <td>道的永恒性一致</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>"道之为物惟恍惟惚"与第14章"无状之状无物之象是谓恍惚"——描述同一特征</li>
+                <li>"其中有象"与第4章"象帝之先"——道先于有形之物的位阶一致</li>
+                <li>"其精甚真"与第25章"有物混成"——道的实在性一致</li>
+                <li>"以阅众甫"与第1章"观其妙""观其徼"——道作为认识万物根源的方法一致</li>
+                <li>"孔德之容惟道是从"与第51章"道生之德畜之"——道生德畜的关系一致</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>概念</th>
+                    <th>本章表述</th>
+                    <th>其他章节</th>
+                    <th>关系</th>
+                </tr>
+                <tr>
+                    <td>恍惚</td>
+                    <td>惟恍惟惚</td>
+                    <td>第14章"是谓恍惚"</td>
+                    <td>同词同义，道的核心特征</td>
+                </tr>
+                <tr>
+                    <td>道之实在</td>
+                    <td>有象、有物、有精、有信</td>
+                    <td>第25章"有物混成先天地生"</td>
+                    <td>互证道的实在性</td>
+                </tr>
+                <tr>
+                    <td>德-道关系</td>
+                    <td>孔德之容惟道是从</td>
+                    <td>第51章"道生之德畜之"</td>
+                    <td>从属关系一致</td>
+                </tr>
+                <tr>
+                    <td>道的永恒</td>
+                    <td>自古及今其名不去</td>
+                    <td>第4章"吾不知谁之子象帝之先"</td>
+                    <td>时间超越性一致</td>
+                </tr>
+                <tr>
+                    <td>以道观物</td>
+                    <td>以阅众甫</td>
+                    <td>第54章"以身观身以天下观天下"</td>
+                    <td>观察方法论一致</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;">
+                <strong>奥卡姆检验：</strong>本章核心主张可从两个基本公理推出：（1）道是万物之源（第1、25章已确立）→所以道中必然包含万物的原型/信息；（2）道非感官对象（第14章已确立）→所以道呈现为"恍惚"状态。两个公理足以推出本章全部内容，逻辑经济性高。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"孔德之容"提醒我们在日常生活中保持对道的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"孔德之容"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在殷周宗教向理性哲学转型的时代，老子需要回答"道是否只是虚构"的质疑。本章的四层证明（象物精信）是一次哲学论证：道虽不可见，但有结构（象）、有实质（物）、有精微本质（精）、可被验证（信）——它比看得见的东西更可靠。
+            </p>
+            <p><strong>普遍义：</strong>最重要的力量往往是"恍惚"的——引力、电磁场、文化氛围、组织惯性。它们看不见但"其精甚真其中有信"——确实存在并深刻影响一切。学会感知这些"恍惚"的力量，是一种高阶认知能力。
+            </p>
+            <p><strong>现代义：</strong>在数据至上的时代，本章提醒我们：不能量化的不等于不存在。企业文化、团队信任、品牌精神、创新灵感——都是"道之为物惟恍惟惚"的现代版本。过度依赖可量化指标会遮蔽这些"恍惚"但真实的关键因素。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>培养对"恍惚之物"的感知力——那些直觉、灵感、隐约的不安、说不清的美好，都是"恍兮惚兮其中有象"。不要因为说不清就忽视它们。给直觉以信任，然后用"其中有信"的检验去深化它。
+            </p>
+            <p><strong>组织管理：</strong>"孔德之容惟道是从"对管理的启示：组织最大的德行/能力（孔德），是对核心使命（道）的忠实遵循。不是追逐风口、不是模仿竞争对手，而是深入理解自己存在的根本意义（道），然后一切行动从此出发。
+            </p>
+            <p><strong>文明批判：</strong>当代文明偏爱"可见""可量化""可控"的事物，对"恍惚"的维度越来越没有耐心。但生态系统的平衡、社会信任的积累、文化传统的延续——都是"窈兮冥兮其中有精"的存在。忽视这些不可见的"精"和"信"，就是在破坏文明的根基。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>问孩子："有哪些东西是看不见但确实存在的？"（空气、Wi-Fi、爱、引力……）引出讨论："看不见就不存在吗？老子说不是——看不见的东西里面有象、有物、有精、有信呢！"</p>
+            <p><strong>🧘
+                    体验层：</strong>"蒙眼寻宝"游戏——蒙上眼睛，用手摸、用鼻子闻、用耳朵听来找到一个东西。体验"虽然看不见（恍惚），但确实能感知到东西（有象有物）"。还可以做"看不见的力量"实验——磁铁吸引铁钉：力量看不见，但效果真实（其精甚真其中有信）！
+            </p>
+            <p><strong>💬 对话层：</strong>"你觉得'友情'看得见吗？虽然看不见，但你怎么知道它存在？它有什么'证据'（信）？"引导孩子理解：很多最重要的东西是不可见的，但可以通过效果来验证。</p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「其精甚真，其中有信。」</div>
+        <div class="quote-interp">——看不见的道，蕴含着最真实的本质和最可靠的规律。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -189,14 +710,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第21章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第21章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,32 @@
+name: CI Quality Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'chapters/**'
+      - 'data/**'
+      - 'scripts/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'chapters/**'
+      - 'data/**'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    name: Validate & Check Index
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run structural validation
+        run: node scripts/validate.js
+
+      - name: Check search index is up-to-date
+        run: node scripts/build-index.js --check

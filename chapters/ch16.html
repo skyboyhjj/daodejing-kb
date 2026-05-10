@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第16章 致虚极守静笃 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
+        /* ===== 五步导航条 ===== */
         .five-step-nav {
             display: flex;
             gap: 0;
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +27,34 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
+        /* ===== 原文区块 ===== */
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +66,8 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
+        /* ===== 步骤区块 ===== */
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +75,123 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        /* ===== 认知层级选择器 ===== */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        /* ===== 分层内容块 ===== */
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        /* ===== 概念标签 ===== */
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +200,167 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        /* ===== 金句区块 ===== */
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        /* ===== 跨章验证表 ===== */
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
+        /* ===== 章节导航 ===== */
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -107,11 +374,23 @@
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🧘 第16章 · 致虚极守静笃
         <span class="subtitle">上经 · 修身论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章是老子的"修养总纲"，也是整部道德经中最重要的修行方法论之一。放空心灵、守住宁静，你就能看见万物的运行规律。我们一起来感受这份"归根"的智慧吧！
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,6 +401,16 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         致虚极，守静笃。<br>
@@ -130,58 +419,295 @@
         归根曰静，静曰复命。<br>
         复命曰常，知常曰明。<br>
         不知常，妄作凶。<br>
-        知常容，容乃公，公乃全，全乃天，天乃道，道乃久，没身不殆。<br>
-        
+        知常容，容乃公，公乃全，全乃天，天乃道，道乃久，没身不殆。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag jing">静</span>
+        <span class="concept-tag fan">反/复</span>
         <span class="concept-tag dao">道</span>
-        <span class="concept-tag de">德</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>修养总纲 · 致虚守静 · 万物并作吾以观复 · 归根曰静 · 知常容·容乃公</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于修身论范畴，位于上经。核心内容为"致虚极守静笃"，展现了老子关于修身论的深层思考。全章围绕静的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>把心放空到极点，像一面安静的湖水。这样你就能看到世界上所有东西最终都会回到它的起点——就像树叶从树上落下来，又变成养分回到树根。懂得这个规律的人，心胸宽广，做事公正，就能长久平安。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>致虚极，守静笃</strong>——心灵修养要达到虚空的极致，保持宁静的坚定。"致"是使之达到；"笃"是坚定深厚。这是修养功夫的总纲。</li>
+                <li><strong>万物并作，吾以观复</strong>——万物蓬勃生长变化，我从中观察它们循环往复的规律。"作"是兴起、运作；"复"是回归、循环。</li>
+                <li><strong>夫物芸芸，各复归其根</strong>——万物纷纷扰扰，最终都要回归它们的根源。"芸芸"形容众多纷杂。</li>
+                <li><strong>归根曰静，静曰复命</strong>——回归根源叫做"静"，"静"就是回归本性。"命"在此指事物的本然状态。</li>
+                <li><strong>复命曰常，知常曰明</strong>——回归本性叫做"常"（永恒规律），了解这个永恒规律叫做"明"（明智）。</li>
+                <li><strong>不知常，妄作凶</strong>——不了解这个恒常规律，就会盲目妄动，招致灾祸。</li>
+                <li><strong>知常容…没身不殆</strong>——了解恒常规律就能包容万物→包容则公正→公正则周全→周全则合天→合天则合道→合道则长久→终身不会有危险。这是一个逻辑递进的链条。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>本章逻辑极为清晰：修养方法（致虚守静）→ 观察结果（万物归根）→ 概念推演（静→命→常→明）→
+                正反论证（知常vs不知常）→ 价值递升链（容→公→全→天→道→久）。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>万物的运行遵循"出→返"的循环规律——花开花落、潮起潮退、四季更替。这个"复"是宇宙的基本节奏。</p>
+            <p><strong>人道维度：</strong>人的修养方法是"致虚守静"，即通过清空心中的杂念和欲望，在宁静中观察事物的本质规律。</p>
+            <p><strong>现实应用：</strong>在信息过载的时代，"致虚极守静笃"意味着定期清空思绪、关闭外在噪音，才能看清事物的本质。就像一杯浑浊的水，只有静置才能看见底下的真相。管理者需要在纷繁的决策中保持内心宁静，才能看到趋势的"归根"方向。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"致虚极，守静笃"</li>
+                <li><strong>帛书甲本：</strong>"致虚极也，守静督也"（"督"通"笃"）</li>
+                <li><strong>帛书乙本：</strong>"致虚极也，守情表也"（"情"可能为"静"之讹，"表"可能为"笃"之讹）</li>
+                <li><strong>河上公本：</strong>同王弼本</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"虚"</strong>：《说文》"虚，大丘也"，引申为空、无。老子用"虚"指心灵排除主观成见后的状态。</li>
+                <li><strong>"笃"</strong>：《说文》"笃，马行顿迟"，引申为坚定、忠实。帛书用"督"（正中），暗示"守静"是居于中正。</li>
+                <li><strong>"复"</strong>：兼有"返回"和"反复"二义。与第25章"远曰反"、第40章"反者道之动"构成概念网络。</li>
+                <li><strong>"常"</strong>：帛书作"恒"，避汉文帝刘恒讳而改。"恒/常"指不变的规律。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>内证网络：</strong>本章"知常容…道乃久"的递进链，在结构上类似第39章"天得一以清…侯王得一以为天下贞"的递进格式，体现老子惯用的"阶梯式论证"修辞手法。</p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"修身论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了静的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：静、道、德，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章是老子教我们"怎么修养自己"的方法总纲——先让心安静下来，然后你就能看到万物运转的大规律，明白了规律，做人做事就不会出错。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第16章位于上经（1-37章）的修身论板块。前有第15章描绘得道者的外在气质（"微妙玄通"），本章转向内在修养方法论（"致虚守静"）。后接第17章论治国之道，形成"修身→治国"的过渡。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第25章"远曰反"——归根的宇宙论表达</li>
+                <li>第40章"反者道之动"——"复"的哲学根基</li>
+                <li>第37章"道常无为"——"常"在治国语境中的应用</li>
+                <li>第52章"天下有始"——与"归根"思想的呼应</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章在道德经思想体系中占据"方法论枢纽"地位——它将本体论（道的循环规律）转化为修养论（致虚守静的功夫），再推向政治论（知常→容→公→天→道）。是"认识论→工夫论→价值论"三位一体的典范章节。
+            </p>
+            <p><strong>思想史意义：</strong>本章"致虚守静"开创了中国哲学中"静观"传统的源头，影响了庄子的"心斋坐忘"、佛教的"止观"修行、宋明理学的"主静"功夫。特别是"知常容"到"道乃久"的价值递升链，为后世儒道两家的"内圣外王"框架提供了逻辑基础。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层（篇章）：</em>本章用"致虚极守静笃"开篇，属于"功夫入手处"的陈述，功能类似第1章"常无欲以观其妙"，是将认识论落实为修行方法的关键节点。</p>
+            <p><em>中观层（道德经体系）：</em>"虚→静→复→根→命→常→明"构成本章的概念递推链。"复"是本章与第25、40、52章共享的核心概念，组成"复归"概念族。"常"则连接第1章"常道"、第37章"道常无为"、第55章"知和曰常"，构成"恒常"概念族。
+            </p>
+            <p><em>宏观层（战国思想）：</em>本章的"静观"主张区别于儒家"格物致知"的积极认识路径，与稷下黄老学派（如《管子·内业》"静则得之"）有呼应关系。"知常"的认识目标则不同于名家的概念分析和墨家的经验归纳。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"致虚极守静笃"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于这章有两个有趣的问题：一是"致虚守静"到底是一种打坐冥想的方法，还是只是一种思考态度？二是"万物并作，吾以观复"的"吾"是老子自己在说话，还是任何人都可以做到？不同学者有不同看法。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："致虚守静"的性质</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>冥想功夫说</strong>（河上公、宋代道教）：这是具体的静坐修炼方法，需要实际操练</li>
+                <li><strong>认识态度说</strong>（王弼）：这是排除偏见的认知方法，不必限于坐禅形式</li>
+                <li><strong>综合说</strong>（陈鼓应）：既包含实际修行也涵盖认识论层面</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议点二："知常容"递进链的逻辑</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>价值提升说</strong>：每一环都是价值层次的提高，最终达到"道"的境界</li>
+                <li><strong>认识拓展说</strong>：每一环代表认识范围的扩展，从个人容忍到合于天道</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践意义差异：</strong></p>
+            <p>如果采"冥想功夫说"，现代人的应用就是定期冥想、正念训练、减少信息输入；如果采"认识态度说"，应用重点则在决策时保持客观中立、不被情绪左右。两者并不矛盾，前者是后者的支撑手段。</p>
+            <p><strong>企业管理启示：</strong>对"知常容"链的不同理解影响管理方式。"价值提升说"强调领导者需经历自我修养的层次跃升；"认识拓展说"强调决策者需具备逐步扩大的视野格局。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>争议一深度分析：</strong></p>
+            <p>河上公注："虚，无也。极，中也。得道之人，捐情去欲，五内清净，至于虚无极也。"此释将"致虚"理解为去欲修行，偏向功夫论。王弼注："虚，物之所以通也。静，物之所以正也。极，谓其真。笃，谓其实。"此释从认识论角度立论，认为"虚静"是事物呈现其本来面目的条件。
+            </p>
+            <p><strong>争议二深度分析：</strong></p>
+            <p>"知常容，容乃公……"的七层递进在逻辑上存在跳跃。苏辙《老子解》试图补充中间逻辑："容则无所不包……公则万物均蒙其泽……"现代学者高明认为此链用的是"连锁推论"修辞，并非严格的逻辑论证，而是直觉性的价值排序。
+            </p>
+            <p><strong>帛书异文争议：</strong>帛书乙本"守情表也"若非讹字而是另一传本，则可能暗示早期传本中"守静笃"并非唯一表述，原始含义或有"守情性之根本"的意味。但学界主流仍视为传抄讹误。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：静→道→德</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在其他地方也说过类似的道理：万物都会回到起点（第25章），"反"是道的运动方式（第40章）。本章说的"归根复命"跟其他章节完全对得上，不矛盾。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心命题验证：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>验证章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>万物归根（复归规律）</td>
+                    <td>第25章"远曰反"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>反/复是道的运动</td>
+                    <td>第40章"反者道之动"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>知常→明→容</td>
+                    <td>第55章"知和曰常，知常曰明"</td>
+                    <td>用词一致</td>
+                </tr>
+                <tr>
+                    <td>致虚守静的功夫</td>
+                    <td>第5章"虚而不屈，动而愈出"</td>
+                    <td>互补关系</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽验证：</strong>本章从"虚静"出发到"归根→常→明"的逻辑链，与道德经整体思想完全自洽：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>"虚"对应第5章"天地之间其犹橐龠乎"的宇宙虚空结构</li>
+                <li>"静"对应第45章"静胜躁，寒胜热，清静为天下正"</li>
+                <li>"复"对应第40章核心命题"反者道之动"</li>
+                <li>"常"对应第1章"常道"、第37章"道常无为"</li>
+                <li>"容→公→天→道"的递升与第25章"人法地…道法自然"的递升平行</li>
+            </ul>
+            <p><strong>外部兼容：</strong>本章"知常"认识论与《庄子·齐物论》"以明"、《管子·内业》"静因之道"存在思想亲缘关系。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>完整验证矩阵：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>概念</th>
+                    <th>本章表述</th>
+                    <th>其他章节</th>
+                    <th>关系</th>
+                </tr>
+                <tr>
+                    <td>虚</td>
+                    <td>致虚极</td>
+                    <td>第5章"虚而不屈"、第11章"当其无有车之用"</td>
+                    <td>互文：虚是道的功能性特征</td>
+                </tr>
+                <tr>
+                    <td>静</td>
+                    <td>守静笃</td>
+                    <td>第45章"清静为天下正"、第26章"静为躁君"</td>
+                    <td>一致：静是修养基本功</td>
+                </tr>
+                <tr>
+                    <td>复/反</td>
+                    <td>观复、归根</td>
+                    <td>第25章"远曰反"、第40章"反者道之动"</td>
+                    <td>核心概念一致</td>
+                </tr>
+                <tr>
+                    <td>常</td>
+                    <td>复命曰常</td>
+                    <td>第1章"常道"、第55章"知和曰常"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>容→道链</td>
+                    <td>知常容…道乃久</td>
+                    <td>第39章"天得一以清…"递进链</td>
+                    <td>修辞结构平行</td>
+                </tr>
+                <tr>
+                    <td>没身不殆</td>
+                    <td>终身无危</td>
+                    <td>第52章"没身不殆"（完全相同）</td>
+                    <td>重复出现，强调</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;">
+                <strong>奥卡姆检验：</strong>本章的核心主张（万物归根为恒常规律）不需要引入额外假设即可与第25、40、52章的宇宙论保持一致。"致虚守静"作为认识方法，与第1章"无欲以观其妙"的方法论同构，无需额外解释框架。体系内部自洽度高。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"致虚极守静笃"提醒我们在日常生活中保持对静的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"致虚极守静笃"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>本章在春秋战国动荡背景下提出"静观"方法论，回应的是"妄作"时代——各国争霸、礼崩乐坏中人们急躁冒进的心态。老子告诫：不了解恒常规律就盲目行动，必遭凶险。</p>
+            <p><strong>普遍义：</strong>任何复杂系统都有其运行的内在节奏和回归规律。能观察到这个规律的人（"知常者"），就能做到包容多元、公正处事、最终与最大的道理合拍。</p>
+            <p><strong>现代义：</strong>在信息爆炸、焦虑蔓延的当代，"致虚极守静笃"就是数字时代的"断舍离"哲学——不是逃避，而是通过主动留白（虚）和深度宁静（静），恢复对事物本质规律的感知力。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>每天留出15分钟"致虚时间"——关闭手机、不做任何事、只是静坐观察。久而久之，你会发现焦虑的情绪、纷乱的念头都会自然"归根"——回到平静的本来状态。这就是"归根曰静"。
+            </p>
+            <p><strong>组织管理：</strong>"知常容"告诉管理者：了解了事物的规律，就有底气包容不同意见（容）→能包容才能做到公平（公）→公平才能周全（全）→周全才合天理（天）→合天理才合道（道）→合道则组织长久。这是一个"静→知→容→公→全→道→久"的领导力成长路径。
+            </p>
+            <p><strong>文明批判：</strong>"不知常，妄作凶"是对一切急功近利的文明发展模式的警告。过度开发自然、片面追求GDP增长、忽视生态循环规律的发展方式，正是"不知常"的现代版本。</p>
+        </div>
+
+        <!-- 亲子赋能 — 始终可见 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯 认知层：</strong>带孩子观察一棵树——春天发芽、夏天茂盛、秋天落叶、冬天休眠、来年又发芽。问孩子："树叶去哪了？它回到了哪里？"引出"归根"概念。</p>
+            <p><strong>🧘
+                    体验层：</strong>"安静观察"小游戏——全家找一个安静的地方，闭上眼睛3分钟，然后分享你"听到了什么"。体验"致虚守静"后感知力的变化。也可以做"浑水变清"实验：摇一杯泥水，观察静置后水慢慢变清——这就是"致虚极守静笃"的视觉化！
+            </p>
+            <p><strong>💬 对话层：</strong>"生活中有什么事情是'循环'的？一天的日出日落？你的呼吸一呼一吸？心情的高兴和不高兴？发现了这些循环，你觉得有什么好处？"</p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「致虚极，守静笃。万物并作，吾以观复。」</div>
+        <div class="quote-interp">——心越空越能看清本质，人越静越能发现规律。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -191,14 +717,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第16章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第16章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,50 @@
+{
+  "generated": "2026-05-08T11:03:45.632Z",
+  "summary": {
+    "overallHealth": "FAIR",
+    "validationPassRate": "1442/1782",
+    "searchIndexUpToDate": true,
+    "fourLevelCoverage": "13/81"
+  },
+  "metrics": {
+    "totalChapters": 81,
+    "totalSizeKB": 1185,
+    "withFourLevels": 13,
+    "withHuihuiGreeting": 81,
+    "withConceptTags": 81,
+    "conceptUsage": {
+      "dao": 33,
+      "xuan": 7,
+      "wuwei": 37,
+      "buzheng": 8,
+      "ziran": 7,
+      "shouzhong": 1,
+      "rouruo": 11,
+      "qiantui": 2,
+      "xia": 8,
+      "zhizu": 8,
+      "yi": 5,
+      "yinger": 1,
+      "pu": 8,
+      "de": 33,
+      "fan": 20,
+      "jing": 6
+    },
+    "unusedConcepts": []
+  },
+  "validation": {
+    "passed": false,
+    "passRate": "1442/1782",
+    "passPercent": 81,
+    "failedFiles": 68
+  },
+  "searchIndex": {
+    "upToDate": true
+  },
+  "manifest": {
+    "exists": true,
+    "generated": "2026-05-08T11:03:42.476Z",
+    "totalChapters": 81,
+    "fullyUpgraded": 13
+  }
+}

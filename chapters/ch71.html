@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,14 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +88,94 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #5c4a72;
+            color: white;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +183,33 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🤝 第71章 · 知不知
-        <span class="subtitle">下经 · 下经处世 · 五步读解</span>
+        👶 第71章 · 知不知
+        <span class="subtitle">下经 · 认知论 · 五步读解</span>
     </h1>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章只有短短几句话，却包含了老子对"知识"最深刻的洞见——知道自己不知道，是最高明的；不知道却以为自己知道，是病。圣人为什么没有这个"病"？因为他清楚地知道"自以为知"是一种病——既然认识到了这个病，自然就不会犯这个病了。简单说：承认无知=智慧；假装全知=愚蠢。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,78 +220,331 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
-    <!-- 原文 -->
-    <div class="original-text">
-        知不知，尚矣；不知知，病也。<br>
-        圣人不病，以其病病。<br>
-        夫唯病病，是以不病。<br>
-        
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn active" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button data-level="all" class="level-btn active">📋 全部</button>
     </div>
 
-    <div style="margin: 10px 0;">
-        <span class="concept-tag de">修身</span>
+    <!-- 原文 -->
+    <div class="original-text">
+        知不知，尚矣；<br>
+        不知知，病也。<br>
+        圣人不病，以其病病。<br>
+        夫唯病病，是以不病。
+    </div>
+
+    <div style="margin:10px 0;">
         <span class="concept-tag dao">道</span>
+        <span class="concept-tag de">德</span>
+        <span class="concept-tag xuan">玄</span>
     </div>
 
     <!-- 第一步 -->
     <div class="step-section" id="step1">
         <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>知的边界 · 知不知尚矣 · 不知知病矣 · 圣人不病以其病病</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于下经处世范畴，位于下经。核心内容为"知不知"，展现了老子关于下经处世的深层思考。全章围绕修身的概念展开，层层递进。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>白话翻译：</strong></p>
+            <p>知道自己有不知道的东西——这是高明的。不知道却以为自己知道——这是毛病。圣人没有这个毛病，因为他把"自以为知"当作毛病来警惕。正因为把这个毛病当毛病看，所以才不会犯这个毛病。</p>
+            <p style="margin-top:10px;"><strong>一句话总结：</strong>承认"我不知道"不丢人——这恰恰是最聪明的表现。不懂装懂才是真正的"病"。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句精读：</strong></p>
+            <ul style="padding-left:20px;line-height:2.2;">
+                <li><strong>"知不知，尚矣"</strong>——知道自己"不知道"（认识到自身认知的局限），这是高尚的/高明的。"尚"=崇尚、高明。核心含义：自知无知=真智慧。</li>
+                <li><strong>"不知知，病也"</strong>——不知道却以为自己知道，这是一种"病"（缺陷、毛病）。"病"在此是认知层面的缺陷——认知偏差、自欺欺人。</li>
+                <li><strong>"圣人不病，以其病病"</strong>——圣人没有这个病，因为他把"自以为知"这个病当作病来对待（警觉它、防范它）。第一个"病"是动词（视为病/警惕）；第二个"病"是名词（认知缺陷本身）。
+                </li>
+                <li><strong>"夫唯病病，是以不病"</strong>——正因为把这个病当作病来看待（保持对它的警觉），所以才不会得这个病。这是一个自我免疫的逻辑：认识到自己可能犯错→时刻警惕→因此不犯错。
+                </li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>应用视角：</strong></p>
+            <p><strong>"知不知"——达克效应（Dunning-Kruger
+                    Effect）：</strong>心理学研究证实老子的洞见：能力低的人往往高估自己（"不知知"），能力高的人反而低估自己（更接近"知不知"）。在组织中，最危险的不是"不知道"的人（他们还能学），而是"不知道自己不知道"的人——他们无法接受反馈、无法学习，因为他们认为自己已经知道了。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"病病"——元认知能力：</strong>心理学中的"元认知"（metacognition）=对自己认知过程的认知。"病病"就是元认知——对自己认知偏差的觉知。高元认知能力的人能在犯错之前察觉"我可能在犯错"——这就是"病病"的实际功能。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>学习型组织中的"知不知"：</strong>彼得·圣吉的学习型组织理论强调"心智模式"的反思——团队能否承认"我们的假设可能是错的"？能承认的组织持续进化；不能承认的组织固步自封。"知不知"是学习型组织的心理前提。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术注释：</strong></p>
+            <p>帛书本"知不知，尚矣"作"知不知，上矣"——"尚"作"上"，含义相近。帛书本后有"不知不知，病矣"——比通行本多重复一个"不"字，使对称结构更明显。</p>
+            <p style="margin-top:10px;">
+                本章的训诂核心在于"知不知"三字的断句和理解。主要有三种：（1）"知/不知"=知道自己有不知道的→认识论谦逊；（2）"知不/知"=知道却不以为知→伦理上的谦虚；（3）"知/不知"=认识到"无知"（作为一种积极的认知状态）→对"无知之知"的肯定。王弼取第一种，河上公取第二种，庄子学派倾向第三种。
+            </p>
+            <p style="margin-top:10px;">
+                苏格拉底"我只知道一件事，就是我什么都不知道"（柏拉图《申辩篇》）与老子"知不知尚矣"形成跨文化的哲学共振——两位几乎同时代的哲学家（相差约一百年）独立地得出了相同的认识论结论：智慧的起点是承认无知。这是哲学史上最著名的跨文化平行发现之一。
+            </p>
+            <p style="margin-top:10px;">
+                "病病"的逻辑结构在形式逻辑中被称为"自反性"（reflexivity）——认知对自身进行认知。这种自反性在现代认识论中是一个核心问题：人能否完全客观地认识自己的认知偏差？如果用来"病病"的认知本身也有偏差怎么办？这指向了一个无限回归问题，但老子通过"是以不病"的断然结论回避了这一难题——实践中的"警觉"足以避免犯错，不需要理论上的无限完美。
+            </p>
+        </div>
     </div>
 
     <!-- 第二步 -->
     <div class="step-section" id="step2">
         <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"下经处世"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了修身的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：修身、道，这些概念在SPO V3.0网络中形成紧密关联。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>简单背景：</strong></p>
+            <p>你有没有遇到过这种人：明明不懂，却装作什么都知道，还教别人？老子说这种人有"病"——不是身体的病，是脑子里的病：不知道自己不知道。相反，那些说"这个我不太确定，让我想想"的人——他们才是最聪明的。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>思想史定位：</strong></p>
+            <p>本章是《道德经》认识论的核心表述——讨论"知"与"不知"的关系。它不是讨论具体知识的内容，而是讨论对知识的态度——一种"元认知"（关于认知的认知）理论。这使老子不仅是宇宙论家和政治哲学家，也是一位深刻的认识论哲学家。
+            </p>
+            <p style="margin-top:10px;"><strong>与第1章的呼应：</strong></p>
+            <p>"道可道，非常道；名可名，非常名"（第1章）——开篇就宣告了语言/知识对终极实在的有限性。本章是同一认识论立场在个人修养层面的展开：既然道不可被完全知晓，那么"知不知"（承认自己认知的有限）就是唯一诚实和正确的态度。
+            </p>
+            <p style="margin-top:10px;"><strong>与第56章的关系：</strong></p>
+            <p>"知者不言，言者不知"（第56章）——真正知道的人不夸夸其谈，夸夸其谈的人不真正知道。本章"知不知"是第56章的认知论基础——因为真正"知"的人知道自己的"不知"，所以不妄言。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>当代语境映射：</strong></p>
+            <p><strong>科学精神的本质：</strong>科学方法的核心不是"确定的知识"，而是"系统性地质疑"——每个假说都是暂时的，等待被更好的假说取代。这种"知不知"态度（永远承认可能有错）正是科学进步的动力。科学家说"根据现有证据"而非"绝对正确"——这就是学术界的"知不知"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>信息时代的"不知知"病：</strong>互联网使每个人都可以"搜索"出答案——但浏览一篇文章就觉得自己"懂了"（不知知）。这种"浅层知识幻觉"比无知更危险——它消灭了学习的动力（"我已经知道了"）。真正的专家知道一个问题有多复杂（知不知），网络搜索者以为一切都很简单（不知知）。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>领导力中的"知不知"：</strong>最好的领导者经常说"我不确定""这个问题我需要更多信息"——这不是软弱，而是"知不知"的诚实。反之，"什么都有答案"的领导者往往做出灾难性决策——因为他们跳过了深入调查的步骤（不知知的冒进）。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术语境：</strong></p>
+            <p><strong>否定认识论（Negative
+                    Epistemology）：</strong>老子的认识论属于"否定认识论"传统——通过界定"什么不是知识"来间接接近知识的本质。这与否定神学（通过说"上帝不是什么"来接近上帝）有结构相似。"知不知"不是说"什么都不能知道"（怀疑论），而是说"知道自己不知道的边界"是一种更高形式的知。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>维特根斯坦的回响：</strong>"凡是能够说的，都能够说清楚；凡是不能说的，就应该沉默。"（《逻辑哲学论》7）——这与老子"知者不言"的认识论有深层一致性。两者都承认语言/知识有无法超越的边界，并主张在边界处保持沉默/谦逊。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"病病"的认知免疫学：</strong>将"病病"比喻为认知免疫系统——身体免疫系统通过"识别病原体"来防止生病；认知免疫系统通过"识别认知偏差"来防止犯错。"病病"=认知免疫力——对自己的偏差模式有清晰的认识，从而在它们发作之前进行干预。现代认知行为疗法（CBT）的核心原理正是"病病"——帮助患者识别自己的"认知扭曲"模式。
+            </p>
+        </div>
     </div>
 
     <!-- 第三步 -->
     <div class="step-section" id="step3">
         <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"知不知"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>有人不同意老子：</strong></p>
+            <p>有人说："如果大家都说'我不知道'，那谁来做决定？"老子不是说永远不能确定任何事——他是说：做决定之前先承认自己可能有盲点，多想想有没有遗漏。这样做出的决定反而更靠谱。"我不知道"不是结束，而是继续学习的开始。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议一："知不知"是否是一种反智主义？</strong></p>
+            <p><strong>反智说：</strong>老子一再强调"不知"的价值（第3章"常使民无知"、第65章"将以愚之"、本章"知不知"），这是否构成了系统性的反对知识追求？</p>
+            <p><strong>认识论谦逊说（主流）：</strong>"知不知"不是反对"知"，而是反对对"知"的过度自信。它追求的不是无知，而是"关于无知的知识"——这恰恰是知识的最高形式。类比：苏格拉底不反对知识，但他认为智慧的起点是承认无知。
+            </p>
+            <p style="margin-top:12px;"><strong>核心争议二："病"是道德缺陷还是认知缺陷？</strong></p>
+            <p><strong>道德说：</strong>"不知知"是一种道德问题——虚伪、自大、欺骗自己和他人。</p>
+            <p><strong>认知说：</strong>"不知知"是一种认知偏差——达克效应、确认偏误——不涉及道德判断。</p>
+            <p><strong>综合说：</strong>两者兼有——认知偏差如果不被反思，就会演变为道德问题（因为它导致错误决策并伤害他人）。</p>
+            <p style="margin-top:12px;"><strong>核心争议三："病病"是否会导致过度犹豫？</strong></p>
+            <p><strong>瘫痪说：</strong>如果一个人永远在质疑自己"可能不知道"，就会陷入决策瘫痪——什么都不敢确定、什么都不敢做。</p>
+            <p><strong>实践智慧说：</strong>"病病"是一种背景性的警觉，不是前台性的犹豫。你可以做出决定，同时保持"我可能错了"的开放性——两者不矛盾。这就是"假设→行动→验证→修正"的科学精神。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践中的张力：</strong></p>
+            <p><strong>"知不知"与自信的平衡：</strong>过度的"知不知"会变成缺乏自信——什么都不敢肯定。健康的"知不知"是：对核心判断有信心，但对边界问题保持开放。比如一个医生可以确信自己的诊断（基于充分证据），同时保持"可能还有我没想到的"的警觉——这不矛盾。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>组织中的"知不知"文化：</strong>如何建立一种"承认不知道是安全的"组织文化？关键：领导者率先示范"我不知道"——当老板说"这个问题我不确定，谁能帮我想想？"就创造了心理安全，让所有人都可以"知不知"而不怕被看不起。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术争论：</strong></p>
+            <p>围绕"知不知"的第一个"知"的语法功能存在争论：是"知道（自己的）不知道"（know that one doesn't know），还是"知道的极致就是不知道"（the height of knowing is
+                un-knowing）？前者是认识论谦逊（承认局限），后者是神秘主义（超越知识达到更高境界）。王弼倾向前者，道教修行传统倾向后者。</p>
+            <p style="margin-top:10px;">从分析哲学角度看，"知不知"涉及"高阶知识"（higher-order
+                knowledge）问题——KK原则（如果你知道p，你是否也知道你知道p？）。老子的"知不知"相当于：如果你是智慧的，你知道你不知道（你拥有关于自己认知状态的正确信息）。这是一种自反性知识——"关于知识的知识"。
+            </p>
+            <p style="margin-top:10px;">波兰尼（Polanyi）的"隐性知识"（tacit
+                knowledge）概念与"知不知"有交叉——我们"知道"的永远比我们能"说出来"的多。"知不知"的一种解读是：认识到自己有大量无法言说的隐性知识，因此对显性知识的完备性保持谦逊。</p>
+        </div>
     </div>
 
     <!-- 第四步 -->
     <div class="step-section" id="step4">
         <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：修身→道</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>这些道理一致吗？</strong></p>
+            <p>老子一直说真正厉害的人看起来像它的反面——大巧若拙、大智若愚。这一章说"真正聪明的人知道自己不聪明"——也是同一个道理。真正的知识不是装满一个杯子，而是知道杯子外面还有多大的海洋。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>跨章逻辑验证：</strong></p>
+            <table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9em;">
+                <tr style="background:#f5f5f0;">
+                    <th style="padding:8px;border:1px solid #d4c9a8;">本章命题</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">相关章节</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">一致性</th>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">知不知，尚矣</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第56章"知者不言"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——真知者知道言语的局限</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">不知知，病也</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第81章"知者不博，博者不知"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——炫博=不知知的表现</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">圣人不病</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第22章"圣人抱一为天下式"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——圣人的"一"包含对自身局限的清醒</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">病病=不病</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第40章"反者道之动"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——通过"反"（反观自身之病）达到"正"</td>
+                </tr>
+            </table>
+            <p style="margin-top:10px;">
+                <strong>内部自洽检验：</strong>"知不知尚矣"是否意味着老子否定了自己所有的论述？（既然"知不知"是最高的，那老子声称"知道"的一切是否自我矛盾？）解答：老子不是说"什么都不能知道"，而是说对终极实在（道）的完全认知是不可能的——但这不妨碍在日常层面有效地运用知识。"知不知"是一种"对知识的态度"，不是"放弃知识"。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践逻辑：</strong></p>
+            <p><strong>"病病→不病"的自我修正机制：</strong>"病病"构成了一个自动纠错回路：觉察到偏差（病病）→修正行为→避免错误（不病）→持续觉察→持续修正……这就是持续改进（continuous
+                improvement）的认知基础。缺乏"病病"能力的人无法进入这个正循环——他们不知道自己需要修正什么。</p>
+            <p style="margin-top:10px;">
+                <strong>实践检验：</strong>在任何专业领域中，顶级专家和新手的核心区别往往不是"知道多少"，而是"知道自己不知道什么"——顶级医生知道自己的诊断可能有遗漏（所以会做更多检查）；新手医生以为自己的第一判断就是对的（"不知知"的危险）。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系兼容性：</strong></p>
+            <p><strong>否定辩证法的认识论版：</strong>"病病→不病"的逻辑结构与"反者道之动"（第40章）一致——通过否定（否定自己的认知自满）达到肯定（真正的认知清明）。这是老子独特的"否定辩证法"——不是黑格尔式的正-反-合（综合超越），而是"反→正"的直接翻转——否定自身缺陷就直接达到了清明状态，不需要第三步的"综合"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>认识论与修养论的统一：</strong>本章证明了在老子哲学中，认识论（怎么"知"）和修养论（怎么"修"）是统一的——"知不知"既是认识论命题（正确认知的本质），又是修养命题（圣人的品格特征）。知识态度=德性修养——这在西方哲学中是难以统一的两个领域（事实/价值二分），但在老子这里是一体的。
+            </p>
+        </div>
     </div>
 
     <!-- 第五步 -->
     <div class="step-section" id="step5">
         <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"知不知"提醒我们在日常生活中保持对修身的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"知不知"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>生活启示：</strong></p>
+            <p>下次有人问你一个问题而你不确定答案时，试着说："我不太确定，让我查查看。"——这不丢人，这是"知不知"！反过来，如果你在某件事上出了错，不要死不承认——承认"原来我之前理解错了"就是在治好自己的"病"。能说"我不知道"的人，比假装什么都懂的人更值得信任。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>三层意义萃取：</strong></p>
+            <p><strong>哲学层：</strong>本章建立了一种"元认知"哲学——真正的智慧不在于知道多少内容，而在于对自己认知状态的准确把握。这把"智慧"从"信息量"转移到了"自我觉察"——拥有正确的自我认知比拥有更多知识更重要。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>方法层：</strong>"病病"提供了一个可操作的自我修正方法——定期问自己："我现在自以为知道的东西，有哪些可能是错的？"——这一个问题就能启动"病病"机制，防止"不知知"的病。</p>
+            <p style="margin-top:10px;">
+                <strong>心态层：</strong>放下"必须知道一切"的压力——承认无知不是失败，而是智慧的表现。这种心态让人更放松、更好学、更开放——因为不再需要维持"全知"的假象。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三维情境迁移：</strong></p>
+            <p><strong>个人学习：</strong>每学一个新领域时，首先花时间了解"这个领域有多大/多复杂"——先建立对自身无知的清醒认识，然后再逐步填补。这比直接钻入细节更高效——因为你知道学习的边界和优先级。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>团队决策：</strong>在重要决策前引入"红队"机制——专门有人负责挑战团队的假设（扮演"病病"的角色）。亚马逊的"六页备忘录"文化也包含这一精神——必须预想并回应所有可能的质疑，不允许"我们觉得一定没问题"的自满。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>亲密关系：</strong>在关系中承认"我不完全理解你"比假装"我完全懂你"更健康。说"我可能误解了你的意思"打开了对话空间；说"我知道你想什么"则关闭了对话。"知不知"在关系中=对对方持续的好奇和尊重。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术延伸：</strong></p>
+            <p><strong>认知偏差清单作为"病病"实践：</strong>Kahneman和Tversky系统列举的认知偏差清单（确认偏误、锚定效应、可得性启发等）可以被视为现代版的"病病"工具——通过了解人类常见的认知陷阱，建立对它们的免疫力。行为经济学本质上就是一门"病病"的学问。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>波普尔的证伪主义：</strong>波普尔主张科学理论只能被"证伪"而不能被"证实"——这是"知不知"的科学哲学版本。科学家应该积极寻找推翻自己理论的证据（"病病"），而非只寻找确认证据（"不知知"的陷阱——确认偏误）。一个理论越是经受住了证伪尝试，我们越有理由（暂时）信任它——但永远保持"可能被推翻"的开放性。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>量子力学中的测不准原理：</strong>海森堡测不准原理指出：我们不可能同时精确知道一个粒子的位置和动量——这是物理世界层面的"知不知"。自然界本身存在不可逾越的认知边界——这不是技术限制，而是实在的本质特征。老子的"知不知"预感了这一现代物理学发现——认知有不可逾越的结构性限制。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <p><strong>🎯 亲子赋能活动：承认"不知道"的勇气</strong></p>
+            <p><strong>认知活动——"我不知道"挑战：</strong>一家人轮流提出问题（可以很简单也可以很难），被问到的人如果不确定答案，就勇敢说"我不知道！"然后全家一起查答案。计分：说"我不知道"得1分，胡猜但错了扣1分。看看谁最能"知不知"！
+            </p>
+            <p style="margin-top:10px;">
+                <strong>体验活动——"以前我以为……后来才知道"：</strong>全家每人分享一个"以前我以为是对的，后来发现是错的"的经历。比如："我以前以为太阳绕着地球转""我以前以为恐龙是冷血动物"。讨论：发现自己错了的感觉是什么？改正错误是丢人的还是聪明的？
+            </p>
+            <p style="margin-top:10px;">
+                <strong>对话活动——"不懂装懂vs.老实承认"：</strong>用两个角色扮演场景让孩子选择：场景A——老师问了一个你不会的问题，你随便编一个答案；场景B——你说"老师我不确定，能给我点时间想想吗？"讨论哪种选择更好？为什么？引入老子的话："不知知，病也"——装懂是一种"病"，承认不懂才是健康的。
+            </p>
+        </div>
     </div>
 
-    <!-- 上下章导航 -->
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「知不知，上；不知知，病。夫唯病病，是以不病。」</div>
+        <div class="quote-interp">——知道自己有所不知，这是最高明；不知道却自以为知道，这就是毛病。只有把毛病当作毛病来对待，才能不犯毛病。</div>
+    </div>
+
     <div class="nav-chapters">
         <a href="ch70.html">← 第70章</a>
         <a href="ch72.html">第72章 →</a>
     </div>
 
-    <div class="site-footer">
-        道德经亲子体验营 · 第71章五步读解 · 最后更新：2026-05-05
-    </div>
-    <script src="../data/search-data.js"></script>
-    <script src="../js/search.js"></script>
-    <script src="../js/back-to-top.js"></script>
+    <footer style="text-align:center;padding:20px;color:#999;font-size:0.85em;">
+        <p>道德经亲子体验营 · 五步读解 · 第71章</p>
+    </footer>
 
-    <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
+    <div class="site-footer">
+        道德经亲子体验营 · 第71章五步读解 · 最后更新：2026-05-09
+    </div>
+
     <script src="/js/huihui-chat.js"></script>
+    <script src="../js/level-filter.js"></script>
 </body>
+
 </html>

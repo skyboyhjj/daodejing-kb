@@ -53,7 +53,11 @@ After completing each chapter's five-step analysis, verify against this checklis
 - [ ] **S3**: Original text in traditional Chinese (繁体) inside `.original-text`?
 - [ ] **S4**: Chapter navigation links correct (ch[PREV].html ← → ch[NEXT].html)?
 - [ ] **S5**: Footer with correct update date?
-- [ ] **S6**: Script references present (search-data.js, search.js, back-to-top.js)?
+- [ ] **S6**: Script references present in correct order (search-data.js, search.js, back-to-top.js, level-filter.js)?
+- [ ] **S7**: huihui-chat component present (huihui-chat.css + huihui-chat.js)?
+- [ ] **S8**: Level selector exists with `id="level-selector"` and all 5 buttons including `data-level="all"`?
+- [ ] **S9**: Site footer (`.site-footer`) exists?
+- [ ] **S10**: Level blocks use `class="level-block"` with correct `data-level` attributes?
 
 ## Content Quality (内容质量)
 
@@ -74,4 +78,10 @@ grep -n "本章.*深刻" chXX.html        # Vague claims — verify substantiati
 grep -c "step-section" chXX.html      # Should be exactly 5
 grep -c "concept-tag" chXX.html       # Should be >= 3 (in the tag row)
 grep -c "verify-table\|cross-chapter" chXX.html  # Should find the verification table
+grep -c "level-block" chXX.html       # Should be >= 16 (4 levels × 4 steps minimum)
+grep -c "level-filter.js" chXX.html   # Should be exactly 1
+grep -c "huihui-chat" chXX.html       # Should be exactly 2 (css + js)
+grep -c "id=\"level-selector\"" chXX.html  # Should be exactly 1
+grep -c "data-level=\"all\"" chXX.html     # Should be exactly 2 (亲子赋能 + 全部按钮)
+grep -c "site-footer" chXX.html       # Should be exactly 1
 ```

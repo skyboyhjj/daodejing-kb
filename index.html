@@ -4,747 +4,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>道德经亲子体验营 - AI驱动的经典知识图谱</title>
+    <title>慧惠 · 道德经亲子探索营</title>
     <link rel="stylesheet" href="css/daodejing-styles.css">
     <style>
-        /* 首页专用补充 */
-        .stats-bar {
+        /* ===== 慧惠首页专属样式 ===== */
+
+        /* 页面整体居中，增加呼吸感 */
+        body {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-            margin: 18px 0 28px;
-            padding: 14px 20px;
-            background: linear-gradient(135deg, rgba(46, 95, 95, 0.06) 0%, rgba(212, 175, 55, 0.06) 100%);
-            border-radius: 8px;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        .stats-bar .stat {
+        /* ── 慧惠英雄区 ── */
+        .huihui-hero {
+            text-align: center;
+            padding: 40px 20px 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* 水墨叶子图标容器 */
+        .huihui-icon-wrap {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        /* 外层水墨晕染圈 */
+        .huihui-icon-outer {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, rgba(58, 122, 106, 0.18) 0%, rgba(46, 95, 95, 0.10) 40%, rgba(212, 201, 168, 0.08) 70%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: huihui-breathe 5s ease-in-out infinite;
+        }
+
+        /* 中层水墨晕染 */
+        .huihui-icon-inner {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 40%, rgba(46, 95, 95, 0.25) 0%, rgba(46, 95, 95, 0.08) 50%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 叶子 SVG */
+        .huihui-icon-inner svg {
+            width: 50px;
+            height: 50px;
+            fill: none;
+            stroke: #2e5f5f;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.8;
+        }
+
+        @keyframes huihui-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        /* 问候语 */
+        .huihui-greeting-main {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2e5f5f;
+            margin: 0 0 14px;
+            letter-spacing: 3px;
+            border: none;
+            padding: 0;
+        }
+
+        .huihui-greeting-sub {
+            font-size: 1.05em;
+            color: #5a7a6a;
+            margin: 0 0 10px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .huihui-greeting-guide {
+            font-size: 1em;
+            color: #888;
+            margin: 0 0 8px;
+            letter-spacing: 1px;
+        }
+
+        /* ── 三张入口卡片 ── */
+        .entry-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 32px 0 40px;
+            max-width: 720px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .entry-card {
+            flex: 1 1 200px;
+            min-width: 180px;
+            max-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 28px 20px 24px;
+            border-radius: 12px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-family: inherit;
+            font-size: inherit;
             text-align: center;
         }
 
-        .stats-bar .stat-num {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #2e5f5f;
+        .entry-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 95, 95, 0.12);
+            border-color: #b8c8a0;
+            background: #fffcf0;
         }
 
-        .stats-bar .stat-label {
-            font-size: 0.82em;
+        .entry-card:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(46, 95, 95, 0.10);
+        }
+
+        .entry-card .card-icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+
+        .entry-card .card-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #2e5f5f;
+            margin-bottom: 6px;
+        }
+
+        .entry-card .card-desc {
+            font-size: 0.85em;
             color: #888;
+            line-height: 1.5;
+        }
+
+        /* ── 关于网站 ── */
+        .about-section {
+            max-width: 620px;
+            width: 100%;
+            margin: 0 20px 30px;
+            padding: 24px 28px;
+            background: #f0f5f3;
+            border-radius: 8px;
+            border-left: 4px solid #2e5f5f;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .about-section h2 {
+            color: #2e5f5f;
+            font-size: 1.1em;
+            margin: 0 0 12px;
+            letter-spacing: 2px;
+        }
+
+        .about-section p {
+            color: #555;
+            font-size: 0.92em;
+            line-height: 1.8;
+            margin: 0 0 10px;
+        }
+
+        .about-section .ai-disclaimer {
+            color: #888;
+            font-size: 0.85em;
+            line-height: 1.7;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #d4c9a8;
+        }
+
+        /* ── 搜索栏（次要位置） ── */
+        .search-mini {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 20px 36px;
+        }
+
+        .search-mini .daodejing-search {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .search-mini .daodejing-search input[type="search"] {
+            font-size: 0.9em;
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+
+        /* ── 页脚 ── */
+        .site-footer {
+            width: 100%;
+        }
+
+        /* ── 移动端适配 ── */
+        @media (max-width: 768px) {
+            .huihui-hero {
+                padding: 30px 16px 6px;
+            }
+
+            .huihui-icon-wrap {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 20px;
+            }
+
+            .huihui-icon-outer {
+                width: 90px;
+                height: 90px;
+            }
+
+            .huihui-icon-inner {
+                width: 56px;
+                height: 56px;
+            }
+
+            .huihui-icon-inner svg {
+                width: 38px;
+                height: 38px;
+            }
+
+            .huihui-greeting-main {
+                font-size: 1.4em;
+                letter-spacing: 2px;
+            }
+
+            .huihui-greeting-sub {
+                font-size: 0.95em;
+            }
+
+            .huihui-greeting-guide {
+                font-size: 0.9em;
+            }
+
+            .entry-cards {
+                gap: 14px;
+                margin: 24px 0 30px;
+                padding: 0 12px;
+            }
+
+            .entry-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+                flex-direction: row;
+                text-align: left;
+                padding: 18px 16px;
+                gap: 14px;
+                align-items: center;
+            }
+
+            .entry-card .card-icon {
+                font-size: 1.8em;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .about-section {
+                margin: 0 12px 24px;
+                padding: 18px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .huihui-icon-wrap {
+                width: 72px;
+                height: 72px;
+                margin-bottom: 16px;
+            }
+
+            .huihui-icon-outer {
+                width: 72px;
+                height: 72px;
+            }
+
+            .huihui-icon-inner {
+                width: 44px;
+                height: 44px;
+            }
+
+            .huihui-icon-inner svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .huihui-greeting-main {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>
-        🏔️ 道德经亲子体验营
-        <span class="subtitle">AI驱动的经典知识图谱 · 五步读解 · 81章 × 25概念 × SPO网络 × 赋能方案</span>
-        <button type="button" class="intro-toggle" onclick="toggleIntro()" aria-expanded="false"
-            aria-controls="intro-panel">
-            项目简介<span class="toggle-arrow">▼</span>
+    <!-- ═══════ 慧惠英雄区 ═══════ -->
+    <div class="huihui-hero">
+        <div class="huihui-icon-wrap">
+            <div class="huihui-icon-outer">
+                <div class="huihui-icon-inner">
+                    <!-- 水墨叶子 SVG -->
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 46 C25 46 10 38 10 26 C10 16 20 4 25 4 C25 4 26 18 35 22 C42 25 44 38 25 46Z"
+                            stroke-width="2" fill="rgba(46,95,95,0.06)" />
+                        <path d="M25 46 C28 38 32 30 25 20" stroke-width="1.2" opacity="0.5" />
+                        <path d="M25 46 C22 40 18 34 25 26" stroke-width="1.2" opacity="0.4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="huihui-greeting-main">你好呀！我是慧惠。</h1>
+        <p class="huihui-greeting-sub">世间AI都在帮人做加法，只有我，想陪你一起做减法。</p>
+        <p class="huihui-greeting-guide">今天，我们从哪里开始？</p>
+    </div>
+
+    <!-- ═══════ 三张入口卡片 ═══════ -->
+    <div class="entry-cards">
+        <!-- 卡片一：开始探索 -->
+        <a href="chapters.html" class="entry-card">
+            <span class="card-icon">&#128214;</span>
+            <span>
+                <div class="card-title">开始探索</div>
+                <div class="card-desc">81章按主题分类浏览</div>
+            </span>
+        </a>
+
+        <!-- 卡片二：亲子时光 -->
+        <button class="entry-card" onclick="openChatWithPreset('慧惠，我想和孩子一起读《道德经》，从哪里开始？')" type="button">
+            <span class="card-icon">&#128105;&zwj;&#128103;&zwj;&#128102;</span>
+            <span>
+                <div class="card-title">亲子时光</div>
+                <div class="card-desc">亲子共修方案与演示</div>
+            </span>
         </button>
-    </h1>
 
-    <!-- 搜索 -->
-    <div class="daodejing-search" id="daodejing-search">
-        <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
-        <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+        <!-- 卡片三：问慧惠 -->
+        <button class="entry-card" onclick="openHuihuiChat()" type="button">
+            <span class="card-icon">&#128172;</span>
+            <span>
+                <div class="card-title">问慧惠</div>
+                <div class="card-desc">直接与慧惠深度对话</div>
+            </span>
+        </button>
     </div>
 
-    <!-- 简介 -->
-    <div class="intro collapsed" id="intro-panel">
-        <div class="intro-content">
-            <p>
-                本项目以"五步协同读解法"（文本细读→语境建构→争议辨析→逻辑验证→意义转化）系统解读《道德经》81章，
-                构建<b>25类核心概念</b>跨章索引与<b>SPO V3.0概念网络</b>，涵盖道、德、无为、柔弱等关键概念及其语义互涉；
-                并提供<b>每日镜鉴、概念卡片、道商测评、思维实验</b>等亲子共修赋能方案，
-                以及初学、专题、深度三条阅读路径与儒道对照10组核心命题。
-            </p>
-            <p style="color: #888; font-size: 0.85em; margin-top: 8px;">
-                ⚠️ 本项目由AI辅助生成，解读和分析中不可避免地存在疏漏，正在持续修正中。
-            </p>
-            <h3>✨ 核心概念</h3>
-            <div class="entity-tags">
-                <span class="dao">道</span>
-                <span class="de">德</span>
-                <span class="ziran">自然</span>
-                <span class="wuwei">无为</span>
-                <span class="rouruo">柔弱</span>
-                <span class="fan">反</span>
-                <span class="pu">朴</span>
-                <span class="yi">一</span>
-                <span class="xuan">玄</span>
-                <span class="jing">静</span>
-                <span class="xia">下</span>
-            </div>
-            <h3>🚀 已完成 / 计划中</h3>
-            <ul>
-                <li>✅ <strong>81章五步读解</strong>：27组×3章，覆盖文本细读、语境建构、争议辨析、逻辑验证、意义转化</li>
-                <li>✅ <strong>SPO V3.0概念网络</strong>：10大一级节点辐射，21对交叉关系，完整语义图谱</li>
-                <li>✅ <strong>跨篇索引</strong>：25+核心概念×跨章追踪，21组互文对照</li>
-                <li>✅ <strong>赋能方案</strong>：8类每日镜鉴、7系列概念卡片、12道商维度、9类思维实验</li>
-                <li>✅ <strong>儒道对照</strong>：10组核心命题张力分析</li>
-                <li>📌 <strong>亲子游学营</strong>：青城山+都江堰实地游学方案（已设计，待落地）</li>
-            </ul>
+    <!-- ═══════ 关于这个网站 ═══════ -->
+    <div class="about-section">
+        <h2>关于这个网站</h2>
+        <p>
+            这是一个由AI伙伴<strong>"慧惠"</strong>陪伴的《道德经》亲子探索营。
+            所有解读由AI辅助生成，经人类导师深度修订。
+        </p>
+        <p class="ai-disclaimer">
+            &#9888;&#65039; 本项目的《道德经》解读、概念分析等内容由
+            AI辅助生成，虽经人工审核，仍可能存在疏漏。
+            我们正在持续修正中，感谢你的理解与反馈。
+        </p>
+    </div>
+
+    <!-- ═══════ 搜索（次要位置） ═══════ -->
+    <div class="search-mini">
+        <div class="daodejing-search" id="daodejing-search">
+            <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
+            <div id="search-results" class="daodejing-search-results" role="listbox"></div>
         </div>
     </div>
 
-    <!-- 统计 -->
-    <div class="stats-bar">
-        <div class="stat">
-            <div class="stat-num">81</div>
-            <div class="stat-label">章</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">25+</div>
-            <div class="stat-label">核心概念</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">10</div>
-            <div class="stat-label">SPO节点</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">21</div>
-            <div class="stat-label">互文对照</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">12</div>
-            <div class="stat-label">道商维度</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">3</div>
-            <div class="stat-label">阅读路径</div>
-        </div>
+    <!-- ═══════ 儿童模式入口 ═══════ -->
+    <div style="text-align:center;margin:0 20px 28px;">
+        <a href="l1/index.html"
+            style="display:inline-block;color:#4a8a5e;text-decoration:none;font-size:0.95em;padding:8px 22px;border-radius:20px;border:1.5px solid #a3c9b8;transition:all 0.2s;">👶
+            和小朋友一起读？进入儿童模式 →</a>
     </div>
 
-    <!-- 导航按钮 -->
-    <div class="nav-buttons">
-        <a href="concepts/index.html" style="background: linear-gradient(135deg, #2e5f5f, #3a7a6a);">🌐 概念索引</a>
-        <a href="paths/index.html" style="background: linear-gradient(135deg, #5a8f6e, #6ba87a);">🛤️ 阅读路径</a>
-        <a href="empower/index.html" style="background: linear-gradient(135deg, #6a5e8a, #7a6e9a);">💡 赋能方案</a>
-        <a href="compare/index.html" style="background: linear-gradient(135deg, #8a5a2e, #a06a3e);">⚖️ 儒道对照</a>
-        <a href="kg/index.html" style="background: linear-gradient(135deg, #4a5e7f, #5a7090);">🕸️ 知识图谱</a>
-    </div>
-
-    <!-- ═══════ 上经（道经·第1—37章） ═══════ -->
-
-    <!-- 板块一：道体论 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🌀 道体论（第1、4、6、14、21、25章）</h2>
-            <div class="section-desc">道之本体：不可言说、先于天地、混成独立、恍惚有象</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第1章</span>
-                    <a href="chapters/ch01.html">道可道，非常道</a>
-                </div>
-                <div class="chapter-desc">
-                    总纲：道的不可言说性 · 有无同出 · 玄之又玄 · 众妙之门
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第4章</span>
-                    <a href="chapters/ch04.html">道冲而用之或不盈</a>
-                </div>
-                <div class="chapter-desc">
-                    道体之虚用不盈 · 渊兮似万物之宗 · 和光同尘 · 象帝之先
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第6章</span>
-                    <a href="chapters/ch06.html">谷神不死</a>
-                </div>
-                <div class="chapter-desc">
-                    道的永恒生殖力 · 玄牝之门 · 天地之根 · 绵绵若存
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第14章</span>
-                    <a href="chapters/ch14.html">视之不见名曰夷</a>
-                </div>
-                <div class="chapter-desc">
-                    道体的超感知性 · 夷·希·微 · 混而为一 · 无状之状 · 迎之不见首
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第21章</span>
-                    <a href="chapters/ch21.html">孔德之容</a>
-                </div>
-                <div class="chapter-desc">
-                    道的真实存在 · 恍兮惚兮 · 有象·有物·有精·有信 · 以阅众甫
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第25章</span>
-                    <a href="chapters/ch25.html">有物混成</a>
-                </div>
-                <div class="chapter-desc">
-                    道的先在性 · 先天地生 · 寂兮寥兮 · 周行不殆 · 道法自然
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块二：辩证法 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>☯️ 辩证法（第2、22、36、40章）</h2>
-            <div class="section-desc">对立统一、物极必反、柔弱胜刚强的辩证智慧</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第2章</span>
-                    <a href="chapters/ch02.html">天下皆知美之为美</a>
-                </div>
-                <div class="chapter-desc">
-                    六对相反相生 · 有无相生难易相成 · 圣人处无为之事 · 行不言之教
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第22章</span>
-                    <a href="chapters/ch22.html">曲则全</a>
-                </div>
-                <div class="chapter-desc">
-                    六对反转命题 · 曲则全·枉则直 · 抱一为天下式 · 不争莫能争
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第36章</span>
-                    <a href="chapters/ch36.html">将欲歙之</a>
-                </div>
-                <div class="chapter-desc">
-                    四对辩证预兆 · 歙·弱·废·取 · 微明 · 柔胜刚 · 鱼不可脱渊
-                </div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title">
-                    <span class="chapter-num">第40章</span>
-                    <a href="chapters/ch40.html">反者道之动</a>
-                </div>
-                <div class="chapter-desc">
-                    道的核心运动律 · 反者道之动 · 弱者道之用 · 天下万物生于有·有生于无
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块三：修身论 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🧘 修身论（第7、8、10、12、15、16、20、26章）</h2>
-            <div class="section-desc">身心合一、水德、抱一、虚静归根的修养功夫</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第7章</span><a href="chapters/ch07.html">天长地久</a>
-                </div>
-                <div class="chapter-desc">不自生故能长生 · 后其身而身先 · 外其身而身存 · 无私成其私</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第8章</span><a href="chapters/ch08.html">上善若水</a>
-                </div>
-                <div class="chapter-desc">水善利万物而不争 · 七德：居善地·心善渊·与善仁·言善信·政善治·事善能·动善时 · 夫唯不争先</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第10章</span><a href="chapters/ch10.html">载营魄抱一</a>
-                </div>
-                <div class="chapter-desc">六问修身 · 抱一·专气·涤玄览·无为·天门开阖·明白四达 · 生而不有为而不恃长而不宰 = 玄德</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第12章</span><a href="chapters/ch12.html">五色令人目盲</a>
-                </div>
-                <div class="chapter-desc">感官节制 · 五色五音五味之害 · 为腹不为目 · 去彼取此</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第15章</span><a href="chapters/ch15.html">古之善为士者</a>
-                </div>
-                <div class="chapter-desc">得道者七喻 · 豫·犹·俨·涣·敦·旷·混 · 保此道者不欲盈 · 蔽不新成</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第16章</span><a href="chapters/ch16.html">致虚极守静笃</a>
-                </div>
-                <div class="chapter-desc">修养总纲 · 致虚守静 · 万物并作吾以观复 · 归根曰静 · 不知常妄作凶 · 知常容·容乃公</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第20章</span><a href="chapters/ch20.html">唯之与阿</a>
-                </div>
-                <div class="chapter-desc">独异于人 · 众人熙熙我独泊兮 · 如婴儿之未孩 · 我独贵食母</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第26章</span><a href="chapters/ch26.html">重为轻根</a>
-                </div>
-                <div class="chapter-desc">重为轻根静为躁君 · 终日行不离辎重 · 轻则失根躁则失君</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块四：无为论 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🌊 无为论（第3、17、19、23、29、37、48章）</h2>
-            <div class="section-desc">无为而治的核心政治哲学与实践原则</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第3章</span><a href="chapters/ch03.html">不尚贤</a>
-                </div>
-                <div class="chapter-desc">无为治国 · 虚心实腹·弱志强骨 · 为无为则无不治</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第17章</span><a href="chapters/ch17.html">太上不知有之</a>
-                </div>
-                <div class="chapter-desc">四层治理 · 不知有之→亲之→誉之→畏之 · 功成事遂百姓皆谓我自然</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第19章</span><a href="chapters/ch19.html">绝圣弃智</a>
-                </div>
-                <div class="chapter-desc">反异化三绝 · 绝圣弃智·绝仁弃义·绝巧弃利 · 见素抱朴·少私寡欲</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第23章</span><a href="chapters/ch23.html">希言自然</a>
-                </div>
-                <div class="chapter-desc">希言自然 · 飘风不终朝骤雨不终日 · 从事于道者同于道 · 信不足焉有不信焉</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第29章</span><a href="chapters/ch29.html">将欲取天下</a>
-                </div>
-                <div class="chapter-desc">天下神器不可为 · 去甚去奢去泰</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第37章</span><a
-                        href="chapters/ch37.html">道常无为而无不为</a></div>
-                <div class="chapter-desc">上经总结章 · 道常无为 → 侯王守之 → 万物自化 · 镇以无名之朴 · 不欲以静天下自正</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第48章</span><a href="chapters/ch48.html">为学日益</a>
-                </div>
-                <div class="chapter-desc">为学日益为道日损 · 损之又损以至于无为 · 无为而无不为 · 取天下常以无事</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块五：处世论 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🤝 处世论（第9、13、24、27、33章）</h2>
-            <div class="section-desc">功遂身退、宠辱不惊、善行无迹的处世智慧</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第9章</span><a href="chapters/ch09.html">持而盈之不如其已</a>
-                </div>
-                <div class="chapter-desc">功遂身退 · 金玉满堂莫之能守 · 功遂身退天之道</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第13章</span><a href="chapters/ch13.html">宠辱若惊</a>
-                </div>
-                <div class="chapter-desc">宠辱若惊 · 贵大患若身 · 及吾无身吾有何患 · 贵以身为天下</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第24章</span><a href="chapters/ch24.html">企者不立</a>
-                </div>
-                <div class="chapter-desc">四不 · 企者不立·跨者不行·自见不明·自伐无功 · 馀食赘行</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第27章</span><a href="chapters/ch27.html">善行无辙迹</a>
-                </div>
-                <div class="chapter-desc">五善 · 善行·善言·善数·善闭·善结 · 是以圣人常善救人 · 袭明 · 师资互转</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第33章</span><a href="chapters/ch33.html">知人者智</a>
-                </div>
-                <div class="chapter-desc">自知者明 · 自胜者强 · 知足者富 · 死而不亡者寿</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块六：治国论 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🏛️ 治国论（第5、11、18、30、31、32、35章）</h2>
-            <div class="section-desc">天地不仁、有之以为利、大道废的政治哲学</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第5章</span><a href="chapters/ch05.html">天地不仁</a>
-                </div>
-                <div class="chapter-desc">天地不仁以万物为刍狗 · 多言数穷不如守中</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第11章</span><a href="chapters/ch11.html">三十辐共一毂</a>
-                </div>
-                <div class="chapter-desc">有之以为利·无之以为用 · 埏埴为器·凿户牖为室 · 当其无有车之用</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第18章</span><a href="chapters/ch18.html">大道废有仁义</a>
-                </div>
-                <div class="chapter-desc">大道废有仁义 · 智慧出有大伪 · 六亲不和有孝慈 · 国家昏乱有忠臣</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第30章</span><a href="chapters/ch30.html">以道佐人主者</a>
-                </div>
-                <div class="chapter-desc">兵者不祥 · 师之所处荆棘生焉 · 善有果而已 · 物壮则老</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第31章</span><a
-                        href="chapters/ch31.html">夫佳兵者不祥之器</a></div>
-                <div class="chapter-desc">兵者不祥之器 · 恬淡为上 · 胜而不美 · 以丧礼处之</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第32章</span><a href="chapters/ch32.html">道常无名</a>
-                </div>
-                <div class="chapter-desc">道常无名·朴虽小天下莫能臣 · 侯王若能守之万物将自宾 · 知止不殆</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第35章</span><a href="chapters/ch35.html">执大象天下往</a>
-                </div>
-                <div class="chapter-desc">执大象天下往 · 往而不害安平太 · 乐与饵过客止 · 道之出口淡乎其无味</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块七：总结 -->
-    <div class="section">
-        <div class="section-header">
-            <h2>🔗 上经回环（第28、34章，第37章收束）</h2>
-            <div class="section-desc">知雄守雌、不自为大、道常无为——上经由体达用之闭环</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第28章</span><a href="chapters/ch28.html">知其雄守其雌</a>
-                </div>
-                <div class="chapter-desc">三知三守 · 知雄守雌·知白守黑·知荣守辱 · 复归于婴儿·无极·朴 · 大制不割</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第34章</span><a href="chapters/ch34.html">大道泛兮</a>
-                </div>
-                <div class="chapter-desc">道的不自为大 · 万物归焉而不为主 · 是以圣人终不自为大故能成其大</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════ 下经（德经·第38—81章） ═══════ -->
-
-    <!-- 板块一：德论 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>🏔️ 德论（第38、39、51章）</h2>
-            <div class="section-desc">上德不德、得一、道生德养的德论体系</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第38章</span><a href="chapters/ch38.html">上德不德</a>
-                </div>
-                <div class="chapter-desc">五层退化模型 · 道→德→仁→义→礼 · 上德不德是以有德 · 失道而后德 · 礼者忠信之薄</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第39章</span><a href="chapters/ch39.html">昔之得一者</a>
-                </div>
-                <div class="chapter-desc">得一 · 天得一以清·地得一以宁 · 贵以贱为本 · 至誉无誉 · 琭琭如玉珞珞如石</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第51章</span><a href="chapters/ch51.html">道生之德畜之</a>
-                </div>
-                <div class="chapter-desc">道生德畜物形势成 · 生而不有为而不恃长而不宰 = 玄德 · 莫之命而常自然</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块二：修身 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>🧘 下经修身（第42、44、45、46、50、52、54、55章）</h2>
-            <div class="section-desc">万物负阴抱阳、知足不辱、大巧若拙的深层修养</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第42章</span><a href="chapters/ch42.html">道生一</a>
-                </div>
-                <div class="chapter-desc">宇宙生成论 · 道生一→一生二→二生三→三生万物 · 万物负阴抱阳 · 冲气以为和</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第44章</span><a href="chapters/ch44.html">名与身孰亲</a>
-                </div>
-                <div class="chapter-desc">知足知止 · 名与身孰亲·身与货孰多 · 知足不辱·知止不殆 · 可以长久</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第45章</span><a href="chapters/ch45.html">大成若缺</a>
-                </div>
-                <div class="chapter-desc">五大反转 · 大成若缺·大盈若冲·大直若屈·大巧若拙·大辩若讷 · 清静为天下正</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第46章</span><a href="chapters/ch46.html">天下有道</a>
-                </div>
-                <div class="chapter-desc">知足常足 · 天下有道却走马以粪 · 天下无道戎马生于郊 · 祸莫大于不知足 · 故知足之足常足矣</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第50章</span><a href="chapters/ch50.html">出生入死</a>
-                </div>
-                <div class="chapter-desc">生生之厚 · 生之徒十有三·死之徒十有三 · 善摄生者 · 无死地</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第52章</span><a href="chapters/ch52.html">天下有始</a>
-                </div>
-                <div class="chapter-desc">得母知子 · 塞兑闭门 · 见小曰明·守柔曰强 · 用其光复归其明 · 袭常</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第54章</span><a href="chapters/ch54.html">善建者不拔</a>
-                </div>
-                <div class="chapter-desc">五层德之扩展 · 修之于身·家·乡·邦·天下 · 以身观身·以家观家 · 德之真·余·长·丰·普</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第55章</span><a href="chapters/ch55.html">含德之厚</a>
-                </div>
-                <div class="chapter-desc">含德之厚比于赤子 · 毒虫不螫·猛兽不据 · 骨弱筋柔而握固 · 精和之至 · 心使气曰强 · 物壮则老</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块三：处世 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>🤝 下经处世（第41、43、47、56、63、70、71章）</h2>
-            <div class="section-desc">明道若昧、至柔驰骋、玄同的处世功夫</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第41章</span><a href="chapters/ch41.html">上士闻道</a>
-                </div>
-                <div class="chapter-desc">三士反应 · 建言有之·明道若昧·进道若退 · 大象无形 · 道隐无名</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第43章</span><a href="chapters/ch43.html">天下之至柔</a>
-                </div>
-                <div class="chapter-desc">至柔驰骋至坚 · 无有入无间 · 不言之教·无为之益 · 天下希及之</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第47章</span><a href="chapters/ch47.html">不出户知天下</a>
-                </div>
-                <div class="chapter-desc">内观智慧 · 不出户知天下 · 不窥牖见天道 · 是以圣人不行而知</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第56章</span><a href="chapters/ch56.html">知者不言</a>
-                </div>
-                <div class="chapter-desc">玄同 · 六步功夫：塞兑·闭门·挫锐·解纷·和光·同尘 · 不可得而亲疏利害贵贱</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第63章</span><a href="chapters/ch63.html">为无为</a>
-                </div>
-                <div class="chapter-desc">无为方法论 · 为无为·事无事·味无味 · 图难于易·为大于细 · 轻诺必寡信</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第70章</span><a href="chapters/ch70.html">吾言甚易知</a>
-                </div>
-                <div class="chapter-desc">大道至简 · 吾言甚易知甚易行 · 天下莫能知莫能行 · 言有宗事有君 · 披褐怀玉</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第71章</span><a href="chapters/ch71.html">知不知</a>
-                </div>
-                <div class="chapter-desc">知的边界 · 知不知尚矣 · 不知知病矣 · 圣人不病以其病病</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块四：治国 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>🏛️ 下经治国（第49、57、58、59、60、61、64、65、66、72、74、75章）</h2>
-            <div class="section-desc">以百姓心为心、治大国若烹小鲜的政治实践</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第49章</span><a href="chapters/ch49.html">圣人无常心</a>
-                </div>
-                <div class="chapter-desc">以百姓心为心 · 善者吾善之·不善者吾亦善之 · 德善·德信 · 圣人皆孩之</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第53章</span><a href="chapters/ch53.html">使我介然有知</a>
-                </div>
-                <div class="chapter-desc">行于大道唯施是畏 · 大道甚夷而人好径 · 朝甚除田甚芜 · 是谓盗夸非道也哉</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第57章</span><a href="chapters/ch57.html">以正治国</a>
-                </div>
-                <div class="chapter-desc">以正治国·以奇用兵·以无事取天下 · 天下多忌讳而民弥贫 · 我无为而民自化</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第58章</span><a href="chapters/ch58.html">其政闷闷</a>
-                </div>
-                <div class="chapter-desc">闷闷 vs 察察 · 其政闷闷其民淳淳 · 祸兮福之所倚 · 是以圣人方而不割</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第59章</span><a href="chapters/ch59.html">治人事天莫若啬</a>
-                </div>
-                <div class="chapter-desc">啬道 · 治人事天莫若啬 · 早服谓之重积德 · 深根固柢长生久视之道</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第60章</span><a href="chapters/ch60.html">治大国若烹小鲜</a>
-                </div>
-                <div class="chapter-desc">治大国若烹小鲜 · 以道莅天下其鬼不神 · 非其鬼不神其神不伤人 · 德交归焉</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第61章</span><a href="chapters/ch61.html">大国者下流</a>
-                </div>
-                <div class="chapter-desc">大国下流 · 牝常以静胜牡 · 大国不过欲兼畜人·小国不过欲入事人 · 两者各得所欲</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第64章</span><a href="chapters/ch64.html">其安易持</a>
-                </div>
-                <div class="chapter-desc">防微杜渐 · 合抱之木生于毫末 · 千里之行始于足下 · 慎终如始则无败事 · 辅万物之自然</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第65章</span><a href="chapters/ch65.html">古之善为道者</a>
-                </div>
-                <div class="chapter-desc">非以明民将以愚之 · 民之难治以其智多 · 以智治国国之贼 · 玄德深矣远矣</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第66章</span><a
-                        href="chapters/ch66.html">江海所以能为百谷王者</a></div>
-                <div class="chapter-desc">善下 · 江海善下故能为百谷王 · 欲上民必以言下之 · 不争故天下莫能与之争</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第72章</span><a href="chapters/ch72.html">民不畏威</a>
-                </div>
-                <div class="chapter-desc">民不畏威则大威至 · 无狎其所居 · 自知不自见 · 自爱不自贵</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第74章</span><a href="chapters/ch74.html">民不畏死</a>
-                </div>
-                <div class="chapter-desc">民不畏死奈何以死惧之 · 司杀者杀 · 代司杀者杀是代大匠斫</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第75章</span><a href="chapters/ch75.html">民之饥</a>
-                </div>
-                <div class="chapter-desc">民之饥以其上食税之多 · 民之难治以其上之有为 · 民之轻死以其求生之厚 · 无以生为者贤于贵生</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块五：兵论 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>⚔️ 兵论（第67、68、69、73、76章）</h2>
-            <div class="section-desc">三宝、不争之德、哀兵必胜的战争哲学</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第67章</span><a href="chapters/ch67.html">天下皆谓我道大</a>
-                </div>
-                <div class="chapter-desc">三宝 · 一曰慈·二曰俭·三曰不敢为天下先 · 慈故能勇·俭故能广 · 慈以战则胜以守则固</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第68章</span><a href="chapters/ch68.html">善为士者不武</a>
-                </div>
-                <div class="chapter-desc">不争之德 · 善为士者不武·善战者不怒 · 善胜敌者不与 · 不争之德配天古之极</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第69章</span><a href="chapters/ch69.html">用兵有言</a>
-                </div>
-                <div class="chapter-desc">哀兵必胜 · 吾不敢为主而为客 · 不敢进寸而退尺 · 祸莫大于轻敌 · 哀者胜矣</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第73章</span><a href="chapters/ch73.html">勇于敢则杀</a>
-                </div>
-                <div class="chapter-desc">勇之两极 · 勇于敢则杀·勇于不敢则活 · 天之道不争而善胜 · 天网恢恢疏而不失</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第76章</span><a href="chapters/ch76.html">人之生也柔弱</a>
-                </div>
-                <div class="chapter-desc">柔弱属生坚强属死 · 人之生也柔弱·其死也坚强 · 草木之生也柔脆 · 强大处下柔弱处上</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 板块六：总结 -->
-    <div class="section">
-        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
-            <h2>🔗 下经总结（第62、77、78、79、80、81章）</h2>
-            <div class="section-desc">天道均衡、正言若反、小国寡民——下经由用归体之圆满</div>
-        </div>
-        <div class="chapter-grid">
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第62章</span><a href="chapters/ch62.html">道者万物之奥</a>
-                </div>
-                <div class="chapter-desc">道为万物之奥 · 善人之宝·不善人之所保 · 美言可以市·尊行可以加人 · 不善何弃之有</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第77章</span><a
-                        href="chapters/ch77.html">天之道其犹张弓与</a></div>
-                <div class="chapter-desc">天道 vs 人道 · 损有余补不足 vs 损不足以奉有余 · 孰能有余以奉天下 · 唯有道者</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第78章</span><a href="chapters/ch78.html">天下莫柔弱于水</a>
-                </div>
-                <div class="chapter-desc">柔弱胜刚强 · 天下莫柔弱于水而攻坚强者莫之能胜 · 受国之垢·受国之不祥 · 正言若反</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第79章</span><a href="chapters/ch79.html">和大怨</a>
-                </div>
-                <div class="chapter-desc">和大怨必有余怨 · 执左契而不责于人 · 天道无亲常与善人</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第80章</span><a href="chapters/ch80.html">小国寡民</a>
-                </div>
-                <div class="chapter-desc">理想社会 · 小国寡民 · 什伯之器而不用 · 民至老死不相往来 · 甘其食·美其服·安其居·乐其俗</div>
-            </div>
-            <div class="chapter-card">
-                <div class="chapter-title"><span class="chapter-num">第81章</span><a href="chapters/ch81.html">信言不美</a>
-                </div>
-                <div class="chapter-desc">全书终章 · 信言不美·美言不信 · 善者不辩·辩者不善 · 圣人不积·既以为人己愈有 · 天之道利而不害·人之道为而不争</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 页脚 -->
+    <!-- ═══════ 页脚 ═══════ -->
     <div class="site-footer">
-        道德经亲子体验营 · AI驱动的经典知识图谱 · 五步读解 · SPO V3.0概念网络<br>
-        最后更新：2026-05-05
+        道德经亲子体验营 &middot; 慧惠陪你读经典 &middot; 五步读解<br>
+        最后更新：2026-05-08
     </div>
 
+    <!-- ═══════ 脚本 ═══════ -->
     <script src="data/search-data.js"></script>
     <script src="js/search.js"></script>
     <script src="js/back-to-top.js"></script>
     <script>
-        function toggleIntro() {
-            var intro = document.getElementById('intro-panel');
-            var btn = document.querySelector('.intro-toggle');
-            var expanded = !intro.classList.contains('collapsed');
-            if (expanded) {
-                intro.classList.add('collapsed');
-                btn.classList.remove('expanded');
-                btn.setAttribute('aria-expanded', 'false');
-            } else {
-                intro.classList.remove('collapsed');
-                btn.classList.add('expanded');
-                btn.setAttribute('aria-expanded', 'true');
+        /**
+         * 打开慧惠聊天框（仅打开，不发送消息）
+         */
+        function openHuihuiChat() {
+            var btn = document.getElementById('huihui-chat-btn');
+            if (btn) {
+                btn.click();
             }
         }
-        function toggleSections(el) {
-            var links = el.nextElementSibling;
-            if (links && links.classList.contains('section-links')) {
-                var collapsed = links.classList.contains('collapsed');
-                if (collapsed) {
-                    links.classList.remove('collapsed');
-                    el.querySelector('.toggle-icon').textContent = '▼';
-                    el.querySelector('.toggle-text').textContent = '收起';
-                } else {
-                    links.classList.add('collapsed');
-                    el.querySelector('.toggle-icon').textContent = '▶';
-                    el.querySelector('.toggle-text').textContent = '显示全部';
+
+        /**
+         * 打开慧惠聊天框并发送预设消息
+         * @param {string} msg - 预设问题
+         */
+        function openChatWithPreset(msg) {
+            var btn = document.getElementById('huihui-chat-btn');
+            if (!btn) return;
+            btn.click();
+            // 等面板打开后再设置消息并发送
+            setTimeout(function () {
+                var input = document.getElementById('hui-input');
+                var sendBtn = document.getElementById('hui-send-btn');
+                if (input && sendBtn) {
+                    input.value = msg;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    sendBtn.click();
                 }
-            }
+            }, 350);
         }
     </script>
 

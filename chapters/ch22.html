@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         ☯️ 第22章 · 曲则全
         <span class="subtitle">上经 · 辩证法 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章是老子辩证法的经典篇章——"弯曲反而能保全，低洼反而能充满"。看起来像脑筋急转弯？其实是一种深刻的人生智慧。先弯腰才能站更高，先退让才能更长久。一起来看看这些"反常识"的道理吧！
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,14 +392,22 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         曲则全，枉则直，洼则盈，敝则新，少则得，多则惑。<br>
         是以圣人抱一为天下式。<br>
         不自见，故明；不自是，故彰；不自伐，故有功；不自矜，故长。<br>
         夫唯不争，故天下莫能与之争。<br>
-        古之所谓曲则全者，岂虚言哉！诚全而归之。<br>
-        
+        古之所谓曲则全者，岂虚言哉！诚全而归之。
     </div>
 
     <div style="margin: 10px 0;">
@@ -138,48 +416,288 @@
         <span class="concept-tag yi">一</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>六对反转命题 · 曲则全·枉则直 · 抱一为天下式 · 不争莫能争</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于辩证法范畴，位于上经。核心内容为"曲则全"，展现了老子关于辩证法的深层思考。全章围绕反的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>弯下腰的树不容易被风吹断（曲则全），歪的竹子经过处理反而变直（枉则直），低洼的地方水自然流过来（洼则盈）。所以聪明人不逞强、不显摆、不争功——结果反而没人比得过他。就像让步排队的人最终总能到达目的地，而挤来挤去的人反而更慢。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>曲则全</strong>——委曲才能保全。弯曲/退让是保全自身完整性的策略。</li>
+                <li><strong>枉则直</strong>——弯曲的经过矫正反而变直。或：委屈自己反而能伸张正义。</li>
+                <li><strong>洼则盈</strong>——低洼处才能盈满。谦卑是获得充实的前提。</li>
+                <li><strong>敝则新</strong>——破旧的才能更新。接受衰败是新生的条件。</li>
+                <li><strong>少则得</strong>——少取反而得多。欲望越少收获越丰（精力集中、不被分散）。</li>
+                <li><strong>多则惑</strong>——贪多反而迷惑。追求太多导致混乱、失去方向。</li>
+                <li><strong>是以圣人抱一为天下式</strong>——所以圣人持守"一"（道的整体性/根本原则）作为天下的法则。"抱一"是守住根本、不被表象分散。</li>
+                <li><strong>不自见故明…不自矜故长</strong>——四个"不自"：不自我炫耀所以明智；不自以为是所以彰显；不自我夸耀所以有功；不自高自大所以长久。全是"反向成就"的应用实例。</li>
+                <li><strong>夫唯不争，故天下莫能与之争</strong>——正因为不与人争，所以天下没有人能与他争。这是"反向逻辑"的终极总结。</li>
+                <li><strong>古之所谓曲则全者，岂虚言哉</strong>——古人说的"曲则全"，难道是空话吗？确实能完整保全地归回（道）。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>六对反转命题（现象层）→ 圣人法则（原则层：抱一）→ 四不自（实践层）→ 不争总结（效果层）→
+                回扣开头（呼应层）。逻辑完整，层层递进。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>自然界遍布"反向成就"的规律——水往低处流所以汇成大海（洼则盈），冬天万物凋零是为了春天新生（敝则新），树木落叶是为了保存能量来年更茂盛（曲则全）。</p>
+            <p><strong>人道维度：</strong>圣人的策略是"不争"——不与人在同一维度上竞争，而是通过降低自己（退让、谦虚、少取）来获得更根本的优势。</p>
+            <p><strong>现实应用：</strong>商业上"少则得多则惑"意味着聚焦战略优于多元化扩张。"不自伐故有功"说明真正的功绩不需要自我宣传——产品好自然有口碑。"曲则全"在谈判中意味着适当让步反而能达成更好的整体协议。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"曲则全，枉则直"（六对并列）</li>
+                <li><strong>帛书甲本：</strong>"曲则全，枉则正"（"正"非"直"）</li>
+                <li><strong>帛书乙本：</strong>同甲本"枉则正"</li>
+                <li><strong>郭店竹简：</strong>不含本章</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"曲"</strong>：弯曲、委曲。非"曲折"（复杂）义，而是"弯而不断"的柔韧性。</li>
+                <li><strong>"枉"</strong>：本义为弯曲的木材。引申为委屈、冤枉。"枉则直"="受委屈反而能伸直"。</li>
+                <li><strong>"抱一"</strong>：第39章"天得一以清"、第10章"载营魄抱一能无离乎"——"一"在道德经中指道的整体性或根本法则。</li>
+                <li><strong>"式"</strong>：《说文》"法也"。法则、模范。"为天下式"= 作为天下的法则模范。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>修辞分析：</strong>本章六对命题采用"X则Y"的对偶排列，是老子惯用的"格言式列举"修辞。其特点是不做论证而直接断言——修辞力量来自排列的节奏感和经验的直觉认同。四个"不自…故…"则用排比强化论述的说服力。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"辩证法"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了反的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：反、不争、一，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章是老子"反着来"哲学的总纲领。他在很多地方都说过类似的话（水往低处走所以强大、柔弱胜过刚强），这一章把所有这些"反常识"的道理集中在一起了。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第22章位于"辩证法"板块，是老子反向思维的集中展示。前面第21章论道之实有（有象有物有精有信），本章转向方法论——如何在实践中运用道的辩证原则。后接第23章"希言自然"（少说话是自然之道），是"少则得"的具体化。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第8章"水善利万物而不争"——不争思想的另一经典表述</li>
+                <li>第40章"反者道之动"——本章六对命题的哲学根基</li>
+                <li>第76章"坚强者死之徒，柔弱者生之徒"——曲/柔的生存优势</li>
+                <li>第81章"圣人不积…既以为人己愈有"——少则得的终极表达</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经辩证法的"方法论总纲"。第40章"反者道之动"提供了理论基础（道的运动方式是反向的），本章将其转化为具体的实践原则（曲全、枉直、洼盈、敝新、少得、不争）。可以说第40章是"反"的本体论，第22章是"反"的方法论。
+            </p>
+            <p><strong>思想史意义：</strong>本章的辩证思维深刻影响了中国文化——从兵法（以退为进、避实击虚）、到处世（大智若愚、韬光养晦）、到审美（留白、含蓄、欲扬先抑）。"不争"思想更是成为中国式领导力的重要特征，区别于西方文化中的竞争崇拜。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>"曲则全"开头的六对格言可能源自更古老的民间谚语——老子末尾"古之所谓曲则全者"暗示这些说法由来已久。老子的原创贡献在于：用"抱一"和"不争"将散落的格言统一为一个哲学体系。</p>
+            <p><em>中观层：</em>本章"不自见故明…不自矜故长"的四句，在第24章被反面表述为"自见者不明，自是者不彰，自伐者无功，自矜者不长"——两章形成正-反对照结构。这种"正面陈述+反面重述"是道德经的常见编排策略。
+            </p>
+            <p><em>宏观层：</em>本章的辩证法与黑格尔辩证法有结构相似但方向不同。黑格尔的辩证法是"正-反-合"的上升运动（最终达到绝对精神），老子的辩证法是"反者道之动"的循环运动（最终归于道的简朴）。老子不追求"合题"的更高综合，而追求"归"——回到原初的整全。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"曲则全"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>有人问：老子说"曲则全"是在教人耍心计吗？像是"假装弱小好占便宜"？大部分学者认为不是——老子说的不是计谋，而是一种自然规律。就像水并不是"故意"往低处流，但低洼处确实能汇聚更多水。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："曲则全"是自然规律还是处世策略？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>自然规律说</strong>（王弼）：这是道运行的客观规律，圣人只是顺应而非利用</li>
+                <li><strong>处世策略说</strong>（韩非子引用）：将"曲全"理解为政治/人际策略——以退为进</li>
+                <li><strong>修养境界说</strong>（陈鼓应）：不是策略性的算计，而是达到"不争"境界后的自然状态</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>争议点二："抱一"的含义</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>守道说</strong>：一=道，抱一=持守道的整体性原则</li>
+                <li><strong>守朴说</strong>：一=朴素，抱一=保持纯一不杂</li>
+                <li><strong>守对立统一说</strong>：一=对立面的统一，抱一=理解曲/全、枉/直等相互转化</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践差异：</strong>如果采"自然规律说"，意味着管理者不必刻意"装弱"，而是真正理解"低位优势"并安于其位。如果采"策略说"，则变成了一种权术——刻意示弱以待时机反击。老子原意更可能是前者：真正理解了规律的人自然会"不争"，不是因为策略而是因为看透了。
+            </p>
+            <p><strong>管理应用：</strong>"少则得多则惑"对企业战略的启示——专注一件事做到极致（抱一），比什么都想做但都做不好（多则惑）要有效得多。苹果公司的"少而精"产品策略就是"少则得"的典范。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"曲则全"的源流考辨：</strong></p>
+            <p>"古之所谓曲则全者"一句明确表明"曲则全"是老子之前已有的古语。《国语·越语》记载范蠡的策略思想"持盈者与天，定倾者与人，节事者与地"中可见类似的反向智慧。这暗示"反向思维"可能是更古老的华夏智慧传统，老子将其系统化为哲学。
+            </p>
+            <p><strong>"不争"概念的演化：</strong></p>
+            <p>本章"夫唯不争故天下莫能与之争"与第8章"水善利万物而不争"、第66章"以其不争故天下莫能与之争"（几乎同句重出）、第81章"圣人之道为而不争"共同构成"不争"概念族。从语用看，"不争"不是消极避让，而是"不在对方的游戏规则中竞争"——选择另一个维度。
+            </p>
+            <p><strong>帛书"枉则正"vs通行本"枉则直"：</strong></p>
+            <p>"正"与"直"义近但有微差——"直"偏向物理形态（弯木变直），"正"偏向价值判断（冤屈得以正名）。帛书用"正"可能暗示更强的伦理含义。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：反→不争→一</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>老子在第8章说"水不争所以强大"，第40章说"道的运动方式是反向的"，第76章说"柔弱比坚强更有生命力"——这些跟本章"曲则全""不争"完全是同一个意思，从不同角度重复了同一条道理。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>本章命题</th>
+                    <th>验证章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>曲则全（柔韧保全）</td>
+                    <td>第76章"柔弱者生之徒"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>洼则盈（谦下得满）</td>
+                    <td>第66章"江海所以能为百谷王者以其善下之"</td>
+                    <td>完全一致</td>
+                </tr>
+                <tr>
+                    <td>不争故莫能争</td>
+                    <td>第8章"水善利万物而不争"、第66章同句</td>
+                    <td>完全一致（重复出现）</td>
+                </tr>
+                <tr>
+                    <td>少则得多则惑</td>
+                    <td>第44章"甚爱必大费多藏必厚亡"</td>
+                    <td>反面论证一致</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>"曲则全"的根基是第40章"反者道之动"——道的运动是反向的，所以曲→全是自然规律</li>
+                <li>"不自见故明"与第24章"自见者不明"形成正反互证</li>
+                <li>"抱一"与第10章"载营魄抱一"、第39章"天得一以清"的"一"概念一致</li>
+                <li>"少则得"与第48章"为学日益为道日损"——损/少是接近道的方法</li>
+                <li>"不争"与第68章"善战者不怒，善胜敌者不与"——不争不是消极，而是更高维度的"善胜"</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <table class="verify-table">
+                <tr>
+                    <th>概念</th>
+                    <th>本章表述</th>
+                    <th>其他章节</th>
+                    <th>关系</th>
+                </tr>
+                <tr>
+                    <td>反向运动</td>
+                    <td>曲全/枉直/洼盈/敝新</td>
+                    <td>第40章"反者道之动"</td>
+                    <td>方法论←本体论</td>
+                </tr>
+                <tr>
+                    <td>不争</td>
+                    <td>不争故莫能争</td>
+                    <td>第8/66/68/81章</td>
+                    <td>贯穿全书的核心主张</td>
+                </tr>
+                <tr>
+                    <td>抱一</td>
+                    <td>圣人抱一为天下式</td>
+                    <td>第10章"抱一"、第39章"得一"</td>
+                    <td>"一"概念一致</td>
+                </tr>
+                <tr>
+                    <td>四不自</td>
+                    <td>不自见/是/伐/矜</td>
+                    <td>第24章（反面重述）</td>
+                    <td>正反互文结构</td>
+                </tr>
+                <tr>
+                    <td>少得多惑</td>
+                    <td>少则得多则惑</td>
+                    <td>第44/48章</td>
+                    <td>损益辩证一致</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;">
+                <strong>奥卡姆检验：</strong>本章全部命题可由一个元原则推出："反者道之动"（第40章）。既然道的运动方式是反向的，则一切看似"弱势"的位置（曲、洼、少、不争）实际上是"顺道"的位置——因此获得道的支持而最终"全""盈""得""长"。不需要额外假设。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"曲则全"提醒我们在日常生活中保持对反的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"曲则全"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在春秋战国弱肉强食的环境中，"曲则全"是弱者（小国、隐士）的生存智慧——硬碰硬只有死路一条，唯有以柔克刚才能在夹缝中生存并最终胜出。范蠡帮越王勾践"卧薪尝胆"就是"曲则全"的历史案例。
+            </p>
+            <p><strong>普遍义：</strong>在任何竞争性环境中，"不争"不意味着放弃，而是改变竞争的维度——不在对方强大的方面正面对抗，而是退到更本质的层面建立长期优势。这是一种"降维"而非"逃避"的智慧。
+            </p>
+            <p><strong>现代义：</strong>在"内卷""内卷加速"的时代，"少则得多则惑"提供了反思路径——不是做更多才能成功，而是做得对比做得多更重要。"不自伐故有功"提醒我们：在社交媒体人人自我营销的环境中，真正有实力的人往往不需要不停地"秀"。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>"不自见故明"——不急于表达观点，先听别人说，反而能看清全局。"不自是故彰"——不坚持"我一定对"，保持开放心态，自己的价值反而会被他人认可。实践方法：在下一次会议中，试试最后一个发言，看看效果有什么不同。
+            </p>
+            <p><strong>组织管理：</strong>"洼则盈"是赋能型领导的核心——越是把自己放低、把舞台让给团队，团队的能量和忠诚反而越高。"抱一为天下式"提醒管理者：不要被各种风口机会分散（多则惑），守住核心使命（抱一）才是长久之道。
+            </p>
+            <p><strong>文明批判：</strong>现代文明崇尚"更多、更快、更强"——更多GDP、更快增长、更强竞争力。但"多则惑"警告我们：无限增长本身就是迷惑。"敝则新"告诉我们：旧范式的终结不是灾难，而是新文明诞生的前提。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>用一根竹子做实验——试试直直地折断它（坚强者死之徒），再试试弯曲它到极限看它会不会断（曲则全）。问孩子："弯曲的竹子和折断的竹子，哪个更'强'？"引出"柔韧比刚硬更强大"的概念。
+            </p>
+            <p><strong>🧘 体验层：</strong>"低洼实验"——用沙盘（或面粉/米）做出高低起伏的地形，然后慢慢倒水进去。观察水去了哪里？（一定流向低洼处→洼则盈）。再试试在高处堆水（很难保持→多则惑）。
+            </p>
+            <p><strong>💬 对话层：</strong>"你觉得'不争'是不是就是'放弃'？一个从来不争第一名的人，有没有可能最后比谁都厉害？"讨论"真正的强"和"看起来强"的区别。</p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「夫唯不争，故天下莫能与之争。」</div>
+        <div class="quote-interp">——正因为不在别人的赛道上竞争，所以没有人能与你竞争。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -189,14 +707,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第22章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第22章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

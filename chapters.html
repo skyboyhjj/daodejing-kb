@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>81章主题探索 - 道德经亲子体验营</title>
+    <link rel="stylesheet" href="css/daodejing-styles.css">
+    <style>
+        /* chapters.html 专属补充样式 */
+        .chapters-header {
+            text-align: center;
+            padding: 18px 20px 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .chapters-header h1 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+
+        .chapters-header .chapters-guide {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        /* 上下经分隔 */
+        .scripture-divider {
+            text-align: center;
+            margin: 50px 0 20px;
+            color: #b8cfc5;
+            font-size: 0.9em;
+            letter-spacing: 4px;
+        }
+
+        .scripture-divider::before,
+        .scripture-divider::after {
+            content: ' ═══ ';
+            color: #d4c9a8;
+            letter-spacing: 0;
+        }
+
+        /* 返回首页链接 */
+        .back-home {
+            text-align: center;
+            margin: 16px 0 20px;
+        }
+
+        .back-home a {
+            display: inline-block;
+            padding: 8px 18px;
+            color: #2e5f5f;
+            background: rgba(46, 95, 95, 0.06);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .back-home a:hover {
+            background: rgba(46, 95, 95, 0.14);
+            text-decoration: none;
+        }
+
+        /* 底部问问慧惠 */
+        .ask-huihui-bottom {
+            text-align: center;
+            margin: 40px 0 30px;
+        }
+
+        .ask-huihui-bottom button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #2e5f5f, #3a7a6a);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(46, 95, 95, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .ask-huihui-bottom button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 16px rgba(46, 95, 95, 0.3);
+        }
+
+        .ask-huihui-bottom .hint {
+            display: block;
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        /* ── L1 模式：隐藏标准描述，显示儿童描述 ── */
+        body.level-l1 .chapter-desc {
+            display: none;
+        }
+
+        /* ── 层级选择器 ── */
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            margin: 16px 0 10px;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 5px 16px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* ── L1 描述样式 ── */
+        .chapter-desc-l1 {
+            color: #4a8a5e;
+            line-height: 1.7;
+            margin-top: 6px;
+            font-size: 0.95em;
+        }
+
+        /* 儿童模式卡片放大 */
+        body.level-l1 .chapter-card {
+            padding: 18px 16px;
+        }
+
+        body.level-l1 .chapter-title a {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 返回首页 -->
+    <div class="back-home">
+        <a href="index.html">&#8592; 回到慧惠首页</a>
+    </div>
+
+    <!-- 页面标题 -->
+    <div class="chapters-header">
+        <h1>&#128214; 81章主题探索</h1>
+        <p class="chapters-guide">选择一个你感兴趣的主题，开始你的《道德经》之旅。</p>
+    </div>
+
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button class="level-btn" data-level="all">📋 全部</button>
+    </div>
+
+    <p class="level-hint-text" style="text-align:center;margin:0 0 20px;font-size:0.82em;color:#aaa;">
+        💡 试试点击"👶 白话"—每个故事都有小朋友能听懂的版本
+    </p>
+
+    <!-- ═══════ 上经（道经·第1—37章） ═══════ -->
+
+    <!-- 板块一：道体论 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#127744; 道体论（第1、4、6、14、21、25章）</h2>
+            <div class="section-desc">道之本体：不可言说、先于天地、混成独立、恍惚有象</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第1章</span>
+                    <a href="chapters/ch01.html">道可道，非常道</a>
+                </div>
+                <div class="chapter-desc">
+                    总纲：道的不可言说性 &middot; 有无同出 &middot; 玄之又玄 &middot; 众妙之门
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">最重要的东西常常说不出来——就像妈妈的爱，你可以说出"妈妈爱你"，但永远说不完。</span>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第4章</span>
+                    <a href="chapters/ch04.html">道冲而用之或不盈</a>
+                </div>
+                <div class="chapter-desc">
+                    道体之虚用不盈 &middot; 渊兮似万物之宗 &middot; 和光同尘 &middot; 象帝之先
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">道就像一口永远用不完的井。你再怎么打水，它都不会干——因为它本来就是空的，空到什么都装得下。</span>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第6章</span>
+                    <a href="chapters/ch06.html">谷神不死</a>
+                </div>
+                <div class="chapter-desc">
+                    道的永恒生殖力 &middot; 玄牝之门 &middot; 天地之根 &middot; 绵绵若存
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">道就像一位永远年轻的妈妈，源源不断地生出万物，好像永远都不会累。</span>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第14章</span>
+                    <a href="chapters/ch14.html">视之不见名曰夷</a>
+                </div>
+                <div class="chapter-desc">
+                    道体的超感知性 &middot; 夷&middot;希&middot;微 &middot; 混而为一 &middot; 无状之状 &middot; 迎之不见首
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">有一种东西你看不到、听不见、摸不着——但它一直在。就像风：你看不到它，但树叶动了，就知道风来了。</span>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第21章</span>
+                    <a href="chapters/ch21.html">孔德之容</a>
+                </div>
+                <div class="chapter-desc">
+                    道的真实存在 &middot; 恍兮惚兮 &middot; 有象&middot;有物&middot;有精&middot;有信 &middot; 以阅众甫
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">有人说"道"不存在。老爷爷说：不对！道虽然摸不着，但它留下了很多脚印——看看大自然吧。</span>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第25章</span>
+                    <a href="chapters/ch25.html">有物混成</a>
+                </div>
+                <div class="chapter-desc">
+                    道的先在性 &middot; 先天地生 &middot; 寂兮寥兮 &middot; 周行不殆 &middot; 道法自然
+                </div>
+                <div class="level-block level-l1" data-level="l1">
+                    <span class="chapter-desc-l1">在有天有地之前，有一个东西已经在了。它很大很大，而且一直自己在动——这就是"道"。</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块二：辩证法 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#9778;&#65039; 辩证法（第2、22、36、40章）</h2>
+            <div class="section-desc">对立统一、物极必反、柔弱胜刚强的辩证智慧</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第2章</span>
+                    <a href="chapters/ch02.html">天下皆知美之为美</a>
+                </div>
+                <div class="chapter-desc">
+                    六对相反相生 &middot; 有无相生难易相成 &middot; 圣人处无为之事 &middot; 行不言之教
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第22章</span>
+                    <a href="chapters/ch22.html">曲则全</a>
+                </div>
+                <div class="chapter-desc">
+                    六对反转命题 &middot; 曲则全&middot;枉则直 &middot; 抱一为天下式 &middot; 不争莫能争
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第36章</span>
+                    <a href="chapters/ch36.html">将欲歙之</a>
+                </div>
+                <div class="chapter-desc">
+                    四对辩证预兆 &middot; 歙&middot;弱&middot;废&middot;取 &middot; 微明 &middot; 柔胜刚 &middot; 鱼不可脱渊
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title">
+                    <span class="chapter-num">第40章</span>
+                    <a href="chapters/ch40.html">反者道之动</a>
+                </div>
+                <div class="chapter-desc">
+                    道的核心运动律 &middot; 反者道之动 &middot; 弱者道之用 &middot; 天下万物生于有&middot;有生于无
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块三：修身论 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#129496; 修身论（第7、8、10、12、15、16、20、26章）</h2>
+            <div class="section-desc">身心合一、水德、抱一、虚静归根的修养功夫</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第7章</span><a href="chapters/ch07.html">天长地久</a>
+                </div>
+                <div class="chapter-desc">不自生故能长生 &middot; 后其身而身先 &middot; 外其身而身存 &middot; 无私成其私</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第8章</span><a href="chapters/ch08.html">上善若水</a>
+                </div>
+                <div class="chapter-desc">水善利万物而不争 &middot;
+                    七德：居善地&middot;心善渊&middot;与善仁&middot;言善信&middot;政善治&middot;事善能&middot;动善时 &middot; 夫唯不争先</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第10章</span><a href="chapters/ch10.html">载营魄抱一</a>
+                </div>
+                <div class="chapter-desc">六问修身 &middot; 抱一&middot;专气&middot;涤玄览&middot;无为&middot;天门开阖&middot;明白四达
+                    &middot; 生而不有为而不恃长而不宰 = 玄德</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第12章</span><a href="chapters/ch12.html">五色令人目盲</a>
+                </div>
+                <div class="chapter-desc">感官节制 &middot; 五色五音五味之害 &middot; 为腹不为目 &middot; 去彼取此</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第15章</span><a href="chapters/ch15.html">古之善为士者</a>
+                </div>
+                <div class="chapter-desc">得道者七喻 &middot; 豫&middot;犹&middot;俨&middot;涣&middot;敦&middot;旷&middot;混
+                    &middot; 保此道者不欲盈 &middot; 蔽不新成</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第16章</span><a href="chapters/ch16.html">致虚极守静笃</a>
+                </div>
+                <div class="chapter-desc">修养总纲 &middot; 致虚守静 &middot; 万物并作吾以观复 &middot; 归根曰静 &middot; 不知常妄作凶 &middot;
+                    知常容&middot;容乃公</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第20章</span><a href="chapters/ch20.html">唯之与阿</a>
+                </div>
+                <div class="chapter-desc">独异于人 &middot; 众人熙熙我独泊兮 &middot; 如婴儿之未孩 &middot; 我独贵食母</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第26章</span><a href="chapters/ch26.html">重为轻根</a>
+                </div>
+                <div class="chapter-desc">重为轻根静为躁君 &middot; 终日行不离辎重 &middot; 轻则失根躁则失君</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块四：无为论 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#127754; 无为论（第3、17、19、23、29、37、48章）</h2>
+            <div class="section-desc">无为而治的核心政治哲学与实践原则</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第3章</span><a href="chapters/ch03.html">不尚贤</a>
+                </div>
+                <div class="chapter-desc">无为治国 &middot; 虚心实腹&middot;弱志强骨 &middot; 为无为则无不治</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第17章</span><a href="chapters/ch17.html">太上不知有之</a>
+                </div>
+                <div class="chapter-desc">四层治理 &middot; 不知有之&rarr;亲之&rarr;誉之&rarr;畏之 &middot; 功成事遂百姓皆谓我自然</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第19章</span><a href="chapters/ch19.html">绝圣弃智</a>
+                </div>
+                <div class="chapter-desc">反异化三绝 &middot; 绝圣弃智&middot;绝仁弃义&middot;绝巧弃利 &middot; 见素抱朴&middot;少私寡欲</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第23章</span><a href="chapters/ch23.html">希言自然</a>
+                </div>
+                <div class="chapter-desc">希言自然 &middot; 飘风不终朝骤雨不终日 &middot; 从事于道者同于道 &middot; 信不足焉有不信焉</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第29章</span><a href="chapters/ch29.html">将欲取天下</a>
+                </div>
+                <div class="chapter-desc">天下神器不可为 &middot; 去甚去奢去泰</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第37章</span><a
+                        href="chapters/ch37.html">道常无为而无不为</a></div>
+                <div class="chapter-desc">上经总结章 &middot; 道常无为 &rarr; 侯王守之 &rarr; 万物自化 &middot; 镇以无名之朴 &middot; 不欲以静天下自正
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第48章</span><a href="chapters/ch48.html">为学日益</a>
+                </div>
+                <div class="chapter-desc">为学日益为道日损 &middot; 损之又损以至于无为 &middot; 无为而无不为 &middot; 取天下常以无事</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块五：处世论 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#129309; 处世论（第9、13、24、27、33章）</h2>
+            <div class="section-desc">功遂身退、宠辱不惊、善行无迹的处世智慧</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第9章</span><a href="chapters/ch09.html">持而盈之不如其已</a>
+                </div>
+                <div class="chapter-desc">功遂身退 &middot; 金玉满堂莫之能守 &middot; 功遂身退天之道</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第13章</span><a href="chapters/ch13.html">宠辱若惊</a>
+                </div>
+                <div class="chapter-desc">宠辱若惊 &middot; 贵大患若身 &middot; 及吾无身吾有何患 &middot; 贵以身为天下</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第24章</span><a href="chapters/ch24.html">企者不立</a>
+                </div>
+                <div class="chapter-desc">四不 &middot; 企者不立&middot;跨者不行&middot;自见不明&middot;自伐无功 &middot; 馀食赘行</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第27章</span><a href="chapters/ch27.html">善行无辙迹</a>
+                </div>
+                <div class="chapter-desc">五善 &middot; 善行&middot;善言&middot;善数&middot;善闭&middot;善结 &middot; 是以圣人常善救人
+                    &middot; 袭明 &middot; 师资互转</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第33章</span><a href="chapters/ch33.html">知人者智</a>
+                </div>
+                <div class="chapter-desc">自知者明 &middot; 自胜者强 &middot; 知足者富 &middot; 死而不亡者寿</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块六：治国论 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#127963;&#65039; 治国论（第5、11、18、30、31、32、35章）</h2>
+            <div class="section-desc">天地不仁、有之以为利、大道废的政治哲学</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第5章</span><a href="chapters/ch05.html">天地不仁</a>
+                </div>
+                <div class="chapter-desc">天地不仁以万物为刍狗 &middot; 多言数穷不如守中</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第11章</span><a href="chapters/ch11.html">三十辐共一毂</a>
+                </div>
+                <div class="chapter-desc">有之以为利&middot;无之以为用 &middot; 埏埴为器&middot;凿户牖为室 &middot; 当其无有车之用</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第18章</span><a href="chapters/ch18.html">大道废有仁义</a>
+                </div>
+                <div class="chapter-desc">大道废有仁义 &middot; 智慧出有大伪 &middot; 六亲不和有孝慈 &middot; 国家昏乱有忠臣</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第30章</span><a href="chapters/ch30.html">以道佐人主者</a>
+                </div>
+                <div class="chapter-desc">兵者不祥 &middot; 师之所处荆棘生焉 &middot; 善有果而已 &middot; 物壮则老</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第31章</span><a
+                        href="chapters/ch31.html">夫佳兵者不祥之器</a></div>
+                <div class="chapter-desc">兵者不祥之器 &middot; 恬淡为上 &middot; 胜而不美 &middot; 以丧礼处之</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第32章</span><a href="chapters/ch32.html">道常无名</a>
+                </div>
+                <div class="chapter-desc">道常无名&middot;朴虽小天下莫能臣 &middot; 侯王若能守之万物将自宾 &middot; 知止不殆</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第35章</span><a href="chapters/ch35.html">执大象天下往</a>
+                </div>
+                <div class="chapter-desc">执大象天下往 &middot; 往而不害安平太 &middot; 乐与饵过客止 &middot; 道之出口淡乎其无味</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块七：上经回环 -->
+    <div class="section">
+        <div class="section-header">
+            <h2>&#128279; 上经回环（第28、34章，第37章收束）</h2>
+            <div class="section-desc">知雄守雌、不自为大、道常无为——上经由体达用之闭环</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第28章</span><a href="chapters/ch28.html">知其雄守其雌</a>
+                </div>
+                <div class="chapter-desc">三知三守 &middot; 知雄守雌&middot;知白守黑&middot;知荣守辱 &middot; 复归于婴儿&middot;无极&middot;朴
+                    &middot; 大制不割</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第34章</span><a href="chapters/ch34.html">大道泛兮</a>
+                </div>
+                <div class="chapter-desc">道的不自为大 &middot; 万物归焉而不为主 &middot; 是以圣人终不自为大故能成其大</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ 上下经分隔 ═══════ -->
+    <div class="scripture-divider">下经 &middot; 德经</div>
+
+    <!-- ═══════ 下经（德经·第38—81章） ═══════ -->
+
+    <!-- 板块一：德论 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#127956;&#65039; 德论（第38、39、51章）</h2>
+            <div class="section-desc">上德不德、得一、道生德养的德论体系</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第38章</span><a href="chapters/ch38.html">上德不德</a>
+                </div>
+                <div class="chapter-desc">五层退化模型 &middot; 道&rarr;德&rarr;仁&rarr;义&rarr;礼 &middot; 上德不德是以有德 &middot; 失道而后德
+                    &middot; 礼者忠信之薄</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第39章</span><a href="chapters/ch39.html">昔之得一者</a>
+                </div>
+                <div class="chapter-desc">得一 &middot; 天得一以清&middot;地得一以宁 &middot; 贵以贱为本 &middot; 至誉无誉 &middot; 琭琭如玉珞珞如石
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第51章</span><a href="chapters/ch51.html">道生之德畜之</a>
+                </div>
+                <div class="chapter-desc">道生德畜物形势成 &middot; 生而不有为而不恃长而不宰 = 玄德 &middot; 莫之命而常自然</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块二：下经修身 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#129496; 下经修身（第42、44、45、46、50、52、54、55章）</h2>
+            <div class="section-desc">万物负阴抱阳、知足不辱、大巧若拙的深层修养</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第42章</span><a href="chapters/ch42.html">道生一</a>
+                </div>
+                <div class="chapter-desc">宇宙生成论 &middot; 道生一&rarr;一生二&rarr;二生三&rarr;三生万物 &middot; 万物负阴抱阳 &middot; 冲气以为和
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第44章</span><a href="chapters/ch44.html">名与身孰亲</a>
+                </div>
+                <div class="chapter-desc">知足知止 &middot; 名与身孰亲&middot;身与货孰多 &middot; 知足不辱&middot;知止不殆 &middot; 可以长久</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第45章</span><a href="chapters/ch45.html">大成若缺</a>
+                </div>
+                <div class="chapter-desc">五大反转 &middot; 大成若缺&middot;大盈若冲&middot;大直若屈&middot;大巧若拙&middot;大辩若讷 &middot;
+                    清静为天下正</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第46章</span><a href="chapters/ch46.html">天下有道</a>
+                </div>
+                <div class="chapter-desc">知足常足 &middot; 天下有道却走马以粪 &middot; 天下无道戎马生于郊 &middot; 祸莫大于不知足 &middot; 故知足之足常足矣
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第50章</span><a href="chapters/ch50.html">出生入死</a>
+                </div>
+                <div class="chapter-desc">生生之厚 &middot; 生之徒十有三&middot;死之徒十有三 &middot; 善摄生者 &middot; 无死地</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第52章</span><a href="chapters/ch52.html">天下有始</a>
+                </div>
+                <div class="chapter-desc">得母知子 &middot; 塞兑闭门 &middot; 见小曰明&middot;守柔曰强 &middot; 用其光复归其明 &middot; 袭常
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第54章</span><a href="chapters/ch54.html">善建者不拔</a>
+                </div>
+                <div class="chapter-desc">五层德之扩展 &middot; 修之于身&middot;家&middot;乡&middot;邦&middot;天下 &middot;
+                    以身观身&middot;以家观家 &middot; 德之真&middot;余&middot;长&middot;丰&middot;普</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第55章</span><a href="chapters/ch55.html">含德之厚</a>
+                </div>
+                <div class="chapter-desc">含德之厚比于赤子 &middot; 毒虫不螫&middot;猛兽不据 &middot; 骨弱筋柔而握固 &middot; 精和之至 &middot;
+                    心使气曰强 &middot; 物壮则老</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块三：下经处世 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#129309; 下经处世（第41、43、47、56、63、70、71章）</h2>
+            <div class="section-desc">明道若昧、至柔驰骋、玄同的处世功夫</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第41章</span><a href="chapters/ch41.html">上士闻道</a>
+                </div>
+                <div class="chapter-desc">三士反应 &middot; 建言有之&middot;明道若昧&middot;进道若退 &middot; 大象无形 &middot; 道隐无名</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第43章</span><a href="chapters/ch43.html">天下之至柔</a>
+                </div>
+                <div class="chapter-desc">至柔驰骋至坚 &middot; 无有入无间 &middot; 不言之教&middot;无为之益 &middot; 天下希及之</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第47章</span><a href="chapters/ch47.html">不出户知天下</a>
+                </div>
+                <div class="chapter-desc">内观智慧 &middot; 不出户知天下 &middot; 不窥牖见天道 &middot; 是以圣人不行而知</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第56章</span><a href="chapters/ch56.html">知者不言</a>
+                </div>
+                <div class="chapter-desc">玄同 &middot; 六步功夫：塞兑&middot;闭门&middot;挫锐&middot;解纷&middot;和光&middot;同尘 &middot;
+                    不可得而亲疏利害贵贱</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第63章</span><a href="chapters/ch63.html">为无为</a>
+                </div>
+                <div class="chapter-desc">无为方法论 &middot; 为无为&middot;事无事&middot;味无味 &middot; 图难于易&middot;为大于细 &middot;
+                    轻诺必寡信</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第70章</span><a href="chapters/ch70.html">吾言甚易知</a>
+                </div>
+                <div class="chapter-desc">大道至简 &middot; 吾言甚易知甚易行 &middot; 天下莫能知莫能行 &middot; 言有宗事有君 &middot; 披褐怀玉</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第71章</span><a href="chapters/ch71.html">知不知</a>
+                </div>
+                <div class="chapter-desc">知的边界 &middot; 知不知尚矣 &middot; 不知知病矣 &middot; 圣人不病以其病病</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块四：下经治国 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#127963;&#65039; 下经治国（第49、53、57、58、59、60、61、64、65、66、72、74、75章）</h2>
+            <div class="section-desc">以百姓心为心、治大国若烹小鲜的政治实践</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第49章</span><a href="chapters/ch49.html">圣人无常心</a>
+                </div>
+                <div class="chapter-desc">以百姓心为心 &middot; 善者吾善之&middot;不善者吾亦善之 &middot; 德善&middot;德信 &middot; 圣人皆孩之
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第53章</span><a href="chapters/ch53.html">使我介然有知</a>
+                </div>
+                <div class="chapter-desc">行于大道唯施是畏 &middot; 大道甚夷而人好径 &middot; 朝甚除田甚芜 &middot; 是谓盗夸非道也哉</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第57章</span><a href="chapters/ch57.html">以正治国</a>
+                </div>
+                <div class="chapter-desc">以正治国&middot;以奇用兵&middot;以无事取天下 &middot; 天下多忌讳而民弥贫 &middot; 我无为而民自化</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第58章</span><a href="chapters/ch58.html">其政闷闷</a>
+                </div>
+                <div class="chapter-desc">闷闷 vs 察察 &middot; 其政闷闷其民淳淳 &middot; 祸兮福之所倚 &middot; 是以圣人方而不割</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第59章</span><a href="chapters/ch59.html">治人事天莫若啬</a>
+                </div>
+                <div class="chapter-desc">啬道 &middot; 治人事天莫若啬 &middot; 早服谓之重积德 &middot; 深根固柢长生久视之道</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第60章</span><a href="chapters/ch60.html">治大国若烹小鲜</a>
+                </div>
+                <div class="chapter-desc">治大国若烹小鲜 &middot; 以道莅天下其鬼不神 &middot; 非其鬼不神其神不伤人 &middot; 德交归焉</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第61章</span><a href="chapters/ch61.html">大国者下流</a>
+                </div>
+                <div class="chapter-desc">大国下流 &middot; 牝常以静胜牡 &middot; 大国不过欲兼畜人&middot;小国不过欲入事人 &middot; 两者各得所欲</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第64章</span><a href="chapters/ch64.html">其安易持</a>
+                </div>
+                <div class="chapter-desc">防微杜渐 &middot; 合抱之木生于毫末 &middot; 千里之行始于足下 &middot; 慎终如始则无败事 &middot; 辅万物之自然
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第65章</span><a href="chapters/ch65.html">古之善为道者</a>
+                </div>
+                <div class="chapter-desc">非以明民将以愚之 &middot; 民之难治以其智多 &middot; 以智治国国之贼 &middot; 玄德深矣远矣</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第66章</span><a
+                        href="chapters/ch66.html">江海所以能为百谷王者</a></div>
+                <div class="chapter-desc">善下 &middot; 江海善下故能为百谷王 &middot; 欲上民必以言下之 &middot; 不争故天下莫能与之争</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第72章</span><a href="chapters/ch72.html">民不畏威</a>
+                </div>
+                <div class="chapter-desc">民不畏威则大威至 &middot; 无狎其所居 &middot; 自知不自见 &middot; 自爱不自贵</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第74章</span><a href="chapters/ch74.html">民不畏死</a>
+                </div>
+                <div class="chapter-desc">民不畏死奈何以死惧之 &middot; 司杀者杀 &middot; 代司杀者杀是代大匠斫</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第75章</span><a href="chapters/ch75.html">民之饥</a>
+                </div>
+                <div class="chapter-desc">民之饥以其上食税之多 &middot; 民之难治以其上之有为 &middot; 民之轻死以其求生之厚 &middot; 无以生为者贤于贵生</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块五：兵论 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#9876;&#65039; 兵论（第67、68、69、73、76章）</h2>
+            <div class="section-desc">三宝、不争之德、哀兵必胜的战争哲学</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第67章</span><a href="chapters/ch67.html">天下皆谓我道大</a>
+                </div>
+                <div class="chapter-desc">三宝 &middot; 一曰慈&middot;二曰俭&middot;三曰不敢为天下先 &middot; 慈故能勇&middot;俭故能广 &middot;
+                    慈以战则胜以守则固</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第68章</span><a href="chapters/ch68.html">善为士者不武</a>
+                </div>
+                <div class="chapter-desc">不争之德 &middot; 善为士者不武&middot;善战者不怒 &middot; 善胜敌者不与 &middot; 不争之德配天古之极</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第69章</span><a href="chapters/ch69.html">用兵有言</a>
+                </div>
+                <div class="chapter-desc">哀兵必胜 &middot; 吾不敢为主而为客 &middot; 不敢进寸而退尺 &middot; 祸莫大于轻敌 &middot; 哀者胜矣</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第73章</span><a href="chapters/ch73.html">勇于敢则杀</a>
+                </div>
+                <div class="chapter-desc">勇之两极 &middot; 勇于敢则杀&middot;勇于不敢则活 &middot; 天之道不争而善胜 &middot; 天网恢恢疏而不失</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第76章</span><a href="chapters/ch76.html">人之生也柔弱</a>
+                </div>
+                <div class="chapter-desc">柔弱属生坚强属死 &middot; 人之生也柔弱&middot;其死也坚强 &middot; 草木之生也柔脆 &middot; 强大处下柔弱处上</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 板块六：下经总结 -->
+    <div class="section">
+        <div class="section-header" style="background: linear-gradient(135deg, #4a7878 0%, #5a8f8f 100%);">
+            <h2>&#128279; 下经总结（第62、77、78、79、80、81章）</h2>
+            <div class="section-desc">天道均衡、正言若反、小国寡民——下经由用归体之圆满</div>
+        </div>
+        <div class="chapter-grid">
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第62章</span><a href="chapters/ch62.html">道者万物之奥</a>
+                </div>
+                <div class="chapter-desc">道为万物之奥 &middot; 善人之宝&middot;不善人之所保 &middot; 美言可以市&middot;尊行可以加人 &middot;
+                    不善何弃之有</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第77章</span><a
+                        href="chapters/ch77.html">天之道其犹张弓与</a></div>
+                <div class="chapter-desc">天道 vs 人道 &middot; 损有余补不足 vs 损不足以奉有余 &middot; 孰能有余以奉天下 &middot; 唯有道者</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第78章</span><a href="chapters/ch78.html">天下莫柔弱于水</a>
+                </div>
+                <div class="chapter-desc">柔弱胜刚强 &middot; 天下莫柔弱于水而攻坚强者莫之能胜 &middot; 受国之垢&middot;受国之不祥 &middot; 正言若反</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第79章</span><a href="chapters/ch79.html">和大怨</a>
+                </div>
+                <div class="chapter-desc">和大怨必有余怨 &middot; 执左契而不责于人 &middot; 天道无亲常与善人</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第80章</span><a href="chapters/ch80.html">小国寡民</a>
+                </div>
+                <div class="chapter-desc">理想社会 &middot; 小国寡民 &middot; 什伯之器而不用 &middot; 民至老死不相往来 &middot;
+                    甘其食&middot;美其服&middot;安其居&middot;乐其俗</div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-title"><span class="chapter-num">第81章</span><a href="chapters/ch81.html">信言不美</a>
+                </div>
+                <div class="chapter-desc">全书终章 &middot; 信言不美&middot;美言不信 &middot; 善者不辩&middot;辩者不善 &middot;
+                    圣人不积&middot;既以为人己愈有 &middot; 天之道利而不害&middot;人之道为而不争</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部：问问慧惠 -->
+    <div class="ask-huihui-bottom">
+        <span class="hint">不确定从哪开始？问问慧惠吧</span>
+        <button onclick="openHuihuiChat()" type="button">&#128172; 打开聊天框</button>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="site-footer">
+        道德经亲子体验营 &middot; AI驱动的经典知识图谱 &middot; 五步读解 &middot; SPO V3.0概念网络<br>
+        最后更新：2026-05-08
+    </div>
+
+    <!-- 脚本 -->
+    <script src="data/search-data.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/level-filter.js"></script>
+    <script>
+        function openHuihuiChat() {
+            var btn = document.getElementById('huihui-chat-btn');
+            if (btn) btn.click();
+        }
+    </script>
+
+    <!-- 慧惠 AI 聊天组件 -->
+    <link rel="stylesheet" href="/css/huihui-chat.css">
+    <script src="/js/huihui-chat.js"></script>
+</body>
+
+</html>

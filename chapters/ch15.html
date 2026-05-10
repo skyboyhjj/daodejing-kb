@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,27 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🧘 第15章 · 古之善为士者
-        <span class="subtitle">上经 · 修身论 · 五步读解</span>
+        <span class="subtitle">上经 · 修身论 · 得道者画像 · 五步读解</span>
     </h1>
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807; <strong>慧惠说：</strong>这一章我们一起来读。你可以先看看"白话版"，轻松感受一下老子想说什么。如果有兴趣，再用"精读版"深挖。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,13 +390,24 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <!-- 认知层级选择器 -->
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn">📚 精读</button>
+        <button data-level="l3" class="level-btn active">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         古之善为士者，微妙玄通，深不可识。<br>
-        夫唯不可识，故强为之容：豫兮若冬涉川，犹兮若畏四邻，俨兮其若客，涣兮若冰之将释，敦兮其若朴，旷兮其若谷，混兮其若浊。<br>
-        孰能浊以静之徐清？孰能安以动之徐生？保此道者不欲盈。<br>
-        夫唯不盈，故能蔽不新成。<br>
-        
+        夫唯不可识，故强为之容：<br>
+        豫兮若冬涉川，犹兮若畏四邻，俨兮其若客，<br>
+        涣兮若冰之将释，敦兮其若朴，旷兮其若谷，混兮其若浊。<br>
+        孰能浊以静之徐清？孰能安以动之徐生？<br>
+        保此道者不欲盈。夫唯不盈，故能蔽不新成。
     </div>
 
     <div style="margin: 10px 0;">
@@ -137,48 +416,251 @@
         <span class="concept-tag de">德</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>得道者七喻 · 豫·犹·俨·涣·敦·旷·混 · 保此道者不欲盈 · 蔽不新成</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于修身论范畴，位于上经。核心内容为"古之善为士者"，展现了老子关于修身论的深层思考。全章围绕朴的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章老子在说：古代真正厉害的人是什么样的呢？他们看起来很普通，甚至有点笨笨的。走路像冬天过结冰的河——小心翼翼；做事像怕惊动邻居一样——轻手轻脚；为人像做客一样——恭恭敬敬。但他们心里像冰化成水一样通透，像没有雕刻过的木头一样质朴，像山谷一样能容纳一切。老子说，他们有一个秘诀：从来不让自己"满"。就像杯子不装满水，才能一直往里倒。我们可以学到的是：真正有本事的人不会炫耀，做事谨慎小心但心里很宽广。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心概念解释：</strong></p>
+            <p><strong>"微妙玄通，深不可识"</strong>——得道之士精微奥妙、通达玄远，深邃到无法被常人理解。这不是故作神秘，而是其境界超越了常人的认知框架。</p>
+            <p><strong>七个比喻（"强为之容"）：</strong></p>
+            <p>1. <strong>"豫兮若冬涉川"</strong>——"豫"为犹豫谨慎。像冬天踩着冰面过河一样小心翼翼——不鲁莽、不轻率。</p>
+            <p>2. <strong>"犹兮若畏四邻"</strong>——"犹"为戒慎。像害怕被四面邻居注视一样谨慎——不张扬、有敬畏。</p>
+            <p>3. <strong>"俨兮其若客"</strong>——"俨"为庄重。像做客一样端庄恭敬——不放肆、有分寸。</p>
+            <p>4. <strong>"涣兮若冰之将释"</strong>——"涣"为融化。像冰块即将融化——没有固执僵硬的棱角，随时准备"化"为更柔软的状态。</p>
+            <p>5. <strong>"敦兮其若朴"</strong>——"敦"为敦厚。像未经雕琢的原木——没有刻意修饰，保持本真。</p>
+            <p>6. <strong>"旷兮其若谷"</strong>——"旷"为空旷。像山谷一样虚空、能容纳——胸襟开阔。</p>
+            <p>7. <strong>"混兮其若浊"</strong>——"混"为混同。像浑水一样不清——不自以为清高，甘于与世俗混同。</p>
+            <p><strong>"浊以静之徐清"</strong>——浑浊的水只要静下来，就会慢慢变清澈。"安以动之徐生"——安静的状态中慢慢生发出新的生机。这是道家修炼的核心方法论：以静待清，以静待生。</p>
+            <p><strong>"不欲盈"</strong>——不追求满。"蔽不新成"——（旧的）敝了也不急着换新。保持"不满"的状态，才有持续更新的空间。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>七种品质的现代领导力对照：</strong></p>
+            <p><strong>1. 谨慎（冬涉川）：</strong>做重大决策前充分评估风险。不因过于自信而冒进。</p>
+            <p><strong>2. 敬畏（畏四邻）：</strong>对团队、用户、竞争对手保持敬畏心。不傲慢。</p>
+            <p><strong>3. 端庄（若客）：</strong>保持专业态度和边界感。在任何场合都像"客人"一样尊重环境。</p>
+            <p><strong>4. 柔化（冰将释）：</strong>放下固执己见的能力。当新信息出现时，像冰融化一样自然地调整立场。</p>
+            <p><strong>5. 质朴（若朴）：</strong>不做表面功夫。沟通直接、真实，不包装不炫耀。</p>
+            <p><strong>6. 虚怀（若谷）：</strong>能容纳不同意见、不同背景的人。"谷"是能容的——越空越能容。</p>
+            <p><strong>7. 合众（若浊）：</strong>不脱离群众。与团队同甘共苦，不搞特殊化。</p>
+            <p><strong>"浊以静之徐清"的应用：</strong>当团队或个人处于混乱状态时，最好的策略不是立刻采取行动，而是先"静下来"——让信息沉淀、让情绪平复、让思路自然清晰。这比焦虑地"做点什么"更有效。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本比对：</strong></p>
+            <p>帛书甲本此章差异显著。末句帛书作"保此道者不欲盈。夫唯不欲盈，是以能蔽而不成"——"蔽而不成"vs通行本"蔽不新成"。"蔽而不成"意为"保持敝旧状态而不追求新的完成"，语义更直接。另外帛书"古之善为道者"而非"善为士者"——强调的是"行道之人"而非"士人"身份。
+            </p>
+            <p><strong>字词溯源：</strong></p>
+            <p>"豫"——帛书作"与"，通"豫"。《说文》："象之大者。"引申为犹豫、谨慎。"豫"与"犹"对举（犹=猴属，豫=象属），都取动物"犹疑不决"的行为特征来形容人的谨慎状态。</p>
+            <p>"朴"——《说文》："木素也。"未经加工的原木。在《道德经》中反复出现（第19、28、32、37、57章），是老子哲学最重要的价值意象之一，代表"未被文明异化的本真状态"。</p>
+            <p><strong>句式辨析：</strong>本章采用"总说—七喻—设问—结论"的四段式结构。七个比喻以"兮...若..."的格式整齐排列，每个比喻含一个状态词+一个类比物，构成极其密集的意象群。这种"密集比喻"在先秦文学中少见，显示出高度的文学自觉。
+            </p>
+            <p><strong>内证网络：</strong>本章"若谷"直接呼应第6章"谷神不死"和第28章"知其雄，守其雌...为天下谿"——"谷"在《道德经》中始终代表虚受、能容。"若朴"呼应第19章"见素抱朴"、第28章"朴散则为器"——"朴"是道家理想人格的核心品质。"不欲盈"与第9章"持而盈之，不如其已"形成直接呼应。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"修身论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了朴的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：朴、静、德，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章在整本书里是讲"真正厉害的人是什么样子"的。老子觉得，真正懂道理的人不是那种很聪明、很闪亮、很厉害的样子，反而是安安静静、朴朴素素、小心谨慎的样子。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第14章描绘了道的本体特征（惚恍不可见），第15章紧接着描绘"体道之人"的人格特征。逻辑是：道是什么样的→体悟道的人就是什么样的。道的"惚恍"对应得道者的"深不可识"；道的"混而为一"对应得道者的"混兮其若浊"。
+            </p>
+            <p><strong>中观语境：</strong>本章是《道德经》中最重要的"理想人格画像"之一。与第8章"上善若水"、第10章"载营魄抱一"、第22章"曲则全"共同构建了道家的"完人"形象——不是孔子式的"君子"（文质彬彬），而是老子式的"善为士者"（深不可识、混若浊）。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是《道德经》"隐性领导力"理论的核心——真正有影响力的人不是最耀眼的（"不欲盈"），而是最深厚的（"深不可识"）。现代管理学中的"第五级领导力"（谦逊+专业意志力的结合）与本章描绘的人格高度吻合。
+            </p>
+            <p><strong>"静之徐清"的组织应用：</strong>当组织面临危机（"浊"的状态）时，最常见的错误是立刻慌忙行动。本章提供的方案是"静之徐清"——先让团队停下来、沉淀信息、恢复理性，然后再行动。这不是消极等待，而是"积极的静"——在静中等待清晰的行动方向自然浮现。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>宏观语境——先秦理想人格对比：</strong></p>
+            <p>儒家理想人格（君子）以"文质彬彬"为标准——既有内在德行又有外在礼仪表现。老子的理想人格则以"深不可识"为标准——内在极其丰富但外在不可辨认（"混兮其若浊"）。这是两种根本不同的文明取向：儒家追求文明的"有形展现"，道家追求超越文明的"无形浑朴"。
+            </p>
+            <p><strong>天道-人道-天人合一：</strong></p>
+            <p><strong>天道维度：</strong>道本身"惚恍"（第14章），即"深不可识"。天地运行无声无形但万物自生。</p>
+            <p><strong>人道维度：</strong>得道之人像道一样——"深不可识"，不因外在表现而被辨认，但其影响深远。七个比喻描绘的是一种"合道人格"。</p>
+            <p><strong>天人合一：</strong>人的最高境界是与道同质——质朴如道（若朴），虚空如道（若谷），浑融如道（若浊），不满如道（不欲盈）。得道者的人格就是道的人格化体现。</p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"古之善为士者"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>关于最后一句"蔽不新成"，学者们有不同的理解。有人说是"虽然旧了也不急着换新的"（知足），也有人说是"正因为不追求完美，所以能一直更新"（生生不息）。不管哪种，核心意思是一样的：不要贪多、不要太满。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议："蔽不新成"如何理解？</strong></p>
+            <p><strong>解读一（知足论）：</strong>"蔽"=敝（旧、破）。"蔽不新成"=保持旧的状态而不追求新的完成。意为：知足于现有的、破旧的状态，不贪求更新更好的。这与"不欲盈"（不追求满）的语境一致。代表：帛书本"蔽而不成"支持此解。
+            </p>
+            <p><strong>解读二（持续更新论）：</strong>"蔽不新成"=能敝旧而不断新成。因为不自满（不盈），所以旧的可以被替换，新的可以不断形成。这是一种"永续更新"的动态解读。代表：王弼注——"蔽不新成，复归于始。"
+            </p>
+            <p><strong>解读三（隐藏论）：</strong>"蔽"=覆蔽、隐藏。"蔽不新成"=隐藏（自己的成就），不显示新的成就。这与"深不可识"的开篇遥相呼应——得道者隐藏其光芒。代表：部分道教注疏。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三种解读的实践差异：</strong></p>
+            <p><strong>知足论：</strong>在工作中不追求"永远最新最好"的完美主义——"够用就好"。减少升级焦虑，珍惜现有的工具和方法。</p>
+            <p><strong>持续更新论：</strong>"不盈"=保留学习空间。因为不自满，所以能持续进步。这是"成长心态"（growth mindset）的古典表述。</p>
+            <p><strong>隐藏论：</strong>有成就但不炫耀，让成就自然发挥作用而非用来标榜自己。在团队中把功劳归于集体。</p>
+            <p><strong>综合应用：</strong>三者可以并行——对物质知足（知足论），对学习不满足（持续更新），对成就低调（隐藏论）。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"蔽不新成"文本学考辨：</strong></p>
+            <p>帛书甲本作"能蔽而不成"，乙本作"能蔽而新成"。通行本"蔽不新成"可能是甲本"蔽而不成"与乙本"蔽而新成"之间的折中形态。从文法看，"蔽不新成"最可能的句读是"蔽/不新成"——"保持敝旧的状态/不追求新的完成形态"。
+            </p>
+            <p><strong>"故强为之容"的修辞学意义：</strong>"强"（勉强）一词极为关键——老子明确声明以下的七个比喻都是"勉强"的描述。这暗示：语言无法真正捕捉得道者的状态，所有比喻只是"近似"。这与第1章"道可道，非常道"的语言怀疑主义一脉相承——即使在描述"人"（而非道本身）时，语言仍然力不从心。
+            </p>
+            <p><strong>证据权衡：</strong>结合全章"不欲盈"的主旨和帛书证据，"知足论"（解读一）最为可靠。但"持续更新"的解读也有道理——"不盈"本身就蕴含着"永远有空间继续装"的动态含义。最佳综合理解：因为不自满（态度上的知足），所以有空间持续更新（效果上的进步）。
+            </p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：朴→静→德</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑一致性与体系兼容性校验</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>这一章和道德经其他章节说的道理完全一致。第8章说"最好的人像水一样"（安静、往低处流），第9章说"杯子装太满会洒出来"，这一章说"真正厉害的人从不让自己满"——都在告诉我们：谦虚、安静、不炫耀的人，才是真正有力量的人。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <table class="verify-table">
+                <thead>
+                    <tr>
+                        <th>本章命题</th>
+                        <th>对应章节</th>
+                        <th>互证内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>若谷（虚怀）</td>
+                        <td>第6章</td>
+                        <td>"谷神不死，是谓玄牝"——谷=虚空=生命力的源泉</td>
+                    </tr>
+                    <tr>
+                        <td>若朴（质朴）</td>
+                        <td>第19章</td>
+                        <td>"见素抱朴，少私寡欲"——朴=回归本真</td>
+                    </tr>
+                    <tr>
+                        <td>不欲盈</td>
+                        <td>第9章</td>
+                        <td>"持而盈之，不如其已"——满则溢</td>
+                    </tr>
+                    <tr>
+                        <td>混兮若浊</td>
+                        <td>第56章</td>
+                        <td>"和其光，同其尘"——与世混同不自高</td>
+                    </tr>
+                    <tr>
+                        <td>浊以静之徐清</td>
+                        <td>第16章</td>
+                        <td>"致虚极，守静笃"——以静致清</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>内部自洽检验：</strong></p>
+            <p>1. <strong>"不欲盈"与第4章：</strong>第4章"道冲而用之或不盈"——道本身就是"不盈"的。第15章的得道者"不欲盈"正是效法道的品质。</p>
+            <p>2. <strong>"若浊"与第20章：</strong>第20章老子自述"我独昏昏""我独闷闷"——看起来比别人笨、比别人浊——这正是第15章"混兮若浊"的自我写照。</p>
+            <p>3.
+                <strong>七喻与第8章：</strong>第8章"上善若水"的核心品质（处下、不争、善利万物）与第15章七喻中的"若谷""若朴""若浊"在价值取向上完全一致——都指向一种"低姿态、高效能"的存在方式。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>外部兼容性：</strong></p>
+            <p><strong>《庄子·应帝王》：</strong>"至人之用心若镜，不将不迎，应而不藏。"庄子的"至人"与本章的"善为士者"品质一致——应物而无执着，这就是"涣兮若冰之将释"（没有固化的立场）的庄子版表达。
+            </p>
+            <p><strong>《淮南子·道应训》：</strong>引"古之善为道者...浊以静之徐清"并加注："此言圣人之动，非持以躁也，静意而待之，则至清而纯粹矣。"这一汉代诠释将"静之徐清"明确解释为一种修养工夫论。
+            </p>
+            <p><strong>奥卡姆剃刀：</strong>本章的论证结构为"描述性命题"而非"论证性命题"——它不证明什么，而是描绘一种人格形象。七个比喻的选择具有内在逻辑：前三喻（冬涉川/畏四邻/若客）描述"行为态度"（谨慎），中间两喻（冰将释/若朴）描述"内在品质"（柔化、质朴），后两喻（若谷/若浊）描述"外在关系"（容纳、融合）。三组由内而外递进。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"古之善为士者"提醒我们在日常生活中保持对朴的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"古之善为士者"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与现代启示提炼</h3>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <p><strong>历史义：</strong>在诸侯争霸、士人竞相出仕的战国时代，老子描绘了一种与主流完全不同的理想人格——不争不显、深藏若虚。这是对当时"舌辩之士"（如纵横家）张扬人格的批判和替代方案。</p>
+            <p><strong>普遍义：</strong>人的成熟不是变得更闪亮、更锐利，而是变得更深厚、更包容。真正的能力不需要证明给别人看。"不欲盈"是一切长期成长的前提——骄傲是进步的终点。</p>
+            <p><strong>现代义：</strong>在"个人品牌""流量经济"盛行的时代，本章提供了一种反主流的人格理想——不是通过曝光和营销来获得影响力，而是通过深厚和真实来自然吸引。"混兮其若浊"在当代的实践形态是：不追求差异化的炫目，而是追求本质性的价值。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <p><strong>个人修养：</strong>每天用七喻做一次"人格体检"：今天我有没有鲁莽行事（缺乏"冬涉川"的谨慎）？有没有傲慢无礼（缺乏"若客"的恭敬）？有没有固执己见（缺乏"冰将释"的柔化）？有没有炫耀做作（缺乏"若朴"的质朴）？有没有排斥异见（缺乏"若谷"的容纳）？
+            </p>
+            <p><strong>组织管理：</strong>"不欲盈"的团队文化——永远保持"我们还有进步空间"的心态。Netflix文化手册中的"没有卓越的人是满足的"与本章精神一致。但要注意区分：这里的"不盈"是谦虚的不自满，不是焦虑的不够好——前者是力量，后者是内耗。
+            </p>
+            <p><strong>社会文明：</strong>"浊以静之徐清"对社会治理的启示——当舆论环境混乱（"浊"）时，最佳策略不是立刻发声明、做动作，而是先"静"——让事实浮现、让情绪沉淀、让理性回归。很多网络舆情"三天自清"的规律，正是"浊以静之徐清"的实证。
+            </p>
+        </div>
+
+        <!-- 亲子赋能 -->
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层：</strong>"哪种杯子更有用？"拿出一个满满当当的杯子和一个空着的杯子，问孩子："如果你口渴了，想倒水喝，应该用哪个杯子？"当然是空的那个。引导理解："满了就装不下新东西了。老子说的'不欲盈'就是这个意思——给自己留点空间，才能学到新东西。"
+            </p>
+            <p><strong>🧘
+                    体验层：</strong>"泥水静清实验"——取一杯泥水（用土和水搅拌），放在桌上不动。观察5分钟后发生了什么——泥土沉到底部，水变清澈了！一起讨论："我们心里乱糟糟的时候，是不是也可以像这杯水一样，先安静下来，等一等，就清楚了？"
+            </p>
+            <p><strong>💬
+                    对话层：</strong>"你认识的大人中，谁是'看起来很普通但其实很厉害的'？"引导孩子发现：很多真正有本事的人不爱炫耀。炫耀的人往往心里不够踏实，真正自信的人反而很安静。"你觉得自己长大后想做哪种人？"
+            </p>
+        </div>
+    </div>
+
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「孰能浊以静之徐清？孰能安以动之徐生？」</div>
+        <div class="quote-interp">——混乱时安静等待，清明自然浮现；安定中保持生机，新生自然降临。不急，不满，不止。</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -188,14 +670,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第15章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第15章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

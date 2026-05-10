@@ -66,19 +66,9 @@ Cloudflare Dashboard → Workers & Pages → daodejing-kb → Custom Domains
 
 #### 2. DNS 验证
 
-**如果 hui-skill.org 的 DNS 托管在 Cloudflare**（与 Pages 同账户）：
+`hui-skill.org` 的 DNS 托管在 Cloudflare（与 Pages 同账户），添加域名后：
 
 Cloudflare 自动完成全部操作——验证所有权 → 添加 DNS 记录 → 签发 SSL 证书，全程 **2-5 分钟**。
-
-**如果 DNS 在其他注册商**：
-
-添加以下 CNAME 记录：
-
-| 类型  | 名称                      | 目标                        |
-| ----- | ------------------------- | --------------------------- |
-| CNAME | `@`（或 `hui-skill.org`） | `daodejing-skill.pages.dev` |
-
-等待 5-30 分钟 DNS 传播，然后回到 Pages 页面点击 "Check DNS" 验证。
 
 #### 3. SSL 证书
 

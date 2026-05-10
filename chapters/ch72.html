@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第72章 民不畏威 - 道德经亲子体验营</title>
+    <title>第72章 自知不自见 - 道德经亲子体验营</title>
     <link rel="stylesheet" href="../css/daodejing-styles.css">
     <style>
         .five-step-nav {
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,14 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +88,94 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e6b;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #8fbc8f;
+            color: #2c3e2c;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +183,33 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🏛️ 第72章 · 民不畏威
-        <span class="subtitle">下经 · 下经治国 · 五步读解</span>
+        👶 第72章 · 自知不自见
+        <span class="subtitle">下经 · 治道 · 五步读解</span>
     </h1>
+    <script src="../data/search-data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/back-to-top.js"></script>
+
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章老子讲了一个重要的统治智慧：如果你压迫人民到了极点，让他们连"怕"都不怕了——那真正可怕的事就要来了（造反！）。所以聪明的做法是：不要逼迫人民的生活空间，不要让人民觉得活不下去。圣人了解自己（自知）但不炫耀自己（不自见），爱护自己但不把自己看得太高贵——这样才能长久。
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,80 +220,331 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn active" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button data-level="all" class="level-btn active">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
         民不畏威，则大威至。<br>
         无狎其所居，无厌其所生。<br>
         夫唯不厌，是以不厌。<br>
         是以圣人自知不自见，自爱不自贵。<br>
-        故去彼取此。<br>
-        
+        故去彼取此。
     </div>
 
-    <div style="margin: 10px 0;">
-        <span class="concept-tag wuwei">治国</span>
-        <span class="concept-tag de">修身</span>
+    <div style="margin:10px 0;">
+        <span class="concept-tag de">德</span>
+        <span class="concept-tag wuwei">无为</span>
+        <span class="concept-tag ziran">自然</span>
     </div>
 
     <!-- 第一步 -->
     <div class="step-section" id="step1">
         <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>民不畏威则大威至 · 无狎其所居 · 自知不自见 · 自爱不自贵</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于下经治国范畴，位于下经。核心内容为"民不畏威"，展现了老子关于下经治国的深层思考。全章围绕治国的概念展开，层层递进。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>白话翻译：</strong></p>
+            <p>当老百姓连威胁都不怕了的时候，真正的大灾难就要来了（意味着他们忍无可忍要反抗了）。不要逼迫人民的居住空间，不要让人民对生活感到厌烦绝望。只要不让他们觉得活不下去，他们就不会厌弃你。所以圣人了解自己的能力但不炫耀自己，爱护自己但不把自己看得高人一等。因此要去掉那些（自见、自贵），保留这些（自知、自爱）。
+            </p>
+            <p style="margin-top:10px;"><strong>一句话总结：</strong>不要把人逼到绝路——给别人留空间，就是给自己留后路。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句精读：</strong></p>
+            <ul style="padding-left:20px;line-height:2.2;">
+                <li><strong>"民不畏威，则大威至"</strong>——"威"=威胁、威压。当人民对统治者的威压失去了恐惧（忍无可忍），那么更大的威胁就会降临——指人民起义、政权更迭。这是对暴政的警告：压迫的极限是崩溃。
+                </li>
+                <li><strong>"无狎其所居"</strong>——"狎"=逼迫、侵犯。不要逼迫人民的生活空间——不要强征土地、不要强制迁移、不要侵犯百姓的家园。</li>
+                <li><strong>"无厌其所生"</strong>——"厌"=压迫、使厌倦。不要让人民对自己的生活感到厌倦绝望——不要通过繁重赋税和徭役让生活变得不可忍受。</li>
+                <li><strong>"夫唯不厌，是以不厌"</strong>——第一个"厌"是统治者的行为（不压迫）；第二个"厌"是人民的反应（不厌弃）。只要你不压迫他们，他们就不会厌弃你。因果关系清晰：不压迫→不被反抗。
+                </li>
+                <li><strong>"自知不自见"</strong>——了解自己（自知：知道自己的能力和局限），但不炫耀自己（不自见：不显摆、不招摇）。</li>
+                <li><strong>"自爱不自贵"</strong>——爱护自己（自爱：合理保重自身），但不把自己看得比别人尊贵（不自贵：不高高在上）。</li>
+                <li><strong>"故去彼取此"</strong>——去掉那些不好的（自见、自贵=炫耀和傲慢），保留这些好的（自知、自爱=自省和自重）。这是老子常用的总结句式。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>应用视角：</strong></p>
+            <p><strong>"民不畏威则大威至"——员工流失的临界点：</strong>当员工对公司的惩罚措施都不在乎的时候（"大不了我走人"），说明组织管理已经到了崩溃边缘。真正的"大威"是集体辞职/消极怠工——这比任何外部竞争都致命。预防方法：不要把员工逼到"反正无所谓"的地步。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"无狎其所居，无厌其所生"——员工体验设计：</strong>不压缩员工的"生活空间"（加班到没有私人生活）、不让工作变得令人厌倦（无意义的流程和官僚）。Google的"20%自由时间"、弹性工作制——都是"无厌其所生"的具体实践。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"自知不自见"——领导者的自我认知：</strong>好的领导者清楚自己的优势和短板（自知），但不把自己的成就挂在嘴边（不自见）。有安全感的人不需要炫耀——越是需要炫耀的人，内心越不确定。真正的自信是"知道自己是谁"但不需要别人确认。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术注释：</strong></p>
+            <p>帛书本"民之不畏威，则大威将至矣"——多"将""矣"二字，语气更强烈。帛书本"无狭其所居"——"狭"即"狎"的异体。帛书本"无厌其所生"作"无猒其所生"——"猒"同"厌"。</p>
+            <p style="margin-top:10px;">
+                "民不畏威则大威至"在政治哲学上具有重要意义——它描述了"恐惧管理"的极限。当恐惧不再有效时（人民什么都不怕了），暴力统治的最后手段也失效了。这与汉娜·阿伦特（Arendt）分析极权主义的崩溃模式有相似之处——极权靠恐惧维持，当恐惧失去效力的那一刻就是崩塌的开始。
+            </p>
+            <p style="margin-top:10px;">
+                王弼注此章："自知而不自见其知，自爱而不自贵其身。"——强调"自知"与"自见"的区别在于是否"向外展示"。自知是内向的认知（对自己诚实），自见是外向的展示（向他人炫耀）。这一区分在修养论上很重要——认知可以向内深化，但不必向外表达。
+            </p>
+            <p style="margin-top:10px;">
+                "去彼取此"这一句式在《道德经》中出现三次（第12、38、72章），每次都标示了一组"应去/应取"的对立：第12章去感官沉溺取内在满足；第38章去下德的有为取上德的无为；本章去自见自贵取自知自爱。三处"去彼取此"构成了老子价值选择的三个维度。
+            </p>
+        </div>
     </div>
 
     <!-- 第二步 -->
     <div class="step-section" id="step2">
         <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"下经治国"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了治国的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：治国、修身，这些概念在SPO V3.0网络中形成紧密关联。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>简单背景：</strong></p>
+            <p>老子那个时代，很多国王靠"吓唬"老百姓来保持统治——苛捐杂税、严刑峻法。但老子发现：把人逼急了，他们连死都不怕了——那什么都拦不住了。所以聪明的做法是：对人好一点，给他们留活路。人家自然就不会反对你。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>思想史定位：</strong></p>
+            <p>本章是《道德经》政治哲学中的"权力边界论"——论述权力使用的极限在哪里。当权力的威慑性达到极限（人民不再恐惧）时，权力本身就失效了。这是对暴政自我毁灭逻辑的哲学描述。</p>
+            <p style="margin-top:10px;"><strong>与第17章的呼应：</strong></p>
+            <p>第17章描述了四种治理层次：最好的治理让人民"不知有之"；其次"亲之誉之"；再次"畏之"；最差"侮之"。本章描述的"民不畏威"正是从第三层（畏之）跌到第四层（侮之）的临界点——人民从"害怕"变成"蔑视"，政权就要崩溃了。
+            </p>
+            <p style="margin-top:10px;"><strong>与第74章的关联：</strong></p>
+            <p>第74章"民不畏死，奈何以死惧之"是本章主题的进一步展开——当人民连死都不怕时，死刑威慑也完全失效。两章共同论证了"恐惧治理"的根本局限性。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>当代语境映射：</strong></p>
+            <p><strong>"大威至"的组织版——大辞职潮：</strong>2021年后的全球"大辞职"（Great
+                Resignation）现象正是"民不畏威则大威至"——员工不再害怕失业的"威胁"，集体选择离开。原因：疫情让人重新思考"所生"（生活意义），发现工作过度压缩了"所居"（私人生活空间）。</p>
+            <p style="margin-top:10px;">
+                <strong>"自知不自见"与个人品牌：</strong>社交媒体时代"自见"泛滥——每个人都在展示自己。但真正有影响力的人往往"自知"（清楚自己的核心价值）而"不自见"（不需要持续表演）。过度"自见"消耗了用来"自知"（深入思考和成长）的精力。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>权力与尊重的关系：</strong>"自贵"（把自己看得高贵）的领导者不会真正获得尊重——因为尊重是他人主动给予的，不是自己标榜的。"自爱不自贵"意味着：善待自己（自我管理、保持健康），但不要求别人把自己当作更高一等的人对待。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术语境：</strong></p>
+            <p><strong>恐惧政治学：</strong>马基雅维利主张"被畏惧好于被爱"，但他也承认"被蔑视是最危险的"。老子本章的逻辑链是：过度威压→人民失去恐惧→人民转为蔑视→政权崩溃。这与马氏的分析在结论上一致——恐惧有用但有限度。超过限度恐惧转为蔑视，权力就消失了。
+            </p>
+            <p style="margin-top:10px;"><strong>"自知"的哲学传统：</strong>德尔斐神庙的箴言"认识你自己"（gnothi
+                seauton）与老子"自知"有结构对应。但两者的"自知"内容不同：希腊传统的自知指向理性自我的发现（苏格拉底的"未经审视的生活不值得活"）；老子的自知指向认识自身的限度和位置（不超越自然秩序中自己应处的位置）。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"去彼取此"的价值选择逻辑：</strong>"自见/自贵"与"自知/自爱"的对比揭示了一个深层的道家伦理结构——"向外"的自我展示（self-display）=损耗性的；"向内"的自我认知（self-knowledge）=滋养性的。道家伦理的核心取向是"由外转内"——将注意力从外在评价收回到内在体察。
+            </p>
+        </div>
     </div>
 
     <!-- 第三步 -->
     <div class="step-section" id="step3">
         <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"民不畏威"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>有人不同意老子：</strong></p>
+            <p>有人说："如果不用'威'来管理，是不是就完全放任不管了？"不是的！老子不是说不需要规则——他是说规则不能太严苛到让人活不下去。好的管理让人有空间呼吸、有尊严地生活——这样大家自然愿意配合。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心争议一："民不畏威则大威至"是威胁还是同情？</strong></p>
+            <p><strong>威胁说：</strong>这是在警告统治者"小心人民造反"——动机是维护统治者的利益。</p>
+            <p><strong>同情说：</strong>这是在描述压迫导致灾难的必然规律——出于对人民苦难的同情。老子的立场始终在人民一侧。</p>
+            <p><strong>中立描述说：</strong>老子只是客观描述因果规律（过度压迫→崩溃），不带特定立场。读者可以从任何角度使用这一规律。</p>
+            <p style="margin-top:12px;"><strong>核心争议二："自爱"是否与"无我"矛盾？</strong></p>
+            <p><strong>矛盾说：</strong>老子多处强调"无我""不自生"，这里的"自爱"岂不是鼓励自我中心？</p>
+            <p><strong>调和说（主流）：</strong>"自爱"≠自私。"自爱"指对自身生命的合理珍视和保养（不糟蹋自己），与"自贵"（把自己凌驾于他人之上）是两回事。第7章"圣人后其身而身先"——后身=不自贵，但身先=身体保全了=自爱。
+            </p>
+            <p style="margin-top:12px;"><strong>核心争议三：本章是"治民"还是"自修"？</strong></p>
+            <p><strong>治民说：</strong>前半部分（"民不畏威"）明确是政治建议——如何对待人民。</p>
+            <p><strong>自修说：</strong>后半部分（"自知不自见"）是个人修养建议——如何对待自己。</p>
+            <p><strong>统一说：</strong>两部分统一为"领导者的品格"——好的领导者既不压迫人民（前半），也不炫耀自己（后半）。"去彼取此"将两部分融为一个完整的领导者画像。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践中的张力：</strong></p>
+            <p><strong>"不压迫"与"维持秩序"的平衡：</strong>组织需要规则和纪律（某种程度的"威"），但又不能过分压制（"厌其所生"）。平衡点在于：规则服务于共同目标而非服务于管理者的控制欲。好的规则保护所有人（包括执行者）；坏的规则只保护管理者。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"自知"与过度自我反省：</strong>过度的"自知"可能变成自我怀疑和内耗。健康的"自知"是：了解自己的优缺点并接受它们，然后向前行动——不是永远停留在自我分析中。"自知"是起点不是终点。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术争论：</strong></p>
+            <p>"无狎其所居，无厌其所生"中"狎"和"厌"的训诂：王弼释"狎"为"狭"（使狭窄）；马叙伦释为"压"（压制）；高亨释为"亵"（亵渎、不尊重）。"厌"的解读同样分歧：河上公释为"厌弃"（让人民厌倦生活）；王弼释为"压"（压迫）。核心含义一致：不要侵犯和压迫人民的生存空间。
+            </p>
+            <p style="margin-top:10px;">
+                从政治合法性理论角度看，"民不畏威则大威至"描述了合法性危机的临界点。用赫希曼（Hirschman）的"退出/呼声"（Exit/Voice）框架分析：当"呼声"（表达不满）被压制到失效时，人民选择"退出"（革命/崩溃）——这就是"大威至"。预防方法：保持"呼声"通道畅通（"无厌其所生"=不让人民绝望到连表达都放弃）。
+            </p>
+        </div>
     </div>
 
     <!-- 第四步 -->
     <div class="step-section" id="step4">
         <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：治国→修身</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>这些道理一致吗？</strong></p>
+            <p>老子一直说"不要逞强、不要压迫、要谦虚"。这一章说"不要逼人太紧，要了解自己但不炫耀"——完全一样的道理。给别人空间、对自己诚实——这就是老子的核心教导。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>跨章逻辑验证：</strong></p>
+            <table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9em;">
+                <tr style="background:#f5f5f0;">
+                    <th style="padding:8px;border:1px solid #d4c9a8;">本章命题</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">相关章节</th>
+                    <th style="padding:8px;border:1px solid #d4c9a8;">一致性</th>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">民不畏威则大威至</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第74章"民不畏死奈何以死惧之"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——恐惧治理有极限</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">自知不自见</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第33章"知人者智，自知者明"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——"自知"是明的基础</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">不自贵</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第66章"欲上民必以言下之"</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——领导者应谦下不自贵</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">去彼取此</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">第12章"去彼取此"（感官vs.内在）</td>
+                    <td style="padding:8px;border:1px solid #d4c9a8;">一致——同一选择模式的不同应用</td>
+                </tr>
+            </table>
+            <p style="margin-top:10px;">
+                <strong>内部自洽检验：</strong>"自爱"与第7章"圣人后其身"是否矛盾？不矛盾——"后其身"指不争先（社会位置上退后），"自爱"指爱护自己的生命和品格（对自身的态度）。前者关于外在位置，后者关于内在态度——两者独立不冲突。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>实践逻辑：</strong></p>
+            <p><strong>权力使用的"弹性区间"：</strong>本章隐含了一个权力使用的"弹性模型"——权力有一个安全使用区间：太少（无序）不行，太多（压迫→崩溃）也不行。最佳点在中间——足以维持秩序但不至于压迫人民生存空间。超过这个点就进入了"民不畏威"的危险区。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"自知-自见"的能量守恒：</strong>精力是有限的——花在"自见"（经营外在形象、争取认可）上的能量，就少了用于"自知"（深度自省、真实成长）的能量。"去彼取此"=将能量从表演转向真实——这不仅在道德上更好，在效率上也更高。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系兼容性：</strong></p>
+            <p><strong>"自知/自见"对比的存在论意涵：</strong>"自知"是存在本身的深化——向内探索自身的真实状态；"自见"是存在的外化——将自身投射为他人眼中的形象。老子的"去彼取此"主张存在的深化优先于存在的外化——这与海德格尔批判的"常人"（das
+                Man）状态（活在他人目光中的非本真存在）有深层对应。</p>
+            <p style="margin-top:10px;">
+                <strong>权力自限性：</strong>本章是《道德经》"权力自限"思想的重要表述——好的权力使用者主动限制自己的权力（无狎、无厌、不自贵）。这与现代宪政思想的核心原则（限权）有结构相似——权力必须自我约束才能持续存在。不自我约束的权力最终自我毁灭（"大威至"）。
+            </p>
+        </div>
     </div>
 
     <!-- 第五步 -->
     <div class="step-section" id="step5">
         <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"民不畏威"提醒我们在日常生活中保持对治国的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"民不畏威"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>生活启示：</strong></p>
+            <p>你有没有被管得太严、太烦，最后干脆不听了？这就是"民不畏威"——被逼急了反而什么都不怕了。不管是老师、家长还是朋友之间，都要给对方留空间。另外，老子说"自知不自见"——了解自己是好事，但到处炫耀自己就不好了。默默变强，比到处吹牛好得多。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>三层意义萃取：</strong></p>
+            <p><strong>哲学层：</strong>本章揭示了权力运作的悖论——威压越大，最终的崩溃也越剧烈。权力不是可以无限增大的——它有一个自然极限（人民的忍耐度），超过这个极限权力就反转为无力。这与"反者道之动"的总原则一致——极端会导致反转。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>方法层：</strong>"自知不自见，自爱不自贵"提供了一组清晰的自我管理准则：了解自己（向内反省）但不展示自己（向外炫耀）；爱护自己（合理自保）但不抬高自己（凌驾他人）。</p>
+            <p style="margin-top:10px;"><strong>心态层：</strong>接受"我不需要被看到/被认可"也可以很好——内在的满足不依赖外在的确认。"自知"的安宁比"自见"的虚荣更持久、更深层。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>三维情境迁移：</strong></p>
+            <p><strong>家庭教育：</strong>"无狎其所居"——给孩子留私人空间（物理上有自己的角落，心理上有不被追问的权利）。"无厌其所生"——不让孩子觉得学习/生活是无尽的苦差事。当孩子说"我不想学了！"——这是"不畏威"的信号，需要检视是否管得太紧了。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>管理实践：</strong>定期检查团队的"厌倦指数"——有没有人对工作失去热情？有没有人"什么都无所谓"（不畏威的信号）？如果有，不要加大惩罚，而是反思：是不是制度/氛围让人透不过气了？"无厌其所生"=让工作有意义、有自主性、有成长空间。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>自我成长：</strong>平衡"自知"和"自见"——用于自我反省的时间多于用于展示自己的时间。具体方法：写日记（自知）多于发朋友圈（自见）；在技能上下功夫（自爱）多于在头衔上做文章（自贵）。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>学术延伸：</strong></p>
+            <p><strong>革命理论对照：</strong>托克维尔发现：革命往往不发生在最压迫的时期，而发生在压迫开始放松的时期（期望值上升但满足度未跟上）。这与老子"民不畏威则大威至"有微妙对话——老子描述的是压迫到极点后的崩溃；托克维尔描述的是压迫放松但不够时的爆发。两者共同说明：权力使用有极其微妙的"安全区间"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>"自知"与正念（Mindfulness）：</strong>现代正念修行的核心是"自我觉察"——不带评判地观察自己的思维和情绪。这与老子"自知"有交叉：两者都指向"对自身内在状态的清醒认知"。"不自见"则对应正念中的"不反应性"——觉察到但不急于向外表达/展示。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>鲍德里亚的"符号消费"批判：</strong>"自见/自贵"在当代社会以"符号消费"的形式弥漫——人们消费的不是物品的使用价值，而是物品代表的"身份符号"（奢侈品logo=自贵的物质化）。老子"去彼取此"的呼吁在消费主义时代具有新的紧迫性——从符号价值回到真实价值，从"让人看"回到"自己知"。
+            </p>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <p><strong>🎯 亲子赋能活动：空间与尊重</strong></p>
+            <p><strong>认知活动——"太紧了！"信号识别：</strong>和孩子讨论：什么时候你觉得被管得"太紧了"？有什么信号会出现？（比如不想说话、故意捣蛋、无所谓的态度）。然后家长也分享：什么时候你觉得工作/生活被压得"透不过气"？互相理解"民不畏威"的信号意味着什么——是"请给我一些空间"的呼救。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>体验活动——"我的空间"边界设定：</strong>全家每人用画图或文字标出自己需要的"个人空间"——什么时候不想被打扰？哪些事情希望自己做主？然后互相尊重这些边界。约定一周后回顾：尊重边界后，大家是更愿意合作还是更不愿意？体验"不厌则不厌"。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>对话活动——"自知vs.自见"分享：</strong>全家每人说一个"我知道自己很好但不需要告诉别人"的品质（自知不自见），再说一个"我以前很想让别人看到但其实不需要"的事情（去彼）。讨论：哪种感觉更踏实？为什么内心的确信比外在的认可更持久？
+            </p>
+        </div>
     </div>
 
-    <!-- 上下章导航 -->
+    <!-- 本章金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">「民不畏威，则大威至。」</div>
+        <div class="quote-interp">——当人民不再畏惧统治者的威压，那么真正的大患就要来临了。统治者的威慑力是对自己失效的预警。</div>
+    </div>
+
     <div class="nav-chapters">
         <a href="ch71.html">← 第71章</a>
         <a href="ch73.html">第73章 →</a>
     </div>
 
-    <div class="site-footer">
-        道德经亲子体验营 · 第72章五步读解 · 最后更新：2026-05-05
-    </div>
-    <script src="../data/search-data.js"></script>
-    <script src="../js/search.js"></script>
-    <script src="../js/back-to-top.js"></script>
+    <footer style="text-align:center;padding:20px;color:#999;font-size:0.85em;">
+        <p>道德经亲子体验营 · 五步读解 · 第72章</p>
+    </footer>
 
-    <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
+    <div class="site-footer">
+        道德经亲子体验营 · 第72章五步读解 · 最后更新：2026-05-09
+    </div>
+
     <script src="/js/huihui-chat.js"></script>
+    <script src="../js/level-filter.js"></script>
 </body>
+
 </html>

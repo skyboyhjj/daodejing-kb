@@ -243,6 +243,26 @@
     return s;
   }
 
+  // ── 获取当前层级上下文（用于搜索结果保持层级）──
+  function getCurrentLevel() {
+    try {
+      // 优先从 URL 参数读取
+      var params = new URLSearchParams(window.location.search);
+      var level = params.get('level');
+      if (level && ['l1', 'l2', 'l3', 'l4', 'all'].indexOf(level) !== -1) {
+        return level;
+      }
+    } catch (e) { }
+    try {
+      // 其次从 localStorage 读取
+      var stored = localStorage.getItem('daodejing-level-preference');
+      if (stored && ['l1', 'l2', 'l3', 'l4', 'all'].indexOf(stored) !== -1) {
+        return stored;
+      }
+    } catch (e) { }
+    return null;
+  }
+
   // ── 渲染结果 ──
   function renderResults(hits, tokens, results, base) {
     if (!hits.length) {
@@ -250,10 +270,15 @@
       results.classList.add('active');
       return;
     }
+    var currentLevel = getCurrentLevel();
     var html = '';
     for (var i = 0; i < hits.length; i++) {
       var h = hits[i];
       var url = (base || resolveBase()) + h.url;
+      // 保持层级上下文：为章节链接追加 ?level= 参数
+      if (currentLevel && h.type === 'chapter' && url.indexOf('?level=') === -1) {
+        url += '?level=' + currentLevel;
+      }
       var typeIcon = h.type === 'concept' ? '🌐' : '📖';
       var conceptsHtml = '';
       if (h.concepts && h.concepts.length) {

@@ -1,0 +1,18 @@
+{
+    "name": "daodejing-kb",
+    "version": "1.0.0",
+    "description": "道德经亲子体验营知识库 — 自动化运营工具链",
+    "private": true,
+    "scripts": {
+        "build:index": "node scripts/build-index.js",
+        "validate": "node scripts/validate.js",
+        "validate:fix": "node scripts/validate.js --fix",
+        "version": "node scripts/version-manifest.js",
+        "report": "node scripts/report.js",
+        "pipeline": "node scripts/batch-runner.js",
+        "ci": "node scripts/validate.js && node scripts/build-index.js --check"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,14 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +88,94 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2e5f5f;
+            background: white;
+            color: #2e5f5f;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +183,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
-        🧘 第46章 · 天下有道
-        <span class="subtitle">下经 · 下经修身 · 五步读解</span>
+        🐴 第46章 · 天下有道
+        <span class="subtitle">下经 · 知足论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章老子用了一个非常生动的比喻——天下太平的时候，战马退休去耕田；天下混乱的时候，连怀孕的母马都被拉上战场。然后他说了一句名言："祸莫大于不知足，咎莫大于欲得。"所有灾祸的根源都是"不满足"。一起来看看这个"知足"到底有多重要！
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,79 +216,201 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
-    <!-- 原文 -->
+    <div class="level-selector" id="level-selector">
+        <span style="font-size:0.85em;color:#666;font-weight:600;">认知层级：</span>
+        <button class="level-btn" data-level="l1">👶 白话</button>
+        <button class="level-btn active" data-level="l2">📚 精读</button>
+        <button class="level-btn active" data-level="l3">💼 应用</button>
+        <button class="level-btn" data-level="l4">🔬 学术</button>
+        <button data-level="all" class="level-btn active">📋 全部</button>
+    </div>
+
     <div class="original-text">
         天下有道，却走马以粪。<br>
         天下无道，戎马生于郊。<br>
         祸莫大于不知足，咎莫大于欲得。<br>
-        故知足之足，常足矣。<br>
-        
+        故知足之足，常足矣。
     </div>
 
     <div style="margin: 10px 0;">
         <span class="concept-tag zhizu">知足</span>
         <span class="concept-tag dao">道</span>
+        <span class="concept-tag wuwei">无为</span>
     </div>
 
     <!-- 第一步 -->
     <div class="step-section" id="step1">
         <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>知足常足 · 天下有道却走马以粪 · 天下无道戎马生于郊 · 祸莫大于不知足 · 故知足之足常足矣</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于下经修身范畴，位于下经。核心内容为"天下有道"，展现了老子关于下经修身的深层思考。全章围绕知足的概念展开，层层递进。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p><strong>简单来说：</strong>天下太平的时候，马被用来拉车耕田（和平的用途）。天下混乱的时候，连怀孕的母马都被拉去打仗（在城郊的战场上生小马驹）。最大的灾祸就是"不知足"，最大的过错就是"贪心想要更多"。知道什么是"真正的满足"，才能永远满足。
+            </p>
+            <p style="margin-top:10px;">
+                <strong>打个比方：</strong>就像吃自助餐——如果你觉得"已经很好了"就停下来，你会很开心；如果你非要"再多吃一点""再多拿一些"，最后撑得难受，反而比没吃还痛苦。这就是"祸莫大于不知足"。
+            </p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>核心命题：</strong>有道/无道对比 + 不知足为最大祸 + 知足之足常足</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"天下有道，却走马以粪"</strong>——天下合于道时，战马被退还（"却"=退还）用来运粪肥田。"粪"训为施肥。马从战争工具变为和平工具。</li>
+                <li><strong>"天下无道，戎马生于郊"</strong>——天下失道时，军马在城郊（战场附近）生小马驹。连母马都要被征用，说明战争无休。</li>
+                <li><strong>"祸莫大于不知足"</strong>——一切灾祸中最大的根源是不满足。不知足→贪求更多→冲突→战争→灾祸。</li>
+                <li><strong>"咎莫大于欲得"</strong>——一切过错中最大的是贪欲。"欲得"即想要获得更多。</li>
+                <li><strong>"知足之足，常足矣"</strong>——懂得满足的那种"足"，才是永恒的满足。"知足之足"是哲学性的"双层"满足——不是外在拥有多少，而是内在认知到"够了"。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>军备竞赛的本质：</strong>"天下无道，戎马生于郊"——不知足的扩张欲望导致军备竞赛，军备竞赛消耗社会资源，最终受害的是普通人（连母马都要上战场）。冷战的军备竞赛是最好的注解。
+                </li>
+                <li><strong>商业中的"不知足"：</strong>企业不知足的扩张→过度负债→资金链断裂→破产。每一次经济危机背后都有"欲得"的影子。</li>
+                <li><strong>"知足之足"的心理学：</strong>现代积极心理学研究证实——收入超过一定水平后，幸福感不再随收入增加。能够把"够了"的标准设定在合理位置，就是"知足之足"。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>帛书本：</strong>"罪莫大于可欲，祸莫大于不知足，咎莫大于欲得"——多出"罪莫大于可欲"一句。河上公本也有此句。通行本（王弼本）删去此句，可能因为与下句"欲得"语义重复。
+                </li>
+                <li><strong>"却走马以粪"的"粪"字：</strong>历来有两解：（1）训为施肥（主流）——马退役后用于农业。（2）训为除粪（清理马粪）——战马退役后只需做些清洁工作。第一解更符合"和平利用"的意象。
+                </li>
+                <li><strong>思想史定位：</strong>本章是道德经"反战"主题（30、31、46章）的重要组成部分。30章言"不以兵强天下"，31章言"兵者不祥之器"，本章从"不知足→战争"的因果链揭示战争的根源——欲望。这是中国古代最早的系统性反战思想之一。
+                </li>
+            </ul>
+        </div>
     </div>
 
     <!-- 第二步 -->
     <div class="step-section" id="step2">
         <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"下经修身"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了知足的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：知足、道，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>这一章和第44章是一对——44章问"名声和身体哪个更重要？"（答案是身体），这一章告诉你为什么知道"够了"最重要。两章合在一起就是：不要为外在的东西（名、利）牺牲内在的满足。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>概念网络：</strong>本章与第44章（知足不辱）形成姊妹篇，共同构成"知足"主题的完整论述。与第30/31章的反战主题相关——30章言武力的后果，本章揭示战争的根源（不知足）。</p>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>"知足之足，常足矣"是一个认知转换——真正的"足"不在于外在拥有多少，而在于内心设定的"满足标准"。调整标准比增加拥有更有效——这就是为什么冥想和感恩练习对幸福感的提升比加薪更持久。</p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>老子"知足"思想与古希腊犬儒学派/伊壁鸠鲁学派的"自足"（autarkeia）理念有平行性，但动机不同：希腊人从"理性"出发（理性限制欲望），老子从"道"出发（效法道的自然无欲）。两者殊途同归，但哲学基础迥异。
+            </p>
+        </div>
     </div>
 
     <!-- 第三步 -->
     <div class="step-section" id="step3">
         <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"天下有道"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>有人觉得"知足"会让人不思进取——如果所有人都"满足"了，社会还怎么进步？其实老子说的"不知足"是指那种损害别人来满足自己的贪心（会引发战争！），不是说不能有正常的追求和努力。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议："知足"是否与人类进步矛盾？</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>老子的"不知足"特指会导致"戎马生于郊"（战争/侵犯他人）的过度欲望，而非一切欲望。</li>
+                <li>"知足"的对立面不是"追求"，而是"贪求"——区别在于是否损害他人/自身。</li>
+                <li>佛学后来区分"正精进"（有利于解脱的努力）和"贪"（执迷），与此相近。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>区分"健康追求"与"不知足"的标准：（1）是否损害他人？（2）是否牺牲了更重要的东西？（3）是否已经超越了"需要"进入了"贪"？通过这三个问题就能判断自己是"正精进"还是"不知足"。</p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>帛书多出的"罪莫大于可欲"与通行本"祸莫大于不知足"的差异："可欲"指引发欲望的外部刺激，"不知足"指内在欲望的失控。帛书本从外因（引发欲望的东西）入手，通行本从内因（不满足的心态）入手。两种取向的实践指导不同：前者主张减少诱惑环境，后者主张修养内心知足。
+            </p>
+        </div>
     </div>
 
     <!-- 第四步 -->
     <div class="step-section" id="step4">
         <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：知足→道</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 白话版</h4>
+            <p>这一章和道德经很多地方一致——第9章说"杯满则溢"（不知道满的后果），第33章说"知足者富"，第44章说"知足不辱"。整本书都在反复讲"知足"这件事。</p>
+        </div>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>跨章一致性：</strong>"祸莫大于不知足"与第9章"金玉满堂莫之能守"、第44章"甚爱必大费多藏必厚亡"逻辑完全一致。"知足之足常足矣"与第33章"知足者富"互为印证。全书"知足"语义场高度自洽。
+            </p>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p>因果链验证：不知足→欲得→争夺→战争/灾祸。这个因果链在历史上（帝国的扩张与崩溃）、商业中（过度扩张的企业倒闭）、个人层面（贪多嚼不烂）都被反复印证。</p>
+        </div>
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p>"天下有道/无道"的二分表达在论语中也出现（"天下有道则见，无道则隐"），说明这是先秦共有的政治话语。但孔子的"有道"侧重礼乐秩序，老子的"有道"侧重欲望节制——从"走马以粪"的意象看，老子理想的"有道"社会是农耕性质的、寡欲的。
+            </p>
+        </div>
     </div>
 
     <!-- 第五步 -->
     <div class="step-section" id="step5">
         <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"天下有道"提醒我们在日常生活中保持对知足的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"天下有道"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 三层意义萃取</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>历史义：</strong>春秋战国300年征战不休，老子一针见血——所有战争的根源就是"不知足"（领土扩张的欲望）。如果统治者知足，战马就能退役去耕田，这是最朴素的和平愿景。</li>
+                <li><strong>普遍义：</strong>人类社会的一切系统性冲突（战争、剥削、环境破坏）都可以追溯到"不知足"。知道"enough"在哪里，是文明的核心能力。</li>
+                <li><strong>现代义：</strong>消费主义制造"永远不满足"的心态以驱动经济增长，但代价是焦虑与环境破坏。"知足之足"是可持续发展的心理基础。</li>
+            </ul>
+        </div>
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 三维情境迁移</h4>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>个人修养：</strong>建立"足感"——每天感恩练习、定期清理不需要的东西、设定明确的"够了"标准（收入达到X就不再拼命加班）。</li>
+                <li><strong>组织管理：</strong>组织的"知足"是"战略克制"——知道什么不做比知道做什么更重要。Apple不做的产品比做的产品多得多——这就是企业级"知足"。</li>
+                <li><strong>家庭教育：</strong>帮助孩子建立内在"足感"而非外在比较——"你今天比昨天进步了"比"你比隔壁小明差"更健康。</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-always" data-level="all">
+            <h4>👨‍👩‍👧 亲子赋能活动</h4>
+            <p><strong>🎯
+                    认知层（引发好奇）：</strong>"你知道古代战争结束后，战马会去做什么吗？——去农场帮忙种地！老子说这就是'天下有道'的样子。想想看：如果全世界都不打仗了，那些造武器的人可以去做什么好事？"
+            </p>
+            <p style="margin-top:10px;"><strong>🧘
+                    体验层（一起做）：</strong>【"知足实验"】给孩子10颗糖，问他"你觉得够了吗？"不管回答什么，再给5颗。再问"够了吗？"如果说"不够"，再给5颗……观察：是不是越给越多，反而越来越觉得"还不够"？讨论：为什么"不知足"是个无底洞？什么时候你觉得"真的够了"？
+            </p>
+            <p style="margin-top:10px;"><strong>💬 对话层（家庭讨论）：</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>"知足"和"没出息"有什么区别？你觉得一个人可以既知足又努力吗？</li>
+                <li>你身边有没有人因为"不知足"而把自己搞得很累或很不开心？</li>
+                <li>如果全家每人只能拥有10样东西，你选哪10样？（这就是找到你真正"足"的标准）</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- 上下章导航 -->
+    <div class="golden-quote">
+        <div class="quote-text">「知足之足，常足矣」</div>
+        <div class="quote-interp">——真正的富足不在于拥有多少，而在于觉得"够了"的能力</div>
+    </div>
+
     <div class="nav-chapters">
-        <a href="ch45.html">← 第45章</a>
-        <a href="ch47.html">第47章 →</a>
+        <a href="ch45.html">&larr; 第45章</a>
+        <a href="ch47.html">第47章 &rarr;</a>
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第46章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第46章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
-    <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,9 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .five-step-nav a {
             flex: 1;
             text-align: center;
@@ -24,12 +26,33 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .five-step-nav a:hover { opacity: 0.85; text-decoration: none; color: white; }
-        .five-step-nav a:nth-child(1) { background: #2e5f5f; }
-        .five-step-nav a:nth-child(2) { background: #3a7a6a; }
-        .five-step-nav a:nth-child(3) { background: #4a8a7a; }
-        .five-step-nav a:nth-child(4) { background: #5a9a8a; }
-        .five-step-nav a:nth-child(5) { background: #6aaaa0; }
+
+        .five-step-nav a:hover {
+            opacity: 0.85;
+            text-decoration: none;
+            color: white;
+        }
+
+        .five-step-nav a:nth-child(1) {
+            background: #2e5f5f;
+        }
+
+        .five-step-nav a:nth-child(2) {
+            background: #3a7a6a;
+        }
+
+        .five-step-nav a:nth-child(3) {
+            background: #4a8a7a;
+        }
+
+        .five-step-nav a:nth-child(4) {
+            background: #5a9a8a;
+        }
+
+        .five-step-nav a:nth-child(5) {
+            background: #6aaaa0;
+        }
+
         .original-text {
             background: #fffef5;
             border: 1px solid #d4c9a8;
@@ -41,6 +64,7 @@
             line-height: 2.2;
             color: #2c2c2c;
         }
+
         .step-section {
             margin: 30px 0;
             padding: 20px;
@@ -48,12 +72,120 @@
             border: 1px solid #d4c9a8;
             border-radius: 8px;
         }
+
         .step-section h3 {
             color: #2e5f5f;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #e8e0d0;
         }
+
+        .level-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+            padding: 10px 16px;
+            background: #fffef5;
+            border: 1px solid #d4c9a8;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .level-selector span {
+            font-size: 0.9em;
+            color: #5a5a5a;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .level-btn {
+            padding: 6px 14px;
+            border: 1px solid #d4c9a8;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #3a3a3a;
+        }
+
+        .level-btn:hover {
+            background: #e8f0ed;
+            border-color: #2e5f5f;
+        }
+
+        .level-btn.active {
+            background: #2e5f5f;
+            color: white;
+            border-color: #2e5f5f;
+        }
+
+        .level-block {
+            margin: 12px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+        }
+
+        .level-block h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .level-l1 {
+            background: #f0f7f4;
+            border-left: 4px solid #a3c9b8;
+        }
+
+        .level-l1 h4 {
+            color: #4a8a5e;
+        }
+
+        .level-l2 {
+            background: #faf8f0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .level-l2 h4 {
+            color: #8a7a2e;
+        }
+
+        .level-l3 {
+            background: #eef4f7;
+            border-left: 4px solid #6b8e7a;
+        }
+
+        .level-l3 h4 {
+            color: #3a5e4e;
+        }
+
+        .level-l4 {
+            background: #f5f0f7;
+            border-left: 4px solid #6a5e8a;
+        }
+
+        .level-l4 h4 {
+            color: #4a3e6a;
+        }
+
+        .level-always {
+            background: #fffef5 !important;
+            border-left: 4px solid #d4af37 !important;
+            display: block !important;
+        }
+
+        .level-l1,
+        .level-l4 {
+            display: none;
+        }
+
+        .level-l2,
+        .level-l3 {
+            display: block;
+        }
+
         .concept-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -62,38 +194,164 @@
             font-weight: 500;
             margin: 2px 4px;
         }
-        .concept-tag.dao { background: #2e5f5f; color: white; }
-        .concept-tag.de { background: #4a7878; color: white; }
-        .concept-tag.wuwei { background: #6b8e7a; color: white; }
-        .concept-tag.fan { background: #8faa9a; color: white; }
-        .concept-tag.xuan { background: #6a5e8a; color: white; }
-        .concept-tag.rouruo { background: #7a9e8e; color: white; }
-        .concept-tag.pu { background: #a3b8a0; color: #3a4a3a; }
-        .concept-tag.yi { background: #b5c8b2; color: #3a4a3a; }
-        .concept-tag.jing { background: #5e6a8a; color: white; }
-        .concept-tag.xia { background: #8a7a5e; color: white; }
-        .concept-tag.zhizu { background: #8a7a5e; color: white; }
-        .concept-tag.buzheng { background: #5e7a8a; color: white; }
+
+        .concept-tag.dao {
+            background: #2e5f5f;
+            color: white;
+        }
+
+        .concept-tag.de {
+            background: #4a7878;
+            color: white;
+        }
+
+        .concept-tag.wuwei {
+            background: #6b8e7a;
+            color: white;
+        }
+
+        .concept-tag.ziran {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.fan {
+            background: #8faa9a;
+            color: white;
+        }
+
+        .concept-tag.xuan {
+            background: #6a5e8a;
+            color: white;
+        }
+
+        .concept-tag.rouruo {
+            background: #7a9e8e;
+            color: white;
+        }
+
+        .concept-tag.pu {
+            background: #a3b8a0;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.yi {
+            background: #b5c8b2;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.jing {
+            background: #5e6a8a;
+            color: white;
+        }
+
+        .concept-tag.xia {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.zhizu {
+            background: #8a7a5e;
+            color: white;
+        }
+
+        .concept-tag.buzheng {
+            background: #5e7a8a;
+            color: white;
+        }
+
+        .concept-tag.qiantui {
+            background: #7a8a6e;
+            color: white;
+        }
+
+        .concept-tag.yinger {
+            background: #d4af37;
+            color: #3a4a3a;
+        }
+
+        .concept-tag.shouzhong {
+            background: #4a6a6a;
+            color: white;
+        }
+
+        .golden-quote {
+            background: #fffef5;
+            border: 1px solid #d4af37;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .golden-quote .quote-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e5f5f;
+            line-height: 2;
+            margin-bottom: 8px;
+        }
+
+        .golden-quote .quote-interp {
+            font-size: 0.95em;
+            color: #7a6e4e;
+            font-style: italic;
+        }
+
+        .verify-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: #fffef5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .verify-table th {
+            background: #2e5f5f;
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .verify-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        .verify-table tr:hover td {
+            background: #f8f5e8;
+        }
+
         .nav-chapters {
             display: flex;
             justify-content: space-between;
             margin: 30px 0;
         }
+
         .nav-chapters a {
             padding: 8px 16px;
-            background: rgba(46,95,95,0.08);
-            border: 1px solid rgba(46,95,95,0.2);
+            background: rgba(46, 95, 95, 0.08);
+            border: 1px solid rgba(46, 95, 95, 0.2);
             border-radius: 6px;
             color: #2e5f5f;
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .nav-chapters a:hover {
             background: #2e5f5f;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <nav class="chapter-nav">
         <a href="../index.html" class="nav-home">回到主页</a>
@@ -101,17 +359,29 @@
         <a href="../paths/index.html">阅读路径</a>
     </nav>
 
-    <!-- 搜索 -->
     <div class="daodejing-search" id="daodejing-search">
         <input type="search" id="search-input" placeholder="全文检索（关键字以空格分隔，如：无为 柔弱）" autocomplete="off">
         <div id="search-results" class="daodejing-search-results" role="listbox"></div>
     </div>
 
-
     <h1>
         🤝 第27章 · 善行无辙迹
         <span class="subtitle">上经 · 处世论 · 五步读解</span>
     </h1>
+
+    <!-- 慧惠章节问候 -->
+    <div
+        style="background:#f0f5f3;border-left:4px solid #2e5f5f;padding:14px 18px;border-radius:6px;margin:16px 0;font-size:0.95em;color:#555;line-height:1.7;">
+        &#127807;
+        <strong>慧惠说：</strong>这一章特别有意思！老子说真正厉害的人做事"不留痕迹"——走路不留脚印、说话没有破绽、算数不用计算器。就像武侠里的高手，越厉害越看不出来。更难得的是最后一句——好人和"不好的人"互相需要，谁也不能丢！
+    </div>
+
+    <!-- AI角色标注 -->
+    <div
+        style="background:#fffef5;border:1px dashed #d4c9a8;padding:12px 16px;border-radius:6px;margin:16px 0;font-size:0.85em;color:#888;line-height:1.7;">
+        &#9888;&#65039; 本章解读由<strong style="color:#2e5f5f;">慧惠AI初审</strong> + <strong
+            style="color:#2e5f5f;">人类导师深度修订</strong>。AI提供结构化分析和多版本对照，人类注入对原文的体证与情感理解。
+    </div>
 
     <!-- 五步导航 -->
     <div class="five-step-nav">
@@ -122,63 +392,364 @@
         <a href="#step5">💡 意义转化</a>
     </div>
 
+    <div class="level-selector" id="level-selector">
+        <span>认知深度：</span>
+        <button data-level="l1" class="level-btn">👶 白话</button>
+        <button data-level="l2" class="level-btn active">📚 精读</button>
+        <button data-level="l3" class="level-btn">💼 应用</button>
+        <button data-level="l4" class="level-btn">🔬 学术</button>
+        <button data-level="all" class="level-btn">📋 全部</button>
+    </div>
+
     <!-- 原文 -->
     <div class="original-text">
-        善行无辙迹，善言无瑕谪，善数不用筹策，善闭无关楗而不可开，善结无绳约而不可解。<br>
+        善行无辙迹，善言无瑕谪，善数不用筹策，<br>
+        善闭无关楗而不可开，善结无绳约而不可解。<br>
         是以圣人常善救人，故无弃人；常善救物，故无弃物。<br>
         是谓袭明。<br>
         故善人者，不善人之师；不善人者，善人之资。<br>
-        不贵其师，不爱其资，虽智大迷，是谓要妙。<br>
-        
+        不贵其师，不爱其资，虽智大迷，是谓要妙。
     </div>
 
     <div style="margin: 10px 0;">
+        <span class="concept-tag wuwei">无为</span>
         <span class="concept-tag de">德</span>
-        <span class="concept-tag fan">处世</span>
+        <span class="concept-tag ziran">自然</span>
     </div>
 
-    <!-- 第一步 -->
+    <!-- ===== 第一步 ===== -->
     <div class="step-section" id="step1">
-        <h3>📖 第一步：文本细读</h3>
-        <p><strong>核心命题：</strong>五善 · 善行·善言·善数·善闭·善结 · 是以圣人常善救人 · 袭明 · 师资互转</p>
-        <p style="margin-top:12px;"><strong>原文分析：</strong></p>
-        <p>本章属于处世论范畴，位于上经。核心内容为"善行无辙迹"，展现了老子关于处世论的深层思考。全章围绕德的概念展开，层层递进。</p>
+        <h3>📖 第一步：文本细读与语义锚定</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>真正会走路的人不留脚印（高手做事不留痕迹），真正会说话的人找不到毛病（不是油嘴滑舌，而是话说到点子上），真正会算数的人不需要计算器（用直觉就能把握全局），真正会关门的人不用门闩别人也打不开（因为他从根本上解决了问题），真正会打结的人不用绳子别人也解不开（因为他结的是人心，不是物理的绳子）。
+            </p>
+            <p style="margin-top:10px;">
+                所以圣人总是善于帮助每一个人——没有人会被抛弃；总是善于利用每一样东西——没有东西会被浪费。这叫做"藏着的智慧"（袭明）。所以好人是不好的人的老师，不好的人是好人学习的素材。不尊重老师、不珍惜素材，即使自以为聪明也是大糊涂！这就是最精妙的道理。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>逐句解析：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>善行无辙迹</strong>——善于行走的人不留车辙和脚印。"辙迹"=车轮压过的痕迹+脚印。引申：真正善于做事的人，行事自然无痕，不刻意炫耀，不留下把柄。</li>
+                <li><strong>善言无瑕谪</strong>——善于言说的人没有瑕疵和过失可被指责。"瑕谪"=玉上的瑕疵+被指责。不是巧言令色，而是言语恰当、无可挑剔。</li>
+                <li><strong>善数不用筹策</strong>——善于计算的人不需要算筹和竹策。"筹策"=古代计算工具（竹制算筹）。引申：善于谋划的人不靠外在工具，凭直觉/内在智慧把握全局。</li>
+                <li><strong>善闭无关楗而不可开</strong>——善于关闭的人不用门闩和锁扣，别人却无法打开。"关楗"=横木门闩。引申：从根本上解决问题（关人心而非关门户）。</li>
+                <li><strong>善结无绳约而不可解</strong>——善于系结的人不用绳索捆绑，别人却无法解开。"绳约"=绳索。引申：以德服人、以道联结，比物理约束更牢固。</li>
+                <li><strong>是以圣人常善救人，故无弃人；常善救物，故无弃物</strong>——因此圣人总是善于发掘每个人的价值并加以帮助，所以没有被抛弃的人；总是善于发掘每样东西的用处，所以没有被浪费的东西。
+                </li>
+                <li><strong>是谓袭明</strong>——这就叫做"袭明"。"袭"=承袭/暗藏，"明"=光明/智慧。含蓄的智慧、内在的光明。</li>
+                <li><strong>善人者，不善人之师；不善人者，善人之资</strong>——善人是不善人的老师和榜样；不善人是善人的借鉴和资源。</li>
+                <li><strong>不贵其师，不爱其资，虽智大迷</strong>——不尊重自己的老师，不珍惜自己的借鉴资源，即便自以为聪明也是大迷惑。</li>
+                <li><strong>是谓要妙</strong>——这就是精要玄妙的道理。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>篇章结构：</strong>"五善"排比（五种无为之善）→ 圣人之用（无弃人无弃物）→ 命名（袭明）→ 互资关系（师-资）→
+                总结警示（要妙）。从现象到原理到关系到价值判断，逻辑递进。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道维度：</strong>自然界的运作本身就是"善行无辙迹"——春风化雨无声无息，却让万物生长；太阳普照大地不挑选对象，这就是"无弃物"的天道体现。</p>
+            <p><strong>人道维度：</strong>真正的领导力不是靠强制和控制（关楗/绳约），而是靠感召和价值认同（无关楗而不可开）。最好的管理是让员工自发投入，而非用规章制度捆绑。</p>
+            <p><strong>天人合一：</strong>"无弃人无弃物"是最高级的包容领导力——每个人都有价值，每个资源都有用处，关键在于领导者能否像道一样"善于发现"和"善于安置"。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>版本对照：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>王弼本：</strong>"善行无辙迹，善言无瑕谪"</li>
+                <li><strong>帛书甲本：</strong>"善行者无辙迹，善言者无瑕谪"（多"者"字，句式更完整）</li>
+                <li><strong>河上公本：</strong>基本同王弼本</li>
+                <li><strong>关键差异：</strong>帛书"善行者"=善于行走的人（名词性表述），通行本"善行"=善于行走（动词性表述或省略主语）。帛书版更明确指向"具有此能力的人"。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>字词考证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>"袭明"</strong>：争议最大的术语之一。"袭"字有三解：(1)承袭/继承；(2)暗藏/包裹（衣外曰袭）；(3)重复/因循。主流解为"内含的光明""隐藏的智慧"——不是外在炫耀的聪明，而是内化的、含蓄的明智。王弼注："善者不善者之师"用也。
+                </li>
+                <li><strong>"瑕谪"</strong>："瑕"=玉上纹路/瑕疵，"谪"=谴责/降职。合起来指"可被指摘的过失"。</li>
+                <li><strong>"筹策"</strong>：古代算筹，竹木制成的计算工具。"善数不用筹策"不是反对工具，而是描述超越工具的直觉智慧。</li>
+                <li><strong>"要妙"</strong>：精要而微妙的道理。"要"=核心/关键，"妙"=精微/难以言说。</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>思想史定位：</strong>"无弃人无弃物"的思想对后世影响深远。儒家的"有教无类"可视为其教育化表达；佛教的"众生平等"有相通处；现代管理学的"人尽其才物尽其用"也是这一思想的世俗化。本章建立了中国包容哲学的源头之一。
+            </p>
+        </div>
     </div>
 
-    <!-- 第二步 -->
+    <!-- ===== 第二步 ===== -->
     <div class="step-section" id="step2">
-        <h3>🏛️ 第二步：语境建构</h3>
-        <p><strong>思想史语境：</strong>本章在《道德经》整体架构中属于"处世论"板块，与同板块其他章节形成互文关系。老子在此进一步阐发了德的内涵。</p>
-        <p style="margin-top:12px;"><strong>概念网络：</strong>本章涉及的核心概念包括：德、处世，这些概念在SPO V3.0网络中形成紧密关联。</p>
+        <h3>🏛️ 第二步：语境构建与哲学推演</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>前面第26章说"重的东西是轻的东西的根"，本章进一步说真正有本事的人连痕迹都不留——这就是最高级的"重"：重到像空气一样无处不在却看不见。就像你爸妈为你做的事，你可能没意识到，但那就是"善行无辙迹"。</p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>微观语境：</strong>第27章位于处世论板块。承接第26章的"重为轻根"（强调内在根基），本章展开阐述"有根基的人做事是什么样的"——无辙迹、无瑕谪、不用筹策。前者讲原则（重/静），此章讲效果（无痕/自然）。
+            </p>
+            <p><strong>相关章节：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第2章"为而不恃，功成而弗居"——做了不居功=善行无辙迹的行为层面</li>
+                <li>第17章"百姓皆谓我自然"——最好的统治就是人们感觉不到被统治=无辙迹的政治版</li>
+                <li>第49章"圣人无常心以百姓心为心"——无弃人的具体表现</li>
+                <li>第81章"圣人不积"——善于给予、不囤积=善救人/善救物的延伸</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>"袭明"的概念网络：</strong>"袭明"与第52章"用其光复归其明"、第56章"和其光同其尘"（和光同尘）构成"光/明"概念族——都是说智慧不应外露炫耀，而应内化含蓄。"袭明"是这一思想的命名。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>体系定位：</strong>本章是道德经"无为"思想在处世领域的核心表述。如果说第17章讲的是"无为治国"（百姓不知有之），本章讲的是"无为处世"的具体表现——五种自然之善。它建立了一个重要命题：最高级的能力是看不见的能力。
+            </p>
+            <p><strong>"师-资"互转模型：</strong>本章后半段建立了一个重要的教育和人际关系模型：善人←→不善人不是对立关系，而是互相成就的关系。善人从不善人身上学到反面教材（资），不善人从善人身上获得正面引导（师）。这打破了"好人vs坏人"的二元对立。
+            </p>
+            <p><strong>管理应用：</strong>"无弃人无弃物"是最高级的资源配置智慧。Google的"20%时间"制度、3M允许员工探索"无用"项目——本质上都是相信"没有无用的人和想法"。所谓的"无用"不过是还没找到正确的使用方式。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>三层语境分析：</strong></p>
+            <p><em>微观层：</em>本章结构为"五善排比+圣人用+命名+师资关系+警示"。"五善"部分使用严格的排比句式，每句都是"善X+无Y+而Z"结构。这种修辞形式在先秦文献中独特，可能源于口传传统的助记功能。
+            </p>
+            <p><em>中观层：</em>"袭明"与"玄德"（第10、51、65章）构成概念对应——玄德是"暗藏的德"，袭明是"暗藏的明"。二者都指向"不显露的高级状态"。道德经的理想人格特征是"有而不显"——有德不炫德，有明不炫明。
+            </p>
+            <p><em>宏观层：</em>本章"无弃人"的思想在先秦思想史中独特。儒家主张"有教无类"但仍有等级；墨家主张"兼爱"但出于功利。老子的"无弃人"源于对道的模仿——道"善贷且成"（第41章），不拒绝任何存在者。这是形而上学层面的包容，而非仅仅是伦理层面的宽容。
+            </p>
+        </div>
     </div>
 
-    <!-- 第三步 -->
+    <!-- ===== 第三步 ===== -->
     <div class="step-section" id="step3">
-        <h3>⚔️ 第三步：争议辨析</h3>
-        <p><strong>版本对照：</strong>本章在王弼本、河上公本、帛书甲乙本中存在文字差异。历代注家对关键语句的理解各有侧重。</p>
-        <p style="margin-top:12px;"><strong>核心争议：</strong>围绕"善行无辙迹"的诠释，传统注疏与现代学术研究提供了不同视角，需结合全文语境综合判断。</p>
+        <h3>⚔️ 第三步：争议显化与诠释选项分析</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>学者们对"袭明"有两种理解：一是"穿着智慧的外衣"（像穿了隐身衣的高手），二是"继承智慧"（从历史中学来的智慧）。还有人争论"五善"到底是在讲普通人的技能，还是在讲圣人的治国之术。不管怎么理解，核心意思都是：真正的高手不需要花里胡哨的工具和手段。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>争议点一："袭明"的含义</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>暗藏光明说</strong>（主流）：袭=包裹/暗藏。袭明=把光明/智慧含藏在内，不外露。与"和光同尘"同义。</li>
+                <li><strong>承袭光明说</strong>：袭=因袭/继承。袭明=继承/延续这种光明的智慧。</li>
+                <li><strong>重叠光明说</strong>：袭=重复。袭明=光明叠加=智慧的积累。</li>
+            </ul>
+            <p><strong>争议点二："五善"的喻指</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>圣人治国说</strong>（河上公）：五善都是比喻圣人的治国之术——行政无痕迹、言论无过失、财政不需繁复、安保不靠城墙、外交不靠条约</li>
+                <li><strong>得道者特征说</strong>（王弼）：五善描述的是得道之人的自然状态——做什么都合于道，所以无需外在手段</li>
+                <li><strong>实际技能说</strong>：五善确实指五种具体技能的最高境界——从"用工具"到"不需工具"的升华</li>
+            </ul>
+            <p><strong>争议点三："不善人"的定位</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>道德评判说</strong>：善人=道德上好的人，不善人=道德上不好的人</li>
+                <li><strong>能力差异说</strong>：善人=善于某事的人，不善人=不善于某事的人（无道德评判）</li>
+                <li><strong>综合说</strong>：既包含道德层面也包含能力层面——"善"同时指道德和才能</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>"五善"的现代管理翻译：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>善行无辙迹</strong>→ 最好的流程是感觉不到流程的存在（UX设计原则）</li>
+                <li><strong>善言无瑕谪</strong>→ 最好的沟通是准确且不引发误解（零缺陷沟通）</li>
+                <li><strong>善数不用筹策</strong>→ 最好的决策是直觉级别的判断力（经验内化）</li>
+                <li><strong>善闭无关楗而不可开</strong>→ 最好的安全是系统性的而非补丁式的（安全架构思维）</li>
+                <li><strong>善结无绳约而不可解</strong>→ 最好的合作是价值认同而非合同约束（文化凝聚力）</li>
+            </ul>
+            <p style="margin-top:12px;">
+                <strong>"无弃人"的组织应用：</strong>人才管理不是筛选"最优"然后淘汰其余，而是为每个人找到合适的位置。Netflix的"人才密度"理论是一种筛选逻辑，而老子的"无弃人"是一种安置逻辑——两种不同的管理哲学。
+            </p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>"袭明"学术考辨：</strong></p>
+            <p>高亨《老子正诂》：袭，读为褶，重衣也。袭明=重重包裹的光明=深藏不露的智慧。马叙伦《老子校诂》：袭当训为因、沿袭。陈鼓应《老子今注今译》取"含藏"义。</p>
+            <p style="margin-top:12px;"><strong>"五善"的修辞学分析：</strong></p>
+            <p>"善X无Y而（不可）Z"的排比结构在修辞上创造了递进效果：从动态（行）到静态（闭/结），从外向（行/言）到内向（数/闭/结）。这不仅是修辞手法，更暗示了能力的内化过程：从可见技能到不可见智慧。</p>
+            <p style="margin-top:12px;"><strong>与庄子的互文：</strong></p>
+            <p>庄子"庖丁解牛"故事是"善行无辙迹"最好的叙事注释——庖丁解牛"以神遇而不以目视"，刀用十九年"若新发于硎"，就是"善行无辙迹"的具体案例。技艺到达极致就是"无辙迹"——不留下粗暴使用的痕迹。</p>
+        </div>
     </div>
 
-    <!-- 第四步 -->
+    <!-- ===== 第四步 ===== -->
     <div class="step-section" id="step4">
-        <h3>🔗 第四步：逻辑验证</h3>
-        <p><strong>内在一致性：</strong>本章的核心论述与《道德经》其他相关章节保持逻辑一致。概念链：德→处世</p>
-        <p style="margin-top:12px;"><strong>跨章验证：</strong>本章的关键命题可在道德经其他章节中找到呼应与印证，构成完整的思想闭环。</p>
+        <h3>🔗 第四步：逻辑验证与跨章互文</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p>让我们检验一下：老子在第17章说"最好的领导让人感觉不到他的存在"，在本章说"善行无辙迹"——做事不留痕迹。这两个说的是同一件事！真正的高手=看不见的力量。第2章说"做了不居功"，本章说"善行无辙迹"——也是一致的。所以老子的思想从头到尾都在说：最厉害的不是最显眼的。
+            </p>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>内在逻辑验证：</strong></p>
+            <table class="verify-table">
+                <tr>
+                    <th>命题</th>
+                    <th>本章表述</th>
+                    <th>互文章节</th>
+                    <th>一致性</th>
+                </tr>
+                <tr>
+                    <td>最高境界无痕</td>
+                    <td>善行无辙迹</td>
+                    <td>第17章"百姓皆谓我自然"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>做而不显</td>
+                    <td>善言无瑕谪</td>
+                    <td>第2章"为而不恃功成弗居"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>内在超越工具</td>
+                    <td>善数不用筹策</td>
+                    <td>第19章"绝巧弃利"</td>
+                    <td>方向一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>以德代力</td>
+                    <td>善闭无关楗</td>
+                    <td>第60章"以道莅天下其鬼不神"</td>
+                    <td>逻辑一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>无弃人</td>
+                    <td>常善救人故无弃人</td>
+                    <td>第62章"人之不善何弃之有"</td>
+                    <td>完全一致 ✓</td>
+                </tr>
+                <tr>
+                    <td>师资互转</td>
+                    <td>善人不善人互为师资</td>
+                    <td>第36章"柔弱胜刚强"</td>
+                    <td>辩证一致 ✓</td>
+                </tr>
+            </table>
+            <p style="margin-top:12px;"><strong>逻辑链：</strong>道（无为）→ 圣人法道（善行无辙迹）→ 效果（无弃人无弃物）→ 原理命名（袭明）→ 关系推论（师资互转）。逻辑自洽。
+            </p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>跨域验证：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>教育领域：</strong>"善行无辙迹"对应"启发式教学"——最好的老师让学生觉得是自己发现了答案（而非被灌输）。苏格拉底的"产婆术"就是教育版的"善行无辙迹"。</li>
+                <li><strong>设计领域：</strong>"善闭无关楗"对应Don Norman的"可见性原则"——好的设计让用户自然而然做对，不需要说明书（=不需要关楗）。</li>
+                <li><strong>领导力：</strong>"无弃人"对应Marcus Buckingham的"优势理论"——找到每个人的长处并善加利用，而非把人分为"可用"和"不可用"。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>反面验证：</strong>如果违反本章原则会怎样？企业裁员（弃人）→ 团队士气崩溃 → 核心人才也离开 →
+                恶性循环。这正是"不爱其资虽智大迷"的现代验证——不珍惜"不善人"这一资源，看似聪明的裁员决策反而是大迷惑。</p>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>体系内验证：</strong></p>
+            <p>"袭明"概念在道德经的"光/明"概念族中的定位：</p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>第4章"和其光"——和光（收敛光芒）</li>
+                <li>第27章"袭明"——袭明（暗藏光明）</li>
+                <li>第52章"用其光复归其明"——用光归明（以外在之光回归内在之明）</li>
+                <li>第56章"和其光同其尘"——和光同尘（与万物同等）</li>
+                <li>第58章"光而不耀"——光而不耀（有光但不刺眼）</li>
+            </ul>
+            <p>逻辑关系：和光（动作）→ 袭明（状态）→ 光而不耀（效果）。这三者构成完整的"用光"方法论——收敛→内含→柔和释放。本章的"袭明"正是这一链条的中间环节。</p>
+            <p style="margin-top:12px;">
+                <strong>跨文本验证：</strong>《庄子·养生主》"庖丁解牛"的"以神遇不以目视"→"善行无辙迹"（无痕高手）；《论语》"有教无类"→"无弃人"（虽然儒家仍有等级）；《墨子·兼爱》"兼相爱交相利"→"善人不善人互为师资"（虽然墨家更强调功利互惠）。三家对照可见老子的独特之处：他从形而上学（道的无择性）推出包容（无弃），而非从伦理或功利出发。
+            </p>
+        </div>
     </div>
 
-    <!-- 第五步 -->
+    <!-- ===== 第五步 ===== -->
     <div class="step-section" id="step5">
-        <h3>💡 第五步：意义转化</h3>
-        <p><strong>日常赋能：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li><strong>核心启示：</strong>"善行无辙迹"提醒我们在日常生活中保持对德的觉察</li>
-            <li><strong>实践建议：</strong>将本章智慧融入亲子互动，通过体验式学习加深理解</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>亲子共修建议：</strong></p>
-        <ul style="padding-left:20px; line-height:2;">
-            <li>🏠 <strong>家庭实践：</strong>围绕"善行无辙迹"设计一个简单的家庭体验活动</li>
-            <li>💬 <strong>对话练习：</strong>与孩子讨论本章核心概念在生活中的体现</li>
-        </ul>
+        <h3>💡 第五步：意义转化与生活实践</h3>
+
+        <div class="level-block level-l1" data-level="l1">
+            <h4>👶 大白话版</h4>
+            <p><strong>今天就能用的道理：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li>帮别人做事不必让别人知道（善行无辙迹）——比如悄悄给同学的水杯加满水</li>
+                <li>说话要想好了再说，不给别人留话柄（善言无瑕谪）</li>
+                <li>不要小看任何人或任何东西——"没用"的可能只是还没找到用法（无弃人无弃物）</li>
+                <li>好的同学和表现不好的同学都能帮你成长——从好同学学优点，从不好的同学吸取教训</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l2" data-level="l2">
+            <h4>📚 精读版</h4>
+            <p><strong>日常赋能：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>行事之道：</strong>"善行无辙迹"提示我们做好事不留名、做决策不留把柄、做管理不留痕迹。最理想的管理状态是团队自觉运转，管理者"无辙迹"。</li>
+                <li><strong>用人之道：</strong>"无弃人无弃物"是组织管理的最高境界——不是选最好的人，而是让每个人都发挥最好的自己。从"人才筛选"转向"人才激活"。</li>
+                <li><strong>学习之道：</strong>"不贵其师不爱其资虽智大迷"——不尊重可以学习的对象（包括反面教材），即使天资聪明也会迷失。保持谦虚地向所有人学习。</li>
+            </ul>
+            <p style="margin-top:12px;"><strong>金句提炼：</strong>没有无用的人，只有不善用人的领导；没有无用的经验，只有不善总结的学习者。</p>
+        </div>
+
+        <div class="level-block level-l3" data-level="l3">
+            <h4>💼 应用版</h4>
+            <p><strong>天道转化：</strong>自然界"无弃物"——落叶变肥料、死去的动物滋养土地、连废气（CO2）也是植物的食物。自然界没有"垃圾"概念，垃圾只是"放错位置的资源"。</p>
+            <p><strong>人道转化：</strong></p>
+            <ul style="padding-left:20px;line-height:2;">
+                <li><strong>职场：</strong>从"淘汰制"转向"安置制"——不是谁不合适就开除，而是为每个人找到合适的岗位（当然有底线）</li>
+                <li><strong>家庭：</strong>"师资互转"——孩子可以做父母的"师"（教父母新技术），父母做孩子的"师"（教人生经验）；孩子犯的错误是父母学习教育方法的"资"</li>
+                <li><strong>社会：</strong>"无弃人"的公共政策意涵——关注弱势群体不是慈善施舍，而是因为每个人都有社会价值</li>
+            </ul>
+        </div>
+
+        <div class="level-block level-l4" data-level="l4">
+            <h4>🔬 学术版</h4>
+            <p><strong>哲学转化：</strong></p>
+            <p>"袭明"作为认识论模型：真正的智慧不是向外展示和论证，而是向内涵养和积累。这与Polanyi的"默会知识"（tacit
+                knowledge）理论对应——最深层的知识无法言说（=善言无瑕谪），最高级的技能无需工具（=善数不用筹策），最牢固的联结无需形式约束（=善结无绳约）。</p>
+            <p style="margin-top:12px;">
+                <strong>"师资互转"的辩证法意义：</strong>善人与不善人不是固定标签而是动态角色——在某一方面"善"的人在另一方面可能是"不善"的。这打破了本质主义的善恶二元论，建立了一种关系性的、情境性的善恶观。海德格尔"此在"的非本质性（Jemeinigkeit）与此有深层呼应。
+            </p>
+        </div>
+
+        <div class="level-block level-always">
+            <h4>👨‍👩‍👧 亲子共修活动</h4>
+            <p><strong>活动一："无辙迹做好事"挑战</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>和孩子约定：这一周内各自做至少三件好事，但要做到"无辙迹"——不让对方或任何人发现</li>
+                <li>一周后互相猜测对方做了什么好事</li>
+                <li>讨论：做好事不留名的感觉和做好事被表扬的感觉，有什么不同？</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动二："无弃物"创意工坊</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>收集家里"没用的东西"（旧纸盒、瓶盖、旧布...）</li>
+                <li>一起动手把这些"废物"变成有用/有趣的东西（艺术品、收纳盒、玩具...）</li>
+                <li>体会"没有无用的东西，只有没想到的用法"</li>
+            </ul>
+            <p style="margin-top:14px;"><strong>活动三："师-资"角色互换日</strong></p>
+            <ul style="padding-left:20px;line-height:1.8;">
+                <li>选一天，让孩子做"师"，教父母一样他们擅长的事（游戏、手工、新知识等）</li>
+                <li>父母认真学习并表达感谢</li>
+                <li>讨论：从教别人的过程中，你学到了什么新东西？</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 金句 -->
+    <div class="golden-quote">
+        <div class="quote-text">善人者，不善人之师；不善人者，善人之资</div>
+        <div class="quote-interp">好人是不好的人的老师，不好的人是好人学习的素材——没有人是"无用"的</div>
     </div>
 
     <!-- 上下章导航 -->
@@ -188,14 +759,16 @@
     </div>
 
     <div class="site-footer">
-        道德经亲子体验营 · 第27章五步读解 · 最后更新：2026-05-05
+        道德经亲子体验营 · 第27章五步读解 · 最后更新：2026-05-08
     </div>
     <script src="../data/search-data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script src="../js/level-filter.js"></script>
 
     <!-- 慧惠 AI 聊天组件 -->
     <link rel="stylesheet" href="/css/huihui-chat.css">
     <script src="/js/huihui-chat.js"></script>
 </body>
+
 </html>
