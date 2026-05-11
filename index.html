@@ -421,12 +421,61 @@
     <script>
         /**
          * 打开慧惠聊天框（仅打开，不发送消息）
+         * 增强版：带调试日志 + DOM 重试机制 + 面板可见性验证
          */
         function openHuihuiChat() {
+            console.log('[openHuihuiChat] 被调用');
             var btn = document.getElementById('huihui-chat-btn');
+            console.log('[openHuihuiChat] btn 元素:', btn);
             if (btn) {
+                console.log('[openHuihuiChat] btn display:', btn.style.display, ', classList:', btn.className);
+                console.log('[openHuihuiChat] 即将调用 btn.click()');
                 btn.click();
+                // 延迟验证面板是否成功打开
+                setTimeout(function () {
+                    var panel = document.getElementById('huihui-chat-panel');
+                    if (panel) {
+                        var isOpen = panel.classList.contains('open');
+                        var panelDisplay = window.getComputedStyle(panel).display;
+                        console.log('[openHuihuiChat] 面板 open 类:', isOpen, ', computed display:', panelDisplay);
+                        if (!isOpen && panelDisplay === 'none') {
+                            console.warn('[openHuihuiChat] 面板未打开！尝试手动添加 open 类');
+                            panel.classList.add('open');
+                            btn.style.display = 'none';
+                        }
+                    } else {
+                        console.error('[openHuihuiChat] 面板元素 #huihui-chat-panel 不存在！');
+                    }
+                }, 400);
+                return;
             }
+            // DOM 未就绪：带间隔的重试机制（最多 5 次，每次 300ms）
+            console.warn('[openHuihuiChat] btn 不存在，启动重试机制...');
+            var retries = 0;
+            var maxRetries = 5;
+            var retryTimer = setInterval(function () {
+                retries++;
+                btn = document.getElementById('huihui-chat-btn');
+                console.log('[openHuihuiChat] 重试 #' + retries + ', btn:', btn);
+                if (btn) {
+                    clearInterval(retryTimer);
+                    console.log('[openHuihuiChat] 重试成功，调用 btn.click()');
+                    btn.click();
+                    setTimeout(function () {
+                        var panel = document.getElementById('huihui-chat-panel');
+                        if (panel && !panel.classList.contains('open')) {
+                            panel.classList.add('open');
+                            btn.style.display = 'none';
+                        }
+                    }, 400);
+                } else if (retries >= maxRetries) {
+                    clearInterval(retryTimer);
+                    console.error('[openHuihuiChat] 重试 ' + maxRetries + ' 次后仍未找到 btn！请检查:');
+                    console.error('  1. /js/huihui-chat.js 是否成功加载？');
+                    console.error('  2. huihui-chat.js 是否在 <body> 中正确创建了 #huihui-chat-btn？');
+                    console.error('  3. 浏览器控制台是否有 JS 报错？');
+                }
+            }, 300);
         }
 
         /**
@@ -434,13 +483,37 @@
          * @param {string} msg - 预设问题
          */
         function openChatWithPreset(msg) {
+            console.log('[openChatWithPreset] 被调用, msg:', msg);
+            // 复用 openHuihuiChat 的重试逻辑（通过调用 btn.click()）
             var btn = document.getElementById('huihui-chat-btn');
-            if (!btn) return;
+            if (!btn) {
+                console.warn('[openChatWithPreset] btn 不存在，等待 openHuihuiChat 重试...');
+                // 先尝试打开面板（会触发重试），再在稍后发送消息
+                openHuihuiChat();
+                var presetRetries = 0;
+                var presetTimer = setInterval(function () {
+                    presetRetries++;
+                    var input = document.getElementById('hui-input');
+                    var sendBtn = document.getElementById('hui-send-btn');
+                    if (input && sendBtn) {
+                        clearInterval(presetTimer);
+                        console.log('[openChatWithPreset] 预设消息重试成功，发送:', msg);
+                        input.value = msg;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                        sendBtn.click();
+                    } else if (presetRetries >= 10) {
+                        clearInterval(presetTimer);
+                        console.error('[openChatWithPreset] 超时：input/sendBtn 仍未找到');
+                    }
+                }, 400);
+                return;
+            }
             btn.click();
             // 等面板打开后再设置消息并发送
             setTimeout(function () {
                 var input = document.getElementById('hui-input');
                 var sendBtn = document.getElementById('hui-send-btn');
+                console.log('[openChatWithPreset] panel打开后 input:', input, ', sendBtn:', sendBtn);
                 if (input && sendBtn) {
                     input.value = msg;
                     input.dispatchEvent(new Event('input', { bubbles: true }));

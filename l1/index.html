@@ -446,18 +446,92 @@
     <script src="../js/search.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script>
+        /**
+         * 打开慧惠聊天框（仅打开，不发送消息）
+         * 增强版：带调试日志 + DOM 重试机制 + 面板可见性验证
+         */
         function openHuihuiChat() {
+            console.log('[L1-openHuihuiChat] 被调用');
             var btn = document.getElementById('huihui-chat-btn');
-            if (btn) btn.click();
+            console.log('[L1-openHuihuiChat] btn 元素:', btn);
+            if (btn) {
+                console.log('[L1-openHuihuiChat] btn display:', btn.style.display, ', classList:', btn.className);
+                console.log('[L1-openHuihuiChat] 即将调用 btn.click()');
+                btn.click();
+                setTimeout(function () {
+                    var panel = document.getElementById('huihui-chat-panel');
+                    if (panel) {
+                        var isOpen = panel.classList.contains('open');
+                        var panelDisplay = window.getComputedStyle(panel).display;
+                        console.log('[L1-openHuihuiChat] 面板 open 类:', isOpen, ', computed display:', panelDisplay);
+                        if (!isOpen && panelDisplay === 'none') {
+                            console.warn('[L1-openHuihuiChat] 面板未打开！尝试手动添加 open 类');
+                            panel.classList.add('open');
+                            btn.style.display = 'none';
+                        }
+                    } else {
+                        console.error('[L1-openHuihuiChat] 面板元素不存在！');
+                    }
+                }, 400);
+                return;
+            }
+            console.warn('[L1-openHuihuiChat] btn 不存在，启动重试机制...');
+            var retries = 0;
+            var maxRetries = 5;
+            var retryTimer = setInterval(function () {
+                retries++;
+                btn = document.getElementById('huihui-chat-btn');
+                console.log('[L1-openHuihuiChat] 重试 #' + retries + ', btn:', btn);
+                if (btn) {
+                    clearInterval(retryTimer);
+                    console.log('[L1-openHuihuiChat] 重试成功，调用 btn.click()');
+                    btn.click();
+                    setTimeout(function () {
+                        var panel = document.getElementById('huihui-chat-panel');
+                        if (panel && !panel.classList.contains('open')) {
+                            panel.classList.add('open');
+                            btn.style.display = 'none';
+                        }
+                    }, 400);
+                } else if (retries >= maxRetries) {
+                    clearInterval(retryTimer);
+                    console.error('[L1-openHuihuiChat] 重试 ' + maxRetries + ' 次后仍未找到 btn！');
+                }
+            }, 300);
         }
 
+        /**
+         * 打开慧惠聊天框并发送预设消息
+         */
         function openChatWithPreset(msg) {
+            console.log('[L1-openChatWithPreset] 被调用, msg:', msg);
             var btn = document.getElementById('huihui-chat-btn');
-            if (!btn) return;
+            if (!btn) {
+                console.warn('[L1-openChatWithPreset] btn 不存在，等待 openHuihuiChat 重试...');
+                openHuihuiChat();
+                var presetRetries = 0;
+                var presetTimer = setInterval(function () {
+                    presetRetries++;
+                    var input = document.getElementById('hui-input');
+                    var sendBtn = document.getElementById('hui-send-btn');
+                    if (input && sendBtn) {
+                        clearInterval(presetTimer);
+                        console.log('[L1-openChatWithPreset] 预设消息重试成功，发送:', msg);
+                        input.value = msg;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                        sendBtn.click();
+                    } else if (presetRetries >= 10) {
+                        clearInterval(presetTimer);
+                        console.error('[L1-openChatWithPreset] 超时：input/sendBtn 仍未找到');
+                    }
+                }, 400);
+                return;
+            }
             btn.click();
             setTimeout(function () {
                 var input = document.getElementById('hui-input');
                 var sendBtn = document.getElementById('hui-send-btn');
+                console.log('[L1-openChatWithPreset] panel打开后 input:', !!input, ', sendBtn:', !!sendBtn);
                 if (input && sendBtn) {
                     input.value = msg;
                     input.dispatchEvent(new Event('input', { bubbles: true }));

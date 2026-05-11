@@ -5,6 +5,7 @@
  */
 (function () {
     'use strict';
+    console.log('[HuihuiChat] 脚本开始执行, document.readyState=' + document.readyState);
 
     // ===== 常量 =====
     var API_URL = '/api/chat';
@@ -51,6 +52,7 @@
     var container = document.createElement('div');
     container.innerHTML = chatHTML;
     document.body.appendChild(container);
+    console.log('[HuihuiChat] HTML 已注入 DOM');
 
     // ===== DOM 引用 =====
     var chatBtn = document.getElementById('huihui-chat-btn');
@@ -60,6 +62,7 @@
     var sendBtn = document.getElementById('hui-send-btn');
     var closeBtn = document.querySelector('.hui-close-btn');
     var backToTopBtn = document.querySelector('.back-to-top');
+    console.log('[HuihuiChat] DOM 引用获取: chatBtn=' + !!chatBtn + ', panel=' + !!chatPanel + ', messagesEl=' + !!messagesEl + ', inputEl=' + !!inputEl + ', sendBtn=' + !!sendBtn + ', closeBtn=' + !!closeBtn);
 
     // ===== 认知层级 — localStorage =====
     function getSavedLevel() {
@@ -140,6 +143,7 @@
 
     var isOpen = false;
     var isSending = false;
+    var panelJustOpened = false; // 防止 openPanel() 后的同一个点击事件触发 closePanel()
 
     // ===== 初始化：显示欢迎消息 =====
     addMessage('ai', WELCOME_TEXT);
@@ -151,16 +155,20 @@
 
     // ===== 打开/关闭面板 =====
     chatBtn.addEventListener('click', function () {
+        console.log('[HuihuiChat] 浮动按钮被点击，调用 openPanel()');
         openPanel();
     });
 
     closeBtn.addEventListener('click', function (e) {
         e.stopPropagation();
+        console.log('[HuihuiChat] 关闭按钮被点击');
         closePanel();
     });
 
     function openPanel() {
+        console.log('[HuihuiChat] openPanel() 执行，当前 isOpen=' + isOpen);
         isOpen = true;
+        panelJustOpened = true;
         chatPanel.classList.add('open');
         chatBtn.style.display = 'none';
         // 隐藏返回顶部按钮，避免与聊天面板重叠
@@ -172,9 +180,14 @@
         if (window.innerWidth <= 480) {
             document.body.style.overflow = 'hidden';
         }
+        // 300ms 后解除防护，允许后续的"点击面板外关闭"正常生效
+        setTimeout(function () {
+            panelJustOpened = false;
+        }, 300);
     }
 
     function closePanel() {
+        console.log('[HuihuiChat] closePanel() 执行, 当前 isOpen=' + isOpen);
         isOpen = false;
         chatPanel.classList.remove('open');
         chatBtn.style.display = 'flex';
@@ -380,10 +393,18 @@
 
     // ===== 点击面板外关闭 =====
     document.addEventListener('click', function (e) {
+        // 防止 openPanel() 刚执行完就被同一用户操作的冒泡事件关闭
+        // 典型场景：点击卡片 → btn.click() → openPanel() → 原始事件冒泡到 document → 误触发 closePanel()
+        if (panelJustOpened) {
+            console.log('[HuihuiChat] document click 被 panelJustOpened 拦截, target:', e.target.tagName, e.target.className);
+            return;
+        }
         if (isOpen && !chatPanel.contains(e.target) && !chatBtn.contains(e.target)) {
+            console.log('[HuihuiChat] 点击面板外，关闭面板, target:', e.target.tagName, e.target.className);
             closePanel();
         }
     });
 
+    console.log('[HuihuiChat] 脚本初始化完成, chatBtn=' + !!chatBtn + ', panel=' + !!chatPanel);
 })();
 // force deploy trigger
