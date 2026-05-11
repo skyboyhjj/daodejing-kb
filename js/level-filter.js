@@ -92,27 +92,6 @@
                 return; // 跳过空链接和页内锚点
             }
 
-            // ── 识别"回到主页"链接（仅匹配顶层 index.html，不匹配子目录如 concepts/index.html）──
-            if (href === 'index.html' || href === '../index.html' || href === '../../index.html') {
-
-                // 保存原始 href 以便后续恢复
-                if (!link.getAttribute('data-orig-href')) {
-                    link.setAttribute('data-orig-href', href);
-                }
-
-                if (level === 'l1') {
-                    // L1 模式下重定向到儿童首页
-                    link.setAttribute('href', href.replace(/index\.html$/, 'l1/index.html'));
-                } else {
-                    // 非 L1 模式下恢复原始链接
-                    var orig = link.getAttribute('data-orig-href');
-                    if (orig) {
-                        link.setAttribute('href', orig);
-                    }
-                }
-                return;
-            }
-
             // ── 章节间链接（相对路径 chXX.html）──
             if (/^ch\d{1,2}\.html/.test(href)) {
                 if (!link.getAttribute('data-orig-href')) {
