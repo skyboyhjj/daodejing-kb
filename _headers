@@ -29,12 +29,12 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; font-src 'self'
 
-# ── 静态资源长期缓存（带 hash 或版本号不变的文件）──
+# ── 静态资源缓存策略 ──
 /css/*
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=86400, must-revalidate
 
 /js/*
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /data/*
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=3600, must-revalidate
