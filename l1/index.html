@@ -469,6 +469,7 @@
                             panel.classList.add('open');
                             btn.style.display = 'none';
                         }
+                        maybeSendPreset();
                     } else {
                         console.error('[L1-openHuihuiChat] 面板元素不存在！');
                     }
@@ -492,6 +493,7 @@
                             panel.classList.add('open');
                             btn.style.display = 'none';
                         }
+                        maybeSendPreset();
                     }, 400);
                 } else if (retries >= maxRetries) {
                     clearInterval(retryTimer);
@@ -505,39 +507,32 @@
          */
         function openChatWithPreset(msg) {
             console.log('[L1-openChatWithPreset] 被调用, msg:', msg);
-            var btn = document.getElementById('huihui-chat-btn');
-            if (!btn) {
-                console.warn('[L1-openChatWithPreset] btn 不存在，等待 openHuihuiChat 重试...');
-                openHuihuiChat();
-                var presetRetries = 0;
-                var presetTimer = setInterval(function () {
-                    presetRetries++;
-                    var input = document.getElementById('hui-input');
-                    var sendBtn = document.getElementById('hui-send-btn');
-                    if (input && sendBtn) {
-                        clearInterval(presetTimer);
-                        console.log('[L1-openChatWithPreset] 预设消息重试成功，发送:', msg);
-                        input.value = msg;
-                        input.dispatchEvent(new Event('input', { bubbles: true }));
-                        sendBtn.click();
-                    } else if (presetRetries >= 10) {
-                        clearInterval(presetTimer);
-                        console.error('[L1-openChatWithPreset] 超时：input/sendBtn 仍未找到');
-                    }
-                }, 400);
-                return;
-            }
-            btn.click();
+            // 统一通过 openHuihuiChat() 打开面板，重用其重试/验证机制
+            window.__huihui_pending_preset = msg;
+            openHuihuiChat();
+        }
+
+        function maybeSendPreset() {
+            var msg = window.__huihui_pending_preset;
+            if (!msg) return;
+            window.__huihui_pending_preset = null;
             setTimeout(function () {
                 var input = document.getElementById('hui-input');
                 var sendBtn = document.getElementById('hui-send-btn');
-                console.log('[L1-openChatWithPreset] panel打开后 input:', !!input, ', sendBtn:', !!sendBtn);
+                console.log('[L1-maybeSendPreset] input:', !!input, ', sendBtn:', !!sendBtn);
                 if (input && sendBtn) {
                     input.value = msg;
-                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    try {
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    } catch (e) {
+                        // 微信浏览器等旧环境回退
+                        var evt = document.createEvent('Event');
+                        evt.initEvent('input', true, false);
+                        input.dispatchEvent(evt);
+                    }
                     sendBtn.click();
                 }
-            }, 400);
+            }, 300);
         }
     </script>
 
