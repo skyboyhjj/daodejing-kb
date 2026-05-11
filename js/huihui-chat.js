@@ -9,7 +9,7 @@
 
     // ===== 常量 =====
     var API_URL = '/api/chat';
-    var WELCOME_TEXT = '你好呀！我是慧惠。关于《道德经》，有什么想聊的？';
+    var WELCOME_TEXT = window.HUIHUI_WELCOME_OVERRIDE || '你好呀！我是慧惠。关于《道德经》，有什么想聊的？';
 
     // ===== 匿名用户 ID =====
     var userId = localStorage.getItem('huihui_uid');
