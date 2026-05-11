@@ -190,7 +190,7 @@ Visibility is controlled dynamically by `level-filter.js` — do NOT add `style=
 .level-l4 { background: #f5f0f7; border-left: 4px solid #6a5e8a; }
 .level-block h4 { margin-bottom: 6px; font-size: 0.9em; }
 /* Default: show L2+L3, hide L1+L4 (can be overridden by future JS) */
-.level-l1, .level-l4 { display: none; }
+.level-block.level-l1, .level-block.level-l4 { display: none; }
 /* 亲子赋能 — always visible regardless of level */
 .level-always { display: block !important; }
 ```

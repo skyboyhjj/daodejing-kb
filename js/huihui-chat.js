@@ -86,6 +86,17 @@
     // 初始化层级按钮 + 绑定事件
     var levelBtns = document.querySelectorAll('.huihui-level-btn');
     var currentLevel = getSavedLevel();
+
+    // URL 参数优先：如果 URL 中有 level 参数，同步到聊天框
+    try {
+        var urlParams = new URLSearchParams(window.location.search);
+        var urlLevel = urlParams.get('level');
+        if (urlLevel && ['l1', 'l2', 'l3', 'l4'].indexOf(urlLevel) >= 0) {
+            currentLevel = urlLevel.toUpperCase();
+            setSavedLevel(currentLevel);
+        }
+    } catch (e) { }
+
     // 如果聊天框无存储值但页面已有偏好（非 'all'），跟随页面
     if (!localStorage.getItem('huihui_taoism_level')) {
         var pagePref = localStorage.getItem('daodejing-level-preference');

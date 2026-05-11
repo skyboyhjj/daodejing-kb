@@ -112,13 +112,42 @@ function serveStatic(res, reqPath) {
 
     // 如果是目录，尝试 index.html
     if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-        filePath = path.join(filePath, 'index.html');
+        var indexPath = path.join(filePath, 'index.html');
+        if (fs.existsSync(indexPath)) {
+            filePath = indexPath;
+        } else {
+            // 目录无 index.html，尝试 同名.html（如 /chapters → chapters.html）
+            var siblingHtml = filePath + '.html';
+            if (fs.existsSync(siblingHtml)) {
+                filePath = siblingHtml;
+            }
+        }
+    }
+
+    // 如果文件不存在且无扩展名，尝试追加 .html（如 /about → about.html）
+    if (!fs.existsSync(filePath) && !path.extname(filePath)) {
+        var withHtml = filePath + '.html';
+        if (fs.existsSync(withHtml)) {
+            filePath = withHtml;
+        }
     }
 
     fs.readFile(filePath, function (err, data) {
         if (err) {
-            res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end('<h1>404 - 页面未找到</h1>');
+            // 尝试读取 404.html 自定义错误页面
+            var notFoundPath = path.join(__dirname, '404.html');
+            fs.readFile(notFoundPath, function (err404, data404) {
+                if (err404) {
+                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+                    res.end('<h1>404 - 页面未找到</h1>');
+                } else {
+                    res.writeHead(404, {
+                        'Content-Type': 'text/html; charset=utf-8',
+                        'Cache-Control': 'no-cache'
+                    });
+                    res.end(data404);
+                }
+            });
             return;
         }
         res.writeHead(200, {

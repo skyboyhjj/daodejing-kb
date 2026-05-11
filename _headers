@@ -1,0 +1,40 @@
+# Cloudflare Pages HTTP Headers 配置
+# 解决 JS 文件编码乱码 + 安全头部 + 缓存策略
+
+# ── JavaScript 文件：强制 UTF-8 编码（修复乱码问题）──
+/*.js
+  Content-Type: application/javascript; charset=utf-8
+  X-Content-Type-Options: nosniff
+
+# ── CSS 文件 ──
+/*.css
+  Content-Type: text/css; charset=utf-8
+
+# ── HTML 文件 ──
+/*.html
+  Content-Type: text/html; charset=utf-8
+
+# ── JSON 数据文件 ──
+/*.json
+  Content-Type: application/json; charset=utf-8
+
+# ── SVG 图标 ──
+/*.svg
+  Content-Type: image/svg+xml
+
+# ── 安全头部（全站）──
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'
+
+# ── 静态资源长期缓存（带 hash 或版本号不变的文件）──
+/css/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/data/*
+  Cache-Control: public, max-age=604800, must-revalidate

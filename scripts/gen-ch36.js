@@ -37,8 +37,8 @@ const html = `<!DOCTYPE html>
         .level-selector { display: flex; gap: 8px; align-items: center; margin: 16px 0; padding: 10px 16px; background: #fffef5; border: 1px solid #d4c9a8; border-radius: 8px; flex-wrap: wrap; }
         .level-btn { padding: 4px 14px; border-radius: 20px; border: 1.5px solid #2e5f5f; background: white; color: #2e5f5f; font-size: 0.85em; cursor: pointer; transition: all 0.2s; }
         .level-btn.active { background: #2e5f5f; color: white; border-color: #2e5f5f; }
-        .level-l1, .level-l4 { display: none; }
-        .level-l2, .level-l3 { display: block; }
+        .level-block.level-l1, .level-block.level-l4 { display: none; }
+        .level-block.level-l2, .level-block.level-l3 { display: block; }
         .level-always { background: #fffef5 !important; border-left: 4px solid #d4af37 !important; display: block !important; }
         .nav-chapters { display: flex; justify-content: space-between; margin: 30px 0; }
         .nav-chapters a { padding: 8px 16px; background: rgba(46,95,95,0.08); border: 1px solid rgba(46,95,95,0.2); border-radius: 6px; color: #2e5f5f; text-decoration: none; transition: all 0.2s; }

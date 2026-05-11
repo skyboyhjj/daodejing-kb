@@ -151,20 +151,22 @@
 
         // 收集所有 level-block 内容块
         var blocks = document.querySelectorAll('.level-block[data-level]');
+        var visibleCount = 0;
         toArray(blocks).forEach(function (block) {
             var blockLevel = block.getAttribute('data-level');
             if (level === 'all') {
                 // "全部"模式：显示所有块
                 block.style.display = 'block';
+                visibleCount++;
             } else if (blockLevel === 'all' || blockLevel === level) {
                 // 匹配当前层级 或 始终可见块
                 block.style.display = 'block';
+                visibleCount++;
             } else {
                 // 不匹配则隐藏
                 block.style.display = 'none';
             }
         });
-
         // 设置 body CSS class（用于 l1-mode.css 等层级作用域样式）
         setBodyClass(level);
 
@@ -251,6 +253,10 @@
     window.addEventListener('huihui-level-changed', function (e) {
         var chatLevel = e.detail && e.detail.level;
         if (chatLevel && chatLevel !== 'ALL') {
+            // URL 参数优先：如果 URL 中已有 level 参数，不覆盖
+            var urlLevel = getURLLevel();
+            if (urlLevel) return;
+
             var pageLevel = chatLevel.toLowerCase();
             // 确保对应按钮存在
             if (selector.querySelector('.level-btn[data-level="' + pageLevel + '"]')) {

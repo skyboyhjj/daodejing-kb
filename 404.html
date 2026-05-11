@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找到 - 慧惠 · 道德经亲子体验营</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/daodejing-styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .notfound-container {
+            text-align: center;
+            padding: 60px 20px 20px;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        /* 慧惠叶子图标 */
+        .huihui-icon-wrap {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 24px;
+        }
+
+        .huihui-icon-outer {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, rgba(58, 122, 106, 0.18) 0%, rgba(46, 95, 95, 0.10) 40%, rgba(212, 201, 168, 0.08) 70%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: huihui-breathe 5s ease-in-out infinite;
+        }
+
+        .huihui-icon-inner {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 40%, rgba(46, 95, 95, 0.22) 0%, rgba(46, 95, 95, 0.08) 50%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .huihui-icon-inner svg {
+            width: 44px;
+            height: 44px;
+            fill: none;
+            stroke: #2e5f5f;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.8;
+        }
+
+        @keyframes huihui-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .notfound-code {
+            font-size: 5em;
+            font-weight: 700;
+            color: #d4c9a8;
+            line-height: 1;
+            margin: 0 0 8px;
+            letter-spacing: 6px;
+        }
+
+        .notfound-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #2e5f5f;
+            margin: 0 0 16px;
+            letter-spacing: 2px;
+        }
+
+        .notfound-message {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.9;
+            margin: 0 0 30px;
+        }
+
+        .notfound-message .highlight {
+            color: #2e5f5f;
+            font-weight: 600;
+        }
+
+        /* 导航建议卡片 */
+        .notfound-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+
+        .notfound-links a {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            border: 1.5px solid #2e5f5f;
+            color: #2e5f5f;
+            background: #fff;
+        }
+
+        .notfound-links a:hover {
+            background: #2e5f5f;
+            color: #fff;
+        }
+
+        .notfound-links a.primary {
+            background: #2e5f5f;
+            color: #fff;
+        }
+
+        .notfound-links a.primary:hover {
+            background: #4a7878;
+            border-color: #4a7878;
+        }
+
+        /* 搜索栏 */
+        .notfound-search {
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .notfound-search .daodejing-search {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .notfound-search .daodejing-search input[type="search"] {
+            font-size: 0.95em;
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            text-align: center;
+            padding: 20px;
+            color: #aab8b0;
+            font-size: 0.85em;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 480px) {
+            .notfound-code {
+                font-size: 3.5em;
+            }
+
+            .notfound-title {
+                font-size: 1.3em;
+            }
+
+            .notfound-links {
+                gap: 8px;
+            }
+
+            .notfound-links a {
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="notfound-container">
+        <!-- 慧惠叶子图标 -->
+        <div class="huihui-icon-wrap">
+            <div class="huihui-icon-outer">
+                <div class="huihui-icon-inner">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 46 C25 46 10 38 10 26 C10 16 20 4 25 4 C25 4 26 18 35 22 C42 25 44 38 25 46Z"
+                            stroke-width="2" fill="rgba(46,95,95,0.08)" />
+                        <path d="M25 46 C28 38 32 30 25 20" stroke-width="1.2" opacity="0.5" />
+                        <path d="M25 46 C22 40 18 34 25 26" stroke-width="1.2" opacity="0.4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="notfound-code">404</div>
+        <h1 class="notfound-title">哎呀，这片竹简找不到了</h1>
+        <p class="notfound-message">
+            慧惠翻遍了<span class="highlight">81卷竹简</span>，也没找到你想要的这一页。<br>
+            它可能被风吹走了，或者从来就没有存在过。
+        </p>
+
+        <!-- 导航建议 -->
+        <div class="notfound-links">
+            <a href="/index.html" class="primary">&#8592; 回到慧惠首页</a>
+            <a href="/chapters.html">&#128214; 81章主题探索</a>
+            <a href="/concepts/index.html">&#127760; 概念网络</a>
+            <a href="/l1/index.html">&#127793; 小朋友入口</a>
+        </div>
+    </div>
+
+    <!-- 搜索 -->
+    <div class="notfound-search">
+        <div class="daodejing-search" id="daodejing-search">
+            <input type="search" id="search-input" placeholder="或者搜一搜你想找的内容…" autocomplete="off">
+            <div id="search-results" class="daodejing-search-results" role="listbox"></div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="site-footer">
+        道德经亲子体验营 &middot; 慧惠陪你读经典<br>
+        <span style="font-size:0.85em;">状态码：404 — 页面未找到</span>
+    </div>
+
+    <!-- 脚本（仅搜索功能） -->
+    <script src="/data/search-data.js"></script>
+    <script src="/js/search.js"></script>
+
+</body>
+
+</html>
