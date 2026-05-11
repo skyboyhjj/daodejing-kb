@@ -108,7 +108,8 @@
       path.indexOf('/paths/') !== -1 ||
       path.indexOf('/empower/') !== -1 ||
       path.indexOf('/compare/') !== -1 ||
-      path.indexOf('/kg/') !== -1) {
+      path.indexOf('/kg/') !== -1 ||
+      path.indexOf('/l1/') !== -1) {
       return '../';
     }
     return '';
