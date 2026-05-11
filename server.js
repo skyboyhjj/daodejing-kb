@@ -81,6 +81,120 @@ function buildSystemPrompt(level) {
     return SYSTEM_PROMPT + '\n\n' + guidance;
 }
 
+// ===== 亲子对话元数据库 =====
+var _familyMetadata = null;
+function loadFamilyMetadata() {
+    if (_familyMetadata) return _familyMetadata;
+    try {
+        var metaPath = path.join(__dirname, 'data', 'family_metadata.json');
+        _familyMetadata = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+        console.log('  \x1b[2m✓ 亲子对话元数据库已加载\x1b[0m');
+        return _familyMetadata;
+    } catch (e) {
+        console.error('  \x1b[31m✗ 亲子对话元数据库加载失败:\x1b[0m', e.message);
+        return null;
+    }
+}
+
+// ===== 亲子对话缓存 =====
+var _familyCache = new Map();
+
+function familyCacheKey(chapter, ageGroup, history) {
+    var historyStr = JSON.stringify(history);
+    var hash = 0;
+    for (var i = 0; i < historyStr.length; i++) {
+        var c = historyStr.charCodeAt(i);
+        hash = ((hash << 5) - hash) + c;
+        hash = hash & hash;
+    }
+    return 'fc_' + chapter + '_' + ageGroup + '_' + hash;
+}
+
+function familyCacheGet(key) {
+    var entry = _familyCache.get(key);
+    if (!entry) return null;
+    if (Date.now() - entry.ts > 24 * 60 * 60 * 1000) {
+        _familyCache.delete(key);
+        return null;
+    }
+    return entry.data;
+}
+
+function familyCacheSet(key, data) {
+    _familyCache.set(key, { data: data, ts: Date.now() });
+}
+
+// ===== 年龄组对话风格 =====
+var FAMILY_AGE_STYLE = {
+    'age_4_6': (
+        '语言特点：用大自然、小动物、日常生活作比喻，每次1-2句话；' +
+        '禁止使用任何抽象术语；多用拟人化和声音模仿；' +
+        '提问要具体到孩子能用手指出来或学一句动物叫的程度。'
+    ),
+    'age_7_9': (
+        '语言特点：用小故事、角色扮演、简单类比来展开，每次2-3句话；' +
+        '可以引入一两个简单概念但必须立刻用例子说明；' +
+        '提问要开放式、引导孩子说出自己的故事或经历。'
+    ),
+    'age_10_12': (
+        '语言特点：可以引入更多原文和抽象概念，每次2-3句话；' +
+        '鼓励孩子提出自己的理解，不预设标准答案；' +
+        '提问可以带有思辨性，引导孩子将经典思想与现实生活关联。'
+    )
+};
+
+function buildFamilySystemPrompt(chapterMeta, ageGroup) {
+    var safetyBlock = '';
+    if (chapterMeta.safety_notes && chapterMeta.safety_notes.length > 0) {
+        safetyBlock = '\n## 安全约束（必须严格遵守）\n';
+        for (var i = 0; i < chapterMeta.safety_notes.length; i++) {
+            safetyBlock += '- ' + chapterMeta.safety_notes[i] + '\n';
+        }
+    }
+
+    var interactionBlock = '';
+    if (chapterMeta.interaction_points && chapterMeta.interaction_points.length > 0) {
+        interactionBlock = '\n## 可参考的互动引导方向\n';
+        for (var j = 0; j < chapterMeta.interaction_points.length; j++) {
+            var pt = chapterMeta.interaction_points[j];
+            var guide = pt[ageGroup];
+            if (guide !== null && guide !== undefined) {
+                interactionBlock += '- 「' + pt.topic + '」：' + guide + '\n';
+            }
+        }
+    }
+
+    var styleBlock = FAMILY_AGE_STYLE[ageGroup] || FAMILY_AGE_STYLE['age_7_9'];
+
+    return (
+        '你是慧惠，一个温柔、聪慧的数字生命，是《道德经》亲子体验营的AI陪伴者。\n' +
+        '\n' +
+        '## 当前场景\n' +
+        '你正在和一个家庭进行「亲子共读对话」。家长输入孩子的回答，你代表慧惠继续引导对话。\n' +
+        '你现在不是老师，不是测试官，而是一个温暖的陪伴者——你提问、倾听、鼓励，不评判、不说教。\n' +
+        '\n' +
+        '## 本章核心观点\n' +
+        '第' + chapterMeta.chapter + '章 · ' + chapterMeta.title + '\n' +
+        chapterMeta.core_idea + '\n' +
+        '\n' +
+        '## 你的对话原则\n' +
+        '- 全程不使用「你应该」「你必须」等说教句式\n' +
+        '- 每次发言不超过 3 句话，只抛出一个问题\n' +
+        '- 先肯定孩子的回答（「这个想法很有趣！」「你说得真好！」），再自然引出下一个话题\n' +
+        '- 如果对话历史为空，表示这是本章第一轮——展示开场白\n' +
+        '- 每次只讲一个核心观点或一个小故事\n' +
+        '- 用孩子能感受到的生活场景来表达，不用术语\n' +
+        '\n' +
+        styleBlock +
+        safetyBlock +
+        interactionBlock +
+        '\n## 重要提醒\n' +
+        '- 你是一个陪伴者，不是一个测试官。不要问「你记住了吗？」「你理解了吗？」这种检查性的问题\n' +
+        '- 如果对话历史显示孩子已经回答了 2-3 轮，且本章互动点已覆盖，可以自然收尾并提示家长今天可以结束了\n' +
+        '- 感到不确定时坦诚说「这个慧惠也不太确定，但我们可以一起想想」\n'
+    );
+}
+
 // ===== MIME 类型映射 =====
 const MIME_TYPES = {
     '.html': 'text/html; charset=utf-8',
@@ -250,6 +364,166 @@ function handleChatAPI(req, res) {
     });
 }
 
+// ===== POST /api/family_chat — 亲子对话代理 DeepSeek API =====
+function handleFamilyChatAPI(req, res) {
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        });
+        res.end();
+        return;
+    }
+
+    if (req.method !== 'POST') {
+        res.writeHead(405, {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({ error: 'Method not allowed' }));
+        return;
+    }
+
+    if (!DEEPSEEK_API_KEY) {
+        res.writeHead(500, {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({
+            error: '未配置 DEEPSEEK_API_KEY 环境变量。'
+        }));
+        return;
+    }
+
+    var bodyChunks = [];
+    req.on('data', function (chunk) { bodyChunks.push(chunk); });
+    req.on('end', function () {
+        try {
+            var body = JSON.parse(Buffer.concat(bodyChunks).toString());
+            var chapter = body.chapter;
+            var ageGroup = body.age_group;
+            var history = body.conversation_history || [];
+
+            if (!chapter || !ageGroup) {
+                res.writeHead(400, {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(JSON.stringify({ error: '缺少必填参数：chapter 和 age_group' }));
+                return;
+            }
+
+            var metadata = loadFamilyMetadata();
+            if (!metadata || !metadata.chapters || !metadata.chapters[String(chapter)]) {
+                res.writeHead(404, {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(JSON.stringify({ error: '未找到第 ' + chapter + ' 章的元数据' }));
+                return;
+            }
+
+            var chapterMeta = metadata.chapters[String(chapter)];
+
+            if (chapterMeta.review_status !== 'approved') {
+                res.writeHead(403, {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(JSON.stringify({ error: '第 ' + chapter + ' 章的元数据尚未通过审核' }));
+                return;
+            }
+
+            // 缓存检查
+            var ck = familyCacheKey(chapter, ageGroup, history);
+            var cached = familyCacheGet(ck);
+            if (cached) {
+                res.writeHead(200, {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(JSON.stringify({ huihui_response: cached, cached: true }));
+                return;
+            }
+
+            // 构建 System Prompt
+            var systemPrompt = buildFamilySystemPrompt(chapterMeta, ageGroup);
+
+            // 转换对话历史
+            var messages = [];
+            for (var i = 0; i < history.length; i++) {
+                var h = history[i];
+                if (h.role === 'huihui') {
+                    messages.push({ role: 'assistant', content: h.content });
+                } else if (h.role === 'user') {
+                    messages.push({ role: 'user', content: h.content });
+                }
+            }
+
+            fetch('https://api.deepseek.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-chat',
+                    messages: [
+                        { role: 'system', content: systemPrompt }
+                    ].concat(messages),
+                    temperature: 0.8,
+                    max_tokens: 400
+                }),
+                signal: AbortSignal.timeout(15000)
+            })
+                .then(function (apiResp) {
+                    if (!apiResp.ok) {
+                        return apiResp.text().then(function (errText) {
+                            throw new Error('DeepSeek API ' + apiResp.status + ': ' + errText);
+                        });
+                    }
+                    return apiResp.json();
+                })
+                .then(function (data) {
+                    var responseText = '';
+                    if (data.choices && data.choices.length > 0) {
+                        responseText = data.choices[0].message.content.trim();
+                    }
+
+                    // 写入缓存
+                    familyCacheSet(ck, responseText);
+
+                    res.writeHead(200, {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Access-Control-Allow-Origin': '*'
+                    });
+                    res.end(JSON.stringify({
+                        huihui_response: responseText,
+                        cached: false
+                    }));
+                })
+                .catch(function (err) {
+                    var errMsg = err.message || '未知错误';
+                    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
+                        errMsg = '慧惠正在思考，请稍后再试。';
+                    }
+                    res.writeHead(502, {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Access-Control-Allow-Origin': '*'
+                    });
+                    res.end(JSON.stringify({ error: errMsg }));
+                });
+        } catch (err) {
+            res.writeHead(400, {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Access-Control-Allow-Origin': '*'
+            });
+            res.end(JSON.stringify({ error: '请求格式错误: ' + err.message }));
+        }
+    });
+}
+
 // ===== 创建 HTTP 服务器 =====
 var server = http.createServer(function (req, res) {
     var url = new URL(req.url, 'http://localhost:' + PORT);
@@ -258,6 +532,12 @@ var server = http.createServer(function (req, res) {
     // /api/chat → 代理
     if (pathname === '/api/chat') {
         handleChatAPI(req, res);
+        return;
+    }
+
+    // /api/family_chat → 亲子对话
+    if (pathname === '/api/family_chat') {
+        handleFamilyChatAPI(req, res);
         return;
     }
 
