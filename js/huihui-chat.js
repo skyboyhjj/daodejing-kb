@@ -406,5 +406,20 @@
     });
 
     console.log('[HuihuiChat] 脚本初始化完成, chatBtn=' + !!chatBtn + ', panel=' + !!chatPanel);
+
+    // ===== 用户反馈入口（全局函数） =====
+    window.openHuihuiFeedback = function () {
+        console.log('[HuihuiChat] openHuihuiFeedback 被调用, isOpen=' + isOpen);
+        if (!isOpen) {
+            openPanel();
+        }
+        // 等待面板打开后显示引导语并预填反馈标记
+        setTimeout(function () {
+            addMessage('ai', '欢迎提交您的宝贵反馈！请告诉我您对《道德经》亲子体验营的想法和建议。');
+            inputEl.value = '[FEEDBACK] ';
+            inputEl.focus();
+            scrollToBottom();
+        }, 400);
+    };
 })();
 // force deploy trigger

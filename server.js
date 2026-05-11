@@ -342,6 +342,14 @@ function handleChatAPI(req, res) {
                         'Access-Control-Allow-Origin': '*'
                     });
                     res.end(JSON.stringify(data));
+
+                    // [FEEDBACK] 标记检测：异步转发反馈至邮箱
+                    var lastUserMsg = messages.filter(function (m) { return m.role === 'user'; }).pop();
+                    if (lastUserMsg && lastUserMsg.content && lastUserMsg.content.indexOf('[FEEDBACK]') === 0) {
+                        sendFeedbackEmail(lastUserMsg.content).catch(function (err) {
+                            console.error('[Feedback] 邮件发送失败:', err.message);
+                        });
+                    }
                 })
                 .catch(function (err) {
                     var errMsg = err.message || '未知错误';
@@ -362,6 +370,35 @@ function handleChatAPI(req, res) {
             res.end(JSON.stringify({ error: '请求格式错误: ' + err.message }));
         }
     });
+}
+
+// ===== 反馈邮件转发（异步，不影响聊天响应） =====
+async function sendFeedbackEmail(content) {
+    var resendKey = process.env.RESEND_API_KEY;
+    if (!resendKey) {
+        console.warn('[Feedback] RESEND_API_KEY 环境变量未配置，跳过邮件发送');
+        return;
+    }
+    // 去除 [FEEDBACK] 前缀，得到纯净的反馈内容
+    var cleanContent = content.replace(/^\[FEEDBACK\]\s*/i, '');
+    var resp = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + resendKey
+        },
+        body: JSON.stringify({
+            from: '道德经亲子体验营 <noreply@hui-skill.org>',
+            to: ['contact@metaskill.org.cn'],
+            subject: '【道德经亲子体验营】用户反馈',
+            text: cleanContent
+        })
+    });
+    if (!resp.ok) {
+        var errBody = await resp.text();
+        throw new Error('Resend API 返回 ' + resp.status + ': ' + errBody);
+    }
+    console.log('[Feedback] 邮件已成功发送至 contact@metaskill.org.cn');
 }
 
 // ===== POST /api/family_chat — 亲子对话代理 DeepSeek API =====
