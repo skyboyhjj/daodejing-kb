@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亲子时光 · 慧惠陪你读《道德经》</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="css/daodejing-styles.css">
+    <link rel="stylesheet" href="css/family.css">
+</head>
+
+<body>
+    <!-- ═══════ 顶部导航 ═══════ -->
+    <nav class="family-nav">
+        <a href="index.html" class="family-nav-back">&larr; 返回首页</a>
+        <span class="family-nav-title">🌿 亲子时光 · 慧惠陪你读《道德经》</span>
+    </nav>
+
+    <!-- ═══════ 主内容区 ═══════ -->
+    <main class="family-main" id="family-main">
+
+        <!-- 慧惠欢迎区（初始可见） -->
+        <div class="huihui-welcome" id="huihui-welcome">
+            <!-- 水墨叶子图标 -->
+            <div class="huihui-avatar">
+                <div class="huihui-avatar-outer">
+                    <div class="huihui-avatar-inner">
+                        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M25 4 C18 10, 10 18, 10 28 C10 36, 16 44, 25 46 C34 44, 40 36, 40 28 C40 18, 32 10, 25 4Z" />
+                            <path d="M25 12 L25 38" />
+                            <path d="M18 22 C22 20, 28 20, 32 22" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 欢迎消息（JS 动态填充） -->
+            <div class="huihui-message" id="welcome-message"></div>
+
+            <!-- 年龄选择按钮 -->
+            <div class="age-selector" id="age-selector">
+                <button class="age-btn" data-age="4-6">4 - 6 岁</button>
+                <button class="age-btn" data-age="7-9">7 - 9 岁</button>
+                <button class="age-btn" data-age="10-12">10 - 12 岁</button>
+            </div>
+        </div>
+
+        <!-- 对话区 -->
+        <div class="dialogue-area" id="dialogue-area"></div>
+
+        <!-- 章节选择器（隐藏） -->
+        <div class="chapter-selector" id="chapter-selector" style="display:none;">
+            <div class="chapter-selector-title">🌿 选一个想聊的话题吧</div>
+            <div class="chapter-cards" id="chapter-cards"></div>
+        </div>
+
+        <!-- 输入区 -->
+        <div class="input-area" id="input-area">
+            <textarea id="user-input" class="user-input" placeholder="输入孩子的回答……" rows="2" disabled></textarea>
+            <div class="input-actions">
+                <button id="send-btn" class="send-btn" disabled>发送</button>
+                <div class="secondary-actions">
+                    <button id="switch-topic-btn" class="action-btn action-btn-secondary">换一个话题</button>
+                    <button id="end-session-btn" class="action-btn action-btn-secondary">今天就到这里</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ═══════ 脚本 ═══════ -->
+    <script src="js/family.js"></script>
+</body>
+
+</html>

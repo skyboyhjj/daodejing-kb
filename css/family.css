@@ -1,0 +1,574 @@
+/* ============================================================
+   亲子时光 · family.css
+   风格：水墨道风（柔和版） — 墨绿 #2e5f5f / 淡金 #d4c9a8 / 宣纸 #faf8f0
+   亲子场景：更大圆角、更宽松间距、更柔和的视觉
+   ============================================================ */
+
+/* ----- CSS 变量 ----- */
+:root {
+    --family-bg: #faf8f0;
+    --family-accent: #2e5f5f;
+    --family-accent-light: #5a8a7a;
+    --family-border: #d4c9a8;
+    --family-text: #2c2c2c;
+    --family-text-light: #6a7a7a;
+    --family-hui-bg: #f0ede0;
+    --family-user-bg: #e8f0ee;
+    --family-radius: 16px;
+    --family-radius-sm: 10px;
+    --family-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --family-font: "Noto Serif SC", "Source Han Serif SC", "Microsoft YaHei", serif;
+}
+
+/* ----- 页面基础 ----- */
+body {
+    background-color: var(--family-bg);
+    font-family: var(--family-font);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----- 顶部导航 ----- */
+.family-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--family-border);
+    background: rgba(250, 248, 240, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.family-nav-back {
+    color: var(--family-accent);
+    text-decoration: none;
+    font-size: 0.9em;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: var(--family-radius-sm);
+    transition: background 0.2s;
+}
+
+.family-nav-back:hover {
+    background: rgba(46, 95, 95, 0.08);
+    text-decoration: none;
+}
+
+.family-nav-title {
+    color: var(--family-accent);
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ----- 主内容区 ----- */
+.family-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px;
+}
+
+/* ============================================================
+   慧惠欢迎区
+   ============================================================ */
+
+.huihui-welcome {
+    text-align: center;
+    padding: 36px 20px 24px;
+    transition: opacity 0.4s;
+}
+
+/* 水墨叶子头像 */
+.huihui-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.huihui-avatar-outer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 40%, rgba(58, 122, 106, 0.18) 0%, rgba(46, 95, 95, 0.10) 40%, rgba(212, 201, 168, 0.08) 70%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: huihui-breathe 4s ease-in-out infinite;
+}
+
+.huihui-avatar-inner {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(46, 95, 95, 0.25) 0%, rgba(46, 95, 95, 0.08) 50%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.huihui-avatar-inner svg {
+    width: 42px;
+    height: 42px;
+    fill: none;
+    stroke: #2e5f5f;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.8;
+}
+
+@keyframes huihui-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* 欢迎消息 */
+.huihui-message {
+    max-width: 500px;
+    margin: 0 auto 24px;
+    font-size: 1.05em;
+    color: var(--family-text);
+    line-height: 1.9;
+    text-align: center;
+}
+
+.huihui-message p {
+    margin: 0 0 10px;
+}
+
+.huihui-message p:last-child {
+    margin-bottom: 0;
+}
+
+/* 年龄选择按钮 */
+.age-selector {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.age-btn {
+    padding: 14px 28px;
+    font-size: 1.05em;
+    font-family: var(--family-font);
+    color: var(--family-accent);
+    background: rgba(46, 95, 95, 0.06);
+    border: 1.5px solid var(--family-border);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.25s;
+    min-height: 48px;
+    min-width: 100px;
+}
+
+.age-btn:hover {
+    background: rgba(46, 95, 95, 0.14);
+    border-color: var(--family-accent);
+    transform: translateY(-1px);
+}
+
+.age-btn:active {
+    transform: translateY(0);
+}
+
+.age-btn.selected {
+    background: var(--family-accent);
+    color: #faf8f0;
+    border-color: var(--family-accent);
+}
+
+.age-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================================
+   对话区
+   ============================================================ */
+
+.dialogue-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 对话气泡通用样式 */
+.chat-bubble {
+    max-width: 85%;
+    padding: 14px 18px;
+    border-radius: var(--family-radius);
+    font-size: 0.98em;
+    line-height: 1.85;
+    word-break: break-word;
+    animation: bubble-in 0.35s ease-out;
+}
+
+@keyframes bubble-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 慧惠气泡：左对齐 */
+.chat-bubble-huihui {
+    align-self: flex-start;
+    background: var(--family-hui-bg);
+    color: var(--family-text);
+    border-bottom-left-radius: 4px;
+}
+
+/* 用户气泡：右对齐 */
+.chat-bubble-user {
+    align-self: flex-end;
+    background: var(--family-user-bg);
+    color: var(--family-text);
+    border-bottom-right-radius: 4px;
+    text-align: left;
+}
+
+/* 气泡中的段落 */
+.chat-bubble p {
+    margin: 0 0 8px;
+}
+
+.chat-bubble p:last-child {
+    margin-bottom: 0;
+}
+
+/* 提示文字（引导语） */
+.chat-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.82em;
+    color: var(--family-text-light);
+    font-style: italic;
+}
+
+/* 系统消息（居中提示） */
+.chat-system {
+    align-self: center;
+    text-align: center;
+    max-width: 80%;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    color: var(--family-text-light);
+    background: rgba(212, 201, 168, 0.2);
+    border-radius: 24px;
+    animation: bubble-in 0.35s ease-out;
+}
+
+/* 章节介绍卡片 */
+.chapter-intro-card {
+    align-self: stretch;
+    text-align: center;
+    padding: 20px 24px;
+    margin: 8px 0;
+    background: rgba(46, 95, 95, 0.04);
+    border: 1px solid var(--family-border);
+    border-radius: var(--family-radius);
+}
+
+.chapter-intro-card .chapter-icon {
+    font-size: 1.6em;
+    margin-bottom: 8px;
+}
+
+.chapter-intro-card .chapter-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--family-accent);
+    margin-bottom: 4px;
+}
+
+.chapter-intro-card .chapter-subtitle {
+    font-size: 0.9em;
+    color: var(--family-text-light);
+}
+
+/* ============================================================
+   章节选择器
+   ============================================================ */
+
+.chapter-selector {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.chapter-selector-title {
+    font-size: 1em;
+    color: var(--family-accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.chapter-cards {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.chapter-card {
+    flex: 1;
+    min-width: 160px;
+    max-width: 200px;
+    padding: 18px 16px;
+    background: rgba(250, 248, 240, 0.8);
+    border: 1.5px solid var(--family-border);
+    border-radius: var(--family-radius);
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+}
+
+.chapter-card:hover {
+    border-color: var(--family-accent);
+    background: rgba(46, 95, 95, 0.06);
+    transform: translateY(-2px);
+}
+
+.chapter-card .card-chapter-num {
+    font-size: 0.85em;
+    color: var(--family-text-light);
+    margin-bottom: 4px;
+}
+
+.chapter-card .card-chapter-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--family-accent);
+}
+
+/* ============================================================
+   输入区
+   ============================================================ */
+
+.input-area {
+    padding: 12px 0 8px;
+    border-top: 1px solid var(--family-border);
+    background: var(--family-bg);
+    position: sticky;
+    bottom: 0;
+}
+
+.user-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95em;
+    font-family: var(--family-font);
+    color: var(--family-text);
+    background: #fff;
+    border: 1.5px solid var(--family-border);
+    border-radius: var(--family-radius-sm);
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.user-input:focus {
+    border-color: var(--family-accent);
+}
+
+.user-input:disabled {
+    background: #f5f3ec;
+    color: #bbb;
+    cursor: not-allowed;
+}
+
+.user-input::placeholder {
+    color: #c0bca8;
+}
+
+.input-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.send-btn {
+    padding: 12px 28px;
+    font-size: 0.95em;
+    font-family: var(--family-font);
+    font-weight: 600;
+    color: #faf8f0;
+    background: var(--family-accent);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.25s;
+    min-height: 44px;
+    white-space: nowrap;
+}
+
+.send-btn:hover {
+    background: #1d4a4a;
+    transform: translateY(-1px);
+}
+
+.send-btn:active {
+    transform: translateY(0);
+}
+
+.send-btn:disabled {
+    background: #bbb;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 10px 18px;
+    font-size: 0.85em;
+    font-family: var(--family-font);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 40px;
+    white-space: nowrap;
+}
+
+.action-btn-secondary {
+    color: var(--family-accent);
+    background: transparent;
+    border: 1px solid var(--family-border);
+}
+
+.action-btn-secondary:hover {
+    background: rgba(46, 95, 95, 0.08);
+    border-color: var(--family-accent);
+}
+
+.action-btn-secondary:disabled {
+    color: #bbb;
+    border-color: #e0dcc8;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   移动端适配
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .family-nav {
+        padding: 10px 14px;
+        gap: 8px;
+    }
+
+    .family-nav-title {
+        font-size: 0.9em;
+    }
+
+    .huihui-welcome {
+        padding: 24px 12px 18px;
+    }
+
+    .huihui-avatar-outer {
+        width: 84px;
+        height: 84px;
+    }
+
+    .huihui-avatar-inner {
+        width: 54px;
+        height: 54px;
+    }
+
+    .huihui-avatar-inner svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .huihui-message {
+        font-size: 1em;
+    }
+
+    .age-selector {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 0 8px;
+    }
+
+    .age-btn {
+        padding: 16px 24px;
+        font-size: 1.1em;
+        min-height: 50px;
+    }
+
+    .dialogue-area {
+        padding: 12px 4px 20px;
+        gap: 12px;
+    }
+
+    .chat-bubble {
+        max-width: 92%;
+        padding: 12px 14px;
+        font-size: 0.95em;
+    }
+
+    .chapter-cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chapter-card {
+        max-width: none;
+    }
+
+    .input-area {
+        padding: 10px 4px 6px;
+    }
+
+    .input-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .send-btn {
+        padding: 14px;
+        text-align: center;
+    }
+
+    .secondary-actions {
+        justify-content: center;
+    }
+
+    .action-btn {
+        flex: 1;
+        text-align: center;
+        min-height: 44px;
+    }
+}
