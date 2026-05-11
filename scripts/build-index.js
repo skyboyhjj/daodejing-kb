@@ -14,6 +14,7 @@ const crypto = require('crypto');
 // ── 路径配置 ──
 const ROOT = path.join(__dirname, '..');
 const CHAPTERS_DIR = path.join(ROOT, 'chapters');
+const CONCEPTS_DIR = path.join(ROOT, 'concepts');
 const OUTPUT_JS = path.join(ROOT, 'data', 'search-data.js');
 const OUTPUT_JSON = path.join(ROOT, 'data', 'search-index.json');
 
@@ -111,6 +112,19 @@ function extractFullText(html) {
     return text;
 }
 
+/**
+ * 提取概念页面标题（从 <title> 标签）
+ */
+function extractConceptTitle(html) {
+    const m = html.match(/<title>([\s\S]*?)<\/title>/i);
+    if (!m) return '';
+    return m[1]
+        .replace(/<[^>]+>/g, '')
+        .replace(/[\s\n\r]+/g, ' ')
+        .replace(/\s*-\s*概念详解\s*-\s*道德经亲子体验营\s*/i, '')
+        .trim();
+}
+
 // ── 主流程 ──
 
 function buildIndex() {
@@ -152,7 +166,8 @@ function buildIndex() {
             num,
             title: `第${num}章 · ${title.replace(/^第\d+章\s*·?\s*/, '')}`,
             concepts,
-            text: searchText
+            text: searchText,
+            url: 'chapters/' + file
         });
 
         if (!title) {
@@ -160,7 +175,32 @@ function buildIndex() {
         }
     }
 
-    return { chapters };
+    // ── 索引概念页面 ──
+    const concepts = [];
+    if (fs.existsSync(CONCEPTS_DIR)) {
+        const conceptFiles = fs.readdirSync(CONCEPTS_DIR)
+            .filter(f => f.endsWith('.html') && f !== 'index.html')
+            .sort();
+
+        console.log(`[build-index] 扫描到 ${conceptFiles.length} 个概念页面`);
+
+        for (const cf of conceptFiles) {
+            const conceptPath = path.join(CONCEPTS_DIR, cf);
+            const conceptHtml = fs.readFileSync(conceptPath, 'utf-8');
+            const conceptTitle = extractConceptTitle(conceptHtml);
+            const conceptText = extractFullText(conceptHtml);
+
+            if (conceptTitle) {
+                concepts.push({
+                    title: conceptTitle,
+                    text: conceptText,
+                    url: 'concepts/' + cf
+                });
+            }
+        }
+    }
+
+    return { chapters, concepts };
 }
 
 function writeOutput(data) {
