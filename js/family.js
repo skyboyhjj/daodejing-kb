@@ -339,13 +339,8 @@ function selectAge(age) {
     state.chaptersDone = [];
     state.stage = 'intro';
 
-    ageSelectorEl.style.display = 'none';
-    var btns = ageSelectorEl.querySelectorAll('.age-btn');
-    for (var i = 0; i < btns.length; i++) {
-        if (btns[i].getAttribute('data-age') === age) {
-            btns[i].classList.add('selected');
-        }
-    }
+    // 立即隐藏整个欢迎区（头像 + 问候语 + 年龄按钮）
+    welcomeEl.style.display = 'none';
 
     setActionButtonsEnabled(true);
     startChapter();
