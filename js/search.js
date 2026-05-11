@@ -179,6 +179,7 @@
         var score = scoreItem(ch, tokens);
         hits.push({
           type: 'chapter',
+          num: ch.num,
           title: '第' + ch.num + '章 · ' + ch.title,
           url: ch.url,
           snippet: snippet,
@@ -274,6 +275,12 @@
     var html = '';
     for (var i = 0; i < hits.length; i++) {
       var h = hits[i];
+      // 防御性回退：若搜索数据缺失 url 字段，尝试从章节号重建
+      if (!h.url && h.num) {
+        h.url = 'chapters/ch' + (h.num < 10 ? '0' + h.num : h.num) + '.html';
+      }
+      // 跳过仍然没有 URL 的条目（搜索数据损坏）
+      if (!h.url) continue;
       var url = (base || resolveBase()) + h.url;
       // 保持层级上下文：为章节链接追加 ?level= 参数
       if (currentLevel && h.type === 'chapter' && url.indexOf('?level=') === -1) {
