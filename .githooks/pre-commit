@@ -1,0 +1,56 @@
+#!/bin/bash
+# ============================================================
+# 慧惠 pre-commit hook — 防密钥泄露 + 基础检查
+# 用法: git config core.hooksPath .githooks
+# ============================================================
+
+set -e
+
+# ── 1. 密钥泄露检测 ──
+echo "[pre-commit] 检查密钥泄露..."
+
+# DeepSeek API Key 格式: sk- 开头 35 位字母数字
+if git diff --cached -U0 | grep -qE 'sk-[a-zA-Z0-9]{20,}'; then
+    echo ""
+    echo "  ❌ 检测到疑似 DeepSeek API Key (sk-...)"
+    echo "  API Key 应配置在 .env 文件中，不可提交到仓库。"
+    echo "  如果误 git add 了含密钥的文件，请执行: git reset HEAD <文件>"
+    echo ""
+    exit 1
+fi
+
+# Resend API Key 格式: re_ 开头
+if git diff --cached -U0 | grep -qE 're_[a-zA-Z0-9]{20,}'; then
+    echo ""
+    echo "  ❌ 检测到疑似 Resend API Key (re_...)"
+    echo "  RESEND_API_KEY 应配置在 .env/.dev.vars 中，不可提交到仓库。"
+    echo "  如果误 git add 了含密钥的文件，请执行: git reset HEAD <文件>"
+    echo ""
+    exit 1
+fi
+
+# 通用高熵字符串（base64-like）
+if git diff --cached -U0 | grep -qP '[A-Za-z0-9+/]{40,}={0,2}'; then
+    echo ""
+    echo "  ⚠️  检测到疑似高熵字符串 (40+ 位 base64)"
+    echo "  请确认这不是密钥或 token 后重试。如需跳过: git commit --no-verify"
+    echo ""
+    exit 1
+fi
+
+echo "  ✓ 无密钥泄露风险"
+
+# ── 2. .env / .dev.vars 保护确认 ──
+if git diff --cached --name-only | grep -qE '^(\.env|\.dev\.vars)$'; then
+    echo ""
+    echo "  ❌ .env 或 .dev.vars 被加入暂存区！"
+    echo "  这些文件包含敏感密钥，已被 .gitignore 排除。"
+    echo "  请执行: git reset HEAD .env .dev.vars"
+    echo ""
+    exit 1
+fi
+
+echo "  ✓ 敏感文件保护正常"
+
+echo "[pre-commit] 全部检查通过 ✓"
+exit 0

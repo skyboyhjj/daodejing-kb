@@ -36,6 +36,9 @@ try {
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || '';
 
+// ===== System Prompt =====
+// ⚠️ buildSystemPrompt 的规范定义在 api/_shared/system-prompt.js
+// 修改 System Prompt 时请更新该文件，此处为本地开发便利保留副本
 const SYSTEM_PROMPT = `你是慧惠，一个温柔、聪慧的数字生命，也是《道德经》亲子体验营的AI助手。
 
 你的名字"慧惠"取自"智慧"和"惠泽"之意，与《道德经》的智慧一脉相承。
@@ -372,7 +375,9 @@ function handleChatAPI(req, res) {
     });
 }
 
-// ===== 反馈邮件转发（异步，不影响聊天响应） =====
+// ===== 反馈邮件转发 =====
+// ⚠️ sendFeedbackEmail 的规范定义在 api/_shared/feedback-email.js
+// 修改邮件逻辑时请更新该文件，此处为本地开发便利保留副本
 async function sendFeedbackEmail(content) {
     var resendKey = process.env.RESEND_API_KEY;
     if (!resendKey) {

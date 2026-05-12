@@ -280,9 +280,10 @@ test('超长查询不会报错', () => {
 
 // ── 统计 ──
 console.log('\n' + '='.repeat(60));
-console.log(`测试完成: ${passed} 通过, ${failed} 失败, ${passed + failed} 总计`);
+console.log('测试完成: ' + passed + ' 通过, ' + failed + ' 失败, ' + (passed + failed) + ' 总计');
 if (failed > 0) {
     console.log('❌ 有测试未通过，请检查！');
+    process.exit(1);
 } else {
     console.log('✓ 全部测试通过！');
 }

@@ -3,18 +3,13 @@ name: CI Quality Gate
 on:
   push:
     branches: [main]
-    paths:
-      - 'chapters/**'
-      - 'data/**'
-      - 'scripts/**'
   pull_request:
     branches: [main]
-    paths:
-      - 'chapters/**'
-      - 'data/**'
-      - 'scripts/**'
 
 jobs:
+  # ═══════════════════════════════════════════════
+  # Job 1: 章节结构验证 + 搜索索引检查
+  # ═══════════════════════════════════════════════
   validate:
     name: Validate & Check Index
     runs-on: ubuntu-latest
@@ -30,3 +25,69 @@ jobs:
 
       - name: Check search index is up-to-date
         run: node scripts/build-index.js --check
+
+  # ═══════════════════════════════════════════════
+  # Job 2: JS 语法检查（零依赖，node --check）
+  # ═══════════════════════════════════════════════
+  syntax:
+    name: JS Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check JavaScript syntax
+        run: |
+          echo "::group::前端 JS"
+          for f in js/*.js; do
+            node --check "$f" && echo "  ✓ $f" || { echo "  ✗ $f"; exit 1; }
+          done
+          echo "::endgroup::"
+
+          echo "::group::API Functions"
+          for f in api/*.js api/_shared/*.js functions/api/*.js; do
+            node --check "$f" && echo "  ✓ $f" || { echo "  ✗ $f"; exit 1; }
+          done
+          echo "::endgroup::"
+
+          echo "::group::Scripts"
+          for f in scripts/*.js; do
+            node --check "$f" && echo "  ✓ $f" || { echo "  ✗ $f"; exit 1; }
+          done
+          echo "::endgroup::"
+
+          echo "::group::Server"
+          node --check server.js && echo "  ✓ server.js" || { echo "  ✗ server.js"; exit 1; }
+          echo "::endgroup::"
+
+      - name: Check _shared module imports resolve
+        run: |
+          node -e "
+            import('../api/_shared/system-prompt.js').then(m => {
+              if (typeof m.buildSystemPrompt !== 'function') throw new Error('buildSystemPrompt not exported');
+              console.log('  ✓ api/_shared/system-prompt.js');
+            }).catch(e => { console.error('  ✗', e.message); process.exit(1); });
+            import('../api/_shared/feedback-email.js').then(m => {
+              if (typeof m.sendFeedbackEmail !== 'function') throw new Error('sendFeedbackEmail not exported');
+              console.log('  ✓ api/_shared/feedback-email.js');
+            }).catch(e => { console.error('  ✗', e.message); process.exit(1); });
+          "
+
+  # ═══════════════════════════════════════════════
+  # Job 3: 搜索功能测试
+  # ═══════════════════════════════════════════════
+  test-search:
+    name: Search Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run search tests
+        run: node scripts/test-search.js
