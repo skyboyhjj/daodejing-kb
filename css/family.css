@@ -66,36 +66,42 @@ body {
     font-size: 1em;
     font-weight: 600;
     letter-spacing: 1px;
+    flex: 1;
 }
 
-/* ===== P2 新增：导航栏模式切换 ===== */
-.family-nav-mode-switch {
+/* ===== P2: 模式切换栏（独立一行，不受 nav 空间限制）===== */
+.family-mode-bar {
     display: flex;
-    border-radius: var(--family-radius-sm);
-    border: 1px solid var(--family-border);
-    overflow: hidden;
-    margin: 0 4px;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px 4px;
+    border-bottom: 1px solid var(--family-border);
+    background: rgba(250, 248, 240, 0.95);
 }
 
 .mode-segment {
-    padding: 6px 14px;
-    font-size: 0.83em;
+    padding: 8px 22px;
+    font-size: 0.9em;
     font-family: var(--family-font);
     cursor: pointer;
     background: transparent;
-    border: none;
+    border: 1px solid var(--family-border);
+    border-radius: var(--family-radius-sm);
     color: var(--family-text-light);
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
     white-space: nowrap;
+    min-height: 40px;
 }
 
 .mode-segment:hover {
     background: rgba(46, 95, 95, 0.06);
+    border-color: var(--family-accent);
 }
 
 .mode-segment.active {
     background: var(--family-accent);
     color: #faf8f0;
+    border-color: var(--family-accent);
 }
 
 /* ----- 主内容区 ----- */
@@ -552,12 +558,10 @@ body {
 }
 
 .chapter-cards {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
+    /* 容器由 showAllChaptersSelector() 动态填充 theme-group 元素 */
 }
 
+/* 旧版 3 章卡片（向后兼容，section-wise 选择器） */
 .chapter-card {
     flex: 1;
     min-width: 160px;
@@ -589,24 +593,34 @@ body {
     color: var(--family-accent);
 }
 
-/* ===== P2 新增：81 章网格选择器 ===== */
-.chapter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-    gap: 6px;
-    margin-bottom: 4px;
-}
+/* ===== P2 新增：81 章网格选择器（横向右到左布局）===== */
 
 .theme-group {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .theme-group-title {
-    font-size: 0.85em;
+    flex-shrink: 0;
+    order: 1;
+    font-size: 0.82em;
     color: var(--family-accent);
     font-weight: 600;
-    margin-bottom: 6px;
-    padding-left: 2px;
+    margin-left: 10px;
+    white-space: nowrap;
+    line-height: 36px;
+}
+
+.chapter-grid {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    gap: 5px;
 }
 
 .chapter-mini-card {
@@ -906,14 +920,21 @@ body {
         min-height: 44px;
     }
 
-    /* ===== P2 移动端：模式切换 ===== */
-    .family-nav-mode-switch {
-        margin: 0 2px;
+    /* ===== P2 移动端：模式切换栏 ===== */
+    .family-mode-bar {
+        padding: 8px 14px 4px;
+        gap: 8px;
+        position: sticky;
+        top: 48px;
+        z-index: 99;
     }
 
     .mode-segment {
-        padding: 6px 10px;
-        font-size: 0.78em;
+        flex: 1;
+        padding: 10px 16px;
+        font-size: 0.85em;
+        min-height: 44px;
+        text-align: center;
     }
 
     /* ===== P2 移动端：恢复提示 ===== */
@@ -966,20 +987,42 @@ body {
         font-size: 0.75em;
     }
 
-    /* ===== P2 移动端：81 章网格 ===== */
+    /* ===== P2 移动端：81 章网格（右到左横向）===== */
     .chapter-grid {
-        grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
-        gap: 5px;
+        gap: 4px;
     }
 
     .chapter-mini-card {
-        width: 42px;
-        height: 42px;
-        font-size: 0.8em;
+        width: 32px;
+        height: 32px;
+        font-size: 0.73em;
+        border-radius: 5px;
+    }
+
+    .theme-group {
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
     .theme-group-title {
-        font-size: 0.8em;
+        font-size: 0.75em;
+        line-height: 32px;
+        margin-left: 6px;
+    }
+
+    .chapter-mini-card .mini-check {
+        width: 12px;
+        height: 12px;
+        font-size: 0.6em;
+        top: -3px;
+        right: -3px;
+    }
+
+    .chapter-mini-card .mini-lock {
+        font-size: 0.55em;
+        bottom: -2px;
+        right: -2px;
     }
 
     /* ===== P2 移动端：未审核卡片链接 ===== */
