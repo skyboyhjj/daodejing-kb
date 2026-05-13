@@ -690,6 +690,19 @@ body {
     opacity: 1;
 }
 
+/* 连续学习模式：当前章节高亮 */
+.chapter-mini-card.current {
+    background: var(--family-accent);
+    color: #faf8f0;
+    border-color: var(--family-accent);
+    box-shadow: 0 0 0 2px rgba(46, 95, 95, 0.2);
+}
+
+.chapter-mini-card.current:hover {
+    background: rgba(46, 95, 95, 0.85);
+    border-color: var(--family-accent);
+}
+
 /* ===== P2 新增：未审核章卡片 ===== */
 .unapproved-card {
     border-color: #d4c9a8;
@@ -1023,6 +1036,10 @@ body {
         font-size: 0.55em;
         bottom: -2px;
         right: -2px;
+    }
+
+    .chapter-mini-card.current {
+        box-shadow: 0 0 0 2px rgba(46, 95, 95, 0.25);
     }
 
     /* ===== P2 移动端：未审核卡片链接 ===== */

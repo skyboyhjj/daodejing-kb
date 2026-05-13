@@ -780,6 +780,47 @@ function showAllChaptersSelector() {
     }
 }
 
+/**
+ * 连续学习模式专用：只显示当前章起的三章相邻窗口
+ * 设计意图：连续学习强调循序渐进，不应用 81 章全量选择器打断节奏
+ */
+function showContinuousChapterSelector() {
+    var current = state.chapterNum;
+    var html = '<div class="theme-group">';
+    html += '<div class="theme-group-title">📖 当前章节附近</div>';
+    html += '<div class="chapter-grid">';
+
+    for (var i = 0; i < 3; i++) {
+        var num = current + i;
+        if (num > 81) break;
+        var done = state.allChaptersCompleted.indexOf(num) !== -1;
+        var approved = isChapterApproved(num);
+        var info = getChapterDisplayInfo(num);
+        var cls = 'chapter-mini-card';
+        if (done) cls += ' done';
+        if (!approved) cls += ' locked';
+        if (num === current) cls += ' current';
+        html += '<div class="' + cls + '" data-chapter="' + num + '" title="' + info.title + '">';
+        html += '<span class="mini-num">' + num + '</span>';
+        if (done) html += '<span class="mini-check">✓</span>';
+        if (!approved) html += '<span class="mini-lock">🔒</span>';
+        html += '</div>';
+    }
+
+    html += '</div></div>';
+    chapterCardsEl.innerHTML = html;
+    chapterSelectorEl.style.display = 'block';
+    chapterSelectorEl.scrollIntoView({ behavior: 'smooth' });
+
+    var cards = chapterCardsEl.querySelectorAll('.chapter-mini-card');
+    for (var j = 0; j < cards.length; j++) {
+        cards[j].addEventListener('click', function () {
+            var n = parseInt(this.getAttribute('data-chapter'), 10);
+            selectChapterByNum(n);
+        });
+    }
+}
+
 function selectChapterByNum(chapterNum) {
     state.chapterNum = chapterNum;
     state.chapter = chapterToKey(chapterNum);
@@ -1104,10 +1145,10 @@ ageSelectorEl.addEventListener('click', function (e) {
 switchTopicBtnEl.addEventListener('click', function () {
     if (switchTopicBtnEl.disabled) return;
     if (state.mode === 'continuous') {
-        // 连续模式：显示 81 章选择器
-        showAllChaptersSelector();
+        // 连续模式：仅显示当前章节起的三章相邻窗口
+        showContinuousChapterSelector();
     } else {
-        // 自由模式：显示 81 章选择器
+        // 自由模式：显示完整 81 章选择器
         showAllChaptersSelector();
     }
 });
