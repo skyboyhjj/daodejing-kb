@@ -623,6 +623,12 @@ body {
     gap: 5px;
 }
 
+/* 连续学习模式：少量卡片居中排列 */
+.chapter-grid--continuous {
+    justify-content: center;
+    gap: 8px;
+}
+
 .chapter-mini-card {
     width: 36px;
     height: 36px;

@@ -112,6 +112,9 @@ var AUTO_END_MESSAGE = {
    三、状态管理
    ============================================================ */
 
+// 连续学习模式：换话题窗口显示的相邻章节数量（可配置 2/3/4）
+var ADJACENT_CHAPTER_COUNT = 3;
+
 var state = {
     stage: 'welcome',       // 'welcome' | 'intro' | 'dialogue' | 'chapter_end' | 'ended'
     age: null,              // '4-6' | '7-9' | '10-12'
@@ -638,7 +641,7 @@ function startChapter() {
 
 function sendNextRound() {
     if (state.totalRounds >= state.maxRounds) {
-        autoEndSession();
+        endChapter();
         return;
     }
 
@@ -781,27 +784,51 @@ function showAllChaptersSelector() {
 }
 
 /**
- * 连续学习模式专用：只显示当前章起的三章相邻窗口
- * 设计意图：连续学习强调循序渐进，不应用 81 章全量选择器打断节奏
+ * 连续学习模式专用：从第 1 章扫描未完成的已审核章节
+ * 设计意图：填补因元数据缺失而跳过的章节空缺，推荐用户"回头补读"
+ *
+ * 从第 1 章 → 第 81 章扫描，取前 ADJACENT_CHAPTER_COUNT 个满足：
+ *   - 不在 allChaptersCompleted 中（尚未完成）
+ *   - isChapterApproved(num) === true（元数据已审核通过）
+ * 若无符合条件的章节，回退到按当前章显示
  */
 function showContinuousChapterSelector() {
-    var current = state.chapterNum;
-    var html = '<div class="theme-group">';
-    html += '<div class="theme-group-title">📖 当前章节附近</div>';
-    html += '<div class="chapter-grid">';
+    // 从第 1 章扫描，收集尚未完成且已审核的章节
+    var candidates = [];
+    for (var num = 1; num <= 81; num++) {
+        if (state.allChaptersCompleted.indexOf(num) === -1 && isChapterApproved(num)) {
+            candidates.push(num);
+            if (candidates.length >= ADJACENT_CHAPTER_COUNT) break;
+        }
+    }
 
-    for (var i = 0; i < 3; i++) {
-        var num = current + i;
-        if (num > 81) break;
-        var done = state.allChaptersCompleted.indexOf(num) !== -1;
-        var approved = isChapterApproved(num);
-        var info = getChapterDisplayInfo(num);
+    // 回退：若无符合条件的章节（所有已开放章节均完成），显示当前章附近
+    if (candidates.length === 0) {
+        var fallbackStart = Math.max(1, Math.min(state.chapterNum, 81));
+        for (var f = 0; f < ADJACENT_CHAPTER_COUNT; f++) {
+            var fn = fallbackStart + f;
+            if (fn > 81) break;
+            candidates.push(fn);
+        }
+    }
+
+    var titleText = candidates.length > 0 ? '📖 推荐继续读' : '📖 当前章节附近';
+
+    var html = '<div class="theme-group">';
+    html += '<div class="theme-group-title">' + titleText + '</div>';
+    html += '<div class="chapter-grid chapter-grid--continuous">';
+
+    for (var i = 0; i < candidates.length; i++) {
+        var cnum = candidates[i];
+        var done = state.allChaptersCompleted.indexOf(cnum) !== -1;
+        var approved = isChapterApproved(cnum);
+        var info = getChapterDisplayInfo(cnum);
         var cls = 'chapter-mini-card';
         if (done) cls += ' done';
         if (!approved) cls += ' locked';
-        if (num === current) cls += ' current';
-        html += '<div class="' + cls + '" data-chapter="' + num + '" title="' + info.title + '">';
-        html += '<span class="mini-num">' + num + '</span>';
+        if (cnum === state.chapterNum) cls += ' current';
+        html += '<div class="' + cls + '" data-chapter="' + cnum + '" title="' + info.title + '">';
+        html += '<span class="mini-num">' + cnum + '</span>';
         if (done) html += '<span class="mini-check">✓</span>';
         if (!approved) html += '<span class="mini-lock">🔒</span>';
         html += '</div>';
@@ -978,10 +1005,7 @@ function switchMode(mode) {
         setLoadingState(false);
         appendSystemMessage('—— 模式已切换 ——');
 
-        // 保存当前章为已完成
-        if (state.allChaptersCompleted.indexOf(state.chapterNum) === -1) {
-            state.allChaptersCompleted.push(state.chapterNum);
-        }
+        // 不标记当前章为已完成 —— 用户尚未完成对话
         saveProgress();
         setInputEnabled(false);
         setActionButtonsEnabled(true);
@@ -1121,7 +1145,7 @@ sendBtnEl.addEventListener('click', function () {
     setInputEnabled(false);
 
     if (state.totalRounds >= state.maxRounds) {
-        autoEndSession();
+        endChapter();
         return;
     }
 
