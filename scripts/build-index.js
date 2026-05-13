@@ -84,6 +84,27 @@ function extractConcepts(html) {
 }
 
 /**
+ * 提取章节支持的认知层级
+ * 扫描 data-level="l1|l2|l3|l4" 属性
+ * 默认所有层级均支持（防御性回退）
+ */
+function extractLevels(html) {
+    const levels = [];
+    const re = /data-level="(l[1-4])"/g;
+    let m;
+    while ((m = re.exec(html)) !== null) {
+        const lv = m[1];
+        if (!levels.includes(lv)) levels.push(lv);
+    }
+    // 防御：若 HTML 中无层级标记，默认全部支持
+    if (levels.length === 0) {
+        levels.push('l1', 'l2', 'l3', 'l4');
+    }
+    levels.sort();
+    return levels;
+}
+
+/**
  * 提取全文搜索文本
  * 包括：原文 + 各步骤标题 + 各层级内容的纯文本
  */
@@ -167,7 +188,8 @@ function buildIndex() {
             title: `第${num}章 · ${title.replace(/^第\d+章\s*·?\s*/, '')}`,
             concepts,
             text: searchText,
-            url: 'chapters/' + file.replace(/\.html$/, '')
+            url: 'chapters/' + file.replace(/\.html$/, ''),
+            levels: extractLevels(html)
         });
 
         if (!title) {
@@ -194,7 +216,8 @@ function buildIndex() {
                 concepts.push({
                     title: conceptTitle,
                     text: conceptText,
-                    url: 'concepts/' + cf.replace(/\.html$/, '')
+                    url: 'concepts/' + cf.replace(/\.html$/, ''),
+                    levels: ['l1', 'l2', 'l3', 'l4']
                 });
             }
         }

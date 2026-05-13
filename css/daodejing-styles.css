@@ -770,6 +770,18 @@ h1 .subtitle {
   vertical-align: middle;
 }
 
+/* ── 搜索层级标签 ── */
+.search-levels {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  font-size: 0.72em;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
 /* ── 返回顶部按钮 ── */
 .back-to-top {
   position: fixed;

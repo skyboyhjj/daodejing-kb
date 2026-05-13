@@ -159,7 +159,7 @@
   }
 
   // ── 搜索引擎 ──
-  function searchAll(query) {
+  function searchAll(query, filterLevel) {
     // 繁体转简体：对用户输入进行转换后再分词
     var simpQuery = t2s(query);
     var tokens = tokenize(simpQuery);
@@ -185,7 +185,8 @@
           url: ch.url,
           snippet: snippet,
           score: score,
-          concepts: ch.concepts || []
+          concepts: ch.concepts || [],
+          levels: ch.levels || ['l1', 'l2', 'l3', 'l4']
         });
       }
     }
@@ -209,13 +210,22 @@
           url: concept.url,
           snippet: cSnippet,
           score: cScore,
-          concepts: []
+          concepts: [],
+          levels: concept.levels || ['l1', 'l2', 'l3', 'l4']
         });
       }
     }
 
     // 按相关性排序
     hits.sort(function (a, b) { return b.score - a.score; });
+
+    // 层级过滤（向后兼容：filterLevel 为 null/undefined/"all" 则不过滤）
+    if (filterLevel && filterLevel !== 'all') {
+      hits = hits.filter(function (h) {
+        return h.levels && h.levels.indexOf(filterLevel) !== -1;
+      });
+    }
+
     return hits.slice(0, DROPDOWN_MAX);
   }
 
@@ -296,8 +306,22 @@
         }
         conceptsHtml += '</span>';
       }
+      // 层级可用性标签
+      var levelsHtml = '';
+      if (h.levels && h.levels.length) {
+        levelsHtml = '<span class="search-levels" title="可用认知深度">';
+        if (h.levels.length >= 4) {
+          levelsHtml += 'L1\u2013L4';
+        } else {
+          for (var l = 0; l < h.levels.length; l++) {
+            if (l > 0) levelsHtml += ', ';
+            levelsHtml += h.levels[l].toUpperCase();
+          }
+        }
+        levelsHtml += '</span>';
+      }
       html += '<div class="search-item" data-url="' + escapeHtml(url) + '">'
-        + '<div class="search-chapter">' + typeIcon + ' ' + escapeHtml(h.title) + conceptsHtml + '</div>'
+        + '<div class="search-chapter">' + typeIcon + ' ' + escapeHtml(h.title) + conceptsHtml + levelsHtml + '</div>'
         + '<div class="search-snippet">' + highlightSnippet(h.snippet, tokens) + '</div>'
         + '</div>';
     }
@@ -338,7 +362,8 @@
             results.classList.add('active');
             return;
           }
-          var hits = searchAll(q);
+          var currentLevel = getCurrentLevel();
+          var hits = searchAll(q, currentLevel);
           var tokens = tokenize(t2s(q));
           renderResults(hits, tokens, results, base);
         });
@@ -370,6 +395,19 @@
     // 获得焦点时预加载索引
     input.addEventListener('focus', function () {
       loadIndex();
+    });
+
+    // 监听层级变化事件，自动同步搜索结果
+    window.addEventListener('huihui-level-changed', function () {
+      var q = input.value.trim();
+      if (!q) return;
+      loadIndex().then(function () {
+        if (!data) return;
+        var currentLevel = getCurrentLevel();
+        var hits = searchAll(q, currentLevel);
+        var tokens = tokenize(t2s(q));
+        renderResults(hits, tokens, results, base);
+      });
     });
   }
 
