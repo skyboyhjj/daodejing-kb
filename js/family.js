@@ -920,8 +920,6 @@ function loadMetadataCache(callback) {
  * 切换学习模式
  */
 function switchMode(mode) {
-    // 对话进行中不允许切换模式（对话状态不可打断）
-    if (state.stage === 'dialogue') return;
     if (state.mode === mode) return;  // 已经是目标模式，无需切换
 
     var prevMode = state.mode;
@@ -932,6 +930,30 @@ function switchMode(mode) {
     // 持久化
     if (state.age || state.allChaptersCompleted.length > 0) {
         saveProgress();
+    }
+
+    // ===== 对话进行中切换：优雅结束当前对话再过渡 =====
+    if (state.stage === 'dialogue') {
+        setLoadingState(false);
+        appendSystemMessage('—— 模式已切换 ——');
+
+        // 保存当前章为已完成
+        if (state.allChaptersCompleted.indexOf(state.chapterNum) === -1) {
+            state.allChaptersCompleted.push(state.chapterNum);
+        }
+        saveProgress();
+        setInputEnabled(false);
+        setActionButtonsEnabled(true);
+
+        if (mode === 'free') {
+            state.stage = 'chapter_end';
+            userInputEl.placeholder = '选一个新的章节，或者今天就到这里';
+            showAllChaptersSelector();
+        } else {
+            // 已是连续模式 → 继续下一章
+            goToNextChapter();
+        }
+        return;
     }
 
     // ===== 根据当前阶段处理模式切换 =====
@@ -963,10 +985,12 @@ function switchMode(mode) {
                 startChapter();
             });
         } else if (mode === 'free' && prevMode === 'continuous') {
-            // 从连续学习 → 自由探索：显示章节输入
+            // 从连续学习 → 自由探索：恢复欢迎区并显示章节输入
+            setLoadingState(false);  // 取消可能正在进行的 API 请求
             state.chapterNum = 8;
             state.chapter = 'chapter8';
             if (!state.age) state.age = '7-9';
+            welcomeEl.style.display = '';  // 恢复父容器可见
             chapterInputAreaEl.style.display = 'block';
             setActionButtonsEnabled(true);
             chapterNumInputEl.focus();
