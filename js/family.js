@@ -920,24 +920,67 @@ function loadMetadataCache(callback) {
  * 切换学习模式
  */
 function switchMode(mode) {
-    if (state.stage !== 'welcome' && state.stage !== 'ended') return; // 仅在初始状态可切换
+    // 对话进行中不允许切换模式（对话状态不可打断）
+    if (state.stage === 'dialogue') return;
+    if (state.mode === mode) return;  // 已经是目标模式，无需切换
+
+    var prevMode = state.mode;
     state.mode = mode;
     updateModeSwitchUI();
     updateChapterProgress();
 
-    // 仅在有实际学习进度时才持久化（年龄已选 或 有已完成章），避免幻影记录
+    // 持久化
     if (state.age || state.allChaptersCompleted.length > 0) {
         saveProgress();
     }
 
-    // 刷新模式相关 UI
+    // ===== 根据当前阶段处理模式切换 =====
     if (state.stage === 'welcome') {
+        // Welcome 阶段：仅更新模式指示 UI
         if (mode === 'continuous') {
             chapterInputAreaEl.style.display = 'none';
         } else {
             chapterInputAreaEl.style.display = ageSelectorEl.style.display === 'none' ? 'block' : 'none';
         }
+    } else if (state.stage === 'intro') {
+        // Intro 阶段（已选年龄，尚未开始对话）
+        if (mode === 'continuous' && prevMode === 'free') {
+            // 从自由探索 → 连续学习：隐藏输入区，开始连续学习
+            chapterInputAreaEl.style.display = 'none';
+            welcomeEl.style.display = 'none';
+            loadProgress(function (err, progress) {
+                if (progress && progress.completedChapters) {
+                    state.allChaptersCompleted = progress.completedChapters;
+                    state.chapterNum = progress.currentChapter || 1;
+                } else {
+                    state.chapterNum = 1;
+                    state.allChaptersCompleted = [];
+                }
+                state.lastAccessDate = new Date().toISOString().split('T')[0];
+                saveProgress();
+                setActionButtonsEnabled(true);
+                updateChapterProgress();
+                startChapter();
+            });
+        } else if (mode === 'free' && prevMode === 'continuous') {
+            // 从连续学习 → 自由探索：显示章节输入
+            state.chapterNum = 8;
+            state.chapter = 'chapter8';
+            if (!state.age) state.age = '7-9';
+            chapterInputAreaEl.style.display = 'block';
+            setActionButtonsEnabled(true);
+            chapterNumInputEl.focus();
+        }
+    } else if (state.stage === 'chapter_end') {
+        // Chapter end 阶段
+        if (mode === 'continuous') {
+            chapterSelectorEl.style.display = 'none';
+            goToNextChapter();
+        } else {
+            showAllChaptersSelector();
+        }
     }
+    // 'ended' 阶段：仅更新 UI，用户需要手动重新开始
 }
 
 function updateModeSwitchUI() {
