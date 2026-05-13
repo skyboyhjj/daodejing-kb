@@ -712,11 +712,6 @@ function goToNextChapter() {
         allChaptersDone();
         return;
     }
-    // 仅当章节审核通过（用户真正学习过）时才标记完成
-    // endChapter() 已将审核通过的章加入 allChaptersCompleted，此处做防御性查重
-    if (isChapterApproved(state.chapterNum) && state.allChaptersCompleted.indexOf(state.chapterNum) === -1) {
-        state.allChaptersCompleted.push(state.chapterNum);
-    }
     state.chapterNum = next;
     state.chapter = chapterToKey(next);
     saveProgress();
@@ -1015,8 +1010,11 @@ function switchMode(mode) {
             userInputEl.placeholder = '选一个新的章节，或者今天就到这里';
             showAllChaptersSelector();
         } else {
-            // 已是连续模式 → 继续下一章
-            goToNextChapter();
+            // 切换到连续模式：保持当前对话，完成本章后自动进入下一章
+            setInputEnabled(true);
+            userInputEl.placeholder = '输入孩子的回答……（连续学习模式）';
+            userInputEl.focus();
+            updateChapterProgress();
         }
         return;
     }
