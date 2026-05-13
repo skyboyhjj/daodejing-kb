@@ -167,7 +167,7 @@ function buildIndex() {
             title: `第${num}章 · ${title.replace(/^第\d+章\s*·?\s*/, '')}`,
             concepts,
             text: searchText,
-            url: 'chapters/' + file
+            url: 'chapters/' + file.replace(/\.html$/, '')
         });
 
         if (!title) {
@@ -194,7 +194,7 @@ function buildIndex() {
                 concepts.push({
                     title: conceptTitle,
                     text: conceptText,
-                    url: 'concepts/' + cf
+                    url: 'concepts/' + cf.replace(/\.html$/, '')
                 });
             }
         }

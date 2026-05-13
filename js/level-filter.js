@@ -93,7 +93,7 @@
             }
 
             // ── 章节间链接（相对路径 chXX.html）──
-            if (/^ch\d{1,2}\.html/.test(href)) {
+            if (/^ch\d{1,2}(\.html)?/.test(href)) {
                 if (!link.getAttribute('data-orig-href')) {
                     link.setAttribute('data-orig-href', href);
                 }
@@ -104,7 +104,7 @@
             }
 
             // ── chapters.html 目录页链接 ──
-            if (/chapters\.html/.test(href)) {
+            if (/chapters(\.html)?/.test(href)) {
                 if (!link.getAttribute('data-orig-href')) {
                     link.setAttribute('data-orig-href', href);
                 }

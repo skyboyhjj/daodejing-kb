@@ -48,9 +48,9 @@ const html = `<!DOCTYPE html>
 
 <body>
     <nav class="chapter-nav">
-        <a href="../index.html" class="nav-home">回到主页</a>
-        <a href="../concepts/index.html">概念索引</a>
-        <a href="../paths/index.html">阅读路径</a>
+        <a href=".." class="nav-home">回到主页</a>
+        <a href="../concepts">概念索引</a>
+        <a href="../paths">阅读路径</a>
     </nav>
 
     <!-- 搜索 -->
@@ -376,8 +376,8 @@ const html = `<!DOCTYPE html>
 
     <!-- 上下章导航 -->
     <div class="nav-chapters">
-        <a href="ch35.html">← 第35章</a>
-        <a href="ch37.html">第37章 →</a>
+        <a href="ch35">← 第35章</a>
+        <a href="ch37">第37章 →</a>
     </div>
 
     <div class="site-footer">

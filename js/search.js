@@ -278,7 +278,7 @@
       var h = hits[i];
       // 防御性回退：若搜索数据缺失 url 字段，尝试从章节号重建
       if (!h.url && h.num) {
-        h.url = 'chapters/ch' + (h.num < 10 ? '0' + h.num : h.num) + '.html';
+        h.url = 'chapters/ch' + (h.num < 10 ? '0' + h.num : h.num);
       }
       // 跳过仍然没有 URL 的条目（搜索数据损坏）
       if (!h.url) continue;
