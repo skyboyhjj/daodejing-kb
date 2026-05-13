@@ -159,7 +159,8 @@ def call_family_chat_api(port, chapter, age_group, conversation_history=None):
             if resp.status == 200:
                 return data.get('huihui_response', ''), data.get('cached', False)
             else:
-                print(f'    API 错误 ({resp.status}): {data.get("error", "Unknown")}')
+                print(
+                    f'    API 错误 ({resp.status}): {data.get("error", "Unknown")}')
                 return None, False
     except urllib.error.HTTPError as e:
         body = e.read().decode('utf-8', errors='replace')
@@ -222,6 +223,8 @@ def main():
                         help='本地服务器端口（默认: 自动查找可用端口）')
     parser.add_argument('--no-server', action='store_true',
                         help='不启动服务器，使用已有服务器（需手动启动 server.js）')
+    parser.add_argument('--chapters', type=str, default='',
+                        help='指定章节范围，逗号分隔（如: 3,7,9）。不指定则预热所有已审核章节')
     args = parser.parse_args()
 
     # 获取已审核的章节
@@ -232,6 +235,37 @@ def main():
         sys.exit(1)
 
     chapter_list = sorted(approved.keys())
+
+    # 按需筛选章节范围
+    if args.chapters:
+        requested = []
+        for part in args.chapters.split(','):
+            part = part.strip()
+            if not part:
+                continue
+            # 支持范围写法，如 "3-9"
+            if '-' in part:
+                try:
+                    lo, hi = part.split('-', 1)
+                    for n in range(int(lo), int(hi) + 1):
+                        requested.append(n)
+                except ValueError:
+                    print(f'  警告: 忽略无效范围 "{part}"')
+            else:
+                try:
+                    requested.append(int(part))
+                except ValueError:
+                    print(f'  警告: 忽略无效章节号 "{part}"')
+
+        # 取交集: 只预热已审核且在请求范围内的章节
+        chapter_list = [ch for ch in chapter_list if ch in requested]
+        missing = [ch for ch in requested if ch not in approved]
+        if missing:
+            print(f'  注意: 以下章节尚未审核通过，跳过: {missing}')
+        if not chapter_list:
+            print('指定章节中无可预热项（可能未审核通过）。')
+            sys.exit(0)
+
     print(f'已审核章节: {chapter_list}')
     print(f'年龄组: {AGE_GROUPS}')
     print(f'每章轮次: {args.rounds}')
@@ -304,7 +338,8 @@ def main():
         print(f'输出文件: {CACHE_FILE}')
 
         # 统计缓存大小
-        file_size = os.path.getsize(CACHE_FILE) if os.path.exists(CACHE_FILE) else 0
+        file_size = os.path.getsize(
+            CACHE_FILE) if os.path.exists(CACHE_FILE) else 0
         print(f'缓存文件大小: {file_size / 1024:.1f} KB')
 
     finally:

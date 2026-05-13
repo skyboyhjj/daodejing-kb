@@ -1,5 +1,198 @@
 {
     "chapters": {
+        "1": {
+            "chapter": 1,
+            "title": "道可道，非常道",
+            "core_idea": "真正的「道」无法用语言完全描述。有些东西心里清清楚楚，但嘴巴说不出。这不是语言的失败，而是体验的深度——比语言更大的东西，需要亲自去感受。",
+            "safety_notes": [
+                "对低龄儿童避免使用「不可知论」或「虚无主义」的哲学表述",
+                "不将「说不出来」曲解为「不需要学」或「不用思考」",
+                "避免让孩子因为「说不清楚」而感到挫败——时刻强调「说不出来很正常」"
+            ],
+            "interaction_points": [
+                {
+                    "topic": "说不出来的东西",
+                    "age_4_6": "用「最喜欢的味道」做比喻——能说出名字但说不出感觉。引导孩子发现生活中「只能感觉、说不出」的事物",
+                    "age_7_9": "用「告诉外星人什么是红色」做思想实验，让孩子亲身体验语言的局限",
+                    "age_10_12": "探讨语言和体验的关系——为什么拥抱的感觉说出来就不是那个感觉了？引入「道」的超越性"
+                },
+                {
+                    "topic": "语言之外的理解",
+                    "age_4_6": null,
+                    "age_7_9": "引导孩子回忆：有什么事情不需要说出来，爸爸妈妈就知道的？感受「心照不宣」的美好",
+                    "age_10_12": "探讨一个悖论：既然「道」说不出来，老子为什么写了五千字？他在做什么？"
+                }
+            ],
+            "parent_tips": "这个章节的核心是让孩子感受到「有些事情不需要说出来也能被理解」。在共读之外，今天可以试着多给孩子一些「不用说出口」的理解——比如 ta 累了的时候，不问「你怎么了」，只是给 ta 一杯水。",
+            "review_status": "approved",
+            "reviewed_by": "",
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "AI generated"
+                },
+                {
+                    "action": "approved",
+                    "by": "产品经理",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "Initial review"
+                }
+            ]
+        },
+        "2": {
+            "chapter": 2,
+            "title": "天下皆知美之为美",
+            "core_idea": "美和丑、高和矮、长和短——这些对立的词其实是互相定义的。没有「矮」就没有「高」，没有「难过」就感受不到「开心」。万物的差异不是缺陷，而是世界的丰富性。",
+            "safety_notes": [
+                "避免将「对立统一」简化为「好坏都一样」的相对主义",
+                "不涉及外貌、身材等可能引发儿童身体焦虑的外在比较",
+                "对低龄儿童不引入「善恶」「是非」等可能引起道德困惑的二元对立话题",
+                "不使用「没有丑就没有美」这种可能让某些孩子感到被贴标签的表达"
+            ],
+            "interaction_points": [
+                {
+                    "topic": "一对好朋友",
+                    "age_4_6": "引导孩子发现「高和矮」「大和小」这些词像好朋友一样互相离不开对方。和孩子比赛找更多的「好朋友」词对",
+                    "age_7_9": "引导孩子推理：如果世界上所有人一样高，「高」这个词还存在吗？理解对立概念的相互依存关系",
+                    "age_10_12": "探讨「有无相生，难易相成」的深层含义——困难和容易、失败和成功之间的关系"
+                },
+                {
+                    "topic": "不一样才有趣",
+                    "age_4_6": null,
+                    "age_7_9": "引导孩子思考：如果从没哭过，还会觉得笑很特别吗？分享自己的「因为难过过，才更珍惜开心」的经历",
+                    "age_10_12": "探讨：如果全班同学都和你一模一样——会怎样？引导孩子珍视「不一样」的价值"
+                }
+            ],
+            "parent_tips": "这个章节是一个绝佳的「接纳差异」的教育契机。如果孩子在学校遇到了「和别人不一样」的困扰，可以用老子的话告诉 ta：「天下皆知美之为美，斯恶已」——正因为有不一样，世界才有趣。你不需要和别人一样。",
+            "review_status": "approved",
+            "reviewed_by": "产品经理",
+            "reviewed_at": "2026-05-11",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "AI generated"
+                },
+                {
+                    "action": "approved",
+                    "by": "产品经理",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "Initial review"
+                }
+            ]
+        },
+        "3": {
+            "chapter": 3,
+            "title": "不尚贤",
+            "core_idea": "不总说谁最棒，不总说哪个东西最珍贵，不总展示让人眼红的东西，大家就不会争来争去、想偷想抢、心里乱糟糟。肚子吃饱、心里安稳、身体棒棒，生活就自然好了。",
+            "safety_notes": [
+                "避免将'不争'理解为消极退缩或放弃努力，要强调是减少不必要的比较和攀比",
+                "避免将'无知无欲'理解为反对学习知识或追求理想，要解释为不被杂念干扰",
+                "避免用'偷盗'等负面行为直接指责孩子，而是用故事引导理解"
+            ],
+            "interaction_points": [
+                {
+                    "topic": "小动物不争",
+                    "age_4_6": "宝宝，你看小猫咪和小狗一起玩，它们有没有抢着当'最棒的小动物'？它们只是开心地追尾巴。你能学小猫叫一声吗？",
+                    "age_7_9": "如果森林里的小动物都争着当'最厉害'，会发生什么？你觉得它们不争的时候，是不是更快乐？",
+                    "age_10_12": "老子说'不尚贤'，就像森林里没有'最棒动物'的比赛，每个动物都有自己的特点。你觉得自己有什么独特的地方，不需要和别人比？"
+                },
+                {
+                    "topic": "好东西不炫耀",
+                    "age_4_6": "妈妈有一个漂亮的发卡，如果一直拿在手里晃，你会不会也想抢？我们把它放在盒子里，大家都不看，是不是就不想抢了？",
+                    "age_7_9": "如果学校里有同学总炫耀一个新玩具，你会不会也想要？老子说，不把东西说得特别珍贵，大家就不会想去偷。你觉得对吗？",
+                    "age_10_12": "广告里常说'这个最棒'，老子说'不贵难得之货'。你发现广告在做什么了吗？我们怎么不被它牵着走？"
+                },
+                {
+                    "topic": "把智慧带入生活",
+                    "age_4_6": "吃饭时，宝宝可以专心吃，不用看别人碗里有什么。吃饱了，摸摸肚子，开心地笑一笑。",
+                    "age_7_9": "和家人聊聊：家里有没有什么东西，我们觉得特别珍贵，反而让我们不开心？我们可以试试不那么在意它。",
+                    "age_10_12": "这一章的道理很深，不急着全懂。以后遇到'比较'的时候，可以想起老子说的'不尚贤'，慢慢体会。"
+                }
+            ],
+            "parent_tips": "和孩子一起读时，就像在讲一个有趣的寓言。不用急着解释，让孩子先感受故事里的画面。你放松了，孩子也会放松。",
+            "review_status": "approved",
+            "reviewed_by": "",
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T09:21:23.265Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T09:21:40.977Z",
+                    "notes": "何继杰"
+                }
+            ]
+        },
+        "7": {
+            "chapter": 7,
+            "title": "天长地久",
+            "core_idea": "你看天和地，它们不为自己忙活，却一直存在。学它们的样，不争不抢，反而能活得更好。",
+            "safety_notes": [
+                "避免将「无私」解释为否定自我价值，要强调孩子爱自己也是好的",
+                "避免用「不争」来批评孩子争取玩具或表现的行为",
+                "避免让孩子误解为「不保护自己」是危险的"
+            ],
+            "interaction_points": [
+                {
+                    "topic": "天和地像什么",
+                    "age_4_6": "让孩子指指天空和大地，问：天是不是一直在头顶？地是不是一直在脚下？它们像不像一个永远陪着你的大朋友？",
+                    "age_7_9": "问孩子：天和地为什么能一直存在？因为它们不为自己忙活。你觉得它们为谁忙活呢？比如天给我们阳光，地给我们花草。",
+                    "age_10_12": "问孩子：老子说天地不自生，所以长生。你怎么理解「不自生」？可以举例说说天地是怎么为万物服务的吗？"
+                },
+                {
+                    "topic": "不抢反而先",
+                    "age_4_6": "玩排队游戏：让孩子站在后面，然后说「我们让前面的小朋友先走」，结果大家反而让你先走。体验一下不抢的感觉。",
+                    "age_7_9": "问孩子：在班里，如果大家都抢着当班长，可能会吵架。如果一个人不抢，但很热心帮助大家，大家会不会更愿意选他？为什么？",
+                    "age_10_12": "讨论：老子说「后其身而身先」，你觉得生活中哪些例子符合这个道理？比如团队合作中，不抢功的人反而更受尊重。你怎么看？"
+                },
+                {
+                    "topic": "把智慧带入生活",
+                    "age_4_6": "吃饭时，让孩子先帮家人摆碗筷，不抢着吃第一口，然后问：先帮别人，自己是不是更开心？",
+                    "age_7_9": "邀请孩子和父母聊聊：家里有没有谁「不为自己忙活」却让全家更幸福的事？比如妈妈做饭，爸爸修东西。",
+                    "age_10_12": "提醒孩子：本章的智慧可以慢慢体会，不急于做到完美。下次遇到想争的时候，想想天和地，也许会有不同的选择。"
+                }
+            ],
+            "parent_tips": "和孩子一起看看天空和大地吧，不用讲道理，只是静静地感受。",
+            "review_status": "approved",
+            "reviewed_by": "",
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T08:56:49.043Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T08:58:00.213Z",
+                    "notes": ""
+                }
+            ]
+        },
         "8": {
             "chapter": 8,
             "title": "上善若水",
@@ -32,132 +225,21 @@
             "parent_tips": "和孩子聊「不争」的时候，不用刻意讲道理。问问 ta：「今天有没有和同学争玩具？」让 ta 自己说。你只负责听。孩子说出自己的经历时，不评判、不纠正，只是点头和微笑。",
             "review_status": "approved",
             "reviewed_by": "产品经理",
-            "reviewed_at": "2026-05-11"
-        },
-        "1": {
-            "chapter": 1,
-            "title": "道可道，非常道",
-            "core_idea": "真正的「道」无法用语言完全描述。有些东西心里清清楚楚，但嘴巴说不出。这不是语言的失败，而是体验的深度——比语言更大的东西，需要亲自去感受。",
-            "safety_notes": [
-                "对低龄儿童避免使用「不可知论」或「虚无主义」的哲学表述",
-                "不将「说不出来」曲解为「不需要学」或「不用思考」",
-                "避免让孩子因为「说不清楚」而感到挫败——时刻强调「说不出来很正常」"
-            ],
-            "interaction_points": [
+            "reviewed_at": "2026-05-11",
+            "review_history": [
                 {
-                    "topic": "说不出来的东西",
-                    "age_4_6": "用「最喜欢的味道」做比喻——能说出名字但说不出感觉。引导孩子发现生活中「只能感觉、说不出」的事物",
-                    "age_7_9": "用「告诉外星人什么是红色」做思想实验，让孩子亲身体验语言的局限",
-                    "age_10_12": "探讨语言和体验的关系——为什么拥抱的感觉说出来就不是那个感觉了？引入「道」的超越性"
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "AI generated"
                 },
                 {
-                    "topic": "语言之外的理解",
-                    "age_4_6": null,
-                    "age_7_9": "引导孩子回忆：有什么事情不需要说出来，爸爸妈妈就知道的？感受「心照不宣」的美好",
-                    "age_10_12": "探讨一个悖论：既然「道」说不出来，老子为什么写了五千字？他在做什么？"
+                    "action": "approved",
+                    "by": "产品经理",
+                    "at": "2026-05-11T00:00:00Z",
+                    "notes": "Initial review"
                 }
-            ],
-            "parent_tips": "这个章节的核心是让孩子感受到「有些事情不需要说出来也能被理解」。在共读之外，今天可以试着多给孩子一些「不用说出口」的理解——比如 ta 累了的时候，不问「你怎么了」，只是给 ta 一杯水。",
-            "review_status": "approved",
-            "reviewed_by": "产品经理",
-            "reviewed_at": "2026-05-11"
-        },
-        "2": {
-            "chapter": 2,
-            "title": "天下皆知美之为美",
-            "core_idea": "美和丑、高和矮、长和短——这些对立的词其实是互相定义的。没有「矮」就没有「高」，没有「难过」就感受不到「开心」。万物的差异不是缺陷，而是世界的丰富性。",
-            "safety_notes": [
-                "避免将「对立统一」简化为「好坏都一样」的相对主义",
-                "不涉及外貌、身材等可能引发儿童身体焦虑的外在比较",
-                "对低龄儿童不引入「善恶」「是非」等可能引起道德困惑的二元对立话题",
-                "不使用「没有丑就没有美」这种可能让某些孩子感到被贴标签的表达"
-            ],
-            "interaction_points": [
-                {
-                    "topic": "一对好朋友",
-                    "age_4_6": "引导孩子发现「高和矮」「大和小」这些词像好朋友一样互相离不开对方。和孩子比赛找更多的「好朋友」词对",
-                    "age_7_9": "引导孩子推理：如果世界上所有人一样高，「高」这个词还存在吗？理解对立概念的相互依存关系",
-                    "age_10_12": "探讨「有无相生，难易相成」的深层含义——困难和容易、失败和成功之间的关系"
-                },
-                {
-                    "topic": "不一样才有趣",
-                    "age_4_6": null,
-                    "age_7_9": "引导孩子思考：如果从没哭过，还会觉得笑很特别吗？分享自己的「因为难过过，才更珍惜开心」的经历",
-                    "age_10_12": "探讨：如果全班同学都和你一模一样——会怎样？引导孩子珍视「不一样」的价值"
-                }
-            ],
-            "parent_tips": "这个章节是一个绝佳的「接纳差异」的教育契机。如果孩子在学校遇到了「和别人不一样」的困扰，可以用老子的话告诉 ta：「天下皆知美之为美，斯恶已」——正因为有不一样，世界才有趣。你不需要和别人一样。",
-            "review_status": "approved",
-            "reviewed_by": "产品经理",
-            "reviewed_at": "2026-05-11"
-        },
-        "3": {
-            "chapter": 3,
-            "title": "不尚贤",
-            "core_idea": "不总说谁最棒，不总说哪个东西最珍贵，不总展示让人眼红的东西，大家就不会争来争去、想偷想抢、心里乱糟糟。肚子吃饱、心里安稳、身体棒棒，生活就自然好了。",
-            "safety_notes": [
-                "避免将'不争'理解为消极退缩或放弃努力，要强调是减少不必要的比较和攀比",
-                "避免将'无知无欲'理解为反对学习知识或追求理想，要解释为不被杂念干扰",
-                "避免用'偷盗'等负面行为直接指责孩子，而是用故事引导理解"
-            ],
-            "interaction_points": [
-                {
-                    "topic": "小动物不争",
-                    "age_4_6": "宝宝，你看小猫咪和小狗一起玩，它们有没有抢着当'最棒的小动物'？它们只是开心地追尾巴。你能学小猫叫一声吗？",
-                    "age_7_9": "如果森林里的小动物都争着当'最厉害'，会发生什么？你觉得它们不争的时候，是不是更快乐？",
-                    "age_10_12": "老子说'不尚贤'，就像森林里没有'最棒动物'的比赛，每个动物都有自己的特点。你觉得自己有什么独特的地方，不需要和别人比？"
-                },
-                {
-                    "topic": "好东西不炫耀",
-                    "age_4_6": "妈妈有一个漂亮的发卡，如果一直拿在手里晃，你会不会也想抢？我们把它放在盒子里，大家都不看，是不是就不想抢了？",
-                    "age_7_9": "如果学校里有同学总炫耀一个新玩具，你会不会也想要？老子说，不把东西说得特别珍贵，大家就不会想去偷。你觉得对吗？",
-                    "age_10_12": "广告里常说'这个最棒'，老子说'不贵难得之货'。你发现广告在做什么了吗？我们怎么不被它牵着走？"
-                },
-                {
-                    "topic": "把智慧带入生活",
-                    "age_4_6": "吃饭时，宝宝可以专心吃，不用看别人碗里有什么。吃饱了，摸摸肚子，开心地笑一笑。",
-                    "age_7_9": "和家人聊聊：家里有没有什么东西，我们觉得特别珍贵，反而让我们不开心？我们可以试试不那么在意它。",
-                    "age_10_12": "这一章的道理很深，不急着全懂。以后遇到'比较'的时候，可以想起老子说的'不尚贤'，慢慢体会。"
-                }
-            ],
-            "parent_tips": "和孩子一起读时，就像在讲一个有趣的寓言。不用急着解释，让孩子先感受故事里的画面。你放松了，孩子也会放松。",
-            "review_status": "pending",
-            "reviewed_by": "",
-            "reviewed_at": ""
-        },
-        "7": {
-            "chapter": 7,
-            "title": "天长地久",
-            "core_idea": "你看天和地，它们不为自己忙活，却一直存在。学它们的样，不争不抢，反而能活得更好。",
-            "safety_notes": [
-                "避免将“无私”解释为否定自我价值，要强调孩子爱自己也是好的",
-                "避免用“不争”来批评孩子争取玩具或表现的行为",
-                "避免让孩子误解为“不保护自己”是危险的"
-            ],
-            "interaction_points": [
-                {
-                    "topic": "天和地像什么",
-                    "age_4_6": "让孩子指指天空和大地，问：天是不是一直在头顶？地是不是一直在脚下？它们像不像一个永远陪着你的大朋友？",
-                    "age_7_9": "问孩子：天和地为什么能一直存在？因为它们不为自己忙活。你觉得它们为谁忙活呢？比如天给我们阳光，地给我们花草。",
-                    "age_10_12": "问孩子：老子说天地不自生，所以长生。你怎么理解“不自生”？可以举例说说天地是怎么为万物服务的吗？"
-                },
-                {
-                    "topic": "不抢反而先",
-                    "age_4_6": "玩排队游戏：让孩子站在后面，然后说“我们让前面的小朋友先走”，结果大家反而让你先走。体验一下不抢的感觉。",
-                    "age_7_9": "问孩子：在班里，如果大家都抢着当班长，可能会吵架。如果一个人不抢，但很热心帮助大家，大家会不会更愿意选他？为什么？",
-                    "age_10_12": "讨论：老子说“后其身而身先”，你觉得生活中哪些例子符合这个道理？比如团队合作中，不抢功的人反而更受尊重。你怎么看？"
-                },
-                {
-                    "topic": "把智慧带入生活",
-                    "age_4_6": "吃饭时，让孩子先帮家人摆碗筷，不抢着吃第一口，然后问：先帮别人，自己是不是更开心？",
-                    "age_7_9": "邀请孩子和父母聊聊：家里有没有谁“不为自己忙活”却让全家更幸福的事？比如妈妈做饭，爸爸修东西。",
-                    "age_10_12": "提醒孩子：本章的智慧可以慢慢体会，不急于做到完美。下次遇到想争的时候，想想天和地，也许会有不同的选择。"
-                }
-            ],
-            "parent_tips": "和孩子一起看看天空和大地吧，不用讲道理，只是静静地感受。",
-            "review_status": "pending",
-            "reviewed_by": "",
-            "reviewed_at": ""
+            ]
         },
         "9": {
             "chapter": 9,
@@ -189,9 +271,29 @@
                 }
             ],
             "parent_tips": "和孩子一起玩‘刚刚好’的游戏吧，比如盛饭、倒水、挑选玩具，让‘知足’变成一种轻松的体验。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T08:58:19.776Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T08:59:28.772Z",
+                    "notes": ""
+                }
+            ]
         },
         "11": {
             "chapter": 11,
@@ -223,9 +325,29 @@
                 }
             ],
             "parent_tips": "和孩子一起发现生活中的“空”吧，就像发现宝藏一样。不必刻意解释，只需在玩的时候轻轻点出：看，这里空空的，真有用呢。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:36:12.226Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:36:57.834Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "12": {
             "chapter": 12,
@@ -257,9 +379,29 @@
                 }
             ],
             "parent_tips": "和孩子一起感受简单的小确幸，比如一起看一朵云、听一阵风，不用刻意说教，陪伴本身就是最好的传递。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:37:26.253Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:37:48.338Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "14": {
             "chapter": 14,
@@ -291,9 +433,29 @@
                 }
             ],
             "parent_tips": "和孩子一起闭上眼睛，感受一下周围的空气，或者彼此拥抱，体会那种看不见但真实存在的温暖。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:37:56.642Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:38:30.766Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "16": {
             "chapter": 16,
@@ -325,9 +487,29 @@
                 }
             ],
             "parent_tips": "共读后，不妨和孩子一起静静地看一棵树、一片云，享受安静的陪伴，让智慧在无声中流淌。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:38:41.126Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:39:10.298Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "22": {
             "chapter": 22,
@@ -359,9 +541,29 @@
                 }
             ],
             "parent_tips": "和孩子一起观察自然，比如风吹草动、水流石转，这些日常中藏着老子的智慧。不用急着讲道理，多让孩子自己发现就好。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:39:18.386Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:39:51.702Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "25": {
             "chapter": 25,
@@ -393,9 +595,29 @@
                 }
             ],
             "parent_tips": "共读后，不妨带孩子去公园坐一会儿，什么都不说，只是静静感受风吹过、树叶摇动——这就是“道法自然”的样子。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:39:55.766Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:40:27.514Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "33": {
             "chapter": 33,
@@ -427,9 +649,29 @@
                 }
             ],
             "parent_tips": "和孩子一起照镜子，做鬼脸，聊聊镜子里外的人。轻松一笑中，孩子就懂了‘自知’。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:40:32.126Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:41:34.823Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "38": {
             "chapter": 38,
@@ -438,7 +680,7 @@
             "safety_notes": [
                 "避免说'你这样做就不是真善良'，不要评判孩子的行为是否真心。",
                 "不要用'虚伪'、'假装'等词评价他人，以免引发孩子对人际关系的焦虑。",
-                "避免将'不讲礼貌'等同于'有德'，要明确自然的好品德和故意不守规则的区别。"
+                "当孩子描述淘气、犯错或不听话的行为时，不要将其美化为'返璞归真'或'顺应自然'。可以用平常心回应孩子的情绪，但不将这些行为与《道德经》中的'无为'、'有德'等概念相关联。保持对行为的客观态度，不做道德评判。"
             ],
             "interaction_points": [
                 {
@@ -461,9 +703,29 @@
                 }
             ],
             "parent_tips": "亲爱的，和孩子一起读这一章时，不妨也问问自己：我有没有为了显得有德而刻意做什么？放下评判，和孩子一起享受那种自然的善良吧。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:41:43.717Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T10:59:33.360Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "42": {
             "chapter": 42,
@@ -495,9 +757,29 @@
                 }
             ],
             "parent_tips": "和孩子一起观察大自然吧，比如看云从一朵变成一片，或者数数一颗豆子长出几片叶子。不用解释太多，让孩子自己发现‘从少变多’的奇妙。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T10:59:42.754Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:00:31.790Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "44": {
             "chapter": 44,
@@ -529,9 +811,29 @@
                 }
             ],
             "parent_tips": "和孩子一起感受‘够了’的轻松，比如吃完最后一口就开心地放下碗。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:00:34.973Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:01:27.227Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "48": {
             "chapter": 48,
@@ -563,9 +865,29 @@
                 }
             ],
             "parent_tips": "共读时，不妨先放下“教”的念头，和孩子一起像发现新大陆一样聊聊“少”的好处。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:01:32.982Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:02:36.330Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "55": {
             "chapter": 55,
@@ -597,9 +919,29 @@
                 }
             ],
             "parent_tips": "共读时，可以轻轻握住孩子的手，感受那份柔软和力量。不用解释太多，一起模仿婴儿的呼吸和笑声，就是最好的体验。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:02:39.606Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:03:27.522Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "63": {
             "chapter": 63,
@@ -631,9 +973,29 @@
                 }
             ],
             "parent_tips": "和孩子一起读的时候，不妨用积木或乐高做个游戏：搭一个作品，然后拆成小块，再一起重建。你会发现，孩子自己就懂了。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:04:04.221Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:05:01.730Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "67": {
             "chapter": 67,
@@ -665,9 +1027,29 @@
                 }
             ],
             "parent_tips": "和孩子一起找找生活中的'三宝'：一个拥抱（慈）、一次节约（俭）、一次谦让（不争先）。你也会发现自己的'三宝'哦。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:05:05.994Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:08:00.182Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "71": {
             "chapter": 71,
@@ -699,9 +1081,29 @@
                 }
             ],
             "parent_tips": "当孩子说‘我不知道’时，给他一个温暖的微笑。这句话不是终点，而是探索的起点。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:08:04.062Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:09:00.838Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "78": {
             "chapter": 78,
@@ -733,9 +1135,29 @@
                 }
             ],
             "parent_tips": "和孩子一起玩水的时候，可以轻轻说：‘水很温柔，但它很有力量。’不用讲道理，孩子会自己感受到。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:09:03.601Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:19:16.119Z",
+                    "notes": "何继杰"
+                }
+            ]
         },
         "81": {
             "chapter": 81,
@@ -768,11 +1190,31 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，可以轻轻地说：'有时候真话像柠檬，酸酸的但对身体好。' 不用急着讲道理，让孩子在故事和游戏中自己感受。",
-            "review_status": "pending",
+            "review_status": "approved",
             "reviewed_by": "",
-            "reviewed_at": ""
+            "reviewed_at": "2026-05-12",
+            "review_history": [
+                {
+                    "action": "created",
+                    "by": "extract_meta.py",
+                    "at": "2026-05-12T00:00:00Z",
+                    "notes": "AI generated - awaiting review"
+                },
+                {
+                    "action": "reviewing",
+                    "by": "admin",
+                    "at": "2026-05-12T11:19:19.394Z",
+                    "notes": ""
+                },
+                {
+                    "action": "approved",
+                    "by": "admin",
+                    "at": "2026-05-12T11:22:11.963Z",
+                    "notes": "何继杰"
+                }
+            ]
         }
     },
-    "_version": "1.0",
+    "_version": "1.1",
     "_updated": "2026-05-12"
 }

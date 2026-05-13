@@ -38,5 +38,8 @@ nul
 scripts/test-write.txt
 scripts/test-py-write.txt
 
+# 数据备份（不入库）
+data/*_backup.json
+
 # GA 子模块（不入库）
 docs/GA评估资料/GenericAgent/

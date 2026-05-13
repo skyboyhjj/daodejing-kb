@@ -35,6 +35,85 @@ try {
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || '';
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'huihui-admin-local';
+
+// ===== 元数据存储 =====
+// ⚠️ 元数据 CRUD 逻辑的规范定义在 api/_shared/metadata-store.js
+// 修改逻辑时请更新该文件，此处为本地开发便利保留副本
+function loadMetadataStore() {
+    try {
+        var metaPath = path.join(__dirname, 'data', 'family_metadata.json');
+        return JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+    } catch (e) {
+        console.error('[metadata] 加载失败:', e.message);
+        return null;
+    }
+}
+
+function saveMetadataStore(data) {
+    try {
+        var metaPath = path.join(__dirname, 'data', 'family_metadata.json');
+        data._updated = new Date().toISOString().split('T')[0];
+        fs.writeFileSync(metaPath, JSON.stringify(data, null, 4) + '\n', 'utf8');
+        return true;
+    } catch (e) {
+        console.error('[metadata] 保存失败:', e.message);
+        return false;
+    }
+}
+
+var VALID_TRANSITIONS = {
+    'pending': ['reviewing'],
+    'reviewing': ['approved', 'revision_needed', 'pending'],
+    'revision_needed': ['reviewing'],
+    'approved': ['revision_needed']
+};
+
+function validateTransition(from, to) {
+    var allowed = VALID_TRANSITIONS[from];
+    return allowed && allowed.indexOf(to) !== -1;
+}
+
+function appendHistory(chapterMeta, action, by, notes) {
+    if (!chapterMeta.review_history) chapterMeta.review_history = [];
+    chapterMeta.review_history.push({
+        action: action,
+        by: by,
+        at: new Date().toISOString(),
+        notes: notes || ''
+    });
+    return chapterMeta;
+}
+
+function checkAdminAuth(req) {
+    var authHeader = req.headers['authorization'] || '';
+    if (authHeader.startsWith('Bearer ')) {
+        var token = authHeader.slice(7);
+        return token === ADMIN_TOKEN;
+    }
+    return false;
+}
+
+function sendJSON(res, status, data) {
+    res.writeHead(status, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+    });
+    res.end(JSON.stringify(data));
+}
+
+function parseBody(req, callback) {
+    var chunks = [];
+    req.on('data', function (c) { chunks.push(c); });
+    req.on('end', function () {
+        try {
+            var body = JSON.parse(Buffer.concat(chunks).toString());
+            callback(null, body);
+        } catch (e) {
+            callback(e, null);
+        }
+    });
+}
 
 // ===== System Prompt =====
 // ⚠️ buildSystemPrompt 的规范定义在 api/_shared/system-prompt.js
@@ -566,6 +645,227 @@ function handleFamilyChatAPI(req, res) {
     });
 }
 
+// ===== GET /api/metadata/stats — 聚合统计 =====
+function handleMetadataStats(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    var metadata = loadMetadataStore();
+    if (!metadata || !metadata.chapters) {
+        sendJSON(res, 500, { error: '元数据加载失败' });
+        return;
+    }
+    var chapters = metadata.chapters;
+    var stats = { total: 0, approved: 0, pending: 0, reviewing: 0, revision_needed: 0, by_reviewer: {}, _updated: metadata._updated || '', _version: metadata._version || '' };
+    var keys = Object.keys(chapters);
+    for (var i = 0; i < keys.length; i++) {
+        var ch = chapters[keys[i]];
+        stats.total++;
+        var s = ch.review_status || 'pending';
+        if (s === 'approved') stats.approved++;
+        else if (s === 'pending') stats.pending++;
+        else if (s === 'reviewing') stats.reviewing++;
+        else if (s === 'revision_needed') stats.revision_needed++;
+        var rb = ch.reviewed_by;
+        if (rb) stats.by_reviewer[rb] = (stats.by_reviewer[rb] || 0) + 1;
+    }
+    sendJSON(res, 200, stats);
+}
+
+// ===== /api/family_progress — 学习进度同步（Phase 2 预留，暂未实现） =====
+function handleFamilyProgressAPI(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    // TODO(Phase 2): 实现用户学习进度的服务端持久化
+    // - POST /api/family_progress → 保存进度（body: { mode, age, currentChapter, completedChapters, ... }）
+    // - GET /api/family_progress  → 读取进度（query: ?user_id=xxx）
+    sendJSON(res, 501, { error: '学习进度同步功能尚未实现，当前使用 localStorage 本地存储。See TODO: server.js handleFamilyProgressAPI' });
+}
+
+// ===== GET /api/metadata — 章节列表 / 详情 =====
+function handleMetadataList(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    var url = new URL(req.url, 'http://localhost:' + PORT);
+    var chapterParam = url.searchParams.get('chapter');
+    var statusParam = url.searchParams.get('status');
+    var searchParam = url.searchParams.get('search');
+
+    // 单章详情
+    if (chapterParam) {
+        var metadata = loadMetadataStore();
+        var ch = (metadata && metadata.chapters) ? metadata.chapters[chapterParam] : null;
+        if (!ch) {
+            sendJSON(res, 404, { error: '未找到第 ' + chapterParam + ' 章的元数据' });
+            return;
+        }
+        sendJSON(res, 200, ch);
+        return;
+    }
+
+    // 列表
+    var metadata = loadMetadataStore();
+    if (!metadata || !metadata.chapters) {
+        sendJSON(res, 500, { error: '元数据加载失败' });
+        return;
+    }
+    var allChapters = metadata.chapters;
+    var keys = Object.keys(allChapters).sort(function (a, b) { return parseInt(a) - parseInt(b); });
+    var result = [];
+    for (var i = 0; i < keys.length; i++) {
+        var ch = allChapters[keys[i]];
+        // 状态筛选
+        if (statusParam && ch.review_status !== statusParam) continue;
+        // 模糊搜索
+        if (searchParam) {
+            var sl = searchParam.toLowerCase();
+            var tMatch = ch.title && ch.title.toLowerCase().indexOf(sl) !== -1;
+            var cMatch = ch.core_idea && ch.core_idea.toLowerCase().indexOf(sl) !== -1;
+            if (!tMatch && !cMatch) continue;
+        }
+        result.push({
+            chapter: parseInt(keys[i]),
+            title: ch.title || '',
+            core_idea: (ch.core_idea || '').substring(0, 80),
+            review_status: ch.review_status || 'pending',
+            reviewed_by: ch.reviewed_by || '',
+            reviewed_at: ch.reviewed_at || '',
+            safety_notes_count: (ch.safety_notes || []).length,
+            interaction_points_count: (ch.interaction_points || []).length
+        });
+    }
+    sendJSON(res, 200, { total: result.length, chapters: result });
+}
+
+// ===== PUT /api/metadata — 更新章节 =====
+function handleMetadataUpdate(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (req.method !== 'PUT') {
+        sendJSON(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权，请提供有效的 ADMIN_TOKEN' });
+        return;
+    }
+    parseBody(req, function (err, body) {
+        if (err) {
+            sendJSON(res, 400, { error: '请求格式错误: ' + err.message });
+            return;
+        }
+        var chapterNum = body.chapter;
+        var updates = body.updates || {};
+        if (!chapterNum) {
+            sendJSON(res, 400, { error: '缺少必填字段: chapter' });
+            return;
+        }
+        var metadata = loadMetadataStore();
+        if (!metadata || !metadata.chapters) {
+            sendJSON(res, 500, { error: '元数据加载失败' });
+            return;
+        }
+        var key = String(chapterNum);
+        var chapter = metadata.chapters[key];
+        if (!chapter) {
+            sendJSON(res, 404, { error: '未找到第 ' + chapterNum + ' 章的元数据' });
+            return;
+        }
+        var operatorBy = body.operator_by || 'admin';
+
+        // 状态转换
+        if (updates.review_status) {
+            var fromStatus = chapter.review_status || 'pending';
+            var toStatus = updates.review_status;
+            if (fromStatus !== toStatus) {
+                if (!validateTransition(fromStatus, toStatus)) {
+                    sendJSON(res, 400, { error: '不允许的状态转换: ' + fromStatus + ' → ' + toStatus });
+                    return;
+                }
+                // 锁定检查
+                if (fromStatus === 'reviewing' && chapter.reviewed_by && chapter.reviewed_by !== operatorBy) {
+                    sendJSON(res, 423, { error: '该章节正由 ' + chapter.reviewed_by + ' 审核中' });
+                    return;
+                }
+                if (toStatus === 'reviewing') {
+                    chapter.reviewed_by = operatorBy;
+                }
+                if (toStatus === 'approved' || toStatus === 'revision_needed') {
+                    chapter.reviewed_by = '';
+                }
+                appendHistory(chapter, toStatus, operatorBy, updates.review_notes || '');
+                chapter.reviewed_at = new Date().toISOString().split('T')[0];
+            }
+            chapter.review_status = toStatus;
+        }
+
+        // 更新字段
+        var fields = ['title', 'core_idea', 'safety_notes', 'interaction_points', 'parent_tips', 'reviewed_by', 'reviewed_at'];
+        var hasContentEdit = false;
+        for (var i = 0; i < fields.length; i++) {
+            var f = fields[i];
+            if (updates[f] !== undefined) {
+                chapter[f] = updates[f];
+                hasContentEdit = true;
+            }
+        }
+        if (hasContentEdit && !updates.review_status) {
+            appendHistory(chapter, 'updated', operatorBy, updates.review_notes || 'Content edited');
+        }
+
+        if (!saveMetadataStore(metadata)) {
+            sendJSON(res, 500, { error: '保存失败' });
+            return;
+        }
+        sendJSON(res, 200, { ok: true, chapter: chapter });
+    });
+}
+
+// ===== DELETE /api/metadata — 删除章节 =====
+function handleMetadataDelete(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (req.method !== 'DELETE') {
+        sendJSON(res, 405, { error: 'Method not allowed' });
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    var url = new URL(req.url, 'http://localhost:' + PORT);
+    var chapterParam = url.searchParams.get('chapter');
+    if (!chapterParam) {
+        sendJSON(res, 400, { error: '缺少参数: chapter' });
+        return;
+    }
+    var metadata = loadMetadataStore();
+    if (!metadata || !metadata.chapters) {
+        sendJSON(res, 500, { error: '元数据加载失败' });
+        return;
+    }
+    var key = String(chapterParam);
+    if (!metadata.chapters[key]) {
+        sendJSON(res, 404, { error: '未找到第 ' + chapterParam + ' 章的元数据' });
+        return;
+    }
+    delete metadata.chapters[key];
+    if (!saveMetadataStore(metadata)) {
+        sendJSON(res, 500, { error: '保存失败' });
+        return;
+    }
+    sendJSON(res, 200, { ok: true, deleted: parseInt(chapterParam) });
+}
+
 // ===== 创建 HTTP 服务器 =====
 var server = http.createServer(function (req, res) {
     var url = new URL(req.url, 'http://localhost:' + PORT);
@@ -580,6 +880,34 @@ var server = http.createServer(function (req, res) {
     // /api/family_chat → 亲子对话
     if (pathname === '/api/family_chat') {
         handleFamilyChatAPI(req, res);
+        return;
+    }
+
+    // /api/family_progress → 学习进度同步（Phase 2 预留）
+    if (pathname === '/api/family_progress') {
+        handleFamilyProgressAPI(req, res);
+        return;
+    }
+
+    // /api/metadata/stats → 聚合统计
+    if (pathname === '/api/metadata/stats') {
+        handleMetadataStats(req, res);
+        return;
+    }
+
+    // /api/metadata → 列表/详情/更新/删除
+    if (pathname === '/api/metadata') {
+        if (req.method === 'GET') {
+            handleMetadataList(req, res);
+        } else if (req.method === 'PUT') {
+            handleMetadataUpdate(req, res);
+        } else if (req.method === 'DELETE') {
+            handleMetadataDelete(req, res);
+        } else if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+        } else {
+            sendJSON(res, 405, { error: 'Method not allowed' });
+        }
         return;
     }
 

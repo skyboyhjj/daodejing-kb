@@ -14,6 +14,13 @@
     <!-- ═══════ 顶部导航 ═══════ -->
     <nav class="family-nav">
         <a href="index.html" class="family-nav-back">&larr; 返回首页</a>
+
+        <!-- P2 新增：学习模式切换 -->
+        <div class="family-nav-mode-switch" id="mode-switch">
+            <button class="mode-segment active" data-mode="continuous">⏯ 连续学习</button>
+            <button class="mode-segment" data-mode="free">🔍 自由探索</button>
+        </div>
+
         <span class="family-nav-title">🌿 亲子时光 · 慧惠陪你读《道德经》</span>
     </nav>
 
@@ -36,6 +43,15 @@
                 </div>
             </div>
 
+            <!-- P2 新增：恢复提示（默认隐藏） -->
+            <div class="resume-prompt" id="resume-prompt" style="display:none;">
+                <div class="resume-prompt-title" id="resume-text"></div>
+                <div class="resume-prompt-actions">
+                    <button class="resume-btn" id="resume-continue-btn">🚀 继续学习</button>
+                    <button class="resume-btn resume-btn-secondary" id="resume-reset-btn">🔄 重新开始</button>
+                </div>
+            </div>
+
             <!-- 欢迎消息（JS 动态填充） -->
             <div class="huihui-message" id="welcome-message"></div>
 
@@ -45,6 +61,25 @@
                 <button class="age-btn" data-age="7-9">7 - 9 岁</button>
                 <button class="age-btn" data-age="10-12">10 - 12 岁</button>
             </div>
+
+            <!-- P2 新增：章节号输入（自由探索模式，默认隐藏） -->
+            <div class="chapter-input-area" id="chapter-input-area" style="display:none;">
+                <label class="chapter-input-label">📖 输入你想学的章节号（1 - 81）</label>
+                <div class="chapter-input-row">
+                    <input type="number" id="chapter-num-input" class="chapter-num-input" min="1" max="81"
+                        placeholder="章节号">
+                    <button id="chapter-input-btn" class="send-btn" style="min-height:44px;">开始学习</button>
+                </div>
+                <button class="browse-all-btn" id="browse-all-btn">📋 浏览全部 81 章 ▼</button>
+            </div>
+        </div>
+
+        <!-- P2 新增：进度条（连续学习模式，默认隐藏） -->
+        <div class="chapter-progress" id="chapter-progress" style="display:none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width:0%;"></div>
+            </div>
+            <div class="progress-text" id="progress-text"></div>
         </div>
 
         <!-- 对话区 -->

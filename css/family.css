@@ -68,6 +68,36 @@ body {
     letter-spacing: 1px;
 }
 
+/* ===== P2 新增：导航栏模式切换 ===== */
+.family-nav-mode-switch {
+    display: flex;
+    border-radius: var(--family-radius-sm);
+    border: 1px solid var(--family-border);
+    overflow: hidden;
+    margin: 0 4px;
+}
+
+.mode-segment {
+    padding: 6px 14px;
+    font-size: 0.83em;
+    font-family: var(--family-font);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--family-text-light);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.mode-segment:hover {
+    background: rgba(46, 95, 95, 0.06);
+}
+
+.mode-segment.active {
+    background: var(--family-accent);
+    color: #faf8f0;
+}
+
 /* ----- 主内容区 ----- */
 .family-main {
     flex: 1;
@@ -198,6 +228,149 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+}
+
+/* ===== P2 新增：恢复提示 ===== */
+.resume-prompt {
+    max-width: 460px;
+    margin: 0 auto 20px;
+    padding: 24px 20px;
+    background: rgba(46, 95, 95, 0.04);
+    border: 1px solid var(--family-border);
+    border-radius: var(--family-radius);
+    text-align: center;
+}
+
+.resume-prompt-title {
+    font-size: 1em;
+    color: var(--family-text);
+    margin-bottom: 18px;
+    line-height: 1.8;
+}
+
+.resume-prompt-title strong {
+    color: var(--family-accent);
+    font-weight: 600;
+}
+
+.resume-prompt-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resume-btn {
+    padding: 12px 28px;
+    font-size: 0.95em;
+    font-family: var(--family-font);
+    font-weight: 600;
+    color: #faf8f0;
+    background: var(--family-accent);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.25s;
+    min-height: 44px;
+}
+
+.resume-btn:hover {
+    background: #1d4a4a;
+    transform: translateY(-1px);
+}
+
+.resume-btn-secondary {
+    background: transparent;
+    color: var(--family-accent);
+    border: 1px solid var(--family-border);
+}
+
+.resume-btn-secondary:hover {
+    background: rgba(46, 95, 95, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ===== P2 新增：章节号输入 ===== */
+.chapter-input-area {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.chapter-input-label {
+    display: block;
+    font-size: 0.95em;
+    color: var(--family-text-light);
+    margin-bottom: 12px;
+}
+
+.chapter-input-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.chapter-num-input {
+    width: 100px;
+    padding: 12px 16px;
+    font-size: 1em;
+    font-family: var(--family-font);
+    color: var(--family-text);
+    background: #fff;
+    border: 1.5px solid var(--family-border);
+    border-radius: var(--family-radius-sm);
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.chapter-num-input:focus {
+    border-color: var(--family-accent);
+}
+
+.browse-all-btn {
+    padding: 8px 18px;
+    font-size: 0.85em;
+    font-family: var(--family-font);
+    color: var(--family-accent);
+    background: transparent;
+    border: 1px solid var(--family-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.browse-all-btn:hover {
+    background: rgba(46, 95, 95, 0.08);
+    border-color: var(--family-accent);
+}
+
+/* ===== P2 新增：进度条 ===== */
+.chapter-progress {
+    padding: 8px 0 4px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--family-border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--family-accent);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    min-width: 0;
+}
+
+.progress-text {
+    font-size: 0.8em;
+    color: var(--family-text-light);
+    margin-top: 4px;
+    text-align: center;
 }
 
 /* ============================================================
@@ -416,6 +589,117 @@ body {
     color: var(--family-accent);
 }
 
+/* ===== P2 新增：81 章网格选择器 ===== */
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.theme-group {
+    margin-bottom: 16px;
+}
+
+.theme-group-title {
+    font-size: 0.85em;
+    color: var(--family-accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding-left: 2px;
+}
+
+.chapter-mini-card {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--family-accent);
+    background: rgba(250, 248, 240, 0.8);
+    border: 1.5px solid var(--family-border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.chapter-mini-card:hover {
+    border-color: var(--family-accent);
+    background: rgba(46, 95, 95, 0.08);
+    transform: translateY(-1px);
+}
+
+.chapter-mini-card .mini-num {
+    line-height: 1;
+}
+
+.chapter-mini-card .mini-check {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 0.7em;
+    color: #5a8a7a;
+    background: #e8f5e9;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.chapter-mini-card .mini-lock {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    font-size: 0.6em;
+}
+
+.chapter-mini-card.done {
+    border-color: #5a8a7a;
+    background: #e8f5e9;
+}
+
+.chapter-mini-card.locked {
+    border-color: #d4c9a8;
+    background: rgba(212, 201, 168, 0.15);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.chapter-mini-card.locked:hover {
+    border-color: #c0a870;
+    opacity: 1;
+}
+
+/* ===== P2 新增：未审核章卡片 ===== */
+.unapproved-card {
+    border-color: #d4c9a8;
+    background: rgba(212, 201, 168, 0.08);
+}
+
+.unapproved-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 18px;
+    font-size: 0.88em;
+    color: var(--family-accent);
+    text-decoration: none;
+    border: 1px solid var(--family-border);
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.unapproved-link:hover {
+    background: rgba(46, 95, 95, 0.08);
+    border-color: var(--family-accent);
+    text-decoration: none;
+}
+
 /* ============================================================
    输入区
    ============================================================ */
@@ -620,5 +904,89 @@ body {
         flex: 1;
         text-align: center;
         min-height: 44px;
+    }
+
+    /* ===== P2 移动端：模式切换 ===== */
+    .family-nav-mode-switch {
+        margin: 0 2px;
+    }
+
+    .mode-segment {
+        padding: 6px 10px;
+        font-size: 0.78em;
+    }
+
+    /* ===== P2 移动端：恢复提示 ===== */
+    .resume-prompt {
+        max-width: none;
+        padding: 18px 14px;
+        margin: 0 8px 16px;
+    }
+
+    .resume-prompt-title {
+        font-size: 0.93em;
+    }
+
+    .resume-prompt-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .resume-btn {
+        padding: 14px;
+        text-align: center;
+        font-size: 0.93em;
+    }
+
+    /* ===== P2 移动端：章节号输入 ===== */
+    .chapter-input-area {
+        padding: 0 8px;
+    }
+
+    .chapter-input-label {
+        font-size: 0.9em;
+    }
+
+    .chapter-input-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .chapter-num-input {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    /* ===== P2 移动端：进度条 ===== */
+    .chapter-progress {
+        padding: 6px 8px 2px;
+    }
+
+    .progress-text {
+        font-size: 0.75em;
+    }
+
+    /* ===== P2 移动端：81 章网格 ===== */
+    .chapter-grid {
+        grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+        gap: 5px;
+    }
+
+    .chapter-mini-card {
+        width: 42px;
+        height: 42px;
+        font-size: 0.8em;
+    }
+
+    .theme-group-title {
+        font-size: 0.8em;
+    }
+
+    /* ===== P2 移动端：未审核卡片链接 ===== */
+    .unapproved-link {
+        padding: 10px 16px;
+        font-size: 0.85em;
+        display: block;
+        text-align: center;
     }
 }
