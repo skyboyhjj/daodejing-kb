@@ -10,6 +10,10 @@
   python scripts/extract_meta.py --chapter 8
   python scripts/extract_meta.py -c 8
 
+  # 全量模式（全部 81 章，自动跳过已有章节）
+  python scripts/extract_meta.py --all
+  python scripts/extract_meta.py -a
+
   # 批量模式（20 章核心章节）
   python scripts/extract_meta.py --batch
   python scripts/extract_meta.py -b
@@ -268,7 +272,8 @@ def parse_metadata_response(response_text, chapter_num):
     json_text = response_text.strip()
 
     # 尝试匹配 ```json ... ``` 包裹的情况
-    code_block_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?```', json_text, re.DOTALL)
+    code_block_match = re.search(
+        r'```(?:json)?\s*\n?(.*?)\n?```', json_text, re.DOTALL)
     if code_block_match:
         json_text = code_block_match.group(1).strip()
 
@@ -280,7 +285,8 @@ def parse_metadata_response(response_text, chapter_num):
         return None
 
     # 验证必填字段
-    required = ['chapter', 'title', 'core_idea', 'safety_notes', 'interaction_points', 'parent_tips']
+    required = ['chapter', 'title', 'core_idea',
+                'safety_notes', 'interaction_points', 'parent_tips']
     for field in required:
         if field not in meta:
             print(f'  缺少必填字段: {field}')
@@ -296,7 +302,8 @@ def parse_metadata_response(response_text, chapter_num):
 
     # 验证 interaction_points
     if not meta['interaction_points'] or len(meta['interaction_points']) < 2:
-        print(f'  互动话题数量不足（至少需要 2 个，当前: {len(meta.get("interaction_points", []))}）')
+        print(
+            f'  互动话题数量不足（至少需要 2 个，当前: {len(meta.get("interaction_points", []))}）')
         return None
 
     for i, pt in enumerate(meta['interaction_points']):
@@ -371,6 +378,7 @@ def main():
 示例:
   python extract_meta.py --chapter 8      # 单章测试
   python extract_meta.py --batch           # 批量处理 20 章核心章节
+  python extract_meta.py --all             # 全量 81 章
   python extract_meta.py -c 3,7,9          # 自定义章节列表
         """
     )
@@ -380,6 +388,8 @@ def main():
                         help='批量模式，处理 20 章核心章节')
     parser.add_argument('--chapters', type=str,
                         help='自定义章节号列表（逗号分隔）')
+    parser.add_argument('-a', '--all', action='store_true',
+                        help='全量模式，处理全部 81 章（已有元数据的章节自动跳过）')
     args = parser.parse_args()
 
     # 加载 API Key
@@ -394,14 +404,19 @@ def main():
     if args.batch:
         chapter_list = CORE_CHAPTERS
         print(f'批量模式: 将处理 {len(chapter_list)} 章核心章节')
+    elif args.all:
+        chapter_list = list(range(1, 82))
+        print(f'全量模式: 将处理全部 81 章（已有元数据的章节自动跳过）')
     elif args.chapter:
         # 支持单章或逗号分隔列表
         if ',' in args.chapter:
-            chapter_list = [int(c.strip()) for c in args.chapter.split(',') if c.strip()]
+            chapter_list = [int(c.strip())
+                            for c in args.chapter.split(',') if c.strip()]
         else:
             chapter_list = [int(args.chapter)]
     elif args.chapters:
-        chapter_list = [int(c.strip()) for c in args.chapters.split(',') if c.strip()]
+        chapter_list = [int(c.strip())
+                        for c in args.chapters.split(',') if c.strip()]
     else:
         parser.print_help()
         print('\n提示: 请使用 --chapter 或 --batch 参数指定要处理的章节。')
@@ -477,11 +492,6 @@ def main():
     print(f'元数据总计: {total} 章（已审核: {approved}, 待审核: {pending}）')
     print(f'输出文件: {METADATA_FILE}')
     print('\n[!] 所有新生成的元数据 review_status 均为 "pending"，需要人工审核后才能在生产环境使用。')
-    print('审核流程: 检视 core_idea → 验证 safety_notes → 评估 interaction_points → 修改 review_status 为 "approved"')
-
-
-if __name__ == '__main__':
-    main()
     print('审核流程: 检视 core_idea → 验证 safety_notes → 评估 interaction_points → 修改 review_status 为 "approved"')
 
 
