@@ -10,6 +10,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+// ===== 后台任务系统 =====
+const taskManager = require('./api/_shared/task-manager');
+// metadata-reviser 的 AI 修订功能已解耦为独立服务（scripts/reviser-service.js）
+// 任务处理器通过 HTTP 调用修订服务，仅同步/暂存区管理保留本地调用
+const metaReviser = require('./api/_shared/metadata-reviser');
+const REVISER_PORT = parseInt(process.env.REVISER_PORT || '8081', 10);
+
 // ===== 自动加载 .env 文件 =====
 try {
     var envFile = path.join(__dirname, '.env');
@@ -74,14 +81,21 @@ function validateTransition(from, to) {
     return allowed && allowed.indexOf(to) !== -1;
 }
 
-function appendHistory(chapterMeta, action, by, notes) {
+function appendHistory(chapterMeta, action, by, notes, revisions, contentSnapshot) {
     if (!chapterMeta.review_history) chapterMeta.review_history = [];
-    chapterMeta.review_history.push({
+    var entry = {
         action: action,
         by: by,
         at: new Date().toISOString(),
         notes: notes || ''
-    });
+    };
+    if (revisions) {
+        entry.revisions = revisions;
+    }
+    if (contentSnapshot) {
+        entry.content_snapshot = contentSnapshot;
+    }
+    chapterMeta.review_history.push(entry);
     return chapterMeta;
 }
 
@@ -800,10 +814,48 @@ function handleMetadataUpdate(req, res) {
                 if (toStatus === 'approved' || toStatus === 'revision_needed') {
                     chapter.reviewed_by = '';
                 }
-                appendHistory(chapter, toStatus, operatorBy, updates.review_notes || '');
+
+                // 关键状态转换时保存内容快照
+                var notes = updates.review_notes || '';
+                var revisions = updates.revisions || null;
+                var snapshot = null;
+                if (toStatus === 'revision_needed' || toStatus === 'approved') {
+                    snapshot = {
+                        core_idea: chapter.core_idea || '',
+                        safety_notes: (chapter.safety_notes || []).slice(),
+                        interaction_points: (chapter.interaction_points || []).slice(),
+                        parent_tips: chapter.parent_tips || ''
+                    };
+                }
+                if (toStatus === 'reviewing') {
+                    notes = notes || '开始审核';
+                }
+                appendHistory(chapter, toStatus, operatorBy, notes, revisions, snapshot);
                 chapter.reviewed_at = new Date().toISOString().split('T')[0];
             }
             chapter.review_status = toStatus;
+
+            // ═══ 自动化：revision_needed → 触发 AI 修订任务 ═══
+            if (toStatus === 'revision_needed' && revisions) {
+                var hasActionableRevisions = false;
+                var revFields = ['core_idea', 'safety_notes', 'interaction_points', 'parent_tips'];
+                for (var r = 0; r < revFields.length; r++) {
+                    var rf = revisions[revFields[r]];
+                    if (rf && rf.needs_change) { hasActionableRevisions = true; break; }
+                }
+                if (!hasActionableRevisions && revisions.general && revisions.general.notes) {
+                    hasActionableRevisions = true;
+                }
+                if (hasActionableRevisions) {
+                    var taskId = taskManager.enqueue(
+                        taskManager.TASK_TYPES.META_REVISE,
+                        chapterNum,
+                        {},
+                        { triggeredBy: operatorBy || 'admin', priority: 5 }
+                    );
+                    console.log('[auto-revise] 已触发第 ' + chapterNum + ' 章 AI 修订任务: ' + taskId);
+                }
+            }
         }
 
         // 更新字段
@@ -866,6 +918,256 @@ function handleMetadataDelete(req, res) {
     sendJSON(res, 200, { ok: true, deleted: parseInt(chapterParam) });
 }
 
+// ===== POST /api/metadata/sync — 同步暂存区 → 生产 =====
+function handleMetadataSync(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    parseBody(req, function (err, body) {
+        if (err) {
+            sendJSON(res, 400, { error: '请求格式错误' });
+            return;
+        }
+        var chapterList = body.chapters || null;
+        var reviser = require('./api/_shared/metadata-reviser');
+        var result = reviser.syncStagingToProduction(chapterList);
+        if (result.ok) {
+            sendJSON(res, 200, result);
+        } else {
+            sendJSON(res, 400, result);
+        }
+    });
+}
+
+// ===== GET /api/metadata/staging — 查看暂存区 =====
+function handleMetadataStaging(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    var reviser = require('./api/_shared/metadata-reviser');
+    var staging = reviser.getStagingData();
+    var url = new URL(req.url, 'http://localhost:' + PORT);
+    var chapterParam = url.searchParams.get('chapter');
+
+    // 详情模式：查询单个章节的完整暂存数据
+    if (chapterParam) {
+        var chapterKey = String(parseInt(chapterParam));
+        var chapterData = staging.chapters && staging.chapters[chapterKey];
+        if (!chapterData) {
+            sendJSON(res, 404, { error: '暂存区中无此章节: ' + chapterParam });
+            return;
+        }
+        sendJSON(res, 200, chapterData);
+        return;
+    }
+
+    // 列表模式：返回摘要
+    var keys = Object.keys(staging.chapters || {});
+    var items = keys.map(function (k) {
+        var ch = staging.chapters[k];
+        return {
+            chapter: ch.chapter,
+            title: ch.title || '',
+            core_idea_preview: (ch.core_idea || '').substring(0, 60),
+            _staged_at: ch._staged_at || '',
+            _staged_model: ch._staged_model || '',
+            _production_status: ch._production_status || 'unknown'
+        };
+    });
+    sendJSON(res, 200, {
+        total: keys.length,
+        chapters: keys.map(function (k) { return parseInt(k); }),
+        _items: items,
+        _updated: staging._updated || '',
+        _description: staging._description || ''
+    });
+}
+
+// ===== DELETE /api/metadata/staging — 删除暂存章节 =====
+function handleMetadataStagingDelete(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    var url = new URL(req.url, 'http://localhost:' + PORT);
+    var chapterParam = url.searchParams.get('chapter');
+    if (!chapterParam) {
+        sendJSON(res, 400, { error: '缺少参数: chapter' });
+        return;
+    }
+    var reviser = require('./api/_shared/metadata-reviser');
+    var result = reviser.removeFromStaging(parseInt(chapterParam));
+    if (result.ok) {
+        sendJSON(res, 200, result);
+    } else {
+        sendJSON(res, 404, result);
+    }
+}
+
+// ===== POST /api/tasks — 创建后台任务 =====
+function handleTaskCreate(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    parseBody(req, function (err, body) {
+        if (err) {
+            sendJSON(res, 400, { error: '请求格式错误: ' + err.message });
+            return;
+        }
+        var taskType = body.type;
+        var chapterNum = body.chapter;
+        var params = body.params || {};
+        var opts = body.opts || {};
+
+        if (!taskType) {
+            sendJSON(res, 400, { error: '缺少必填字段: type' });
+            return;
+        }
+        if (!chapterNum && taskType !== 'batch_generate') {
+            sendJSON(res, 400, { error: '缺少必填字段: chapter' });
+            return;
+        }
+
+        // 验证任务类型
+        var validTypes = ['meta_revise', 'meta_generate', 'batch_generate', 'chapter_audit'];
+        if (validTypes.indexOf(taskType) === -1) {
+            sendJSON(res, 400, { error: '不支持的任务类型: ' + taskType + '。支持: ' + validTypes.join(', ') });
+            return;
+        }
+
+        var taskId;
+        if (taskType === 'batch_generate' && body.chapters && Array.isArray(body.chapters)) {
+            // 批量任务：创建一个父任务 + 多个子任务
+            taskId = taskManager.enqueue(taskManager.TASK_TYPES.BATCH_GENERATE, 0, {
+                chapters: body.chapters,
+                params: params
+            }, {
+                triggeredBy: body.triggered_by || 'admin',
+                priority: opts.priority || 0
+            });
+
+            // 为每个章节创建子任务
+            body.chapters.forEach(function (ch) {
+                var subId = taskManager.enqueue(
+                    taskManager.TASK_TYPES.META_REVISE,
+                    ch,
+                    params,
+                    { parentTaskId: taskId, triggeredBy: body.triggered_by || 'admin' }
+                );
+                taskManager.addSubTask(taskId, subId);
+            });
+        } else {
+            taskId = taskManager.enqueue(taskType, chapterNum, params, {
+                triggeredBy: body.triggered_by || 'admin',
+                priority: opts.priority || 0
+            });
+        }
+
+        sendJSON(res, 201, { ok: true, task_id: taskId });
+    });
+}
+
+// ===== GET /api/tasks — 查询任务列表/详情 =====
+function handleTaskList(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+
+    var url = new URL(req.url, 'http://localhost:' + PORT);
+    var taskId = url.searchParams.get('id');
+
+    // 单任务详情
+    if (taskId) {
+        var task = taskManager.getTask(taskId);
+        if (!task) {
+            sendJSON(res, 404, { error: '任务不存在' });
+            return;
+        }
+        sendJSON(res, 200, task);
+        return;
+    }
+
+    // 列表查询
+    var opts = {};
+    var typeParam = url.searchParams.get('type');
+    var statusParam = url.searchParams.get('status');
+    var chapterParam = url.searchParams.get('chapter');
+    var limitParam = url.searchParams.get('limit');
+    var offsetParam = url.searchParams.get('offset');
+
+    if (typeParam) opts.type = typeParam;
+    if (statusParam) opts.status = statusParam;
+    if (chapterParam) opts.chapter = parseInt(chapterParam, 10);
+    if (limitParam) opts.limit = parseInt(limitParam, 10);
+    if (offsetParam) opts.offset = parseInt(offsetParam, 10);
+
+    var result = taskManager.getAllTasks(opts);
+    sendJSON(res, 200, result);
+}
+
+// ===== GET /api/tasks/stats — 任务统计 =====
+function handleTaskStats(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    var stats = taskManager.getStats();
+    sendJSON(res, 200, stats);
+}
+
+// ===== POST /api/tasks/cancel — 取消任务 =====
+function handleTaskCancel(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    if (!checkAdminAuth(req)) {
+        sendJSON(res, 401, { error: '未授权' });
+        return;
+    }
+    parseBody(req, function (err, body) {
+        if (err) {
+            sendJSON(res, 400, { error: '请求格式错误: ' + err.message });
+            return;
+        }
+        var taskId = body.task_id;
+        if (!taskId) {
+            sendJSON(res, 400, { error: '缺少 task_id' });
+            return;
+        }
+        var ok = taskManager.cancelTask(taskId);
+        sendJSON(res, 200, { ok: ok, cancelled: ok });
+    });
+}
+
 // ===== 创建 HTTP 服务器 =====
 var server = http.createServer(function (req, res) {
     var url = new URL(req.url, 'http://localhost:' + PORT);
@@ -889,6 +1191,38 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
+    // /api/tasks → 后台任务管理
+    if (pathname === '/api/tasks') {
+        if (req.method === 'POST') {
+            handleTaskCreate(req, res);
+        } else if (req.method === 'GET') {
+            handleTaskList(req, res);
+        } else if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+        } else {
+            sendJSON(res, 405, { error: 'Method not allowed' });
+        }
+        return;
+    }
+
+    // /api/tasks/stats → 任务统计
+    if (pathname === '/api/tasks/stats') {
+        handleTaskStats(req, res);
+        return;
+    }
+
+    // /api/tasks/cancel → 取消任务
+    if (pathname === '/api/tasks/cancel') {
+        if (req.method === 'POST') {
+            handleTaskCancel(req, res);
+        } else if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+        } else {
+            sendJSON(res, 405, { error: 'Method not allowed' });
+        }
+        return;
+    }
+
     // /api/metadata/stats → 聚合统计
     if (pathname === '/api/metadata/stats') {
         handleMetadataStats(req, res);
@@ -907,6 +1241,28 @@ var server = http.createServer(function (req, res) {
             sendJSON(res, 204, {});
         } else {
             sendJSON(res, 405, { error: 'Method not allowed' });
+        }
+        return;
+    }
+
+    // /api/metadata/sync → 同步暂存区到生产（POST）
+    if (pathname === '/api/metadata/sync') {
+        if (req.method === 'POST') {
+            handleMetadataSync(req, res);
+        } else if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+        } else {
+            sendJSON(res, 405, { error: 'Method not allowed' });
+        }
+        return;
+    }
+
+    // /api/metadata/staging → 查看/删除暂存区数据
+    if (pathname === '/api/metadata/staging') {
+        if (req.method === 'DELETE') {
+            handleMetadataStagingDelete(req, res);
+        } else {
+            handleMetadataStaging(req, res);
         }
         return;
     }
@@ -938,6 +1294,103 @@ server.listen(PORT, function () {
         console.log('  \x1b[32m✓ DEEPSEEK_API_KEY 已配置 (' + masked + ')\x1b[0m');
         console.log('');
     }
+
+    // ═══ 初始化后台任务系统 ═══
+    (function initTaskSystem() {
+        // 初始化任务管理器（启用持久化）
+        taskManager.init({ maxConcurrent: 2, maxRetries: 3 });
+        taskManager.enablePersistence();
+
+        // ═══ 通过 HTTP 调用独立修订服务（解耦） ═══
+        /**
+         * 调用独立修订服务的 HTTP 请求
+         * @param {number} chapterNum
+         * @returns {Promise<object>}
+         */
+        function callReviserService(chapterNum) {
+            return new Promise(function (resolve, reject) {
+                var httpModule = require('http');
+                var body = JSON.stringify({ chapter: chapterNum });
+                var req = httpModule.request({
+                    hostname: '127.0.0.1',
+                    port: REVISER_PORT,
+                    path: '/revise',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Content-Length': Buffer.byteLength(body)
+                    },
+                    timeout: 120000
+                }, function (resp) {
+                    var chunks = [];
+                    resp.on('data', function (c) { chunks.push(c); });
+                    resp.on('end', function () {
+                        try {
+                            var data = JSON.parse(Buffer.concat(chunks).toString());
+                            if (resp.statusCode === 200 && data.ok) {
+                                resolve(data.result);
+                            } else {
+                                reject(new Error((data.error || '修订服务返回错误') + ' (HTTP ' + resp.statusCode + ')'));
+                            }
+                        } catch (e) {
+                            reject(new Error('修订服务响应解析失败: ' + e.message));
+                        }
+                    });
+                });
+                req.on('error', function (err) {
+                    reject(new Error('无法连接到修订服务 (端口:' + REVISER_PORT + '): ' + err.message +
+                        '。请确保已启动: node scripts/reviser-service.js'));
+                });
+                req.on('timeout', function () {
+                    req.destroy();
+                    reject(new Error('修订服务响应超时'));
+                });
+                req.write(body);
+                req.end();
+            });
+        }
+
+        // 注册任务处理器：meta_revise
+        taskManager.registerHandler(taskManager.TASK_TYPES.META_REVISE, function (task) {
+            return callReviserService(task.chapter)
+                .then(function (result) {
+                    console.log('[task-handler] meta_revise OK: 第' + task.chapter + '章');
+                    return result;
+                });
+        });
+
+        // 注册任务处理器：batch_generate
+        taskManager.registerHandler(taskManager.TASK_TYPES.BATCH_GENERATE, function (task) {
+            return Promise.resolve({
+                chapters: task.params.chapters || [],
+                subTasks: task.subTasks || [],
+                message: '子任务已分配，等待执行'
+            });
+        });
+
+        // 注册任务处理器：meta_generate
+        taskManager.registerHandler(taskManager.TASK_TYPES.META_GENERATE, function (task) {
+            return callReviserService(task.chapter)
+                .then(function (result) {
+                    console.log('[task-handler] meta_generate OK: 第' + task.chapter + '章');
+                    return result;
+                });
+        });
+
+        // 事件
+        taskManager.on('completed', function (task) {
+            if (task.type === taskManager.TASK_TYPES.META_REVISE ||
+                task.type === taskManager.TASK_TYPES.META_GENERATE) {
+                console.log('[task-system] 第 ' + task.chapter + ' 章修订任务已完成（暂存区）');
+            }
+        });
+
+        taskManager.on('failed', function (task) {
+            console.error('[task-system] 第 ' + (task.chapter || '?') + ' 章任务最终失败: ' + (task.error || ''));
+        });
+
+        console.log('  \x1b[2m✓ 后台任务系统已就绪 → 修订服务端口: ' + REVISER_PORT + '\x1b[0m');
+    })();
 });
 
 // 优雅退出

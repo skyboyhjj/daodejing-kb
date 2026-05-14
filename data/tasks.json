@@ -1,0 +1,65 @@
+{
+  "_updated": "2026-05-14T11:47:11.659Z",
+  "_config": {
+    "maxConcurrent": 1,
+    "maxRetries": 3
+  },
+  "tasks": {
+    "task_mp580rkg_1": {
+      "id": "task_mp580rkg_1",
+      "type": "meta_revise",
+      "status": "completed",
+      "chapter": 53,
+      "params": {},
+      "priority": 0,
+      "retryCount": 0,
+      "maxRetries": 3,
+      "createdAt": "2026-05-14T08:22:52.048Z",
+      "startedAt": "2026-05-14T08:22:52.053Z",
+      "completedAt": "2026-05-14T08:22:52.054Z",
+      "error": null,
+      "progress": 100,
+      "result": {
+        "chapter": 53,
+        "status": "mock_optimized"
+      },
+      "triggeredBy": "test",
+      "parentTaskId": null,
+      "subTasks": [],
+      "subTasksCompleted": 0,
+      "subTasksTotal": 0
+    },
+    "task_mp5eep9h_1": {
+      "id": "task_mp5eep9h_1",
+      "type": "meta_revise",
+      "status": "completed",
+      "chapter": 76,
+      "params": {},
+      "priority": 5,
+      "retryCount": 0,
+      "maxRetries": 3,
+      "createdAt": "2026-05-14T11:21:39.941Z",
+      "startedAt": "2026-05-14T11:21:39.947Z",
+      "completedAt": "2026-05-14T11:21:49.917Z",
+      "error": null,
+      "progress": 100,
+      "result": {
+        "chapter": 76,
+        "title": "柔弱胜刚强",
+        "staged": true,
+        "sync_required": true,
+        "optimized": {
+          "core_idea": "大树高高却容易折断，小草低低却能随风摇摆。原来，强大的常常在底下，柔弱的反而在上面。就像水，总是流向低处，却最有力。",
+          "safety_notes_count": 5,
+          "interaction_points_count": 3,
+          "parent_tips": "和孩子一起观察风中的小草吧，它弯下腰却站得更久。不必讲道理，陪他体验‘低处’的安稳。真正的强大，从来不需要高高在上。"
+        }
+      },
+      "triggeredBy": "admin",
+      "parentTaskId": null,
+      "subTasks": [],
+      "subTasksCompleted": 0,
+      "subTasksTotal": 0
+    }
+  }
+}

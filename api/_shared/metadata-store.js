@@ -84,22 +84,31 @@ export function validateTransition(from, to) {
 
 /**
  * 为章节元数据追加审核历史记录
- * @param {object} chapterMeta - 章节元数据对象（会被原地修改）
- * @param {string} action      - 操作类型 (created|reviewing|approved|revision_needed|updated|deleted)
- * @param {string} by          - 操作者标识
- * @param {string} notes       - 备注
+ * @param {object} chapterMeta    - 章节元数据对象（会被原地修改）
+ * @param {string} action         - 操作类型 (created|reviewing|approved|revision_needed|updated|deleted)
+ * @param {string} by             - 操作者标识
+ * @param {string} notes          - 备注
+ * @param {object} [revisions]    - 结构化修订意见（可选，revision_needed 时传入）
+ * @param {object} [contentSnapshot] - 内容快照（可选，关键状态转换时保存）
  * @returns {object} 更新后的 chapterMeta
  */
-export function appendHistory(chapterMeta, action, by, notes) {
+export function appendHistory(chapterMeta, action, by, notes, revisions, contentSnapshot) {
     if (!chapterMeta.review_history) {
         chapterMeta.review_history = [];
     }
-    chapterMeta.review_history.push({
+    var entry = {
         action: action,
         by: by,
         at: new Date().toISOString(),
         notes: notes || ''
-    });
+    };
+    if (revisions) {
+        entry.revisions = revisions;
+    }
+    if (contentSnapshot) {
+        entry.content_snapshot = contentSnapshot;
+    }
+    chapterMeta.review_history.push(entry);
     return chapterMeta;
 }
 
@@ -259,14 +268,27 @@ export function updateChapter(chapterNum, updates, operatorBy) {
             // 操作记录
             var action = toStatus;
             var notes = updates.review_notes || '';
+            var revisions = updates.revisions || null;
+            var snapshot = null;
+
+            // 关键状态转换时保存内容快照
+            if (toStatus === 'revision_needed' || toStatus === 'approved') {
+                snapshot = {
+                    core_idea: chapter.core_idea || '',
+                    safety_notes: (chapter.safety_notes || []).slice(),
+                    interaction_points: (chapter.interaction_points || []).slice(),
+                    parent_tips: chapter.parent_tips || ''
+                };
+            }
+
             if (toStatus === 'reviewing') {
-                notes = '开始审核';
+                notes = notes || '开始审核';
                 chapter.reviewed_by = operatorBy || '';
             }
             if (toStatus === 'approved' || toStatus === 'revision_needed') {
                 chapter.reviewed_by = '';
             }
-            appendHistory(chapter, action, operatorBy || 'unknown', notes);
+            appendHistory(chapter, action, operatorBy || 'unknown', notes, revisions, snapshot);
             chapter.reviewed_at = new Date().toISOString().split('T')[0];
         }
     }
