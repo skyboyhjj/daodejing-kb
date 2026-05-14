@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元数据审核 · 慧惠亲子共读</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/admin/family-review.css">
+</head>
+
+<body>
+
+    <!-- ═══ 顶部栏 ═══ -->
+    <header class="topbar">
+        <div class="topbar-title">
+            <span class="icon">&#x1f3e0;</span>
+            <span>亲子元数据审核</span>
+        </div>
+        <div class="topbar-stats" id="statsBar">
+            <div class="stat-item"><span class="stat-dot pending"></span> 待审核: <b id="stPending">-</b></div>
+            <div class="stat-item"><span class="stat-dot reviewing"></span> 审核中: <b id="stReviewing">-</b></div>
+            <div class="stat-item"><span class="stat-dot approved"></span> 已通过: <b id="stApproved">-</b></div>
+            <div class="stat-item"><span class="stat-dot revision"></span> 需修改: <b id="stRevision">-</b></div>
+        </div>
+    </header>
+
+    <!-- ═══ 主体布局 ═══ -->
+    <div class="layout">
+
+        <!-- ── 左侧章节列表面板 ── -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <input type="text" id="searchInput" placeholder="搜索章节标题或核心思想..." autocomplete="off">
+                <div class="filter-row">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="pending">待审核</button>
+                    <button class="filter-btn" data-filter="reviewing">审核中</button>
+                    <button class="filter-btn" data-filter="approved">已通过</button>
+                    <button class="filter-btn" data-filter="revision_needed">需修改</button>
+                    <button class="filter-btn" data-filter="ai">AI 修改</button>
+                </div>
+            </div>
+            <div class="chapter-list" id="chapterList">
+                <div class="empty-state" style="height:200px;font-size:0.9em;">加载中...</div>
+            </div>
+        </aside>
+
+        <!-- ── 右侧详情 + 操作区 ── -->
+        <main class="main-content" id="mainContent">
+            <div class="empty-state">
+                <div class="empty-icon">&#x1f4d6;</div>
+                <div>选择左侧章节开始审核</div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- ═══ Toast 通知 ═══ -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ═══ 模态框容器 ═══ -->
+    <div id="modalContainer"></div>
+
+    <!-- ═══ JavaScript ═══ -->
+    <script src="/admin/family-review.js"></script>
+</body>
+
+</html>
