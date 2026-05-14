@@ -140,6 +140,32 @@ function buildFamilySystemPrompt(chapterMeta, ageGroup) {
 }
 
 
+// ===== 请求体解析（手动读取，兼容 Vercel 编译后的 CJS wrapper） =====
+function parseBody(req) {
+    return new Promise(function (resolve, reject) {
+        // Vercel 可能已预解析
+        if (req.body && typeof req.body === 'object' && Object.keys(req.body).length > 0) {
+            resolve(req.body);
+            return;
+        }
+        var chunks = [];
+        req.on('data', function (chunk) { chunks.push(chunk); });
+        req.on('end', function () {
+            var raw = Buffer.concat(chunks).toString('utf8');
+            if (!raw || raw.trim() === '') {
+                resolve({});
+                return;
+            }
+            try {
+                resolve(JSON.parse(raw));
+            } catch (e) {
+                reject(new Error('请求体 JSON 解析失败: ' + e.message));
+            }
+        });
+        req.on('error', function (err) { reject(err); });
+    });
+}
+
 // ===== Vercel Handler =====
 export default async function handler(req, res) {
     // CORS
@@ -161,7 +187,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        var body = req.body || {};
+        var body = await parseBody(req);
         var chapter = body.chapter;
         var ageGroup = body.age_group;
         var history = body.conversation_history || [];
