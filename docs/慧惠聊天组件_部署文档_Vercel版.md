@@ -287,7 +287,7 @@ vercel link
 
 ```bash
 vercel --prod --yes \
-  -e DEEPSEEK_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  -e DEEPSEEK_API_KEY=sk-<your-api-key>
 ```
 
 说明：
