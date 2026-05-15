@@ -1,4 +1,9 @@
 {
+    "_format_version": "1.0",
+    "_content_hash": "96d6d1b3",
+    "_generated": "2026-05-15T12:05:36.484Z",
+    "_version": "1.1",
+    "_updated": "2026-05-15",
     "chapters": {
         "1": {
             "chapter": 1,
@@ -24,23 +29,7 @@
                 }
             ],
             "parent_tips": "这个章节的核心是让孩子感受到「有些事情不需要说出来也能被理解」。在共读之外，今天可以试着多给孩子一些「不用说出口」的理解——比如 ta 累了的时候，不问「你怎么了」，只是给 ta 一杯水。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "AI generated"
-                },
-                {
-                    "action": "approved",
-                    "by": "产品经理",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "Initial review"
-                }
-            ]
+            "review_status": "approved"
         },
         "2": {
             "chapter": 2,
@@ -67,23 +56,7 @@
                 }
             ],
             "parent_tips": "这个章节是一个绝佳的「接纳差异」的教育契机。如果孩子在学校遇到了「和别人不一样」的困扰，可以用老子的话告诉 ta：「天下皆知美之为美，斯恶已」——正因为有不一样，世界才有趣。你不需要和别人一样。",
-            "review_status": "approved",
-            "reviewed_by": "产品经理",
-            "reviewed_at": "2026-05-11",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "AI generated"
-                },
-                {
-                    "action": "approved",
-                    "by": "产品经理",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "Initial review"
-                }
-            ]
+            "review_status": "approved"
         },
         "3": {
             "chapter": 3,
@@ -115,29 +88,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，就像在讲一个有趣的寓言。不用急着解释，让孩子先感受故事里的画面。你放松了，孩子也会放松。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T09:21:23.265Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T09:21:40.977Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "4": {
             "chapter": 4,
@@ -170,23 +121,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，不妨也让自己像个空杯子，听听孩子天马行空的想法。不用急着解释，陪着孩子感受'空'的奇妙就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:47:36.007Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:48:43.115Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "5": {
             "chapter": 5,
@@ -218,23 +153,7 @@
                 }
             ],
             "parent_tips": "陪孩子读这一章时，别急着解释。先听听孩子对'不偏心'和'空'的理解，他们的答案可能会让你惊喜。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:49:00.200Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:49:45.522Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "6": {
             "chapter": 6,
@@ -266,23 +185,7 @@
                 }
             ],
             "parent_tips": "和孩子一起学山谷，安静地抱着他，什么都不说，就是最好的陪伴。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:49:49.961Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:50:42.813Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "7": {
             "chapter": 7,
@@ -314,29 +217,7 @@
                 }
             ],
             "parent_tips": "和孩子一起看看天空和大地吧，不用讲道理，只是静静地感受。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T08:56:49.043Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T08:58:00.213Z",
-                    "notes": ""
-                }
-            ]
+            "review_status": "approved"
         },
         "8": {
             "chapter": 8,
@@ -368,23 +249,7 @@
                 }
             ],
             "parent_tips": "和孩子聊「不争」的时候，不用刻意讲道理。问问 ta：「今天有没有和同学争玩具？」让 ta 自己说。你只负责听。孩子说出自己的经历时，不评判、不纠正，只是点头和微笑。",
-            "review_status": "approved",
-            "reviewed_by": "产品经理",
-            "reviewed_at": "2026-05-11",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "AI generated"
-                },
-                {
-                    "action": "approved",
-                    "by": "产品经理",
-                    "at": "2026-05-11T00:00:00Z",
-                    "notes": "Initial review"
-                }
-            ]
+            "review_status": "approved"
         },
         "9": {
             "chapter": 9,
@@ -416,29 +281,7 @@
                 }
             ],
             "parent_tips": "和孩子一起玩‘刚刚好’的游戏吧，比如盛饭、倒水、挑选玩具，让‘知足’变成一种轻松的体验。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T08:58:19.776Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T08:59:28.772Z",
-                    "notes": ""
-                }
-            ]
+            "review_status": "approved"
         },
         "10": {
             "chapter": 10,
@@ -471,23 +314,7 @@
                 }
             ],
             "parent_tips": "亲爱的家长，这一章不需要孩子完全理解，只要在生活里一起感受那份柔软和专注就好。你放松的样子，就是孩子最好的榜样。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-13T11:32:17.426Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "11": {
             "chapter": 11,
@@ -519,29 +346,7 @@
                 }
             ],
             "parent_tips": "和孩子一起发现生活中的“空”吧，就像发现宝藏一样。不必刻意解释，只需在玩的时候轻轻点出：看，这里空空的，真有用呢。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:36:12.226Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:36:57.834Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "12": {
             "chapter": 12,
@@ -573,29 +378,7 @@
                 }
             ],
             "parent_tips": "和孩子一起感受简单的小确幸，比如一起看一朵云、听一阵风，不用刻意说教，陪伴本身就是最好的传递。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:37:26.253Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:37:48.338Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "13": {
             "chapter": 13,
@@ -627,23 +410,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，不用急着讲道理。只是抱抱他，说：‘我们都有在乎的事情，这很自然。’ 然后一起深呼吸，感受平静。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:50:47.975Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:52:28.983Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "14": {
             "chapter": 14,
@@ -675,29 +442,7 @@
                 }
             ],
             "parent_tips": "和孩子一起闭上眼睛，感受一下周围的空气，或者彼此拥抱，体会那种看不见但真实存在的温暖。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:37:56.642Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:38:30.766Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "15": {
             "chapter": 15,
@@ -729,23 +474,7 @@
                 }
             ],
             "parent_tips": "和孩子一起看云、堆沙子时，轻轻说一句：‘你看，云从来不装满天空，沙子也从不装满你的手。’——共读之外的这一刻，智慧就悄悄发芽了。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:05:10.793Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:05:58.482Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "16": {
             "chapter": 16,
@@ -777,29 +506,7 @@
                 }
             ],
             "parent_tips": "共读后，不妨和孩子一起静静地看一棵树、一片云，享受安静的陪伴，让智慧在无声中流淌。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:38:41.126Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:39:10.298Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "17": {
             "chapter": 17,
@@ -831,23 +538,7 @@
                 }
             ],
             "parent_tips": "和孩子一起发现生活中‘看不见的帮忙’吧，比如阳光让植物长大，空气让我们呼吸。不必刻意，像呼吸一样自然就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:06:02.370Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:06:57.063Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "18": {
             "chapter": 18,
@@ -880,23 +571,7 @@
                 }
             ],
             "parent_tips": "当孩子做了好事，除了夸'真棒'，也可以轻轻说一句'你本来就是这样好的孩子'。让美德回归自然，就像呼吸一样不需刻意表扬。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:07:02.338Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:07:52.317Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "19": {
             "chapter": 19,
@@ -929,23 +604,7 @@
                 }
             ],
             "parent_tips": "陪孩子读这一章时，不妨放下手机，一起看看窗外的树或天上的云。最简单的陪伴，往往最珍贵。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:07:59.451Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T04:16:20.397Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "20": {
             "chapter": 20,
@@ -977,23 +636,7 @@
                 }
             ],
             "parent_tips": "当孩子说‘我比不上别人’时，轻轻抱住他，说：‘你不需要跟别人比，你就像一棵小树，慢慢长成自己的样子就很好。’",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:08:58.922Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:09:30.390Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "21": {
             "chapter": 21,
@@ -1025,23 +668,7 @@
                 }
             ],
             "parent_tips": "和孩子一起想象“看不见的宝贝”，比如风、爱、想法，不用解释太多，让对话像游戏一样自然发生就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:09:35.422Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:10:19.289Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "22": {
             "chapter": 22,
@@ -1073,29 +700,7 @@
                 }
             ],
             "parent_tips": "和孩子一起观察自然，比如风吹草动、水流石转，这些日常中藏着老子的智慧。不用急着讲道理，多让孩子自己发现就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:39:18.386Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:39:51.702Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "23": {
             "chapter": 23,
@@ -1127,23 +732,7 @@
                 }
             ],
             "parent_tips": "和孩子一起安静地待一会儿，不一定要说话。有时候，陪伴本身就是最好的教育。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:10:25.622Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:11:29.945Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "24": {
             "chapter": 24,
@@ -1175,17 +764,7 @@
                 }
             ],
             "parent_tips": "当孩子急于表现时，轻轻抱抱他说：‘我们像小树一样慢慢长，不着急。’ 你的平静就是最好的榜样。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "25": {
             "chapter": 25,
@@ -1217,29 +796,7 @@
                 }
             ],
             "parent_tips": "共读后，不妨带孩子去公园坐一会儿，什么都不说，只是静静感受风吹过、树叶摇动——这就是“道法自然”的样子。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:39:55.766Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:40:27.514Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "26": {
             "chapter": 26,
@@ -1272,17 +829,7 @@
                 }
             ],
             "parent_tips": "当孩子急躁时，不妨先抱抱他，和他一起深呼吸。你的平静，就是孩子最好的“辎重”。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "27": {
             "chapter": 27,
@@ -1314,17 +861,7 @@
                 }
             ],
             "parent_tips": "亲爱的，当你为孩子默默做了很多，而孩子浑然不觉时，别失落——那正是‘善行无辙迹’的智慧在悄悄生长。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "28": {
             "chapter": 28,
@@ -1356,17 +893,7 @@
                 }
             ],
             "parent_tips": "今晚睡前，轻轻对孩子说：‘你知道吗？你厉害的时候选择温柔，就像小溪一样，大家都喜欢你。’",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "29": {
             "chapter": 29,
@@ -1398,23 +925,7 @@
                 }
             ],
             "parent_tips": "和孩子一起散步时，看看路边的小花，它们各自开着，不争不抢。也许我们也能像它们一样，给孩子一点自由生长的空间。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:11:33.966Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:13:13.136Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "30": {
             "chapter": 30,
@@ -1446,23 +957,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，不用急着讲道理，先聊聊‘赢了之后你会做什么’这样的小事，让智慧像水一样慢慢渗进心里。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:13:16.734Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:14:23.333Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "31": {
             "chapter": 31,
@@ -1494,23 +989,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，可以轻轻握着他的手，告诉他：无论输赢，你都是我最爱的宝贝。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:14:26.130Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:16:12.269Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "32": {
             "chapter": 32,
@@ -1542,23 +1021,7 @@
                 }
             ],
             "parent_tips": "和孩子一起看云、听雨、玩积木时，可以轻轻说一句：'刚刚好，就很美。' 不需要解释太多，孩子会在心里种下种子。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:16:17.010Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:17:40.660Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "33": {
             "chapter": 33,
@@ -1590,29 +1053,7 @@
                 }
             ],
             "parent_tips": "和孩子一起照镜子，做鬼脸，聊聊镜子里外的人。轻松一笑中，孩子就懂了‘自知’。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:40:32.126Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:41:34.823Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "34": {
             "chapter": 34,
@@ -1645,23 +1086,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，不妨也想想自己：我们是否也在‘功成而弗居’？今晚，试着默默欣赏孩子的一个小进步，不必说出来。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:17:45.113Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:18:29.508Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "35": {
             "chapter": 35,
@@ -1693,23 +1118,7 @@
                 }
             ],
             "parent_tips": "和孩子一起感受生活中那些‘看不见却用不完’的东西，比如一个拥抱、一句鼓励。不用解释太多，孩子自会体会。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:18:41.633Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:19:12.892Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "36": {
             "chapter": 36,
@@ -1742,23 +1151,7 @@
                 }
             ],
             "parent_tips": "和孩子一起吹个气球吧！聊聊气球的故事，不用急着讲道理，孩子的小脑瓜会在玩耍中悄悄吸收智慧。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:19:17.746Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:20:00.680Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "37": {
             "chapter": 37,
@@ -1791,23 +1184,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读完后，不妨在散步时看看云、摸摸叶子，不急着讲道理。让大自然的安静，轻轻地说出一切。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:20:05.685Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:21:03.678Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "38": {
             "chapter": 38,
@@ -1839,29 +1216,7 @@
                 }
             ],
             "parent_tips": "亲爱的，和孩子一起读这一章时，不妨也问问自己：我有没有为了显得有德而刻意做什么？放下评判，和孩子一起享受那种自然的善良吧。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:41:43.717Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T10:59:33.360Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "39": {
             "chapter": 39,
@@ -1893,23 +1248,7 @@
                 }
             ],
             "parent_tips": "和孩子一起蹲下来看看蚂蚁搬家、摸摸树皮，那些最不起眼的东西，往往藏着最根本的力量。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:21:07.097Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:22:41.080Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "40": {
             "chapter": 40,
@@ -1941,23 +1280,7 @@
                 }
             ],
             "parent_tips": "和孩子一起观察自然的‘反’与‘柔’，比如落叶归根、水往低处流。不用讲道理，只需指给他看，智慧就在日常里。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:23:27.471Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:26:14.357Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "41": {
             "chapter": 41,
@@ -1989,17 +1312,7 @@
                 }
             ],
             "parent_tips": "和孩子一起，像发现宝藏一样去留意那些“不起眼”的美好。不必急着讲道理，一个拥抱、一个微笑，就是最好的“道”。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "42": {
             "chapter": 42,
@@ -2031,29 +1344,7 @@
                 }
             ],
             "parent_tips": "和孩子一起观察大自然吧，比如看云从一朵变成一片，或者数数一颗豆子长出几片叶子。不用解释太多，让孩子自己发现‘从少变多’的奇妙。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T10:59:42.754Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:00:31.790Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "43": {
             "chapter": 43,
@@ -2086,23 +1377,7 @@
                 }
             ],
             "parent_tips": "亲爱的大朋友，和孩子一起感受柔软的力量吧。不用刻意教导，你温柔的陪伴就是最好的'不言之教'。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:23:39.056Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:24:26.648Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "44": {
             "chapter": 44,
@@ -2134,29 +1409,7 @@
                 }
             ],
             "parent_tips": "和孩子一起感受‘够了’的轻松，比如吃完最后一口就开心地放下碗。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:00:34.973Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:01:27.227Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "45": {
             "chapter": 45,
@@ -2188,17 +1441,7 @@
                 }
             ],
             "parent_tips": "和孩子一起发现生活中那些‘不完美却好用’的小物件，就像发现宝藏一样，会很有趣哦。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "46": {
             "chapter": 46,
@@ -2230,17 +1473,7 @@
                 }
             ],
             "parent_tips": "和孩子一起，发现生活中‘刚刚好’的小瞬间，比如一碗饭、一个拥抱。不必刻意说教，你满足的样子就是最好的示范。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "47": {
             "chapter": 47,
@@ -2272,23 +1505,7 @@
                 }
             ],
             "parent_tips": "共读后，不妨和孩子一起安静地坐一会儿，什么也不说，感受彼此的存在。有时候，不说话反而更懂对方。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:24:31.582Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:25:50.841Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "48": {
             "chapter": 48,
@@ -2320,29 +1537,7 @@
                 }
             ],
             "parent_tips": "共读时，不妨先放下“教”的念头，和孩子一起像发现新大陆一样聊聊“少”的好处。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:01:32.982Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:02:36.330Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "49": {
             "chapter": 49,
@@ -2374,23 +1569,7 @@
                 }
             ],
             "parent_tips": "亲爱的爸爸妈妈，试着在生活中对孩子保持无条件的信任和善意，哪怕他偶尔调皮或犯错。你的稳定，就是他心中最暖的太阳。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:26:23.938Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T03:27:02.556Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "50": {
             "chapter": 50,
@@ -2425,73 +1604,7 @@
                 }
             ],
             "parent_tips": "共读后，不妨在散步时和孩子一起找蜗牛。观察它：背着家，慢慢走，不去危险的地方——因为它不需要。这就是老子说的‘善摄生者’。生活中，当我们因为不贪心、不着急而把事情做得更好时，别忘了轻轻提醒：‘你看，安安静静的，反而最安全。’",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T03:59:07.479Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:16:30.144Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_submitted",
-                    "by": "何继杰",
-                    "at": "2026-05-14T15:12:29.253593Z",
-                    "notes": "Qoder基于7维度审核报告优化：刺猬→蜗牛，新增生生之厚悖论，扩展安全注意事项至6条，优化互动点与家长提示。"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T07:16:59.461Z",
-                    "notes": "开始审核"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T07:17:34.884Z",
-                    "notes": "何继杰",
-                    "content_snapshot": {
-                        "core_idea": "就像小蜗牛背着小小的家慢慢走，不需要去危险的地方抢东西，也不贪心地想要更多——心里不贪不怕，身上就没有可以被伤害的缝隙。反倒是那些太拼命想‘活得好’的人，把自己推到了危险里。安安静静的，反而最安全。",
-                        "safety_notes": [
-                            "避免讨论死亡比例、寿命长短等数字，以免引发孩子对死亡的恐惧。",
-                            "避免将小蜗牛的‘壳’解释为‘躲起来才安全’——应强调蜗牛背着家、自足从容，所以不需要去危险的地方。",
-                            "避免将‘无死地’解释为神奇保护力或刀枪不入——应解释为：不贪不执的人，身上没有可以被危险钻入的缝隙。",
-                            "避免将‘不贪心、不害怕’曲解为‘不能有正常的愿望或害怕的情绪’，以免孩子感到自己的感受是‘不对的’而压抑自己。",
-                            "避免用‘不去危险的地方’让孩子把探索世界等同于危险——本章讲的是因贪欲而冒不必要的险，不是否定合理的探索与尝试。",
-                            "避免让孩子感到‘害怕了就是我不好’——害怕是正常的保护情绪，本章讲的是不过度执着于得失，不是否定恐惧本身。"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "小蜗牛的自足智慧",
-                                "age_4_6": "和孩子一起观察蜗牛：你看它走到哪里都背着家，慢悠悠的，不去抢也不去争。问孩子：小蜗牛为什么不需要跑得很快？因为它知足呀。",
-                                "age_7_9": "问孩子：小蜗牛背着家，不需要去别的地方找东西。这和老子说的‘不需要去危险的地方’有什么关系？你有没有见过因为太想要什么东西而差点出事的例子？",
-                                "age_10_12": "引导讨论：老子说有一种人‘本来可以好好活，却因为太贪图享受把自己推到危险里’。想想你身边有没有这样的人和事？这和‘拼命想考第一反而考砸了’有什么相似？"
-                            },
-                            {
-                                "topic": "为什么太贪心反而不好？",
-                                "age_4_6": "讲一个小故事：小兔子为了多吃一根胡萝卜跑进了猎人的陷阱。问：小兔子为什么掉进陷阱？因为它太想要那根胡萝卜啦！",
-                                "age_7_9": "问孩子：老子说‘太拼命想活得好的人，反而把自己推到了危险里。’为什么越拼命越危险？你能想到一个生活中的例子吗？（比如：为了多玩一会儿偷偷熬夜，第二天反而很困）",
-                                "age_10_12": "引入‘生生之厚’概念：老子认为，过度追求享受（吃太好、拥有太多）反而缩短寿命。这个道理在今天的‘996猝死’现象中还适用吗？"
-                            },
-                            {
-                                "topic": "把智慧带入生活",
-                                "age_4_6": "吃饭时，告诉孩子：慢慢吃、不贪多，小蜗牛也是这样——知足的孩子最安全。",
-                                "age_7_9": "和孩子聊聊：今天有没有因为太着急或太想要某样东西，差点出小问题？下次可以怎么做？",
-                                "age_10_12": "提醒孩子：老子的‘无死地’不是说有神奇保护，而是身上没有可以被伤害的缝隙。下次看到别人炫富或冒险时，想想‘无死地’的道理——不暴露弱点，就没有可以被攻击的地方。"
-                            }
-                        ],
-                        "parent_tips": "共读后，不妨在散步时和孩子一起找蜗牛。观察它：背着家，慢慢走，不去危险的地方——因为它不需要。这就是老子说的‘善摄生者’。生活中，当我们因为不贪心、不着急而把事情做得更好时，别忘了轻轻提醒：‘你看，安安静静的，反而最安全。’"
-                    }
-                }
-            ]
+            "review_status": "approved"
         },
         "51": {
             "chapter": 51,
@@ -2523,17 +1636,7 @@
                 }
             ],
             "parent_tips": "和孩子一起散步时，指着一棵树说：‘你看，它就这样静静地长着，不需要谁表扬。’然后轻轻抱抱孩子，什么都不用说。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "52": {
             "chapter": 52,
@@ -2565,17 +1668,7 @@
                 }
             ],
             "parent_tips": "陪孩子读这一章时，不妨也想想自己的'根'在哪里。那些让你感到踏实和安心的事，就是你的'母'。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "53": {
             "chapter": 53,
@@ -2610,242 +1703,7 @@
                 }
             ],
             "parent_tips": "这一章比较尖锐，老子直接批评了当时的统治者。和孩子读时，先问：「你觉得什么样的人会让你想说‘这太不公平了’？」不用急着纠正。重要的是让孩子感受：关心公平、关心他人，本身就是走在「大道」上。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:00:39.434Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:16:50.556Z",
-                    "notes": ""
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T07:43:16.717Z",
-                    "notes": "开始审核"
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T07:48:02.321Z",
-                    "notes": "何继杰",
-                    "revisions": {
-                        "core_idea": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "safety_notes": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "interaction_points": {
-                            "needs_change": true,
-                            "problem": "宫殿和田野 中 “7-9岁：观察身边：有没有人为了自己好看/好玩，却让别人变得不方便？这不是「道」的做法。”",
-                            "direction": "好看/好玩 用语比较含糊，请补充场景，例如在观看演出时，有没有人为了自己好看/好玩，..."
-                        },
-                        "parent_tips": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "general": {
-                            "notes": ""
-                        }
-                    },
-                    "content_snapshot": {
-                        "core_idea": "大道明明又平又宽，可总有人想走歪路——他们把宫殿修得漂漂亮亮，老百姓的田地却长满了草，粮仓也空了。自己穿金戴银、吃好喝好，却不管别人有没有饭吃。这就像强盗一样只顾自己，这哪里是‘道’的做法啊！",
-                        "safety_notes": [
-                            "对低龄儿童，用「只顾自己、不管别人」替代「强盗」，避免恐惧",
-                            "注意区分「批判一种不公平的做法」和「攻击一个人」——老子批评的是行为，不是在骂某个人",
-                            "如果孩子对贫富话题产生焦虑，温和引导：这里说的是「靠权力拿走别人的东西」，不是「有钱就是坏」",
-                            "引导孩子首先用这一章看自己：我有没有为了表面东西而忽略了真正重要的事？",
-                            "对于走捷径的讨论，帮助孩子区分「利己损人的捷径」和「利人不损己的高效方法」",
-                            "如果年长孩子对社会不公产生无力感，引导他们把正义感转化为「我自己可以怎么做」——从修身开始"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "大道和小径",
-                                "age_4_6": "举手游戏——「排队轮流就是大道，挤到前面就是小径。你觉得哪条路让大家都开心？」",
-                                "age_7_9": "「你有没有试过为了更快做完一件事，结果反而出了问题？什么时候‘慢一点’反而‘更好’？」",
-                                "age_10_12": "引用「大道甚夷，而人好径」，讨论：为什么人们明知捷径可能有问题，还是忍不住走？"
-                            },
-                            {
-                                "topic": "宫殿和田野",
-                                "age_4_6": "用积木演示——如果把大部分积木拿来给自己搭高塔，就没有积木给小伙伴了。问问孩子：怎么分才公平？",
-                                "age_7_9": "观察身边：有没有人为了自己好看/好玩，却让别人变得不方便？这不是「道」的做法。",
-                                "age_10_12": "讨论「朝甚除，田甚芜，仓甚虚」——这三个「甚」是递进的。你能想到今天类似的事情吗？为什么这不对？"
-                            },
-                            {
-                                "topic": "什么是「非道」",
-                                "age_4_6": "简单对比——「分享玩具是合乎道，抢玩具是非道」。引导孩子自己举例。",
-                                "age_7_9": "一起想：生活中哪些做法是「非道」的？不是因为它「坏」，而是因为它让大家都过得不好。",
-                                "age_10_12": "深入讨论：老子为什么不用「对」「错」而用「道」「非道」？这两个标准有什么不同？"
-                            }
-                        ],
-                        "parent_tips": "这一章比较「尖锐」，老子罕见地直接批评了当时的统治者。和孩子一起读时，可以先问：「你觉得什么样的人会让你想说‘这太不公平了’？」不用急着纠正孩子的回答。重要的是让孩子感受到：关心公平、关心他人的处境，本身就是走在「大道」上。读完后可以做一个小练习：今天找一件「先做好重要的事，再考虑漂亮的装饰」的例子，和孩子一起完成。"
-                    }
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T09:34:26.016Z",
-                    "notes": "开始审核",
-                    "revisions": {
-                        "core_idea": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "safety_notes": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "interaction_points": {
-                            "needs_change": true,
-                            "problem": "宫殿和田野 中 “7-9岁：观察身边：有没有人为了自己好看/好玩，却让别人变得不方便？这不是「道」的做法。”",
-                            "direction": "好看/好玩 用语比较含糊，请补充场景，例如在观看演出时，有没有人为了自己好看/好玩，..."
-                        },
-                        "parent_tips": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "general": {
-                            "notes": ""
-                        }
-                    }
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T09:39:39.908Z",
-                    "notes": "",
-                    "revisions": {
-                        "core_idea": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "safety_notes": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "interaction_points": {
-                            "needs_change": true,
-                            "problem": "宫殿和田野 中 “7-9岁：观察身边：有没有人为了自己好看/好玩，却让别人变得不方便？这不是「道」的做法。”",
-                            "direction": "好看/好玩 用语比较含糊，请补充场景，例如在天安门广场看升旗，有没有人为了自己好看/好玩，..."
-                        },
-                        "parent_tips": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "general": {
-                            "notes": ""
-                        }
-                    },
-                    "content_snapshot": {
-                        "core_idea": "大道明明又平又宽，可总有人想走歪路——他们把宫殿修得漂漂亮亮，老百姓的田地却长满了草，粮仓也空了。自己穿金戴银、吃好喝好，却不管别人有没有饭吃。这就像强盗一样只顾自己，这哪里是‘道’的做法啊！",
-                        "safety_notes": [
-                            "对低龄儿童，用「只顾自己、不管别人」替代「强盗」，避免恐惧",
-                            "注意区分「批判一种不公平的做法」和「攻击一个人」——老子批评的是行为，不是在骂某个人",
-                            "如果孩子对贫富话题产生焦虑，温和引导：这里说的是「靠权力拿走别人的东西」，不是「有钱就是坏」",
-                            "引导孩子首先用这一章看自己：我有没有为了表面东西而忽略了真正重要的事？",
-                            "对于走捷径的讨论，帮助孩子区分「利己损人的捷径」和「利人不损己的高效方法」",
-                            "如果年长孩子对社会不公产生无力感，引导他们把正义感转化为「我自己可以怎么做」——从修身开始"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "大道和小径",
-                                "age_4_6": "举手游戏——「排队轮流就是大道，挤到前面就是小径。你觉得哪条路让大家都开心？」",
-                                "age_7_9": "「你有没有试过为了更快做完一件事，结果反而出了问题？什么时候‘慢一点’反而‘更好’？」",
-                                "age_10_12": "引用「大道甚夷，而人好径」，讨论：为什么人们明知捷径可能有问题，还是忍不住走？"
-                            },
-                            {
-                                "topic": "宫殿和田野",
-                                "age_4_6": "用积木演示——如果把大部分积木拿来给自己搭高塔，就没有积木给小伙伴了。问问孩子：怎么分才公平？",
-                                "age_7_9": "观察身边：有没有人为了自己好看/好玩，却让别人变得不方便？这不是「道」的做法。",
-                                "age_10_12": "讨论「朝甚除，田甚芜，仓甚虚」——这三个「甚」是递进的。你能想到今天类似的事情吗？为什么这不对？"
-                            },
-                            {
-                                "topic": "什么是「非道」",
-                                "age_4_6": "简单对比——「分享玩具是合乎道，抢玩具是非道」。引导孩子自己举例。",
-                                "age_7_9": "一起想：生活中哪些做法是「非道」的？不是因为它「坏」，而是因为它让大家都过得不好。",
-                                "age_10_12": "深入讨论：老子为什么不用「对」「错」而用「道」「非道」？这两个标准有什么不同？"
-                            }
-                        ],
-                        "parent_tips": "这一章比较「尖锐」，老子罕见地直接批评了当时的统治者。和孩子一起读时，可以先问：「你觉得什么样的人会让你想说‘这太不公平了’？」不用急着纠正孩子的回答。重要的是让孩子感受到：关心公平、关心他人的处境，本身就是走在「大道」上。读完后可以做一个小练习：今天找一件「先做好重要的事，再考虑漂亮的装饰」的例子，和孩子一起完成。"
-                    }
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-14T10:08:50.825Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-14T11:08:53.136Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T11:13:27.222Z",
-                    "notes": "开始审核"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T11:13:58.509Z",
-                    "notes": "何继杰",
-                    "content_snapshot": {
-                        "core_idea": "大道平坦宽阔，可有人偏走小路。他们把宫殿修得华丽，田地却荒了，粮仓也空了，自己穿金戴银吃香喝辣——这就像强盗的炫耀，根本不是道啊！",
-                        "safety_notes": [
-                            "对低龄儿童，用「只顾自己、不管别人」替代「强盗」，避免恐惧",
-                            "区分「批判不公平的做法」和「攻击人」——老子批评的是行为，不是在骂某个人",
-                            "如果孩子对贫富话题产生焦虑，温和引导：这里说的是「靠权力拿走别人的东西」，不是「有钱就是坏」",
-                            "引导孩子用这一章看自己：我有没有为了表面东西而忽略了真正重要的事？",
-                            "对于走捷径的讨论，帮助孩子区分「利己损人的捷径」和「利人不损己的高效方法」",
-                            "如果年长孩子对社会不公产生无力感，引导他们把正义感转化为「我自己可以怎么做」——从修身开始"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "大道和小径",
-                                "age_4_6": "举手游戏——「排队轮流就是大道，挤到前面就是小径。你觉得哪条路让大家都开心？」",
-                                "age_7_9": "「你有没有试过为了更快做完一件事，结果反而出了问题？什么时候‘慢一点’反而‘更好’？」",
-                                "age_10_12": "引用「大道甚夷，而人好径」，讨论：为什么人们明知捷径可能有问题，还是忍不住走？"
-                            },
-                            {
-                                "topic": "宫殿和田野",
-                                "age_4_6": "用积木演示——如果把大部分积木拿来给自己搭高塔，就没有积木给小伙伴了。问问孩子：怎么分才公平？",
-                                "age_7_9": "观察身边：比如在天安门广场看升旗，有没有人为了自己看得更清楚就挤到别人前面，让别人看不到了？这不是「道」的做法。",
-                                "age_10_12": "讨论「朝甚除，田甚芜，仓甚虚」——这三个「甚」是递进的。你能想到今天类似的事情吗？为什么这不对？"
-                            },
-                            {
-                                "topic": "什么是「非道」",
-                                "age_4_6": "简单对比——「分享玩具是合乎道，抢玩具是非道」。引导孩子自己举例。",
-                                "age_7_9": "一起想：生活中哪些做法是「非道」的？不是因为它「坏」，而是因为它让大家都过得不好。",
-                                "age_10_12": "深入讨论：老子为什么不用「对」「错」而用「道」「非道」？这两个标准有什么不同？"
-                            }
-                        ],
-                        "parent_tips": "这一章比较尖锐，老子直接批评了当时的统治者。和孩子读时，先问：「你觉得什么样的人会让你想说‘这太不公平了’？」不用急着纠正。重要的是让孩子感受：关心公平、关心他人，本身就是走在「大道」上。"
-                    }
-                }
-            ]
+            "review_status": "approved"
         },
         "54": {
             "chapter": 54,
@@ -2877,17 +1735,7 @@
                 }
             ],
             "parent_tips": "亲爱的家长，和孩子一起做‘小石子’吧——从你做起，一个微笑、一句鼓励，波纹会慢慢荡开。不用急，地基要慢慢打。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "55": {
             "chapter": 55,
@@ -2919,29 +1767,7 @@
                 }
             ],
             "parent_tips": "共读时，可以轻轻握住孩子的手，感受那份柔软和力量。不用解释太多，一起模仿婴儿的呼吸和笑声，就是最好的体验。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:02:39.606Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:03:27.522Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "56": {
             "chapter": 56,
@@ -2975,47 +1801,7 @@
                 }
             ],
             "parent_tips": "和孩子一起安静地坐一会儿吧，不用说话，只是感受彼此的存在。今天孩子如果炫耀了什么，不用讲道理，只是轻轻回应‘我看到了’——让孩子自己慢慢感受：不用别人夸奖的东西，才是自己真正拥有的。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-14T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:01:26.250Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:17:07.980Z",
-                    "notes": "core_idea 猫咪比喻过度简化，缺失六步修炼和不可得而亲/疏/利/害等核心内容；安全提示需增补；互动话题需调整"
-                },
-                {
-                    "action": "revision_submitted",
-                    "by": "何继杰",
-                    "at": "2026-05-14T04:30:00Z",
-                    "notes": "优化 core_idea 回原文核心（知者不言→挫锐同尘→不可得而亲疏利害贵贱→天下贵）；新增2条 safety_notes（不曲解为冷漠、不否定正常表现欲）；重命名互动话题（安静的力量→不炫耀的力量，和大家一样→特别还是融入）；强化 parent_tips 的实战感"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:50:32.082Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T04:50:42.308Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "57": {
             "chapter": 57,
@@ -3047,23 +1833,7 @@
                 }
             ],
             "parent_tips": "今天试着少说一句'快点'、少做一次提醒，看看孩子会怎样。也许你会惊喜地发现，他/她自己就能做得很好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:05:12.595Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T04:05:21.133Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "58": {
             "chapter": 58,
@@ -3095,23 +1865,7 @@
                 }
             ],
             "parent_tips": "和孩子一起看云吧：云朵变幻无常，有时像马，有时像山。就像生活中的好坏，不必太执着，享受变化的过程就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:05:30.202Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T04:07:36.413Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "59": {
             "chapter": 59,
@@ -3143,23 +1897,7 @@
                 }
             ],
             "parent_tips": "和孩子一起发现生活中'省着用'的小智慧吧，比如关灯、节约用水，像大树扎根一样，慢慢来就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:46:31.515Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:47:12.537Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "60": {
             "chapter": 60,
@@ -3191,23 +1929,7 @@
                 }
             ],
             "parent_tips": "亲爱的家长，共读时不必解释所有道理。和孩子一起安静地煎一次小鱼，或者观察水中的鱼，就是最好的体验。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:45:44.911Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:46:21.889Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "61": {
             "chapter": 61,
@@ -3239,23 +1961,7 @@
                 }
             ],
             "parent_tips": "亲，共读时不用解释太多，和孩子一起学小河往低处流，或学猫咪静悄悄，快乐体验就好。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:44:18.863Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:45:37.073Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "62": {
             "chapter": 62,
@@ -3288,17 +1994,7 @@
                 }
             ],
             "parent_tips": "亲爱的家长，和孩子一起感受道的包容：犯错时不说'你怎么又这样'，而是'没关系，我们重新试试'。你的拥抱就是孩子心中的太阳。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "63": {
             "chapter": 63,
@@ -3330,29 +2026,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读的时候，不妨用积木或乐高做个游戏：搭一个作品，然后拆成小块，再一起重建。你会发现，孩子自己就懂了。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:04:04.221Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:05:01.730Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "64": {
             "chapter": 64,
@@ -3385,17 +2059,7 @@
                 }
             ],
             "parent_tips": "和孩子一起种一颗小种子，每天观察它的变化。不用刻意说教，让自然的力量悄悄告诉孩子：每一步都算数。",
-            "review_status": "approved",
-            "reviewed_by": "何继杰",
-            "reviewed_at": "2026-05-13",
-            "review_history": [
-                {
-                    "action": "approved",
-                    "by": "何继杰",
-                    "at": "2026-05-13T11:32:46Z",
-                    "notes": "批量2 Article 11安全检查通过"
-                }
-            ]
+            "review_status": "approved"
         },
         "65": {
             "chapter": 65,
@@ -3427,23 +2091,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，不用急着讲道理。也许就在他玩积木、搭城堡时，轻轻说一句：‘看，简简单单的积木也能搭出最美的房子。’",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:43:16.866Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:44:11.039Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "66": {
             "chapter": 66,
@@ -3475,23 +2123,7 @@
                 }
             ],
             "parent_tips": "和孩子共读时，不妨先说说自己小时候谦虚或骄傲的小故事，让孩子觉得你也在学习，而不是在教他。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:39:35.615Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:43:12.465Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "67": {
             "chapter": 67,
@@ -3523,29 +2155,7 @@
                 }
             ],
             "parent_tips": "和孩子一起找找生活中的'三宝'：一个拥抱（慈）、一次节约（俭）、一次谦让（不争先）。你也会发现自己的'三宝'哦。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:05:05.994Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:08:00.182Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "68": {
             "chapter": 68,
@@ -3577,23 +2187,7 @@
                 }
             ],
             "parent_tips": "下次孩子发脾气时，轻轻抱抱他，说：‘我们慢慢来，不着急。’——你平静的样子，就是最好的示范。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:38:30.083Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:39:22.611Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "69": {
             "chapter": 69,
@@ -3625,23 +2219,7 @@
                 }
             ],
             "parent_tips": "和孩子共读时，不妨也想想自己有没有'轻敌'的时候。退一步，不是输，是给智慧留点空间。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:36:21.680Z",
-                    "notes": "何继杰"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:38:10.460Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "70": {
             "chapter": 70,
@@ -3673,23 +2251,7 @@
                 }
             ],
             "parent_tips": "当你发现孩子身上那颗'藏起来的宝石'时，不必大声赞美，只需像发现宝藏一样，对他会心一笑。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:35:04.038Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:36:08.248Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "71": {
             "chapter": 71,
@@ -3721,29 +2283,7 @@
                 }
             ],
             "parent_tips": "当孩子说‘我不知道’时，给他一个温暖的微笑。这句话不是终点，而是探索的起点。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:08:04.062Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:09:00.838Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "72": {
             "chapter": 72,
@@ -3776,23 +2316,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，就像在分享一个关于小鸟和宝石的小秘密。不用讲道理，只需轻轻问：‘你觉得呢？’",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:31:31.338Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:33:03.795Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "73": {
             "chapter": 73,
@@ -3825,23 +2349,7 @@
                 }
             ],
             "parent_tips": "和孩子一起想象那张“网”吧，不用刻意说教。你一个温暖的眼神，比任何道理都更有力量。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:33:09.747Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:33:50.203Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "74": {
             "chapter": 74,
@@ -3874,23 +2382,7 @@
                 }
             ],
             "parent_tips": "和孩子一起时，多创造‘因为开心所以愿意’的时刻，少用‘因为惩罚所以必须’。让爱和美好成为孩子内心的指南针。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:29:57.168Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:31:23.420Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "75": {
             "chapter": 75,
@@ -3922,23 +2414,7 @@
                 }
             ],
             "parent_tips": "当孩子说‘别管我’时，不妨深呼吸，想想老子的话：有时候少管一点，反而能看见孩子自己生长的力量。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T02:33:55.047Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T02:34:58.215Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "76": {
             "chapter": 76,
@@ -3972,171 +2448,7 @@
                 }
             ],
             "parent_tips": "和孩子一起摸嫩叶、弯柳条，感受柔软中的生命力。不必讲道理，让触觉和身体体验说话。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-15",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:07:43.438Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:09:10.062Z",
-                    "notes": "何继杰"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T11:20:58.222Z",
-                    "notes": "开始审核",
-                    "revisions": {
-                        "core_idea": {
-                            "needs_change": true,
-                            "problem": "没有体现核心观点“强大处下，软弱处上”",
-                            "direction": "请以“强大处下，软弱处上”核心观点，重新生成元数据"
-                        },
-                        "safety_notes": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "interaction_points": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "parent_tips": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "general": {
-                            "notes": ""
-                        }
-                    }
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T11:21:39.940Z",
-                    "notes": "",
-                    "revisions": {
-                        "core_idea": {
-                            "needs_change": true,
-                            "problem": "没有体现核心观点“强大处下，软弱处上”",
-                            "direction": "请以“强大处下，软弱处上”核心观点，重新生成元数据"
-                        },
-                        "safety_notes": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "interaction_points": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "parent_tips": {
-                            "needs_change": false,
-                            "problem": "",
-                            "direction": ""
-                        },
-                        "general": {
-                            "notes": ""
-                        }
-                    },
-                    "content_snapshot": {
-                        "core_idea": "就像大风来了，小草弯弯腰就过去了，大树却可能被吹断。有时候，柔软和灵活比硬撑更厉害，能保护我们好好长大。",
-                        "safety_notes": [
-                            "避免讨论死亡或僵硬的身体，只聚焦于活着时的柔软和灵活。",
-                            "不要用‘兵强则灭’引发对战争、暴力的恐惧。",
-                            "不要暗示‘柔弱’就是软弱或任人欺负，强调是像水一样有力量的柔软。"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "小草和大树",
-                                "age_4_6": "让孩子学小草弯腰的样子（双手合十左右摇摆），问：‘大风来了，小草怎么做？’然后学大树硬挺（站直不动），问：‘大树会怎样？’一起说：‘小草弯弯腰，安全啦！’",
-                                "age_7_9": "和孩子一起观察户外或视频里风吹草和树的画面，问：‘为什么小草没断？如果我们是小草，遇到困难时怎么‘弯腰’？’",
-                                "age_10_12": "讨论：‘老子说柔软代表生命力，坚硬代表死亡。你见过哪些‘柔软’反而更持久的事物？比如橡皮筋、流水。你觉得为什么？’"
-                            },
-                            {
-                                "topic": "水穿石头",
-                                "age_4_6": null,
-                                "age_7_9": "用一杯水和一块石头演示：水很软，但可以滴穿石头（可用故事代替）。问：‘水是怎么做到的？我们遇到难题时，能不能像水一样慢慢想办法？’",
-                                "age_10_12": "引入滴水穿石的概念，讨论：‘水柔弱的秘密是什么？坚持和柔弱矛盾吗？你生活中有没有‘以柔克刚’的例子？’"
-                            },
-                            {
-                                "topic": "把智慧带入生活",
-                                "age_4_6": "洗澡时玩‘水宝宝’游戏：用手捧水，水会从指缝溜走；握紧拳头，水反而抓不住。告诉孩子：‘柔软的手才能捧住水哦！’",
-                                "age_7_9": "邀请孩子和家人聊聊：‘今天有没有遇到‘硬碰硬’的事？如果换个柔软的方式，结果会不会不一样？’可以一起演一演。",
-                                "age_10_12": "提醒孩子：‘这一章的智慧很深，不需要马上全懂。下次和朋友争执时，试试先停一下，像小草一样弯弯腰，看看会发生什么。’"
-                            }
-                        ],
-                        "parent_tips": "和孩子一起做‘小草弯腰’的游戏吧，在笑声中感受柔软的力量。不必讲道理，体验就是最好的学习。"
-                    }
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-14T11:46:24.036Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-15T04:28:17.196Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "status_change",
-                    "from": "revision_needed",
-                    "to": "reviewing",
-                    "by": "admin (AI revision completed)",
-                    "at": "2026-05-15T04:28:52.088Z",
-                    "notes": "AI 修订完成，新版本基于审核意见重新生成 core_idea、safety_notes、interaction_points、parent_tips，等待人工审核"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-15T04:36:09.958Z",
-                    "notes": "何继杰",
-                    "content_snapshot": {
-                        "core_idea": "摸摸你的小手，软软的，这是活着的标志。再摸摸枯树枝，硬硬的，它已经死了。原来，柔软才是生命力的秘密。",
-                        "safety_notes": [
-                            "避免将‘大树vs小草’对立化为‘长得高不好/长得矮好’，防止引发儿童对身体或外在大小的焦虑。",
-                            "避免将‘强大处下’解释为‘强者就该被欺负’，而是强调位置高低只是表象。",
-                            "不使用‘死亡’来恐吓，而是用‘枯树枝’这样的自然现象作为观察对象。",
-                            "明确区分‘柔弱≠软弱’——柔弱是有弹性的、能弯曲的能力，不是没有力量的放弃。",
-                            "避免将‘兵强则灭’引发对战争、暴力的恐惧，聚焦自然现象如树木、小草。"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "摸一摸，软还是硬？",
-                                "age_4_6": "和孩子一起：先摸摸自己的小手、脸蛋（软软的），再摸摸枕头、毛绒玩具（软软的）。然后到户外找一根枯树枝（硬硬的）。问：‘哪个是活着的？’",
-                                "age_7_9": "观察不同植物：嫩叶（软）、老叶（脆）、枯枝（硬）。讨论：‘为什么活的植物是软的？老子说‘柔弱者生之徒’，你同意吗？’",
-                                "age_10_12": "引入原文：‘人之生也柔弱，其死也坚强’。讨论：‘为什么老子用‘柔软’和‘坚强’来形容生死？你觉得‘坚强’在这里是褒义还是贬义？’"
-                            },
-                            {
-                                "topic": "小草弯腰的秘密",
-                                "age_4_6": "角色扮演：孩子当大树（站直双手举高），你当风（轻轻吹气），‘大树’摇啊摇然后倒下。再换成小草（蹲下左右摇摆），风来了就弯腰。问：‘谁更安全？’",
-                                "age_7_9": "观察户外或视频里的树和草，讨论：‘为什么大风后小草还在，大树却断了？老子说‘强大处下’，大树明明很高，为什么说它‘处下’？’引导思考：真正的强大不是看起来高。",
-                                "age_10_12": "讨论：‘老子说‘强大处下，柔弱处上’，这和我们平常想的‘强大=上面’相反。你觉得他为什么这么说？生活中哪些‘低下’的东西其实很有力量？’"
-                            },
-                            {
-                                "topic": "把智慧带入生活",
-                                "age_4_6": "玩‘弯腰捡东西’游戏：地上放一个玩具，让孩子弯腰捡起来。问：‘弯腰是不是很舒服？如果一直挺着腰，反而累。’",
-                                "age_7_9": "和孩子聊聊：‘有时候和别人吵架，如果硬要争赢，可能两败俱伤。如果先‘弯腰’（听对方说），结果会不会更好？’可以演一演。",
-                                "age_10_12": "讨论：‘老子说‘强大处下’，是不是说我们不要争第一？真正的强大是能低头吗？你身边有‘处下却强大’的人吗？’"
-                            }
-                        ],
-                        "parent_tips": "和孩子一起摸嫩叶、弯柳条，感受柔软中的生命力。不必讲道理，让触觉和身体体验说话。"
-                    }
-                }
-            ]
+            "review_status": "approved"
         },
         "77": {
             "chapter": 77,
@@ -4171,73 +2483,7 @@
                 }
             ],
             "parent_tips": "和孩子一起用橡皮筋或玩具弓感受‘刚刚好’的物理体验。当孩子默默做了好事不炫耀时，给他一个会心的微笑。身教胜于言传——您自己也不要在孩子面前炫耀，他会从您身上学到真正的智慧。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-15",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:09:24.062Z",
-                    "notes": "何继杰"
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:10:20.120Z",
-                    "notes": "何继杰"
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-15T05:01:01.866Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-15T05:02:59.083Z",
-                    "notes": "开始审核"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-15T05:03:28.381Z",
-                    "notes": "何继杰",
-                    "content_snapshot": {
-                        "core_idea": "你见过拉弓吗？弓弦太高就压低，太低就抬高，直到刚刚好。大自然也是这样：多的减少，少的补足，让一切平衡。可人们有时却反过来——从不够的人那里拿，去给已经有很多的人。有智慧的人像大自然一样，不仅分享多余的，而且做了好事也不炫耀。",
-                        "safety_notes": [
-                            "避免用‘穷人’‘富人’等标签化词语，可换成‘东西多的人’‘东西少的人’",
-                            "不要让孩子觉得‘分享’是强迫的，强调自愿和快乐",
-                            "避免讨论‘社会不公平’等复杂话题，聚焦于自然和日常的平衡",
-                            "解释‘损有余’不是抢东西，就像水从高处自然流向低处，不是有人来拿走你的东西",
-                            "区分‘不炫耀’和‘不可以为自己骄傲’——健康的自我肯定很好，但不要压倒别人来抬高自己",
-                            "讨论分享时不以‘分享=好孩子’作为考核标准，避免道德评判"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "拉弓的秘密",
-                                "age_4_6": "和孩子一起假装拉弓：手臂抬高、放低，说‘高啦，往下压；低啦，往上抬’。然后问：‘小弓箭想不想飞得刚刚好？’",
-                                "age_7_9": "用一根橡皮筋演示：拉太紧会断，太松弹不远。问：‘怎样才算刚刚好？’让孩子动手试试。",
-                                "age_10_12": "让孩子想想：生活中有什么事情像拉弓一样需要调节？比如学习时间、玩的时间。讨论如何找到‘刚刚好’的平衡。"
-                            },
-                            {
-                                "topic": "天道和人的故事",
-                                "age_4_6": "拿出两个小碗，一个装很多积木，一个很少。说：‘大自然会把多的分一点给少的，让两边差不多。’然后和孩子一起分积木。",
-                                "age_7_9": "问：‘你见过有人拿走别人的东西，去给已经有很多的人吗？这样好吗？’引导孩子发现‘人之道’的不公平。",
-                                "age_10_12": "讨论：‘老子说‘损不足以奉有余’——为什么人们会这样做？如果我们像大自然一样，把多的补到少的，世界会怎样？’"
-                            },
-                            {
-                                "topic": "把智慧带入生活",
-                                "age_4_6": "吃点心时，如果孩子有多余的饼干，可以说：‘你有多余的，可以分给没有的小朋友，这样大家都刚刚好。’然后一起开心地吃。",
-                                "age_7_9": "鼓励孩子观察：‘今天有没有谁需要帮助？我们可以怎么‘补不足’？比如同学忘带文具，可以借给他。’做完后，问：‘你感觉怎么样？’",
-                                "age_10_12": "提醒孩子：‘做了好事不炫耀，就像大自然悄悄让万物生长一样。如果你帮助了别人，不用到处说，心里知道就好。’"
-                            }
-                        ],
-                        "parent_tips": "和孩子一起用橡皮筋或玩具弓感受‘刚刚好’的物理体验。当孩子默默做了好事不炫耀时，给他一个会心的微笑。身教胜于言传——您自己也不要在孩子面前炫耀，他会从您身上学到真正的智慧。"
-                    }
-                }
-            ]
+            "review_status": "approved"
         },
         "78": {
             "chapter": 78,
@@ -4269,29 +2515,7 @@
                 }
             ],
             "parent_tips": "和孩子一起玩水的时候，可以轻轻说：‘水很温柔，但它很有力量。’不用讲道理，孩子会自己感受到。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:09:03.601Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:19:16.119Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "79": {
             "chapter": 79,
@@ -4325,72 +2549,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读完，不妨聊聊你们最近一次闹别扭又和好的经历。问问孩子：“和好后，心里还有没有小疙瘩？”然后一起想想，下次能不能一开始就好好说话。帮了别人不惦记回报，心里会更轻松。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-15",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:10:23.879Z",
-                    "notes": ""
-                },
-                {
-                    "action": "revision_needed",
-                    "by": "admin",
-                    "at": "2026-05-14T04:11:41.134Z",
-                    "notes": "何继杰"
-                },
-                {
-                    "action": "updated",
-                    "by": "admin (synced from staging)",
-                    "at": "2026-05-15T05:36:19.061Z",
-                    "notes": "管理员确认同步 AI 修订结果（暂存 → 生产）"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-15T05:36:49.662Z",
-                    "notes": "开始审核"
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-15T05:39:38.072Z",
-                    "notes": "何继杰",
-                    "content_snapshot": {
-                        "core_idea": "跟好朋友吵架和好了，但心里还是有个小疙瘩。老子说，最好的办法不是吵完再和好，而是一开始就不让怨恨产生。就像你借了玩具给小伙伴，不天天催他还——帮助别人不求回报，心里更轻松。天道不偏心，但善行本身会带来好结果。",
-                        "safety_notes": [
-                            "避免使用“仇怨”“怨恨”等强烈负面词语，改用“吵架”“不开心”“小疙瘩”等温和表达",
-                            "强调“不追讨”不是软弱或吃亏，而是内心强大、不计较的表现",
-                            "聚焦“帮助别人但不图回报”的主动姿态，而非被动忍耐",
-                            "不暗示“善良一定会得到回报”，而是强调善行本身让心里踏实、关系更好，这是自然结果",
-                            "不把“吵架”标签为“不好”的行为，而是承认它是关系中自然发生的事，重点是如何减少余怨"
-                        ],
-                        "interaction_points": [
-                            {
-                                "topic": "吵架和好之后",
-                                "age_4_6": "宝宝，你和好朋友吵完架和好后，心里还会有点不舒服吗？就像心里有个小疙瘩，你用手指指胸口，那里有没有感觉呀？",
-                                "age_7_9": "你和朋友闹别扭后，即使和好了，有没有感觉心里还有一点点不舒服？老子说“和大怨必有余怨”，你觉得怎样做才能让那个不舒服完全消失呢？比如一开始就不吵架？",
-                                "age_10_12": "你有没有经历过“和好但心里还有刺”的情况？老子说“和大怨必有余怨”，你觉得为什么很难完全消除？那避免产生“大怨”的关键是什么？"
-                            },
-                            {
-                                "topic": "帮人不求回报",
-                                "age_4_6": "如果你帮小猫咪捡回了小球，你希望它马上谢谢你吗？还是你觉得看到它开心就够了？我们来学小猫咪喵喵叫，表示它很开心！",
-                                "age_7_9": "你帮了同学一个忙，但他没有说谢谢，你会怎么想？老子说“有德司契”，就是只管自己做好事，不总想着别人报答。你试过这样吗？",
-                                "age_10_12": "你帮了别人却得不到回报，心里会不平衡吗？老子说“天道无亲，常与善人”，意思是善良的人做的事情自然会有好结果。你相信吗？说说你的想法。"
-                            },
-                            {
-                                "topic": "把智慧带入生活",
-                                "age_4_6": "今晚洗澡时，可以问问宝宝：今天有没有和谁吵架呀？下次我们可以试试不吵架，好好说话，就像小鸭子一样嘎嘎嘎地商量。",
-                                "age_7_9": "今天晚饭时，和家人聊聊：有没有哪次你帮了别人，但心里一直惦记着回报？试试放下它，看看会发生什么。",
-                                "age_10_12": "这一章的智慧需要慢慢体会。下次和朋友有矛盾时，先想想老子的话，看看能不能从源头避免冲突。不急于改变，多观察自己的感受。"
-                            }
-                        ],
-                        "parent_tips": "和孩子一起读完，不妨聊聊你们最近一次闹别扭又和好的经历。问问孩子：“和好后，心里还有没有小疙瘩？”然后一起想想，下次能不能一开始就好好说话。帮了别人不惦记回报，心里会更轻松。"
-                    }
-                }
-            ]
+            "review_status": "approved"
         },
         "80": {
             "chapter": 80,
@@ -4422,23 +2581,7 @@
                 }
             ],
             "parent_tips": "和孩子一起，从今天的一顿饭、一件衣服开始，感受‘足够’的快乐。不必远求，幸福就在此刻。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-14",
-            "review_history": [
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-14T04:11:45.790Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-14T04:13:30.721Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         },
         "81": {
             "chapter": 81,
@@ -4471,31 +2614,7 @@
                 }
             ],
             "parent_tips": "和孩子一起读时，可以轻轻地说：'有时候真话像柠檬，酸酸的但对身体好。' 不用急着讲道理，让孩子在故事和游戏中自己感受。",
-            "review_status": "approved",
-            "reviewed_by": "",
-            "reviewed_at": "2026-05-12",
-            "review_history": [
-                {
-                    "action": "created",
-                    "by": "extract_meta.py",
-                    "at": "2026-05-12T00:00:00Z",
-                    "notes": "AI generated - awaiting review"
-                },
-                {
-                    "action": "reviewing",
-                    "by": "admin",
-                    "at": "2026-05-12T11:19:19.394Z",
-                    "notes": ""
-                },
-                {
-                    "action": "approved",
-                    "by": "admin",
-                    "at": "2026-05-12T11:22:11.963Z",
-                    "notes": "何继杰"
-                }
-            ]
+            "review_status": "approved"
         }
-    },
-    "_version": "1.1",
-    "_updated": "2026-05-15"
+    }
 }

@@ -52,5 +52,24 @@ fi
 
 echo "  ✓ 敏感文件保护正常"
 
+# ── 3. 元数据一致性检查 ──
+# 当 family_metadata.json 或 build-public-metadata.js 被修改时，验证公开版是否同步
+METADATA_CHANGED=$(git diff --cached --name-only | grep -cE '^(data/family_metadata\.json|scripts/build-public-metadata\.js)$' || true)
+if [ "$METADATA_CHANGED" -gt 0 ]; then
+    echo "[pre-commit] 检测到元数据变更，验证公开版一致性..."
+    if node scripts/build-public-metadata.js --check 2>/dev/null; then
+        echo "  ✓ 公开版元数据与源文件一致"
+    else
+        EXIT_CODE=$?
+        echo ""
+        echo "  ❌ 公开版元数据 (family_metadata_public.json) 与源文件不一致！"
+        echo "  请运行以下命令更新公开版:"
+        echo "    node scripts/build-public-metadata.js"
+        echo "  然后重新 git add data/family_metadata_public.json"
+        echo ""
+        exit 1
+    fi
+fi
+
 echo "[pre-commit] 全部检查通过 ✓"
 exit 0

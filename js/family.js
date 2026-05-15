@@ -942,7 +942,7 @@ function autoEndSession() {
 function fetchParentTips(chapterKey, callback) {
     var chapterNum = typeof chapterKey === 'number' ? chapterKey : parseInt(chapterKey.replace('chapter', ''), 10);
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/data/family_metadata.json', true);
+    xhr.open('GET', '/data/family_metadata_public.json', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             try {
@@ -965,7 +965,7 @@ function fetchParentTips(chapterKey, callback) {
 function loadMetadataCache(callback) {
     if (state.metadataCache) { callback(); return; }
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/data/family_metadata.json', true);
+    xhr.open('GET', '/data/family_metadata_public.json', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             try {

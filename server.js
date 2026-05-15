@@ -182,7 +182,7 @@ var _familyMetadata = null;
 function loadFamilyMetadata() {
     if (_familyMetadata) return _familyMetadata;
     try {
-        var metaPath = path.join(__dirname, 'data', 'family_metadata.json');
+        var metaPath = path.join(__dirname, 'data', 'family_metadata_public.json');
         _familyMetadata = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
         console.log('  \x1b[2m✓ 亲子对话元数据库已加载\x1b[0m');
         return _familyMetadata;
@@ -561,12 +561,17 @@ function handleFamilyChatAPI(req, res) {
 
             var chapterMeta = metadata.chapters[String(chapter)];
 
-            if (chapterMeta.review_status !== 'approved') {
+            var allowed = chapterMeta.review_status === 'approved' ||
+                (chapterMeta.review_status === 'pending' && history.length > 0);
+            if (!allowed) {
                 res.writeHead(403, {
                     'Content-Type': 'application/json; charset=utf-8',
                     'Access-Control-Allow-Origin': '*'
                 });
-                res.end(JSON.stringify({ error: '第 ' + chapter + ' 章的元数据尚未通过审核' }));
+                res.end(JSON.stringify({
+                    error: '此章节正在维护中，请先探索其他章节！',
+                    code: 'CHAPTER_IN_TRANSITION'
+                }));
                 return;
             }
 

@@ -2,7 +2,7 @@
  * 亲子共读对话 — Cloudflare Pages Functions
  * POST /api/family_chat → 根据元数据 + 年龄参数动态生成亲子对话
  *
- * 依赖：data/family_metadata.json（运行时从静态资源 fetch 加载）
+ * 依赖：data/family_metadata_public.json（脱敏公开版元数据库）
  * 环境变量：DEEPSEEK_API_KEY（在 Cloudflare Pages 后台配置）
  */
 
@@ -12,7 +12,7 @@ var _metadata = null;
 async function loadMetadata(request) {
     if (_metadata) return _metadata;
     try {
-        var url = new URL('/data/family_metadata.json', request.url);
+        var url = new URL('/data/family_metadata_public.json', request.url);
         var resp = await fetch(url);
         if (!resp.ok) throw new Error('HTTP ' + resp.status);
         _metadata = await resp.json();
@@ -181,7 +181,7 @@ export async function onRequest(context) {
             });
         }
 
-        // 加载元数据（运行时从 /data/family_metadata.json fetch）
+        // 加载元数据（运行时从 /data/family_metadata_public.json fetch）
         var metadata = await loadMetadata(request);
         if (!metadata || !metadata.chapters || !metadata.chapters[String(chapter)]) {
             return new Response(JSON.stringify({ error: '未找到第 ' + chapter + ' 章的元数据' }), {
@@ -192,9 +192,14 @@ export async function onRequest(context) {
 
         var chapterMeta = metadata.chapters[String(chapter)];
 
-        // 仅允许已审核的章节
-        if (chapterMeta.review_status !== 'approved') {
-            return new Response(JSON.stringify({ error: '第 ' + chapter + ' 章的元数据尚未通过审核，暂不可用' }), {
+        // 章节可用性检查：approved 直接放行；pending 状态下已有对话历史的活跃用户允许继续
+        var allowed = chapterMeta.review_status === 'approved' ||
+            (chapterMeta.review_status === 'pending' && history.length > 0);
+        if (!allowed) {
+            return new Response(JSON.stringify({
+                error: '此章节正在维护中，请先探索其他章节！',
+                code: 'CHAPTER_IN_TRANSITION'
+            }), {
                 status: 403,
                 headers: Object.assign({}, corsHeaders, { 'Content-Type': 'application/json; charset=utf-8' })
             });

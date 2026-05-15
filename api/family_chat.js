@@ -2,7 +2,7 @@
  * 亲子共读对话 — Vercel Serverless Function
  * POST /api/family_chat → 根据元数据 + 年龄参数动态生成亲子对话
  *
- * 依赖：data/family_metadata.json（元数据库）
+ * 依赖：data/family_metadata_public.json（脱敏公开版元数据库）
  * 外部 API：DeepSeek Chat API
  */
 
@@ -16,7 +16,7 @@ let _metadata = null;
 function loadMetadata() {
     if (_metadata) return _metadata;
     try {
-        var filePath = path.join(__dirname, '..', 'data', 'family_metadata.json');
+        var filePath = path.join(__dirname, '..', 'data', 'family_metadata_public.json');
         _metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
         console.log('[family_chat] 元数据库已加载');
         return _metadata;
@@ -204,9 +204,14 @@ export default async function handler(req, res) {
 
         var chapterMeta = metadata.chapters[String(chapter)];
 
-        // 仅允许已审核的章节
-        if (chapterMeta.review_status !== 'approved') {
-            return res.status(403).json({ error: '第 ' + chapter + ' 章的元数据尚未通过审核，暂不可用' });
+        // 章节可用性检查：approved 直接放行；pending 状态下已有对话历史的活跃用户允许继续
+        var allowed = chapterMeta.review_status === 'approved' ||
+            (chapterMeta.review_status === 'pending' && history.length > 0);
+        if (!allowed) {
+            return res.status(403).json({
+                error: '此章节正在维护中，请先探索其他章节！',
+                code: 'CHAPTER_IN_TRANSITION'
+            });
         }
 
         // 检查缓存
