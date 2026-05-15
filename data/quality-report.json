@@ -1,50 +1,49 @@
 {
-  "generated": "2026-05-08T11:03:45.632Z",
+  "generated": "2026-05-15T06:25:08.147Z",
   "summary": {
-    "overallHealth": "FAIR",
-    "validationPassRate": "1442/1782",
+    "overallHealth": "GOOD",
+    "validationPassRate": "1782/1782",
     "searchIndexUpToDate": true,
-    "fourLevelCoverage": "13/81"
+    "fourLevelCoverage": "81/81"
   },
   "metrics": {
     "totalChapters": 81,
-    "totalSizeKB": 1185,
-    "withFourLevels": 13,
+    "totalSizeKB": 2819,
+    "withFourLevels": 81,
     "withHuihuiGreeting": 81,
     "withConceptTags": 81,
     "conceptUsage": {
-      "dao": 33,
-      "xuan": 7,
-      "wuwei": 37,
-      "buzheng": 8,
-      "ziran": 7,
+      "dao": 47,
+      "xuan": 11,
+      "wuwei": 29,
+      "buzheng": 18,
+      "ziran": 14,
       "shouzhong": 1,
-      "rouruo": 11,
-      "qiantui": 2,
-      "xia": 8,
-      "zhizu": 8,
+      "rouruo": 13,
+      "qiantui": 8,
+      "xia": 9,
+      "zhizu": 11,
       "yi": 5,
-      "yinger": 1,
-      "pu": 8,
+      "yinger": 3,
+      "pu": 13,
       "de": 33,
-      "fan": 20,
-      "jing": 6
+      "jing": 7,
+      "fan": 16
     },
     "unusedConcepts": []
   },
   "validation": {
-    "passed": false,
-    "passRate": "1442/1782",
-    "passPercent": 81,
-    "failedFiles": 68
+    "passed": true,
+    "passRate": "1782/1782",
+    "passPercent": 100
   },
   "searchIndex": {
     "upToDate": true
   },
   "manifest": {
     "exists": true,
-    "generated": "2026-05-08T11:03:42.476Z",
+    "generated": "2026-05-15T06:25:07.648Z",
     "totalChapters": 81,
-    "fullyUpgraded": 13
+    "fullyUpgraded": 81
   }
 }

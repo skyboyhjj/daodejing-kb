@@ -1,574 +1,574 @@
 {
-  "generated": "2026-05-08T11:04:29.078Z",
+  "generated": "2026-05-15T06:25:07.648Z",
   "totalChapters": 81,
-  "fullyUpgraded": 13,
+  "fullyUpgraded": 81,
   "chapters": {
     "ch01.html": {
       "num": 1,
-      "hash": "74ef5e659ce2",
-      "modified": "2026-05-08",
+      "hash": "a2f22d6793e0",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch02.html": {
       "num": 2,
-      "hash": "f0dc5f1300f6",
-      "modified": "2026-05-08",
+      "hash": "5bd487b0dfe7",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch03.html": {
       "num": 3,
-      "hash": "e787b81f360d",
-      "modified": "2026-05-08",
+      "hash": "f2162c4a2f6a",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch04.html": {
       "num": 4,
-      "hash": "f377b34b2c3d",
-      "modified": "2026-05-08",
+      "hash": "07fccff1f4bd",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch05.html": {
       "num": 5,
-      "hash": "2d93db619e38",
-      "modified": "2026-05-08",
+      "hash": "3469726d435b",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch06.html": {
       "num": 6,
-      "hash": "ee4f077a4108",
-      "modified": "2026-05-08",
+      "hash": "04a63ade19e6",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch07.html": {
       "num": 7,
-      "hash": "d5ba153ed4cd",
-      "modified": "2026-05-08",
+      "hash": "8a69f90708d4",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch08.html": {
       "num": 8,
-      "hash": "90243988c32d",
-      "modified": "2026-05-08",
+      "hash": "16feb3a85ee3",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch09.html": {
       "num": 9,
-      "hash": "0009143e9ca5",
-      "modified": "2026-05-08",
+      "hash": "f33a160a85f3",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch10.html": {
       "num": 10,
-      "hash": "44640bc7ac81",
-      "modified": "2026-05-08",
+      "hash": "3b9dcee3e614",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch11.html": {
       "num": 11,
-      "hash": "69fe5100398d",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "b2db62dca0b6",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch12.html": {
       "num": 12,
-      "hash": "3567b0b95ff2",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "6c6579a308b3",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch13.html": {
       "num": 13,
-      "hash": "0a72065bb16b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "dbbfe138e7ab",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch14.html": {
       "num": 14,
-      "hash": "69a0f81c9cde",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "d18e2c046be9",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch15.html": {
       "num": 15,
-      "hash": "2d0da8bed692",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "c1bb65658632",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch16.html": {
       "num": 16,
-      "hash": "2567e8c6dd48",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "3849f1d8e2ae",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch17.html": {
       "num": 17,
-      "hash": "d50b3f765239",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "fbd5bdfbb89a",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch18.html": {
       "num": 18,
-      "hash": "2021f8ad9b07",
-      "modified": "2026-05-08",
+      "hash": "752da610bef5",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch19.html": {
       "num": 19,
-      "hash": "77e0472a1c75",
-      "modified": "2026-05-08",
+      "hash": "0d813f2280f8",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch20.html": {
       "num": 20,
-      "hash": "d9a1f052feec",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4214d3fc7189",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch21.html": {
       "num": 21,
-      "hash": "36990204dac2",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "46cf7b2ca0cd",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch22.html": {
       "num": 22,
-      "hash": "bd80b0cbfaad",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "186b23c0137e",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch23.html": {
       "num": 23,
-      "hash": "00720cd9fb3b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "f3707dbb6b03",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch24.html": {
       "num": 24,
-      "hash": "3f3105b471ad",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "59dbf422dc96",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch25.html": {
       "num": 25,
-      "hash": "7703c7e8d520",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4d9673f94c86",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch26.html": {
       "num": 26,
-      "hash": "9dacc3d62c70",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "8d6128b1ba51",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch27.html": {
       "num": 27,
-      "hash": "d94b466b8546",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "c595f6c03547",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch28.html": {
       "num": 28,
-      "hash": "1a5200ef2866",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "6e28f457750e",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch29.html": {
       "num": 29,
-      "hash": "d28e70d4f266",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "290ce4dcbef9",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch30.html": {
       "num": 30,
-      "hash": "6a9365927112",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "9de079e52a4a",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch31.html": {
       "num": 31,
-      "hash": "f3b66bb27376",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4759192babac",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch32.html": {
       "num": 32,
-      "hash": "656d0de42b9a",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "6d4e20894add",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch33.html": {
       "num": 33,
-      "hash": "cb734b38912b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "687c6199718e",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch34.html": {
       "num": 34,
-      "hash": "9672f3e0e63e",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "29abb7477aea",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch35.html": {
       "num": 35,
-      "hash": "cd0081267e06",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "e146390cae2a",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch36.html": {
       "num": 36,
-      "hash": "fba138a37002",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "be0b2339e6b8",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch37.html": {
       "num": 37,
-      "hash": "0df4caebddcf",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "168e6ad670b9",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch38.html": {
       "num": 38,
-      "hash": "b177edaa5a18",
-      "modified": "2026-05-08",
+      "hash": "f15fed03d390",
+      "modified": "2026-05-13",
       "completeness": "5/5",
       "fullUpgrade": true
     },
     "ch39.html": {
       "num": 39,
-      "hash": "0cd3fb96186b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "faaae0d9ea31",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch40.html": {
       "num": 40,
-      "hash": "a2607623eb5f",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "5eee9aad2f66",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch41.html": {
       "num": 41,
-      "hash": "b3769472f28f",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "0427cae03d03",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch42.html": {
       "num": 42,
-      "hash": "f812ded1c5e2",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "ecbc9f6e5182",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch43.html": {
       "num": 43,
-      "hash": "fff9183a3953",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "1c74344faa0a",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch44.html": {
       "num": 44,
-      "hash": "6932b5509bdc",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "ccab6d1668d3",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch45.html": {
       "num": 45,
-      "hash": "4af92672246d",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "e1426751062f",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch46.html": {
       "num": 46,
-      "hash": "52c37c3df6bb",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "abddc5ff99f1",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch47.html": {
       "num": 47,
-      "hash": "0ef793e2a87a",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "652bdcfa244d",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch48.html": {
       "num": 48,
-      "hash": "b92d79f4fb6a",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "04a7bf80f15d",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch49.html": {
       "num": 49,
-      "hash": "5c3c80cb426a",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "013a59fb435d",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch50.html": {
       "num": 50,
-      "hash": "5a6570a81c9e",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "9ba303621a4a",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch51.html": {
       "num": 51,
-      "hash": "3baa4646dc70",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "ca68efe3d470",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch52.html": {
       "num": 52,
-      "hash": "a8b31fec6d18",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "eada94ae9806",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch53.html": {
       "num": 53,
-      "hash": "c7956499b842",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "9bfaf0854a47",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch54.html": {
       "num": 54,
-      "hash": "61e39153dc98",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "2b43dffafa11",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch55.html": {
       "num": 55,
-      "hash": "bb540b38aaa7",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "f1ab1633f48e",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch56.html": {
       "num": 56,
-      "hash": "df8447fc4440",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "77f9c85907be",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch57.html": {
       "num": 57,
-      "hash": "ece44c83f636",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "a8c442fcbdd6",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch58.html": {
       "num": 58,
-      "hash": "eaba227b2381",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "f98a3cac1414",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch59.html": {
       "num": 59,
-      "hash": "99d5f2b64790",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "3f1761f2eb5f",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch60.html": {
       "num": 60,
-      "hash": "117a08ea1ec7",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "f37fbe7e4cf5",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch61.html": {
       "num": 61,
-      "hash": "480862b5c1d7",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "554369e81688",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch62.html": {
       "num": 62,
-      "hash": "0c0e4a1d060e",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "50d66dc6e31f",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch63.html": {
       "num": 63,
-      "hash": "ace537b818dc",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "caf80071cfab",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch64.html": {
       "num": 64,
-      "hash": "76895c5cdf7f",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "7d46adf17d62",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch65.html": {
       "num": 65,
-      "hash": "b1a793933e5d",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "e23b5ef4b483",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch66.html": {
       "num": 66,
-      "hash": "a39dff3211e4",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4b764b84eeb2",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch67.html": {
       "num": 67,
-      "hash": "4bb65c18e2cc",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "790007aed9c4",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch68.html": {
       "num": 68,
-      "hash": "99d7e9649b2b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4e23fa503b83",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch69.html": {
       "num": 69,
-      "hash": "b4fd764b180d",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "6984eb655c99",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch70.html": {
       "num": 70,
-      "hash": "2db769732470",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "c83dec2f60ed",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch71.html": {
       "num": 71,
-      "hash": "333c3ee6530a",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "6e4ad64842a8",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch72.html": {
       "num": 72,
-      "hash": "bb551d33b15c",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "5f687984f918",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch73.html": {
       "num": 73,
-      "hash": "4c1e2783c47b",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "20254fca080b",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch74.html": {
       "num": 74,
-      "hash": "a274f2549c7c",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "b24951e56ff8",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch75.html": {
       "num": 75,
-      "hash": "bada58d60060",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "8674d56b1702",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch76.html": {
       "num": 76,
-      "hash": "a93c2dea6674",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "e325654f97da",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch77.html": {
       "num": 77,
-      "hash": "df2e46e078a0",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "57c5cc8662f3",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch78.html": {
       "num": 78,
-      "hash": "152de7991394",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "18b9b3922673",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch79.html": {
       "num": 79,
-      "hash": "106a03657c7e",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "0650319a3aff",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch80.html": {
       "num": 80,
-      "hash": "3d1e28634b47",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "16d43fb6e666",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     },
     "ch81.html": {
       "num": 81,
-      "hash": "e588fea66fa4",
-      "modified": "2026-05-08",
-      "completeness": "0/5",
-      "fullUpgrade": false
+      "hash": "4bc675236eb0",
+      "modified": "2026-05-13",
+      "completeness": "5/5",
+      "fullUpgrade": true
     }
   }
 }

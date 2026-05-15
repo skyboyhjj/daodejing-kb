@@ -144,8 +144,8 @@ test('搜索数据包含 concepts 数组', () => Array.isArray(data.concepts) &&
 test('每个章节有 url 字段', () => data.chapters.every(c => typeof c.url === 'string' && c.url.includes('chapters/')));
 test('每个章节有 text 字段', () => data.chapters.every(c => typeof c.text === 'string' && c.text.length > 100));
 test('每个概念有 url 字段', () => data.concepts.every(c => typeof c.url === 'string' && c.url.includes('concepts/')));
-test('章节第1章 URL 正确', () => data.chapters[0].url === 'chapters/ch01.html');
-test('章节第43章 URL 正确', () => data.chapters[42].url === 'chapters/ch43.html');
+test('章节第1章 URL 正确', () => data.chapters[0].url === 'chapters/ch01');
+test('章节第43章 URL 正确', () => data.chapters[42].url === 'chapters/ch43');
 
 // ── 2. 基本检索：单字 ──
 console.log('\n【2. 基本检索：单字查询】');
@@ -210,9 +210,9 @@ test('搜索结果 URL 不为 undefined', () => {
     const r = searchAll('道');
     return r.length > 0 && r.every(h => typeof h.url === 'string' && h.url !== 'undefined');
 });
-test('章节结果 URL 指向正确的 .html 文件', () => {
+test('章节结果 URL 指向正确的章节文件', () => {
     const r = searchAll('道');
-    return r.filter(h => h.type === 'chapter').every(h => h.url.endsWith('.html'));
+    return r.filter(h => h.type === 'chapter').every(h => h.url.startsWith('chapters/ch'));
 });
 test('概念结果 URL 指向 concepts/ 目录', () => {
     const r = searchAll('道');
