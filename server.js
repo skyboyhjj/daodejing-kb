@@ -1223,14 +1223,12 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    // /api/family_progress → 学习进度同步（Phase 2 预留）
-    if (pathname === '/api/family_progress') {
-        handleFamilyProgressAPI(req, res);
-        return;
-    }
+    // ==========================================
+    // 管理 API — /admin/api/* （需 ADMIN_TOKEN 认证）
+    // ==========================================
 
-    // /api/tasks → 后台任务管理
-    if (pathname === '/api/tasks') {
+    // /admin/api/tasks → 后台任务管理
+    if (pathname === '/admin/api/tasks') {
         if (req.method === 'POST') {
             handleTaskCreate(req, res);
         } else if (req.method === 'GET') {
@@ -1243,14 +1241,28 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    // /api/tasks/stats → 任务统计
-    if (pathname === '/api/tasks/stats') {
+    // /admin/api/tasks/stats → 任务统计
+    if (pathname === '/admin/api/tasks/stats') {
         handleTaskStats(req, res);
         return;
     }
 
-    // /api/tasks/cancel → 取消任务
-    if (pathname === '/api/tasks/cancel') {
+    // /admin/api/metadata/stats → 聚合统计（需认证）
+    if (pathname === '/admin/api/metadata/stats') {
+        if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+            return;
+        }
+        if (!checkAdminAuth(req)) {
+            sendJSON(res, 401, { error: '未授权' });
+            return;
+        }
+        handleMetadataStats(req, res);
+        return;
+    }
+
+    // /admin/api/tasks/cancel → 取消任务
+    if (pathname === '/admin/api/tasks/cancel') {
         if (req.method === 'POST') {
             handleTaskCancel(req, res);
         } else if (req.method === 'OPTIONS') {
@@ -1261,23 +1273,9 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    // /api/metadata/version → 版本信息（无需认证）
-    if (pathname === '/api/metadata/version') {
-        handleMetadataVersion(req, res);
-        return;
-    }
-
-    // /api/metadata/stats → 聚合统计
-    if (pathname === '/api/metadata/stats') {
-        handleMetadataStats(req, res);
-        return;
-    }
-
-    // /api/metadata → 列表/详情/更新/删除
-    if (pathname === '/api/metadata') {
-        if (req.method === 'GET') {
-            handleMetadataList(req, res);
-        } else if (req.method === 'PUT') {
+    // /admin/api/metadata → 更新/删除（写操作需认证）
+    if (pathname === '/admin/api/metadata') {
+        if (req.method === 'PUT') {
             handleMetadataUpdate(req, res);
         } else if (req.method === 'DELETE') {
             handleMetadataDelete(req, res);
@@ -1289,8 +1287,8 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    // /api/metadata/sync → 同步暂存区到生产（POST）
-    if (pathname === '/api/metadata/sync') {
+    // /admin/api/metadata/sync → 同步暂存区到生产
+    if (pathname === '/admin/api/metadata/sync') {
         if (req.method === 'POST') {
             handleMetadataSync(req, res);
         } else if (req.method === 'OPTIONS') {
@@ -1301,12 +1299,78 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    // /api/metadata/staging → 查看/删除暂存区数据
-    if (pathname === '/api/metadata/staging') {
+    // /admin/api/metadata/staging → 查看/删除暂存区数据
+    if (pathname === '/admin/api/metadata/staging') {
         if (req.method === 'DELETE') {
             handleMetadataStagingDelete(req, res);
         } else {
             handleMetadataStaging(req, res);
+        }
+        return;
+    }
+
+    // ==========================================
+    // 公开 API — /api/* （无需认证）
+    // ==========================================
+
+    // /api/family_progress → 学习进度同步（Phase 2 预留）
+    if (pathname === '/api/family_progress') {
+        handleFamilyProgressAPI(req, res);
+        return;
+    }
+
+    // ── 旧管理路径 → 重定向到 /admin/api/*（向后兼容）──
+    if (pathname === '/api/tasks') {
+        res.writeHead(308, { 'Location': '/admin/api/tasks', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+    if (pathname === '/api/tasks/stats') {
+        res.writeHead(301, { 'Location': '/admin/api/tasks/stats', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+    if (pathname === '/api/tasks/cancel') {
+        res.writeHead(308, { 'Location': '/admin/api/tasks/cancel', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+    if (pathname === '/api/metadata/sync') {
+        res.writeHead(308, { 'Location': '/admin/api/metadata/sync', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+    if (pathname === '/api/metadata/staging') {
+        var stagingCode = (req.method === 'DELETE') ? 308 : 301;
+        res.writeHead(stagingCode, { 'Location': '/admin/api/metadata/staging', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+
+    // /api/metadata/version → 版本信息（无需认证）
+    if (pathname === '/api/metadata/version') {
+        handleMetadataVersion(req, res);
+        return;
+    }
+
+    // /api/metadata/stats → 重定向到管理端点
+    if (pathname === '/api/metadata/stats') {
+        res.writeHead(301, { 'Location': '/admin/api/metadata/stats', 'Access-Control-Allow-Origin': '*' });
+        res.end();
+        return;
+    }
+
+    // /api/metadata → 公开：仅保留 GET（列表/详情）；写操作已迁移到 /admin/api/metadata
+    if (pathname === '/api/metadata') {
+        if (req.method === 'GET') {
+            handleMetadataList(req, res);
+        } else if (req.method === 'PUT' || req.method === 'DELETE') {
+            res.writeHead(308, { 'Location': '/admin/api/metadata', 'Access-Control-Allow-Origin': '*' });
+            res.end();
+        } else if (req.method === 'OPTIONS') {
+            sendJSON(res, 204, {});
+        } else {
+            sendJSON(res, 405, { error: 'Method not allowed' });
         }
         return;
     }

@@ -240,23 +240,127 @@ review_history   →     ❌ 移除
 优先级：P2 — 架构演进，非紧急但重要
 ```
 
-#### 任务 3.1：同仓分离 — 管理端路径隔离
+#### 任务 3.1：同仓分离 — 管理端路径隔离 ✅ 已完成
 
 | 属性         | 内容                                                                                 |
 | ------------ | ------------------------------------------------------------------------------------ |
-| **描述**     | 将 admin 目录部署为独立的路由前缀或独立项目                                          |
+| **状态**     | ✅ **已完成** (2026-05-15)                                                            |
+| **描述**     | 将管理端 API 统一挂载 `/admin/api/*`，公开 API 保持不变                              |
 | **方案**     | ① 管理端 API 统一挂载 `/admin/api/*` ② 前端页面部署在 `/admin/*` ③ 公开 API 保持不变 |
-| **涉及文件** | `server.js`（路由拆分）、`admin/`（路径调整）、Vercel 配置                           |
-| **注意事项** | 确保管理端与公开端不共享缓存、不泄露 Token                                           |
+| **涉及文件** | `server.js`（路由拆分 + 认证增强）、`admin/family-review.js`（9处路径更新）          |
 
-#### 任务 3.2：Cloudflare Pages 管理 API
+##### 3.1.1 实施详情
 
-| 属性         | 内容                                                                                                          |
-| ------------ | ------------------------------------------------------------------------------------------------------------- |
-| **描述**     | 为 Cloudflare 生产环境添加管理 API 端点                                                                       |
-| **新增文件** | `functions/admin/api/metadata.js`（PUT/DELETE）、`functions/admin/api/metadata-staging.js`（GET/POST/DELETE） |
-| **认证方式** | 复用 Bearer Token 机制，从 env 读取 ADMIN_TOKEN                                                               |
-| **注意事项** | Cloudflare Functions 无 `fs` 模块，需通过 KV 或 R2 存储元数据                                                 |
+**server.js 变更：**
+- 新增 `/admin/api/*` 管理路由区段（行 1226-1310）
+  - `/admin/api/tasks` → 任务 CRUD（需认证）
+  - `/admin/api/tasks/stats` → 任务统计（需认证）
+  - `/admin/api/tasks/cancel` → 取消任务（需认证）
+  - `/admin/api/metadata` → PUT/DELETE 写操作（需认证）
+  - `/admin/api/metadata/stats` → 聚合统计（🆕 新增，需认证）
+  - `/admin/api/metadata/sync` → 暂存区同步（需认证）
+  - `/admin/api/metadata/staging` → 暂存区查看/删除（需认证）
+- 公开 API 区段（行 1312-1368）
+  - `/api/chat`、`/api/family_chat`、`/api/family_progress` — 无需认证
+  - `/api/metadata/version` — 无需认证
+  - `/api/metadata` GET — 无需认证（列表/详情查询）
+  - `/api/metadata` PUT/DELETE → 308 重定向至 `/admin/api/metadata`
+- 旧路径向后兼容重定向（301/308）
+  - `/api/tasks` → `/admin/api/tasks`
+  - `/api/tasks/*` → `/admin/api/tasks/*`
+  - `/api/metadata/stats` → `/admin/api/metadata/stats`
+  - `/api/metadata/staging` → `/admin/api/metadata/staging`
+  - `/api/metadata/sync` → `/admin/api/metadata/sync`
+
+**admin/family-review.js 变更（9处）：**
+- `loadStats()` → `/admin/api/metadata/stats`
+- `loadStagingList()` → `/admin/api/metadata/staging`
+- `loadStagingDetail()` → `/admin/api/metadata/staging?chapter=`
+- `removeStagingChapter()` → `/admin/api/metadata/staging?chapter=`
+- `bindAIActionButtons()` → `/admin/api/metadata` (PUT)
+- `performAction()` → `/admin/api/metadata` (PUT)
+- `loadStagingStatus()` → `/admin/api/metadata/staging`
+- `syncChapterToProduction()` → `/admin/api/metadata/sync`
+- `syncAllChapters()` → `/admin/api/metadata/sync`
+
+**保留在 `/api/*` 的路径：**
+- `/api/metadata?limit=100` — 章节列表查询（GET）
+- `/api/metadata?chapter=N` — 单章详情查询（GET）
+
+##### 3.1.2 本地测试结果
+
+| 测试场景             | 路径                          | 状态码                              | 结果 |
+| -------------------- | ----------------------------- | ----------------------------------- | ---- |
+| 公开-版本            | `/api/metadata/version`       | 200                                 | ✅    |
+| 公开-列表            | `/api/metadata?limit=10`      | 200                                 | ✅    |
+| 公开-详情            | `/api/metadata?chapter=1`     | 200                                 | ✅    |
+| 管理(stats)-无认证   | `/admin/api/metadata/stats`   | 401                                 | ✅    |
+| 管理(stats)-有认证   | `/admin/api/metadata/stats`   | 200                                 | ✅    |
+| 管理(staging)-有认证 | `/admin/api/metadata/staging` | 200                                 | ✅    |
+| 管理(PUT)-无认证     | `/admin/api/metadata`         | 401                                 | ✅    |
+| 管理(tasks)-无认证   | `/admin/api/tasks`            | 401                                 | ✅    |
+| 重定向-stats         | `/api/metadata/stats`         | 301 → `/admin/api/metadata/stats`   | ✅    |
+| 重定向-staging       | `/api/metadata/staging`       | 301 → `/admin/api/metadata/staging` | ✅    |
+| 重定向-PUT           | `/api/metadata` (PUT)         | 308 → `/admin/api/metadata`         | ✅    |
+| 重定向-sync          | `/api/metadata/sync`          | 308 → `/admin/api/metadata/sync`    | ✅    |
+| 重定向-tasks         | `/api/tasks`                  | 308 → `/admin/api/tasks`            | ✅    |
+
+#### 任务 3.2：混合架构 — 双平台职责划分 ✅ 方案已确定
+
+| 属性     | 内容                                                                 |
+| -------- | -------------------------------------------------------------------- |
+| **状态** | ✅ **方案已确定，架构落地** (2026-05-15)                              |
+| **描述** | 明确 Cloudflare Pages 与 Vercel 的职责边界，管理 API 仅运行在 Vercel |
+
+##### 3.2.1 方案决策：Scheme C — 混合架构
+
+经过可行性评估（2026-05-15），放弃原计划的"在 Cloudflare Pages 添加管理 API"方案，原因：
+- Cloudflare Pages Functions **无 `fs` 模块**，无法直接读写元数据文件
+- 引入 KV/R2 存储会增加架构复杂度和运维成本
+- Vercel Serverless Functions 原生支持 `fs`，已承载完整管理功能
+
+**最终方案：双平台各司其职**
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    部署架构                           │
+│                                                      │
+│  Cloudflare Pages (主站)           Vercel (管理端)   │
+│  ┌──────────────────────┐    ┌──────────────────────┐│
+│  │ 静态资源              │    │ server.js (完整)     ││
+│  │ /chapters/*.html     │    │                      ││
+│  │ /js/*.js             │    │ 公开 API (无需认证)   ││
+│  │ /css/*.css           │    │ /api/chat            ││
+│  │                      │    │ /api/family_chat     ││
+│  │ 公开 Functions        │    │ /api/metadata        ││
+│  │ /api/chat            │    │ /api/metadata/version││
+│  │ /api/family_chat     │    │                      ││
+│  │ /api/metadata/version│    │ 管理 API (需认证)     ││
+│  │                      │    │ /admin/api/*         ││
+│  └──────────────────────┘    └──────────────────────┘│
+│                                                      │
+│  Cloudflare 不暴露 /admin/api/*（无对应 Function）    │
+│  Vercel 承载全部管理操作（fs 可用）                    │
+└─────────────────────────────────────────────────────┘
+```
+
+##### 3.2.2 Cloudflare Pages Functions 现状
+
+| 路由                    | 文件                                | 状态 | 说明                                 |
+| ----------------------- | ----------------------------------- | ---- | ------------------------------------ |
+| `/api/chat`             | `functions/api/chat.js`             | ✅    | 公开 AI 聊天代理                     |
+| `/api/family_chat`      | `functions/api/family_chat.js`      | ✅    | 公开亲子对话代理                     |
+| `/api/metadata/version` | `functions/api/metadata-version.js` | ✅    | 公开版本查询                         |
+| `/admin/api/*`          | 不存在                              | ✅    | 无对应 Function，Cloudflare 返回 404 |
+
+**验证结论**: Cloudflare Pages 不会泄漏管理路由。无 `_middleware`、`_routes.json`、`[[path]].js` 等 catch-all 模式。
+
+##### 3.2.3 Vercel 职责
+
+- 运行 `server.js`，承载所有 `/api/*` 和 `/admin/api/*` 端点
+- 管理端 API 通过 Bearer Token (`ADMIN_TOKEN`) 认证
+- `fs` 模块可读写 `data/family_metadata.json`、`data/family_metadata_staging.json`
+- 公开 API 无需认证，与 Cloudflare 行为一致
 
 #### 任务 3.3：自动化质量回归测试
 
@@ -277,10 +381,11 @@ review_history   →     ❌ 移除
 
 #### Phase 3 风险清单
 
-| 风险                      | 概率 | 影响 | 缓解措施                                     |
-| ------------------------- | ---- | ---- | -------------------------------------------- |
-| Cloudflare KV/R2 成本考虑 | 中   | 中   | 评估后决定使用 KV 还是继续用静态文件         |
-| 路径隔离破坏现有链接      | 中   | 中   | 保留 `/admin/*` 和 `/api/*` 的向后兼容重定向 |
+| 风险                          | 概率   | 影响   | 缓解措施                                               |
+| ----------------------------- | ------ | ------ | ------------------------------------------------------ |
+| ~~Cloudflare KV/R2 成本考虑~~ | ~~中~~ | ~~中~~ | 已通过 Scheme C 混合架构规避，管理 API 仅部署在 Vercel |
+| 路径隔离破坏现有链接          | 低     | 中     | 已添加 301/308 重定向，旧路径自动转发                  |
+| 管理端未部署到 Vercel 生产    | 低     | 高     | 需在执行 Vercel 部署时确认 server.js 更新已推送        |
 
 ---
 
@@ -304,10 +409,10 @@ Phase 2 (版本控制)
 └── 2.6 端到端验证                   ← 依赖 2.1-2.5
 
 Phase 3 (架构分离)
-├── 3.1 管理端路径隔离               ← 依赖 Phase 1+2
-├── 3.2 Cloudflare 管理API           ← 依赖 3.1
-├── 3.3 自动化测试                   ← 独立，可随时开始
-└── 3.4 新鲜度检查                   ← 依赖 2.4
+├── 3.1 管理端路径隔离               ← ✅ 已完成 (2026-05-15)
+├── 3.2 混合架构文档与验证           ← ✅ 方案已确定 (Scheme C)，Cloudflare 验证通过
+├── 3.3 自动化测试                   ← 待实施
+└── 3.4 新鲜度检查                   ← ✅ 已在 Phase 2 完成 (build-public-metadata.js --check)
 ```
 
 ---

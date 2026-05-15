@@ -2,7 +2,7 @@
    亲子元数据审核控制台 · admin/family-review.js
    功能：列表筛选 / 详情展示 / 安全审核 / 状态机操作 / 历史时间线
         结构化修订面板 / 自定义模态框 / Diff 对比视图
-   依赖：server.js 提供的 /api/metadata/* 端点
+   依赖：server.js 提供的 /admin/api/metadata/* 端点（管理端）
    版本：v2.0 — 审核工作流优化
    ============================================ */
 
@@ -102,7 +102,7 @@
 
     // ═══ API 调用 ═══
     function loadStats() {
-        http('GET', '/api/metadata/stats').then(function (r) {
+        http('GET', '/admin/api/metadata/stats').then(function (r) {
             if (r.status === 200) {
                 $('stPending').textContent = r.data.pending;
                 $('stReviewing').textContent = r.data.reviewing;
@@ -143,7 +143,7 @@
     }
 
     function loadStagingList() {
-        http('GET', '/api/metadata/staging').then(function (r) {
+        http('GET', '/admin/api/metadata/staging').then(function (r) {
             if (r.status === 200) {
                 state.stagingData = r.data;
                 state.stagingChapters = r.data._items || [];
@@ -153,7 +153,7 @@
     }
 
     function loadStagingDetail(chapterNum) {
-        http('GET', '/api/metadata/staging?chapter=' + chapterNum).then(function (r) {
+        http('GET', '/admin/api/metadata/staging?chapter=' + chapterNum).then(function (r) {
             if (r.status === 200) {
                 state.currentStagingChapter = r.data;
                 renderAIStagingDetail(r.data);
@@ -167,7 +167,7 @@
 
     function removeStagingChapter(chapterNum) {
         setButtonsDisabled(true);
-        http('DELETE', '/api/metadata/staging?chapter=' + chapterNum).then(function (r) {
+        http('DELETE', '/admin/api/metadata/staging?chapter=' + chapterNum).then(function (r) {
             if (r.status === 200 && r.data.ok) {
                 toast('已删除第 ' + chapterNum + ' 章 AI 修订', 'success');
                 state.currentStagingChapter = null;
@@ -428,7 +428,7 @@
                     confirmLabel: '确认',
                     onConfirm: function () {
                         setButtonsDisabled(true);
-                        http('PUT', '/api/metadata', {
+                        http('PUT', '/admin/api/metadata', {
                             chapter: stagingData.chapter,
                             updates: { review_status: 'reviewing' }
                         }).then(function (r) {
@@ -1271,7 +1271,7 @@
         setButtonsDisabled(true);
         showButtonSpinner(action);
 
-        http('PUT', '/api/metadata', {
+        http('PUT', '/admin/api/metadata', {
             chapter: chapterNum,
             updates: updates
         }).then(function (r) {
@@ -1302,7 +1302,7 @@
 
     // ═══ 同步暂存区 → 生产 ═══
     function loadStagingStatus(callback) {
-        http('GET', '/api/metadata/staging').then(function (r) {
+        http('GET', '/admin/api/metadata/staging').then(function (r) {
             if (r.status === 200) {
                 state.stagingData = r.data;
                 if (callback) callback(r.data);
@@ -1318,7 +1318,7 @@
             syncBtn.disabled = true;
         }
 
-        http('POST', '/api/metadata/sync', {
+        http('POST', '/admin/api/metadata/sync', {
             chapters: [chapterNum]
         }).then(function (r) {
             if (r.status === 200 && r.data.ok) {
@@ -1353,7 +1353,7 @@
             syncBtn.disabled = true;
         }
 
-        http('POST', '/api/metadata/sync', {
+        http('POST', '/admin/api/metadata/sync', {
             chapters: null  // null = sync all
         }).then(function (r) {
             if (r.status === 200 && r.data.ok) {
