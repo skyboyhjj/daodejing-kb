@@ -172,6 +172,7 @@ var progressTextEl = document.getElementById('progress-text');
    ============================================================ */
 
 var PROGRESS_KEY = 'daodejing-family-progress';
+var VERSION_KEY = 'daodejing_metadata_hash';  // 元数据版本哈希（用于检测内容变更）
 
 /**
  * 保存学习进度到持久化存储。
@@ -969,7 +970,19 @@ function loadMetadataCache(callback) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             try {
-                state.metadataCache = JSON.parse(xhr.responseText);
+                var newMeta = JSON.parse(xhr.responseText);
+                // —— 版本感知：比对 content_hash，检测元数据更新 ——
+                var newHash = newMeta._content_hash || '';
+                var oldHash = localStorage.getItem(VERSION_KEY) || '';
+                if (newHash && newHash !== oldHash) {
+                    localStorage.setItem(VERSION_KEY, newHash);
+                    if (oldHash) {
+                        showMetadataUpdateToast(newMeta);
+                    }
+                } else if (!oldHash && newHash) {
+                    localStorage.setItem(VERSION_KEY, newHash);
+                }
+                state.metadataCache = newMeta;
             } catch (e) { /* ignore */ }
         }
         callback();
@@ -977,6 +990,47 @@ function loadMetadataCache(callback) {
     xhr.onerror = function () { callback(); };
     xhr.timeout = 5000;
     xhr.send();
+}
+
+/**
+ * 元数据更新 Toast 提示
+ * 当检测到 content_hash 变化时通知用户刷新内容
+ */
+function showMetadataUpdateToast(meta) {
+    var existing = document.getElementById('metadata-update-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'metadata-update-toast';
+    toast.style.cssText = [
+        'position:fixed', 'top:16px', 'left:50%', 'transform:translateX(-50%)',
+        'background:#f0f9eb', 'color:#2c6e49', 'border:1px solid #b7eb8f',
+        'border-radius:8px', 'padding:10px 20px', 'font-size:14px',
+        'z-index:9999', 'box-shadow:0 2px 8px rgba(0,0,0,0.1)',
+        'animation:toastIn 0.4s ease', 'cursor:pointer', 'white-space:nowrap'
+    ].join(';');
+    toast.textContent = '📖 内容已更新 — 点击刷新体验最新版本';
+    toast.title = '版本哈希: ' + (meta._content_hash || 'unknown');
+    toast.addEventListener('click', function () {
+        state.metadataCache = null;
+        window.location.reload();
+    });
+
+    if (!document.getElementById('metadata-toast-style')) {
+        var style = document.createElement('style');
+        style.id = 'metadata-toast-style';
+        style.textContent = '@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+        document.head.appendChild(style);
+    }
+
+    document.body.appendChild(toast);
+    setTimeout(function () {
+        if (toast.parentNode) {
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.5s ease';
+            setTimeout(function () { if (toast.parentNode) toast.remove(); }, 500);
+        }
+    }, 8000);
 }
 
 /**

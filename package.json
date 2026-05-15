@@ -10,7 +10,9 @@
         "version": "node scripts/version-manifest.js",
         "report": "node scripts/report.js",
         "pipeline": "node scripts/batch-runner.js",
-        "ci": "node scripts/validate.js && node scripts/build-index.js --check"
+        "build:public-metadata": "node scripts/build-public-metadata.js",
+        "check:metadata": "node scripts/build-public-metadata.js --check",
+        "ci": "node scripts/validate.js && node scripts/build-index.js --check && node scripts/build-public-metadata.js --check"
     },
     "engines": {
         "node": ">=16.0.0"

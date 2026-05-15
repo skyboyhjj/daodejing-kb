@@ -96,8 +96,20 @@ function main() {
         }
     });
 
-    // 3. 计算内容哈希（仅对 chapters 内容做 SHA-256，取前 8 位）
-    var chaptersStr = JSON.stringify(publicChapters, Object.keys(publicChapters).sort());
+    // 3. 计算内容哈希（按排序键序列化每章内容，确保确定性）
+    var hashParts = [];
+    chapterKeys.forEach(function (key) {
+        var ch = publicChapters[key];
+        // 每章内容按 PUBLIC_FIELDS 顺序序列化（确保字段顺序稳定）
+        var fieldParts = [];
+        PUBLIC_FIELDS.forEach(function (f) {
+            if (ch.hasOwnProperty(f)) {
+                fieldParts.push(JSON.stringify(f) + ':' + JSON.stringify(ch[f]));
+            }
+        });
+        hashParts.push('"' + key + '":{' + fieldParts.join(',') + '}');
+    });
+    var chaptersStr = '{' + hashParts.join(',') + '}';
     var contentHash = crypto.createHash('sha256').update(chaptersStr).digest('hex').slice(0, 8);
     var generated = new Date().toISOString();
 
@@ -233,13 +245,46 @@ function buildMode(publicMetadata) {
         fs.mkdirSync(dataDir, { recursive: true });
     }
 
+    // 统计
+    var chapterKeys = Object.keys(publicMetadata.chapters);
+    var stats = { total: chapterKeys.length, approved: 0, pending: 0, reviewing: 0, revision_needed: 0 };
+    chapterKeys.forEach(function (k) {
+        var s = publicMetadata.chapters[k].review_status;
+        if (s === 'approved') stats.approved++;
+        else if (s === 'pending') stats.pending++;
+        else if (s === 'reviewing') stats.reviewing++;
+        else if (s === 'revision_needed') stats.revision_needed++;
+    });
+
+    // 变更检测
+    var oldHash = '(none)';
+    if (fs.existsSync(OUTPUT_PATH)) {
+        try {
+            var current = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+            oldHash = current._content_hash || '(none)';
+        } catch (e) { /* ignore */ }
+    }
+
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(publicMetadata, null, 4) + '\n', 'utf8');
 
     console.log('[build-public-metadata] 公开版已生成: ' + path.relative(ROOT, OUTPUT_PATH));
-    console.log('[build-public-metadata] 章节总数: ' + Object.keys(publicMetadata.chapters).length);
-    console.log('[build-public-metadata] content_hash: ' + publicMetadata._content_hash);
-    console.log('[build-public-metadata] format_version: ' + FORMAT_VERSION);
-    console.log('[build-public-metadata] generated: ' + publicMetadata._generated);
+    console.log('  format_version: ' + FORMAT_VERSION);
+    console.log('  content_hash:   ' + publicMetadata._content_hash);
+    console.log('  generated:      ' + publicMetadata._generated);
+    console.log('  章节统计:');
+    console.log('    总计:          ' + stats.total);
+    console.log('    approved:      ' + stats.approved);
+    console.log('    pending:       ' + stats.pending);
+    console.log('    reviewing:     ' + stats.reviewing);
+    console.log('    revision_needed: ' + stats.revision_needed);
+
+    if (oldHash !== '(none)') {
+        if (oldHash === publicMetadata._content_hash) {
+            console.log('  ✓ 内容无变更 (hash=' + publicMetadata._content_hash + ')');
+        } else {
+            console.log('  ⚠ 内容已变更: ' + oldHash + ' → ' + publicMetadata._content_hash);
+        }
+    }
 }
 
 // ===== 字段泄露检查 =====

@@ -664,6 +664,39 @@ function handleFamilyChatAPI(req, res) {
     });
 }
 
+// ===== GET /api/metadata/version — 版本信息 =====
+function handleMetadataVersion(req, res) {
+    if (req.method === 'OPTIONS') {
+        sendJSON(res, 204, {});
+        return;
+    }
+    try {
+        var pubPath = path.join(__dirname, 'data', 'family_metadata_public.json');
+        if (!fs.existsSync(pubPath)) {
+            sendJSON(res, 404, { error: '公开版元数据文件不存在，请运行 node scripts/build-public-metadata.js' });
+            return;
+        }
+        var pub = JSON.parse(fs.readFileSync(pubPath, 'utf8'));
+        var chapters = pub.chapters || {};
+        var chapterKeys = Object.keys(chapters);
+        var approvedCount = 0;
+        for (var i = 0; i < chapterKeys.length; i++) {
+            if (chapters[chapterKeys[i]].review_status === 'approved') approvedCount++;
+        }
+        sendJSON(res, 200, {
+            content_hash: pub._content_hash || '',
+            generated: pub._generated || '',
+            format_version: pub._format_version || '',
+            chapter_count: chapterKeys.length,
+            approved_count: approvedCount,
+            _version: pub._version || '',
+            _updated: pub._updated || ''
+        });
+    } catch (e) {
+        sendJSON(res, 500, { error: '版本信息读取失败: ' + e.message });
+    }
+}
+
 // ===== GET /api/metadata/stats — 聚合统计 =====
 function handleMetadataStats(req, res) {
     if (req.method === 'OPTIONS') {
@@ -1225,6 +1258,12 @@ var server = http.createServer(function (req, res) {
         } else {
             sendJSON(res, 405, { error: 'Method not allowed' });
         }
+        return;
+    }
+
+    // /api/metadata/version → 版本信息（无需认证）
+    if (pathname === '/api/metadata/version') {
+        handleMetadataVersion(req, res);
         return;
     }
 
