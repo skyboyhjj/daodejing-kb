@@ -245,17 +245,13 @@
         } else if (window.__skillupCardTrigger && window.HuihuiConsent &&
                    !window.HuihuiConsent.hasUserConsented() &&
                    !window.HuihuiConsent.hasUserDeclined() &&
-                   !window.HuihuiConsent.wasAskedRecently()) {
-            // 用户点击了「我的成长」卡片但尚不满足连续3天条件
-            // 给出轻声引导，让用户知道接下来需要多来聊天
-            var days = window.HuihuiConsent.getConsecutiveDays();
-            var remaining = Math.max(1, 3 - days);
-            setTimeout(function () {
-                addMessage('ai', '顺带说一句：我看到你点开了「我的成长」。'
-                    + '我想先认识你几天——你连续来' + remaining + '天，我就帮你记录学习旅程。'
-                    + '多来找我聊聊天吧。');
-            }, 2000);
+                   !window.HuihuiConsent.wasAskedToday()) {
+            // 用户点击了「我的成长」卡片，立即触发许可征求（跳过3天等待）
+            window.HuihuiConsent.markAsked();
             window.__skillupCardTrigger = false;
+            setTimeout(function () {
+                addMessage('ai', window.HuihuiConsent.getConsentMessage());
+            }, 2000);
         }
 
         // 300ms 后解除防护，允许后续的"点击面板外关闭"正常生效
