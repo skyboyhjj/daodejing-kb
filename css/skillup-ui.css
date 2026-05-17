@@ -1,0 +1,556 @@
+/* ============================================================
+   SkillUP — 认知成长追踪 UI 样式  v3.0
+   配色：水墨道风 — 墨绿 #2e5f5f / 淡金 #d4c9a8 / 宣纸 #faf8f0 / #fffef5
+   设计约束：不抢眼、不喧哗、与主站融为一体
+   禁用效果：backdrop-filter blur / box-shadow / gradient
+   ============================================================ */
+
+/* ----- 成长卡片（复用 .entry-card 基础样式） ----- */
+.skillup-card {
+    cursor: pointer;
+}
+
+.skillup-card-inner {
+    width: 100%;
+}
+
+/* ----- 卡片头部：图标 + 标题 ----- */
+.skillup-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.skillup-card-icon {
+    font-size: 1.6em;
+    flex-shrink: 0;
+}
+
+.skillup-card-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2e5f5f;
+    letter-spacing: 1px;
+}
+
+/* ----- 卡片主体 ----- */
+.skillup-card-opening {
+    color: #2e5f5f;
+    font-size: 0.95em;
+    line-height: 1.7;
+    margin: 0 0 14px;
+}
+
+.skillup-completion-opening {
+    font-weight: 600;
+    color: #2e5f5f;
+}
+
+/* 指标列表 */
+.skillup-card-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.skillup-metric {
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.skillup-metric strong {
+    color: #2e5f5f;
+    font-weight: 600;
+}
+
+/* 结尾引导语 */
+.skillup-card-closing {
+    color: #888;
+    font-size: 0.88em;
+    line-height: 1.6;
+    margin: 0 0 10px;
+    font-style: italic;
+}
+
+.skillup-completion-quote {
+    color: #5a7a6a;
+    font-style: normal;
+}
+
+/* ----- 卡片底部 ----- */
+.skillup-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #f0ede0;
+}
+
+.skillup-completion-footer {
+    justify-content: space-between;
+}
+
+.skillup-expand-hint {
+    color: #aaa;
+    font-size: 0.82em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.skillup-expand-hint:hover {
+    color: #2e5f5f;
+}
+
+/* 回顾旅程按钮 */
+.skillup-retrospective-btn {
+    padding: 6px 16px;
+    border: 1px solid #d4c9a8;
+    border-radius: 6px;
+    background: #faf8f0;
+    color: #2e5f5f;
+    font-size: 0.85em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.skillup-retrospective-btn:hover {
+    background: #f0ede0;
+    border-color: #c4b998;
+}
+
+/* ===== 展开详情区 ===== */
+.skillup-card-detail {
+    margin-top: 12px;
+    animation: skillup-expand-in 0.25s ease;
+}
+
+@keyframes skillup-expand-in {
+    from { opacity: 0; max-height: 0; }
+    to { opacity: 1; max-height: 1200px; }
+}
+
+.skillup-detail-divider {
+    height: 1px;
+    background: #e8e4d6;
+    margin-bottom: 14px;
+}
+
+.skillup-detail-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.skillup-detail-stat {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 14px;
+    background: #f0f5f3;
+    border-radius: 8px;
+    border: 1px solid #dce8e0;
+    color: #555;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.skillup-detail-stat strong {
+    color: #2e5f5f;
+}
+
+.skillup-detail-section {
+    margin-bottom: 12px;
+}
+
+.skillup-detail-label {
+    color: #2e5f5f;
+    font-weight: 600;
+    font-size: 0.88em;
+    margin-bottom: 6px;
+}
+
+.skillup-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.skillup-detail-item {
+    color: #666;
+    font-size: 0.85em;
+    line-height: 1.6;
+}
+
+.skillup-detail-item strong {
+    color: #2e5f5f;
+}
+
+.skillup-completion-mark {
+    color: #2e5f5f;
+    font-weight: 500;
+}
+
+.skillup-detail-collapse {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.82em;
+    padding-top: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.skillup-detail-collapse:hover {
+    color: #2e5f5f;
+}
+
+/* ============================================================
+   回顾旅程 — 全屏覆盖卡片
+   ============================================================ */
+.skillup-retro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(44, 44, 44, 0.35);
+    animation: skillup-fade-in 0.2s ease;
+}
+
+@keyframes skillup-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.skillup-retro-content {
+    position: relative;
+    background: #fffef5;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 92%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #d4c9a8;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    animation: skillup-slide-up 0.25s ease;
+}
+
+@keyframes skillup-slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* 回顾头部 */
+.skillup-retro-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 28px 0;
+    position: relative;
+}
+
+.skillup-retro-icon {
+    font-size: 1.8em;
+}
+
+.skillup-retro-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2e5f5f;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.skillup-retro-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #d4c9a8;
+    background: #fffef5;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.skillup-retro-close:hover {
+    background: #f0ede0;
+    color: #555;
+}
+
+/* 回顾主体 */
+.skillup-retro-body {
+    padding: 18px 28px 8px;
+}
+
+.skillup-retro-opening {
+    color: #2e5f5f;
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin: 0 0 10px;
+}
+
+.skillup-retro-stats {
+    display: flex;
+    gap: 16px;
+    margin: 18px 0;
+}
+
+.skillup-retro-stat {
+    flex: 1;
+    text-align: center;
+    padding: 16px 8px;
+    background: #f0f5f3;
+    border-radius: 10px;
+    border: 1px solid #dce8e0;
+}
+
+.skillup-retro-stat-value {
+    display: block;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #2e5f5f;
+    margin-bottom: 2px;
+}
+
+.skillup-retro-stat-label {
+    display: block;
+    font-size: 0.78em;
+    color: #888;
+}
+
+/* 回顾分区 */
+.skillup-retro-section {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0ede0;
+}
+
+.skillup-retro-section:last-of-type {
+    border-bottom: none;
+}
+
+.skillup-retro-section-title {
+    font-size: 0.95em;
+    color: #2e5f5f;
+    margin: 0 0 10px;
+    font-weight: 600;
+}
+
+.skillup-retro-text {
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.skillup-retro-gratitude {
+    color: #5a7a6a;
+    line-height: 1.9;
+}
+
+/* 时间线 */
+.skillup-retro-timeline {
+    padding-left: 4px;
+}
+
+.skillup-retro-timeline-item {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    border-left: 2px solid #dce8e0;
+    padding-left: 14px;
+    margin-left: 4px;
+    position: relative;
+}
+
+.skillup-retro-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d4c9a8;
+}
+
+.skillup-retro-timeline-date {
+    color: #aaa;
+    font-size: 0.82em;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.skillup-retro-timeline-text {
+    color: #555;
+    font-size: 0.88em;
+    line-height: 1.5;
+}
+
+/* 回顾底部 */
+.skillup-retro-footer {
+    padding: 6px 28px 24px;
+    text-align: center;
+}
+
+.skillup-retro-close-btn {
+    padding: 10px 28px;
+    border: 1px solid #d4c9a8;
+    border-radius: 8px;
+    background: #fffef5;
+    color: #2e5f5f;
+    font-size: 0.9em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.skillup-retro-close-btn:hover {
+    background: #f0ede0;
+}
+
+/* ============================================================
+   章节页面底部引导（§4.2）
+   ============================================================ */
+.skillup-chapter-guidance {
+    margin: 32px 0 18px;
+    padding: 0;
+}
+
+.skillup-guidance-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 24px;
+    background: #f0f5f3;
+    border-radius: 10px;
+    border: 1px solid #dce8e0;
+    border-left: 4px solid #2e5f5f;
+}
+
+.skillup-guidance-icon {
+    font-size: 1.8em;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.skillup-guidance-text {
+    flex: 1;
+}
+
+.skillup-guidance-message {
+    color: #2e5f5f;
+    font-size: 0.95em;
+    line-height: 1.7;
+    margin: 0 0 8px;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+.skillup-guidance-meta {
+    color: #aaa;
+    font-size: 0.78em;
+    margin: 0;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+/* ============================================================
+   移动端适配
+   ============================================================ */
+@media (max-width: 768px) {
+    .skillup-card-title {
+        font-size: 1em;
+    }
+
+    .skillup-card-opening {
+        font-size: 0.88em;
+    }
+
+    .skillup-metric {
+        font-size: 0.83em;
+    }
+
+    .skillup-card-closing {
+        font-size: 0.82em;
+    }
+
+    .skillup-detail-stat {
+        min-width: 120px;
+        padding: 8px 10px;
+        font-size: 0.83em;
+    }
+
+    .skillup-detail-stats {
+        gap: 10px;
+    }
+
+    /* 回顾 */
+    .skillup-retro-content {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 0;
+    }
+
+    .skillup-retro-header {
+        padding: 22px 20px 0;
+    }
+
+    .skillup-retro-body {
+        padding: 14px 20px 6px;
+    }
+
+    .skillup-retro-stats {
+        gap: 10px;
+    }
+
+    .skillup-retro-stat {
+        padding: 12px 6px;
+    }
+
+    .skillup-retro-stat-value {
+        font-size: 1.3em;
+    }
+
+    .skillup-retro-timeline-date {
+        min-width: 68px;
+        font-size: 0.78em;
+    }
+
+    .skillup-retro-footer {
+        padding: 4px 20px 20px;
+    }
+
+    /* 章节引导 */
+    .skillup-guidance-inner {
+        padding: 16px 18px;
+        gap: 10px;
+    }
+
+    .skillup-guidance-icon {
+        font-size: 1.4em;
+    }
+
+    .skillup-guidance-message {
+        font-size: 0.88em;
+    }
+
+    .skillup-card-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .skillup-completion-footer {
+        flex-wrap: wrap;
+    }
+}

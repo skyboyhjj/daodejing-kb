@@ -1,6 +1,6 @@
 /**
  * 搜索索引自动构建脚本
- * 从 81 个章节 HTML 文件中提取标题、原文、概念标签和全文内容，
+ * 从 81 个章节 HTML + 概念 HTML + docs/ 设计文档中提取全文搜索内容，
  * 生成 data/search-data.js（浏览器可用）+ data/search-index.json（机器可读）
  *
  * 用法：
@@ -15,6 +15,7 @@ const crypto = require('crypto');
 const ROOT = path.join(__dirname, '..');
 const CHAPTERS_DIR = path.join(ROOT, 'chapters');
 const CONCEPTS_DIR = path.join(ROOT, 'concepts');
+const DOCS_DIR = path.join(ROOT, 'docs');
 const OUTPUT_JS = path.join(ROOT, 'data', 'search-data.js');
 const OUTPUT_JSON = path.join(ROOT, 'data', 'search-index.json');
 
@@ -49,7 +50,7 @@ function extractTitle(html) {
         .replace(/<[^>]+>/g, '')
         .replace(/[\s\n\r]+/g, ' ')
         .trim();
-    // 移除 emoji 前缀（📜 ☯️ 等各种 emoji）
+    // 移除 emoji 前缀
     title = title.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{FE0F}\u{200D}]/gu, '').trim();
     return title;
 }
@@ -85,8 +86,6 @@ function extractConcepts(html) {
 
 /**
  * 提取章节支持的认知层级
- * 扫描 data-level="l1|l2|l3|l4" 属性
- * 默认所有层级均支持（防御性回退）
  */
 function extractLevels(html) {
     const levels = [];
@@ -96,7 +95,6 @@ function extractLevels(html) {
         const lv = m[1];
         if (!levels.includes(lv)) levels.push(lv);
     }
-    // 防御：若 HTML 中无层级标记，默认全部支持
     if (levels.length === 0) {
         levels.push('l1', 'l2', 'l3', 'l4');
     }
@@ -106,30 +104,22 @@ function extractLevels(html) {
 
 /**
  * 提取全文搜索文本
- * 包括：原文 + 各步骤标题 + 各层级内容的纯文本
  */
 function extractFullText(html) {
-    // 移除 <style> 和 <script> 块
     let text = html
         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
         .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
 
-    // 仅保留 body 中的内容（如有）
     const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     if (bodyMatch) text = bodyMatch[1];
 
-    // 移除所有 HTML 标签
     text = text.replace(/<[^>]+>/g, '');
-
-    // 移除 HTML 实体
     text = text
         .replace(/&[a-z]+;/gi, '')
         .replace(/&#\d+;/g, '')
         .replace(/&#x[0-9a-f]+;/gi, '');
 
-    // 压缩空白
     text = text.replace(/[\s\n\r]+/g, '').trim();
-
     return text;
 }
 
@@ -144,6 +134,64 @@ function extractConceptTitle(html) {
         .replace(/[\s\n\r]+/g, ' ')
         .replace(/\s*-\s*概念详解\s*-\s*道德经亲子体验营\s*/i, '')
         .trim();
+}
+
+// ── Markdown 文档提取工具 ──
+
+/**
+ * 提取 Markdown 文档标题（第一个 # 开头的行）
+ */
+function extractMdTitle(mdText) {
+    const lines = mdText.split(/\r?\n/);
+    for (const line of lines) {
+        const m = line.match(/^#\s+(.*)/);
+        if (m) {
+            return m[1].replace(/[#*`\[\]]/g, '').trim();
+        }
+    }
+    return '';
+}
+
+/**
+ * 提取 Markdown 纯文本（去除标记符号，保留中文正文）
+ */
+function extractMdPlainText(mdText) {
+    return mdText
+        .replace(/^---[\s\S]*?---\n?/m, '')
+        .replace(/^#{1,6}\s+/gm, '')
+        .replace(/```[\s\S]*?```/g, ' ')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\*{1,3}([^*]+)\*{1,3}/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+        .replace(/^>\s+/gm, '')
+        .replace(/^[\s]*[-*+]\s+/gm, '')
+        .replace(/^[\s]*\d+\.\s+/gm, '')
+        .replace(/^\|?[-:| ]+\|?$/gm, '')
+        .replace(/\|/g, ' ')
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/[\s\n\r]+/g, ' ')
+        .trim();
+}
+
+/**
+ * 递归扫描目录，返回所有 .md 文件路径列表
+ */
+function scanDocsDir(dir) {
+    const results = [];
+    if (!fs.existsSync(dir)) return results;
+
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            results.push(...scanDocsDir(fullPath));
+        } else if (entry.isFile() && entry.name.endsWith('.md')) {
+            results.push(fullPath);
+        }
+    }
+    return results;
 }
 
 // ── 主流程 ──
@@ -173,7 +221,6 @@ function buildIndex() {
         const originalText = extractOriginalText(html);
         const fullText = extractFullText(html);
 
-        // 搜索文本 = 原文 + 概念关键词 + 全文（去重拼接）
         const searchText = [
             originalText,
             title.replace(/第\d+章\s*·\s*/, ''),
@@ -223,17 +270,53 @@ function buildIndex() {
         }
     }
 
-    return { chapters, concepts };
+    // ── 索引设计文档（docs/ 下所有 .md 文件）──
+    const docs = [];
+    if (fs.existsSync(DOCS_DIR)) {
+        const mdFiles = scanDocsDir(DOCS_DIR);
+
+        console.log(`[build-index] 扫描到 ${mdFiles.length} 个设计文档 (.md)`);
+
+        for (const mdPath of mdFiles) {
+            let mdText;
+            try {
+                mdText = fs.readFileSync(mdPath, 'utf-8');
+            } catch (e) {
+                console.warn(`  WARN: 无法读取 ${path.relative(ROOT, mdPath)}: ${e.message}`);
+                continue;
+            }
+
+            const docTitle = extractMdTitle(mdText)
+                || path.basename(mdPath, '.md');
+            const docText = extractMdPlainText(mdText);
+
+            if (docText.length < 30) {
+                console.warn(`  SKIP: ${path.relative(ROOT, mdPath)} 内容过短 (${docText.length} 字符)`);
+                continue;
+            }
+
+            const relPath = path.relative(ROOT, mdPath).replace(/\\/g, '/');
+            const docUrl = relPath.replace(/\.md$/, '');
+
+            docs.push({
+                title: docTitle,
+                text: docText,
+                url: docUrl,
+                type: 'doc',
+                levels: ['l1', 'l2', 'l3', 'l4']
+            });
+        }
+    }
+
+    return { chapters, concepts, docs };
 }
 
 function writeOutput(data) {
-    // 确保 data 目录存在
     const dataDir = path.join(ROOT, 'data');
     if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
     }
 
-    // 写入 JS 版本（浏览器 <script> 标签加载）
     const jsContent = [
         '// 道德经知识库搜索索引 (脚本化版本，兼容 file:// 协议)',
         '// 此文件通过 <script> 标签加载，不受浏览器 CORS 限制',
@@ -244,7 +327,6 @@ function writeOutput(data) {
 
     fs.writeFileSync(OUTPUT_JS, jsContent, 'utf-8');
 
-    // 写入 JSON 版本（工具链/API 使用）
     const jsonContent = JSON.stringify(data, null, 2);
     fs.writeFileSync(OUTPUT_JSON, jsonContent, 'utf-8');
 
@@ -253,8 +335,7 @@ function writeOutput(data) {
 }
 
 /**
- * --check 模式：比较当前章节源文件的 hash 与已生成索引的 hash
- * 若不一致则返回非零退出码（CI 用）
+ * --check 模式：比较当前源文件的 hash 与已生成索引的 hash
  */
 function checkMode(data) {
     const newHash = crypto
@@ -306,5 +387,5 @@ if (isCheck) {
     checkMode(data);
 } else {
     writeOutput(data);
-    console.log(`[build-index] 完成: ${data.chapters.length} 章索引已生成`);
+    console.log(`[build-index] 完成: ${data.chapters.length} 章 + ${data.concepts.length} 概念 + ${data.docs.length} 文档索引已生成`);
 }

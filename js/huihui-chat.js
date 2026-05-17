@@ -119,12 +119,26 @@
         return function () {
             var level = btn.getAttribute('data-level');
             if (!level) return;
+            var oldLevel = getSavedLevel();
             setSavedLevel(level);
             highlightChatLevelBtn(level);
             // 派发自定义事件，供章节页面 level-selector 监听
             window.dispatchEvent(new CustomEvent('huihui-level-changed', {
                 detail: { level: level }
             }));
+            // SkillUP: 记录认知水平切换
+            if (window.SkillUP && oldLevel !== level) {
+                window.SkillUP.recordLevelSwitch(oldLevel, level);
+                // 检查触发规则2：切换到L3 + 溪流阶段
+                if (window.SkillUP.isTrackingEnabled()) {
+                    var l3Trigger = window.SkillUP.checkTriggerL3Switch();
+                    if (l3Trigger) {
+                        setTimeout(function () {
+                            addMessage('ai', l3Trigger.message);
+                        }, 800);
+                    }
+                }
+            }
         };
     }
 
@@ -180,6 +194,56 @@
         if (window.innerWidth <= 480) {
             document.body.style.overflow = 'hidden';
         }
+
+        // SkillUP: 检查所有触发规则（§4.1 + Phase 3 动态反馈）
+        if (window.SkillUP && window.SkillUP.isTrackingEnabled()) {
+            // 始终记录本次访问（更新追踪数据）
+            window.SkillUP.recordChapterVisit();
+
+            var messages = [];
+
+            // Phase 3: 待展示动态反馈（81章完成 > 阶段跃迁）
+            var feedback = window.SkillUP.getPendingFeedback();
+            if (feedback) {
+                // 81章完成纪念或阶段跃迁欢迎语优先展示
+                messages.push(feedback.message);
+                // 如果已有优先反馈，跳过常规规则以避免消息过载
+                // （ch8 里程碑和连续3天将在下次无优先反馈时展示）
+            } else {
+                // 常规规则：首次阅读第8章后（chaptersVisited>=3 且 水滴）
+                var ch8Trigger = window.SkillUP.checkTriggerCh8Milestone();
+                if (ch8Trigger) {
+                    messages.push(ch8Trigger.message);
+                }
+
+                // 常规规则：连续三天访问
+                var consecTrigger = window.SkillUP.checkTriggerConsecutiveDays();
+                if (consecTrigger) {
+                    messages.push(consecTrigger.message);
+                }
+            }
+
+            // 逐条显示反馈（每条间隔 800ms）
+            if (messages.length > 0) {
+                var delay = 600;
+                messages.forEach(function (msg) {
+                    setTimeout(function () {
+                        addMessage('ai', msg);
+                    }, delay);
+                    delay += 1000;
+                });
+            }
+        }
+
+        // ===== 用户许可征求（连续3天访问后轻声询问） =====
+        if (window.HuihuiConsent && window.HuihuiConsent.shouldAskForConsent()) {
+            window.HuihuiConsent.markAsked();
+            // 放在里程碑消息之后展示
+            setTimeout(function () {
+                addMessage('ai', window.HuihuiConsent.getConsentMessage());
+            }, 2000);
+        }
+
         // 300ms 后解除防护，允许后续的"点击面板外关闭"正常生效
         setTimeout(function () {
             panelJustOpened = false;
@@ -204,6 +268,44 @@
     function sendMessage() {
         var text = inputEl.value.trim();
         if (!text || isSending) return;
+
+        // SkillUP: 记录用户消息
+        if (window.SkillUP) {
+            window.SkillUP.recordMessage(text, getSavedLevel());
+        }
+
+        // SkillUP: 技能查询拦截（本地回答，不调 API）—— 触发规则4
+        if (window.SkillUP && window.SkillUP.isTrackingEnabled()) {
+            var progressResponse = window.SkillUP.checkProgressQuery(text);
+            if (progressResponse) {
+                addMessage('user', text);
+                inputEl.value = '';
+                autoResizeInput();
+                addMessage('ai', progressResponse.message);
+                return;
+            }
+        }
+
+        // ===== 用户许可征求响应拦截 =====
+        if (window.HuihuiConsent && !window.HuihuiConsent.hasUserConsented() &&
+            !window.HuihuiConsent.hasUserDeclined() && window.HuihuiConsent.wasAskedToday()) {
+            if (window.HuihuiConsent.isAffirmative(text)) {
+                window.HuihuiConsent.grantConsent();
+                addMessage('user', text);
+                inputEl.value = '';
+                autoResizeInput();
+                addMessage('ai', window.HuihuiConsent.getGrantedMessage());
+                return;
+            }
+            if (window.HuihuiConsent.isDeclining(text)) {
+                window.HuihuiConsent.declineConsent();
+                addMessage('user', text);
+                inputEl.value = '';
+                autoResizeInput();
+                addMessage('ai', window.HuihuiConsent.getDeclinedMessage());
+                return;
+            }
+        }
 
         // 添加用户消息
         addMessage('user', text);

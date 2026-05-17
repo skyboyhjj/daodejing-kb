@@ -599,6 +599,13 @@ function startChapter() {
     state.stage = 'intro';
     state.chapter = chapterToKey(state.chapterNum);
 
+    // ===== 用户许可征求（首次开始对话前轻声询问） =====
+    if (window.HuihuiConsent && window.HuihuiConsent.shouldAskForConsent()) {
+        window.HuihuiConsent.markAsked();
+        appendHuihuiMessage(window.HuihuiConsent.getConsentMessage());
+        // 将用户下一条消息拦截为许可响应
+    }
+
     // 检查章节是否已审核
     if (!isChapterApproved(state.chapterNum)) {
         handleUnapprovedChapter(state.chapterNum);
@@ -607,6 +614,12 @@ function startChapter() {
 
     appendChapterCard(state.chapterNum);
     updateChapterProgress();
+
+    // SkillUP: 记录章节访问（开始即记，不限于完成）
+    syncProgressToSkillUP();
+    if (window.SkillUP && window.SkillUP.isTrackingEnabled()) {
+        window.SkillUP.recordChapterVisitByNum(state.chapterNum);
+    }
 
     // 预加载当前章节的 parent_tips
     fetchParentTips(state.chapter, function (tips) {
@@ -683,6 +696,12 @@ function endChapter() {
     }
     saveProgress();
     updateChapterProgress();
+
+    // SkillUP: 同步章节完成记录
+    syncProgressToSkillUP();
+    if (window.SkillUP && window.SkillUP.isTrackingEnabled()) {
+        window.SkillUP.recordChapterVisitByNum(state.chapterNum);
+    }
 
     if (state.totalRounds >= state.maxRounds) {
         autoEndSession();
@@ -1191,10 +1210,42 @@ sendBtnEl.addEventListener('click', function () {
     var text = userInputEl.value.trim();
     if (!text) return;
 
+    // ===== 用户许可征求响应拦截 =====
+    if (window.HuihuiConsent && !window.HuihuiConsent.hasUserConsented() &&
+        !window.HuihuiConsent.hasUserDeclined() && window.HuihuiConsent.wasAskedToday()) {
+        if (window.HuihuiConsent.isAffirmative(text)) {
+            appendUserMessage(text);
+            window.HuihuiConsent.grantConsent();
+            userInputEl.value = '';
+            setInputEnabled(false);
+            appendHuihuiMessage(window.HuihuiConsent.getGrantedMessage());
+            // 恢复对话：许可已授予，继续发送下一轮
+            setInputEnabled(true);
+            userInputEl.focus();
+            return;
+        }
+        if (window.HuihuiConsent.isDeclining(text)) {
+            appendUserMessage(text);
+            window.HuihuiConsent.declineConsent();
+            userInputEl.value = '';
+            setInputEnabled(false);
+            appendHuihuiMessage(window.HuihuiConsent.getDeclinedMessage());
+            setInputEnabled(true);
+            userInputEl.focus();
+            return;
+        }
+    }
+
     appendUserMessage(text);
     state.conversationHistory.push({ role: 'user', content: text });
     userInputEl.value = '';
     setInputEnabled(false);
+
+    // SkillUP: 同步用户发言记录（含当前章节号）
+    syncProgressToSkillUP();
+    if (window.SkillUP && window.SkillUP.isTrackingEnabled()) {
+        window.SkillUP.recordMessage(text, null, state.chapterNum);
+    }
 
     if (state.totalRounds >= state.maxRounds) {
         endChapter();
@@ -1302,7 +1353,50 @@ if (browseAllBtn) {
 
 
 /* ============================================================
-   十一、初始化
+   十一、一次性迁移：family progress → SkillUP
+   ============================================================ */
+
+var _skillupMigrated = false;
+
+/**
+ * 一次性将 family progress 中已完成的章节同步到 SkillUP 成长记录。
+ * 适用场景：用户在 SkillUP 未加载/未授权时完成章节，修复后首次启用。
+ */
+function syncProgressToSkillUP() {
+    if (_skillupMigrated) return;
+    if (!window.SkillUP || !window.SkillUP.isTrackingEnabled()) return;
+
+    _skillupMigrated = true;
+
+    // 从 localStorage 直接读取 progress（在 sync 之前可能还没写入 state）
+    var completed = [];
+    try {
+        var raw = localStorage.getItem(PROGRESS_KEY);
+        if (raw) {
+            var progress = JSON.parse(raw);
+            if (progress && Array.isArray(progress.completedChapters)) {
+                completed = progress.completedChapters;
+            }
+        }
+    } catch (e) { /* ignore */ }
+
+    // 回退到当前 state
+    if (completed.length === 0 && state.allChaptersCompleted.length > 0) {
+        completed = state.allChaptersCompleted;
+    }
+
+    if (completed.length === 0) return;
+
+    for (var i = 0; i < completed.length; i++) {
+        window.SkillUP.recordChapterVisitByNum(completed[i]);
+    }
+
+    console.log('[family] 已同步 ' + completed.length + ' 章历史进度到 SkillUP');
+}
+
+
+/* ============================================================
+   十二、初始化
    ============================================================ */
 
 (function init() {

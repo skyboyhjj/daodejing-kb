@@ -91,3 +91,20 @@ jobs:
 
       - name: Run search tests
         run: node scripts/test-search.js
+
+  # ═══════════════════════════════════════════════
+  # Job 4: 设计文档格式验证
+  # ═══════════════════════════════════════════════
+  validate-docs:
+    name: Validate Docs
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run document validation
+        run: node scripts/validate-docs.js
