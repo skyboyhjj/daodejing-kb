@@ -100,6 +100,11 @@
                     refreshCard();
                     return;
                 }
+                // 打开慧惠聊天面板，引导用户通过对话启动许可流程
+                if (typeof openHuihuiChat === 'function') {
+                    openHuihuiChat();
+                }
+                // 持续监听许可状态变化，授权后自动刷新卡片
                 var checkTimer = setInterval(function () {
                     if (SkillUP.hasConsent()) {
                         clearInterval(checkTimer);
