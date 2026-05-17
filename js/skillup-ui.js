@@ -100,6 +100,8 @@
                     refreshCard();
                     return;
                 }
+                // 标记从「我的成长」卡片触发，用于 openPanel 显示预征求引导
+                window.__skillupCardTrigger = true;
                 // 打开慧惠聊天面板，引导用户通过对话启动许可流程
                 if (typeof openHuihuiChat === 'function') {
                     openHuihuiChat();
