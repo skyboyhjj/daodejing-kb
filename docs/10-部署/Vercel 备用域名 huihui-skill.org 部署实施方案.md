@@ -1,6 +1,6 @@
 Vercel 备用域名 huihui-skill.org 部署实施方案
-状态： ⏳ 等待确认
-日期： 2026-05-13
+状态： ✅ 已完成
+日期： 2026-05-17 | 首次部署：2026-05-14
 一、当前架构梳理
 经调研，项目已具备双平台部署的完整代码结构：
 plaintext
@@ -202,3 +202,34 @@ Step 7: 运行完整测试清单
 项目已关联：.vercel/project.json 指向已有项目 prj_DVEqiGI9EVVJ0alImyXDXP9L2Z3l，账号 skyboyhjj 已登录
 无风险：两个平台独立部署、独立 DNS、独立环境变量，互不影响
 待确认项：DNS 解析状态、Vercel 环境变量配置、本地 git 修改需提交
+
+---
+
+**八、SkillUP 认知追踪部署确认（2026-05-17）**
+
+SkillUP 全四阶段已部署至 Vercel 生产环境：
+
+| 部署批次 | Commit | 内容 | 状态 |
+|:---|:---|:---|:---|
+| Phase 1-4 初版 | `83744b4` | 追踪器、许可管理、卡片 UI、动态反馈 | ✅ |
+| 修复：卡片点击无反应 | `4a7b553` | 未授权卡片点击打开聊天面板 | ✅ |
+| 修复：许可征求引导 | `cbe6012` | 预征求引导消息 | ✅ |
+| 修复：立即征求 +"保存" | `9e66dd6` | `__skillupCardTrigger` 即时征求 + 肯定词列表更新 | ✅ |
+
+**部署后验证**（`scripts/verify-deploy.mjs --domain huihui-skill.org`）：
+- 核心页面 HTTP 200：16/16 通过
+- API 端点（`/api/chat`）：HTTP 200
+- 搜索数据 URL 格式：OK
+- SkillUP 文件可访问性：`skillup-tracker.js` / `skillup-consent.js` / `skillup-ui.js` / `skillup-ui.css` 全部 HTTP 200
+
+**部署命令速查**：
+```bash
+# 生产部署（需要 Vercel token）
+npx vercel --prod --yes --token vcp_...
+
+# 部署后验证
+node scripts/verify-deploy.mjs --domain huihui-skill.org
+
+# CI 全量检查
+npm run ci
+```
