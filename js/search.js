@@ -216,6 +216,31 @@
       }
     }
 
+    // 搜索设计文档（docs/）
+    var docs = data.docs || [];
+    for (var d = 0; d < docs.length; d++) {
+      var doc = docs[d];
+      var dSearchText = (doc.title + ' ' + (doc.text || '')).toLowerCase();
+      var dMatch = true;
+      for (var n = 0; n < tokens.length; n++) {
+        if (!fuzzyMatch(dSearchText, tokens[n])) { dMatch = false; break; }
+      }
+      if (dMatch) {
+        var dSnippet = extractSnippet(doc.text || '', tokens);
+        var dScore = scoreItem({ title: doc.title, text: doc.text, concepts: [] }, tokens);
+        dScore += 2; // 文档条目基础加分（低于概念+5，低于章节标题+10）
+        hits.push({
+          type: 'doc',
+          title: '文档 · ' + doc.title,
+          url: doc.url,
+          snippet: dSnippet,
+          score: dScore,
+          concepts: [],
+          levels: doc.levels || ['l1', 'l2', 'l3', 'l4']
+        });
+      }
+    }
+
     // 按相关性排序
     hits.sort(function (a, b) { return b.score - a.score; });
 
@@ -297,7 +322,7 @@
       if (currentLevel && h.type === 'chapter' && url.indexOf('?level=') === -1) {
         url += '?level=' + currentLevel;
       }
-      var typeIcon = h.type === 'concept' ? '🌐' : '📖';
+      var typeIcon = h.type === 'concept' ? '🌐' : (h.type === 'doc' ? '📄' : '📖');
       var conceptsHtml = '';
       if (h.concepts && h.concepts.length) {
         conceptsHtml = '<span class="search-concepts">';

@@ -274,6 +274,33 @@
         }
     }
 
+    // ===== 每日镜鉴关键词识别 =====
+    function detectMirrorIntent(userMessage) {
+        var msg = userMessage.trim();
+        // 事件镜鉴触发
+        if (msg === '做个镜鉴') {
+            return 'event';
+        }
+        // 晚间回顾触发
+        if (msg === '晚间回顾') {
+            return 'evening';
+        }
+        return null;
+    }
+
+    function handleMirrorIntent(intentType, userMessage) {
+        var prefix = '';
+        switch (intentType) {
+            case 'event':
+                prefix = '[MIRROR:EVENT] ';
+                break;
+            case 'evening':
+                prefix = '[MIRROR:EVENING] ';
+                break;
+        }
+        return prefix + userMessage;
+    }
+
     // ===== 发送消息 =====
     function sendMessage() {
         var text = inputEl.value.trim();
@@ -317,7 +344,10 @@
             }
         }
 
-        // 添加用户消息
+        // ===== 每日镜鉴关键词检测 =====
+        var mirrorIntent = detectMirrorIntent(text);
+
+        // 添加用户消息（UI 显示原文，不含技术标记）
         addMessage('user', text);
         inputEl.value = '';
         autoResizeInput();
@@ -335,7 +365,19 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                messages: getMessages(),
+                messages: (function () {
+                    var msgs = getMessages();
+                    if (mirrorIntent) {
+                        // 找到最后一条用户消息，添加镜鉴引导标记
+                        for (var k = msgs.length - 1; k >= 0; k--) {
+                            if (msgs[k].role === 'user') {
+                                msgs[k].content = handleMirrorIntent(mirrorIntent, msgs[k].content);
+                                break;
+                            }
+                        }
+                    }
+                    return msgs;
+                })(),
                 user_id: userId,
                 level: getSavedLevel()
             }),
