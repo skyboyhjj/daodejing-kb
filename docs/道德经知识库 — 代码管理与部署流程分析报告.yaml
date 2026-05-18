@@ -1,0 +1,245 @@
+道德经知识库 — 代码管理与部署流程分析报告
+一、现状全景
+1.1 代码仓库结构
+plaintext
+daodejing-kb/
+├── .github/workflows/ci.yml       ← 唯一 CI 工作流
+├── api/chat.js                     ← Vercel Serverless Function (DeepSeek 代理)
+├── api/family_chat.js              ← Vercel 亲子对话 API
+├── functions/api/chat.js           ← Cloudflare Pages Function (DeepSeek 代理)
+├── functions/api/family_chat.js    ← CF Pages 亲子对话 API
+├── server.js                       ← 本地开发服务器（第三份 buildSystemPrompt 副本）
+├── scripts/                        ← 9 个自动化脚本
+├── js/                             ← 14 个前端 JS 文件
+├── chapters/                       ← 81 章 HTML
+├── data/                           ← 搜索索引
+├── .env / .dev.vars                ← 敏感密钥（gitignored）
+└── package.json                    ← 零依赖，7 个 npm scripts
+1.2 分支策略
+项目	状态
+当前分支	main（仅此一条）
+远程分支	origin/main, origin/cloudflare/workers-autoconfig（残留）
+Feature 分支	无
+Release 分支	无
+Tags	0 个
+开发模式	所有改动直接提交 main
+最近的 20 个 commit 全部在 main 上线性推进，无合并提交。
+1.3 CI/CD 流水线
+GitHub Actions (.github/workflows/ci.yml)：
+yaml
+触发条件:
+  - push/PR to main
+  - 仅当修改: chapters/**, data/**, scripts/**
+执行:
+  ① node scripts/validate.js    # 81 章结构检查
+  ② node scripts/build-index.js --check   # 索引是否过期
+触发范围窄：只有 chapters/、data/、scripts/ 变更才触发。JS/CSS/HTML 页面级改动不触发。
+不做部署：CI 只做检查，不涉及发布。
+不做自动修复：--check 模式只报告索引过期，不自动重建。
+部署触发：
+平台	触发方式	状态
+Cloudflare Pages	GitHub push → 自动构建部署	✅ 主部署
+Vercel	手动 vercel --prod --yes	⚠️ 历史/备用
+1.4 双平台部署架构
+plaintext
+           GitHub push
+               │
+    ┌──────────┴──────────┐
+    ▼                     ▼
+Cloudflare Pages        Vercel
+(自动部署)              (手动部署)
+    │                     │
+func/api/chat.js       api/chat.js
+    │                     │
+ hui-skill.org      huihui-skill.org
+ (主域名)             (备用域名)
+关键事实：
+Cloudflare Pages 是当前主部署，Vercel 是历史遗留
+两套 API 文件 (api/chat.js vs functions/api/chat.js) 并行维护
+Vercel 部署文档（docs/慧惠聊天组件_部署文档_Vercel版.md）已过时——第 2.3 节声称 functions/api/chat.js "已删除"，但实际存在且仍在用
+二、已识别风险和问题
+🔴 高风险
+1. 代码严重重复
+函数	副本数	位置
+buildSystemPrompt()	3	api/chat.js:76-119, functions/api/chat.js:95-138, server.js:39-82
+sendFeedbackEmail()	3	api/chat.js:122-148, functions/api/chat.js:141-167, server.js:376-401
+修改 System Prompt 或反馈逻辑需要同步改 3 个文件，已出现过遗漏（functions/api/chat.js 的反馈功能是最晚加的）。2. 无 Secret 扫描/泄露防护
+.env 和 .dev.vars 已 gitignored，但没有 pre-commit hook
+没有 .env.example 自动对比检查
+RESEND_API_KEY 曾被明文贴在聊天记录中
+没有 GitHub Secret Scanning 启用
+3. 无自动化测试
+仅 scripts/validate.js 做 HTML 结构检查（9 项），无逻辑测试
+无 API 测试（/api/chat 从未在 CI 中被调用）
+无前端功能测试（搜索、聊天、层级过滤）
+scripts/test-search.js（48 条搜索测试）只在本地手动运行
+🟡 中风险
+4. 分支策略缺失 — "主干裸奔"所有开发直接提交 main，没有 feature 分支、没有 PR review。一旦推送错误代码，直接进入生产（Cloudflare Pages 自动部署）。5. Vercel 部署长期未同步最后一次手动 vercel deploy 时间不明。如果 huihui-skill.org 上仍有用户，他们拿到的是过时版本。6. 环境变量管理分散
+plaintext
+开发环境:  .env + .dev.vars（需手动同步）
+CF Pages:  Dashboard 手动配置
+Vercel:    vercel env add 手动配置
+三个位置曾经不一致（.dev.vars 和 .env 的 RESEND_API_KEY 不久前才同步）。7. CI 覆盖不足
+index.html、js/*.js、css/*.css 变更不触发 CI
+memorial-512.js 这类新建文件不触发任何检查
+无构建产物验证（Cloudflare Pages 构建失败只能事后发现）
+🟢 低风险/改进空间
+8. 无版本发布管理
+0 个 git tag，无法追溯发布历史
+package.json 中 version: 1.0.0 从未更新
+无 changelog
+9. 文档与代码脱节
+Vercel 部署文档声称 functions/api/chat.js "已删除"
+docs/three-layer-automation-ops.md 描述的是目标架构，但 CI 只实现了部分
+没有 Cloudflare Pages 专属部署文档
+10. server.js 既是工具也是负担本地开发服务器包含完整的 buildSystemPrompt 和 sendFeedbackEmail 副本，与线上 API 函数形成三方维护。
+三、改进建议
+3.1 分支管理策略（立即执行）
+plaintext
+建议分支模型（简化 GitFlow）：
+
+main          ← 生产分支，CF Pages 自动部署
+  ↑ PR merge
+feature/*     ← 功能开发分支
+fix/*         ← Bug 修复分支
+chore/*       ← 配置/文档变更分支
+具体措施：
+保护 main 分支（GitHub Settings → Branches → Branch protection）：
+禁止直接 push 到 main
+要求 PR 通过 CI 才能 merge
+要求至少 1 个 review（在有多人协作时）
+Feature 分支命名规范：
+plaintext
+feature/huhui-feedback-01    # 对应任务编号
+fix/search-defer-404         # 描述问题和修复
+chore/update-vercel-docs     # 非功能变更
+PR 模板（.github/pull_request_template.md）：
+markdown
+## 变更说明
+## 测试方式
+## 影响范围
+## 验收清单
+3.2 消除代码重复（高优先级）
+提取共享模块：
+plaintext
+新增: api/_shared/
+  ├── system-prompt.js   ← buildSystemPrompt() 唯一版本
+  ├── feedback-email.js  ← sendFeedbackEmail() 唯一版本
+  └── cors.js            ← CORS headers 统一
+然后各文件从共享模块导入：
+javascript
+// api/chat.js
+import { buildSystemPrompt } from './_shared/system-prompt.js';
+import { sendFeedbackEmail } from './_shared/feedback-email.js';
+
+// functions/api/chat.js
+import { buildSystemPrompt } from '../../api/_shared/system-prompt.js';
+import { sendFeedbackEmail } from '../../api/_shared/feedback-email.js';
+
+// server.js
+const { buildSystemPrompt } = require('./api/_shared/system-prompt.js');
+const { sendFeedbackEmail } = require('./api/_shared/feedback-email.js');
+注意：Cloudflare Pages Functions 对 ES Module import 路径有限制（只能导入同目录或子目录）。functions/api/chat.js 可能需要用 copy 或 symlink 方式引用共享模块，或改用内联 bundling。
+3.3 CI 扩展（高优先级）
+当前 CI：
+yaml
+触发: chapters/**, data/**, scripts/**
+执行: validate.js + build-index.js --check
+建议扩展：
+yaml
+name: CI Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-chapters:        # 现有：81章结构检查
+  check-index:              # 现有：搜索索引是否过期
+  
+  # ↓ 新增 ↓
+  
+  lint-scripts:             # JS 语法检查（node --check）
+    - run: for f in js/*.js api/*.js functions/api/*.js; do node --check $f; done
+
+  test-search:              # 搜索功能测试
+    - run: node scripts/test-search.js
+
+  api-smoke-test:           # API 冒烟测试（需要测试环境变量）
+    - run: |
+        curl -sf -X POST https://test-api/chat \
+          -H "Content-Type: application/json" \
+          -d '{"messages":[{"role":"user","content":"道"}],"level":"L2"}'
+
+  secret-scan:              # 密钥泄露扫描
+    - uses: gitleaks/gitleaks-action@v2
+关键点：
+JS 语法检查最小化（node --check），零依赖
+test-search.js 已有的 48 个测试集成到 CI
+secret-scan 防止 API Key 误提交
+CI 门禁通过后才允许 merge
+3.4 环境变量与密钥管理
+当前问题：三处配置（.env / .dev.vars / Dashboard），存在不同步风险。建议措施：
+添加 .env.example 自动验证（script 或 CI 步骤）：
+bash
+# 检查 .env.example 中每个 VAR_NAME 是否在 .env 中配置
+node scripts/check-env.js
+Pre-commit Hook（.githooks/pre-commit）：
+bash
+# 阻止包含疑似 API Key 的提交
+if git diff --cached | grep -E 'sk-[a-zA-Z0-9]{32,}'; then
+  echo "❌ 检测到疑似 API Key，提交已阻止"
+  exit 1
+fi
+Wrangler Secret 管理（如配置了 Cloudflare API Token）：
+bash
+npx wrangler pages secret put RESEND_API_KEY
+# 替代手动 Dashboard 配置
+Cloudflare Pages 部署时环境变量文档化：创建 docs/cloudflare-pages-env.md，列出所有需要的环境变量和配置方法。
+3.5 部署流程规范化
+建议采用"部署检查清单"代替"push 即部署"：
+plaintext
+开发完成
+  ├─ 1. npm run validate        # 通过
+  ├─ 2. npm run build:index     # 索引最新
+  ├─ 3. npm test                # 测试通过
+  ├─ 4. git diff --check        # 无意外文件
+  ├─ 5. 创建 PR 到 main
+  ├─ 6. CI 全绿
+  └─ 7. Merge → CF Pages 自动部署
+Vercel 处置：决定是否继续维护：
+方案 A：正式下线 Vercel，DNS 重定向到 hui-skill.org，删除 api/chat.js（保留代码在 git 历史中）
+方案 B：保留 Vercel 作为灾备，每次 CF Pages 发布后同步手动部署一次，或通过 GitHub Actions 自动同步
+3.6 版本管理
+语义化版本 + Git Tags：
+bash
+git tag -a v1.1.0 -m "feat: 5·12纪念功能 + 反馈修复"
+git push --tags
+自动生成 changelog（简单脚本）：
+bash
+npm run changelog  # 从 git log 提取 feat/fix 条目
+版本号更新：重大功能发布时更新 package.json 中的 version
+3.7 文档同步
+文档	现状	建议
+docs/慧惠聊天组件_部署文档_Vercel版.md	过时，说 CF Functions 已删除	更新为双平台现状，或拆分为 CF/Vercel 两份
+docs/three-layer-automation-ops.md	设计文档，部分已实现	标记已实现/未实现状态
+Cloudflare Pages 部署文档	缺失	新建 docs/cloudflare-pages-deploy.md
+四、建议实施优先级
+第一批（本周，0 风险，高价值）
+序号	改进项	预估
+1	提取共享模块：消除 buildSystemPrompt + sendFeedbackEmail 三份副本	30 min
+2	Pre-commit hook：防止 API Key 误提交	10 min
+3	CI 扩展：添加 node --check JS 语法验证	10 min
+4	CI 扩展：集成 test-search.js 搜索测试	5 min
+第二批（本周或下周）
+5	GitHub Branch Protection：禁止直接 push main	5 min
+| 6 | PR 模板：标准化提交流程 | 10 min |
+7	创建 docs/cloudflare-pages-deploy.md	20 min
+| 8 | Vercel 部署文档更新 | 15 min |
+第三批（迭代中推进）
+9	引入 Git Tags + 版本管理	15 min
+| 10 | Secret scanning (Gitleaks CI) | 10 min |
+11	API 冒烟测试集成 CI	20 min
+| 12 | Vercel 下线/灾备决策 + 执行 | 30 min |
