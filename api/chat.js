@@ -56,16 +56,21 @@ export default async function handler(req, res) {
             });
         }
 
-        // 返回 AI 回复
-        res.status(200).json(data);
-
-        // [FEEDBACK] 标记检测：异步转发反馈至邮箱
+        // [FEEDBACK] 标记检测：先发送邮件，再返回 AI 回复
+        // 注意：必须先 await 邮件发送，再 json 响应。
+        // 在 Serverless 环境中，HTTP 响应发送后进程可能被冻结，
+        // 导致异步 fetch 被终止。
         var lastUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; }).pop();
         if (lastUserMsg && lastUserMsg.content && lastUserMsg.content.indexOf('[FEEDBACK]') === 0) {
-            sendFeedbackEmail(lastUserMsg.content).catch(function (err) {
+            try {
+                await sendFeedbackEmail(lastUserMsg.content);
+            } catch (err) {
                 console.error('[Feedback] 邮件发送失败:', err.message);
-            });
+            }
         }
+
+        // 返回 AI 回复
+        res.status(200).json(data);
         return;
     } catch (err) {
         const errMsg = (err.name === 'TimeoutError' || err.name === 'AbortError')
