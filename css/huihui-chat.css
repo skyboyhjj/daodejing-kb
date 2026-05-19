@@ -486,3 +486,54 @@
         padding: 3px 8px;
     }
 }
+
+/* ============================================================
+   反馈类型按钮栏（临时替换认知水平栏）
+   ============================================================ */
+.huihui-feedback-bar {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #faf8f0;
+    border-bottom: 1px solid #d4c9a8;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.huihui-feedback-btn {
+    padding: 6px 14px;
+    border-radius: 14px;
+    border: 1px solid #2e5f5f;
+    background: #f0ede0;
+    color: #2e5f5f;
+    font-size: 13px;
+    font-family: var(--hui-font);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.huihui-feedback-btn:hover {
+    background: #2e5f5f;
+    color: #faf8f0;
+}
+
+.huihui-feedback-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .huihui-feedback-bar {
+        flex-wrap: wrap;
+        padding: 6px 8px;
+    }
+
+    .huihui-feedback-btn {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+}

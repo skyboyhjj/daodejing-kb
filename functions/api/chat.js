@@ -5,6 +5,7 @@
  */
 import { buildSystemPrompt } from '../../api/_shared/system-prompt.js';
 import { sendFeedbackEmail } from '../../api/_shared/feedback-email.js';
+import { saveFeedback } from '../../api/_shared/feedback-store.js';
 
 export async function onRequest(context) {
     const { request, env } = context;
@@ -73,10 +74,45 @@ export async function onRequest(context) {
             });
         }
 
-        // [FEEDBACK] 标记检测：异步转发反馈至邮箱
-        var lastUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; }).pop();
-        if (lastUserMsg && lastUserMsg.content && lastUserMsg.content.indexOf('[FEEDBACK]') === 0) {
-            context.waitUntil(sendFeedbackEmail(lastUserMsg.content, env));
+        // [FEEDBACK:CONFIRM] 检测：AI 反馈汇总确认后，存储 + 邮件
+        var aiContent = data.choices && data.choices[0] && data.choices[0].message
+            ? data.choices[0].message.content
+            : '';
+
+        if (aiContent && aiContent.indexOf('[FEEDBACK:CONFIRM]') !== -1) {
+            // 提取反馈类型
+            var feedbackType = 'general';
+            var firstUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; })[0];
+            if (firstUserMsg && firstUserMsg.content) {
+                var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
+                if (typeMatch) feedbackType = typeMatch[1];
+            }
+
+            // 存储反馈（Cloudflare 使用 context.waitUntil 处理异步）
+            context.waitUntil(
+                saveFeedback(messages, feedbackType)
+                    .then(function (record) {
+                        console.log('[Feedback] 反馈已存储:', record.id);
+                        return record;
+                    })
+                    .catch(function (err) {
+                        console.error('[Feedback] 存储失败:', err.message);
+                    })
+            );
+
+            // 发送邮件
+            var emailBody = '[类型: ' + feedbackType + ']\n' +
+                '[时间: ' + new Date().toISOString() + ']\n\n' +
+                aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+            context.waitUntil(
+                sendFeedbackEmail(emailBody, env).catch(function (err) {
+                    console.error('[Feedback] 邮件发送失败:', err.message);
+                })
+            );
+
+            // 剥离标记并添加确认信号
+            data.choices[0].message.content = aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+            data._feedbackConfirmed = true;
         }
 
         return new Response(JSON.stringify(data), {

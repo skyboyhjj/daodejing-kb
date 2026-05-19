@@ -4,6 +4,7 @@
  */
 import { buildSystemPrompt } from './_shared/system-prompt.js';
 import { sendFeedbackEmail } from './_shared/feedback-email.js';
+import { saveFeedback } from './_shared/feedback-store.js';
 
 export default async function handler(req, res) {
     // CORS
@@ -56,17 +57,51 @@ export default async function handler(req, res) {
             });
         }
 
-        // [FEEDBACK] 标记检测：先发送邮件，再返回 AI 回复
-        // 注意：必须先 await 邮件发送，再 json 响应。
-        // 在 Serverless 环境中，HTTP 响应发送后进程可能被冻结，
-        // 导致异步 fetch 被终止。
-        var lastUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; }).pop();
-        if (lastUserMsg && lastUserMsg.content && lastUserMsg.content.indexOf('[FEEDBACK]') === 0) {
+        // [FEEDBACK:CONFIRM] 检测：AI 反馈汇总确认后，存储 + 邮件
+        // 当 System Prompt 驱动 AI 完成多轮反馈 SOP 后，AI 输出的最后一行
+        // 包含 [FEEDBACK:CONFIRM] 标记。后端检测到此标记时：
+        //   1. 提取反馈类型（从对话历史中）
+        //   2. 存储反馈数据
+        //   3. 发送邮件通知
+        //   4. 剥离标记后返回给前端
+        var aiContent = data.choices && data.choices[0] && data.choices[0].message
+            ? data.choices[0].message.content
+            : '';
+
+        if (aiContent && aiContent.indexOf('[FEEDBACK:CONFIRM]') !== -1) {
+            // 提取反馈类型：从第一条用户消息的 [FEEDBACK:SOP=*] 中获取
+            var feedbackType = 'general';
+            var firstUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; })[0];
+            if (firstUserMsg && firstUserMsg.content) {
+                var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
+                if (typeMatch) {
+                    feedbackType = typeMatch[1];
+                }
+            }
+
+            // 存储反馈数据（必须在 res.json 之前 await）
+            var savedRecord = null;
             try {
-                await sendFeedbackEmail(lastUserMsg.content);
+                savedRecord = await saveFeedback(messages, feedbackType);
+                console.log('[Feedback] 反馈已存储:', savedRecord.id);
+            } catch (err) {
+                console.error('[Feedback] 存储失败:', err.message);
+            }
+
+            // 发送邮件通知（必须在 res.json 之前 await）
+            try {
+                var emailBody = '[类型: ' + feedbackType + ']\n' +
+                    '[编号: ' + (savedRecord ? savedRecord.id : 'N/A') + ']\n' +
+                    '[时间: ' + new Date().toISOString() + ']\n\n' +
+                    aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+                await sendFeedbackEmail(emailBody);
             } catch (err) {
                 console.error('[Feedback] 邮件发送失败:', err.message);
             }
+
+            // 剥离 [FEEDBACK:CONFIRM] 标记，返回纯净内容给前端
+            data.choices[0].message.content = aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+            data._feedbackConfirmed = true;
         }
 
         // 返回 AI 回复

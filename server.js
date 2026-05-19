@@ -210,6 +210,41 @@ const SYSTEM_PROMPT = `你是慧惠，一个温柔、聪慧的数字生命，也
 - 不主动展示复杂数据分析，不邀功、不刷存在感（善行无辙迹）
 - 用户可随时回复"不用"跳过晚间回顾
 
+## 用户反馈功能
+
+当用户消息以 [FEEDBACK:SOP=bug] 开头时，启动 Bug 反馈 SOP（严格按轮次，不可在单轮中全部完成）：
+
+【本轮回复——只做这一件事】
+确认收到反馈，然后问第一个问题。只问一个问题：
+"好的，我来帮你记录这个问题。先告诉我，是哪个页面或功能出了问题？"
+——本轮到此结束。不追问、不猜测、不输出后续步骤。等待用户回答。
+
+【用户回答后——第二轮】
+【本轮回复——只做这一件事】
+确认用户说的位置，然后问：
+"明白了。那具体发生了什么？比如你点了什么、输入了什么，看到了什么？"
+——本轮到此结束。等待用户回答。
+
+【用户回答后——第三轮】
+【本轮回复——只做这一件事】
+确认用户说的现象，然后问：
+"我记下了。那你原本希望它怎么做？"
+——本轮到此结束。等待用户回答。
+
+【用户回答后——最后一轮】
+汇总所有关键信息（反馈类型：Bug报告、问题位置、实际现象、期望行为、用户ID和页面信息从对话元数据中提取），用自然语气展示给用户确认。
+——等待用户确认。用户确认后，追加输出感谢语和 [FEEDBACK:CONFIRM] 标记。
+
+当用户消息以 [FEEDBACK:SOP=suggestion] 开头时，启动建议反馈 SOP（3轮：领域→构想→原因→汇总确认）。
+当用户消息以 [FEEDBACK:SOP=help] 开头时，启动使用求助 SOP（2轮：目标→困难→汇总确认）。
+
+反馈功能全局约束：
+- 严格按轮次执行，不可在单轮中跳过或合并步骤
+- 每轮只问一个问题，等用户回答后再继续
+- 用户可随时回复"不用"跳过当前问题或退出反馈流程
+- 汇总确认后追加输出 [FEEDBACK:CONFIRM]
+- 反馈流程中的消息不需要包含镜鉴相关引导
+
 ### 镜鉴风格
 - 安静、轻盈、不做作
 - 不评判用户的行为，只提供觉察的视角
@@ -484,19 +519,48 @@ function handleChatAPI(req, res) {
                     return apiResp.json();
                 })
                 .then(function (data) {
+                    // [FEEDBACK:CONFIRM] 检测：AI 反馈汇总确认后，存储 + 邮件
+                    var aiContent = data.choices && data.choices[0] && data.choices[0].message
+                        ? data.choices[0].message.content
+                        : '';
+
+                    if (aiContent && aiContent.indexOf('[FEEDBACK:CONFIRM]') !== -1) {
+                        // 提取反馈类型
+                        var feedbackType = 'general';
+                        var firstUserMsg = messages.filter(function (m) { return m.role === 'user'; })[0];
+                        if (firstUserMsg && firstUserMsg.content) {
+                            var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
+                            if (typeMatch) feedbackType = typeMatch[1];
+                        }
+
+                        // 存储反馈
+                        var savedRecord = null;
+                        try {
+                            savedRecord = saveFeedbackLocal(messages, feedbackType);
+                            console.log('[Feedback] 反馈已存储:', savedRecord.id);
+                        } catch (err) {
+                            console.error('[Feedback] 存储失败:', err.message);
+                        }
+
+                        // 发送邮件
+                        var emailBody = '[类型: ' + feedbackType + ']\n' +
+                            '[编号: ' + (savedRecord ? savedRecord.id : 'N/A') + ']\n' +
+                            '[时间: ' + new Date().toISOString() + ']\n\n' +
+                            aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+                        sendFeedbackEmail(emailBody).catch(function (err) {
+                            console.error('[Feedback] 邮件发送失败:', err.message);
+                        });
+
+                        // 剥离标记并添加确认信号
+                        data.choices[0].message.content = aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+                        data._feedbackConfirmed = true;
+                    }
+
                     res.writeHead(200, {
                         'Content-Type': 'application/json; charset=utf-8',
                         'Access-Control-Allow-Origin': '*'
                     });
                     res.end(JSON.stringify(data));
-
-                    // [FEEDBACK] 标记检测：异步转发反馈至邮箱
-                    var lastUserMsg = messages.filter(function (m) { return m.role === 'user'; }).pop();
-                    if (lastUserMsg && lastUserMsg.content && lastUserMsg.content.indexOf('[FEEDBACK]') === 0) {
-                        sendFeedbackEmail(lastUserMsg.content).catch(function (err) {
-                            console.error('[Feedback] 邮件发送失败:', err.message);
-                        });
-                    }
                 })
                 .catch(function (err) {
                     var errMsg = err.message || '未知错误';
@@ -528,8 +592,11 @@ async function sendFeedbackEmail(content) {
         console.warn('[Feedback] RESEND_API_KEY 环境变量未配置，跳过邮件发送');
         return;
     }
-    // 去除 [FEEDBACK] 前缀，得到纯净的反馈内容
-    var cleanContent = content.replace(/^\[FEEDBACK\]\s*/i, '');
+    // 去除 [FEEDBACK:*] 和 [FEEDBACK:CONFIRM] 标记，得到纯净的反馈内容
+    var cleanContent = content
+        .replace(/\[FEEDBACK[^\]]*\]\s*/gi, '')
+        .replace(/\[FEEDBACK:CONFIRM\]/gi, '')
+        .trim();
     var resp = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -548,6 +615,50 @@ async function sendFeedbackEmail(content) {
         throw new Error('Resend API 返回 ' + resp.status + ': ' + errBody);
     }
     console.log('[Feedback] 邮件已成功发送至 contact@metaskill.org.cn');
+}
+
+// ===== 反馈数据存储（本地开发版） =====
+// ⚠️ saveFeedback 的规范定义在 api/_shared/feedback-store.js
+var _feedbackCounter = 0;
+function saveFeedbackLocal(messages, feedbackType) {
+    var dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    _feedbackCounter += 1;
+    var id = 'FB-' + dateStr + '-' + String(_feedbackCounter).padStart(3, '0');
+
+    var record = {
+        id: id,
+        type: feedbackType,
+        content: '',
+        userId: 'anonymous',
+        pageUrl: '',
+        timestamp: new Date().toISOString(),
+        status: 'pending',
+        assignee: null,
+        resolution: null,
+        closedAt: null
+    };
+
+    // 从对话历史中提取信息
+    for (var i = 0; i < messages.length; i++) {
+        var msg = messages[i];
+        if (msg.role === 'user' && msg.content) {
+            var metaMatch = msg.content.match(/__META__:\s*uid=([^|]+)\s*\|\s*url=([^|]+)\s*\|\s*time=(.+)/);
+            if (metaMatch) {
+                record.userId = metaMatch[1].trim();
+                record.pageUrl = metaMatch[2].trim();
+            }
+            var clean = msg.content
+                .replace(/\[FEEDBACK[^\]]*\]\s*/g, '')
+                .replace(/__META__:.*$/gm, '')
+                .trim();
+            if (clean) {
+                record.content += (record.content ? '\n---\n' : '') + clean;
+            }
+        }
+    }
+
+    console.log('[FeedbackStore] ' + JSON.stringify(record));
+    return record;
 }
 
 // ===== POST /api/family_chat — 亲子对话代理 DeepSeek API =====

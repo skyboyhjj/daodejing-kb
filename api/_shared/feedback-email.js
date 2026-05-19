@@ -23,8 +23,11 @@ export async function sendFeedbackEmail(content, env) {
         return;
     }
 
-    // 去除 [FEEDBACK] 前缀，得到纯净的反馈内容
-    var cleanContent = content.replace(/^\[FEEDBACK\]\s*/i, '');
+    // 去除 [FEEDBACK:*] 前缀和 [FEEDBACK:CONFIRM] 标记，得到纯净的反馈内容
+    var cleanContent = content
+        .replace(/\[FEEDBACK[^\]]*\][ \t]*/gi, '')
+        .replace(/\[FEEDBACK:CONFIRM\]/gi, '')
+        .trim();
 
     var resp = await fetch('https://api.resend.com/emails', {
         method: 'POST',

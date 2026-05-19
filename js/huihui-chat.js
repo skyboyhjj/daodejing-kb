@@ -42,6 +42,11 @@
         + '<button class="huihui-level-btn" data-level="L3">应用</button>'
         + '<button class="huihui-level-btn" data-level="L4">学术</button>'
         + '</div>'
+        + '<div class="huihui-feedback-bar" style="display:none">'
+        + '<button class="huihui-feedback-btn" data-fb-type="bug">我要报错</button>'
+        + '<button class="huihui-feedback-btn" data-fb-type="suggestion">我要建议</button>'
+        + '<button class="huihui-feedback-btn" data-fb-type="help">我要帮助</button>'
+        + '</div>'
         + '<div class="hui-messages" id="hui-messages"></div>'
         + '<div class="hui-input-area">'
         + '<textarea class="hui-input" id="hui-input" rows="1" placeholder="聊聊《道德经》…" aria-label="输入消息"></textarea>'
@@ -146,6 +151,19 @@
         levelBtns[j].addEventListener('click', onLevelBtnClick(levelBtns[j]));
     }
 
+    // ===== 反馈类型按钮 =====
+    var feedbackBtns = document.querySelectorAll('.huihui-feedback-btn');
+    for (var fb = 0; fb < feedbackBtns.length; fb++) {
+        feedbackBtns[fb].addEventListener('click', function () {
+            var fbType = this.getAttribute('data-fb-type');
+            if (!fbType || isSending) return;
+
+            // 发送反馈消息（通过 sendMessage 检测意图）
+            inputEl.value = this.textContent.trim();
+            sendMessage();
+        });
+    }
+
     // 监听章节页面 level-selector 变化，同步高亮聊天框按钮
     window.addEventListener('huihui-level-changed', function (e) {
         var newLevel = e.detail && e.detail.level;
@@ -157,6 +175,8 @@
 
     var isOpen = false;
     var isSending = false;
+    var feedbackSessionActive = false;  // 反馈会话进行中
+    var launchMode = 'normal';  // 聊天入口来源：'normal' | 'feedback'
     var panelJustOpened = false; // 防止 openPanel() 后的同一个点击事件触发 closePanel()
 
     // ===== 初始化：显示欢迎消息 =====
@@ -170,6 +190,10 @@
     // ===== 打开/关闭面板 =====
     chatBtn.addEventListener('click', function () {
         console.log('[HuihuiChat] 浮动按钮被点击，调用 openPanel()');
+        launchMode = 'normal';
+        if (feedbackSessionActive) {
+            endFeedbackSession();
+        }
         openPanel();
     });
 
@@ -180,9 +204,24 @@
     });
 
     function openPanel() {
-        console.log('[HuihuiChat] openPanel() 执行，当前 isOpen=' + isOpen);
+        console.log('[HuihuiChat] openPanel() 执行，当前 isOpen=' + isOpen + ', launchMode=' + launchMode);
         isOpen = true;
         panelJustOpened = true;
+
+        // 根据入口来源确保按钮栏状态正确
+        var levelBar = document.querySelector('.huihui-level-bar');
+        var feedbackBar = document.querySelector('.huihui-feedback-bar');
+        if (launchMode === 'normal') {
+            if (levelBar) levelBar.style.display = '';
+            if (feedbackBar) feedbackBar.style.display = 'none';
+
+            // 如果消息区无用户消息（仅有引导语），恢复欢迎语
+            if (messagesEl && messagesEl.querySelectorAll('.hui-msg.user').length === 0) {
+                messagesEl.innerHTML = '';
+                addMessage('ai', WELCOME_TEXT);
+            }
+        }
+
         chatPanel.classList.add('open');
         chatBtn.style.display = 'none';
         // 隐藏返回顶部按钮，避免与聊天面板重叠
@@ -261,8 +300,10 @@
     }
 
     function closePanel() {
-        console.log('[HuihuiChat] closePanel() 执行, 当前 isOpen=' + isOpen);
+        console.log('[HuihuiChat] closePanel() 执行, 当前 isOpen=' + isOpen + ', launchMode=' + launchMode);
         isOpen = false;
+        var wasFeedback = (launchMode === 'feedback');
+        launchMode = 'normal';
         chatPanel.classList.remove('open');
         chatBtn.style.display = 'flex';
         // 恢复返回顶部按钮
@@ -271,6 +312,17 @@
         }
         if (window.innerWidth <= 480) {
             document.body.style.overflow = '';
+        }
+        // 如果在反馈会话中关闭面板，重置反馈状态
+        if (feedbackSessionActive) {
+            endFeedbackSession();
+        } else if (wasFeedback) {
+            // 进入反馈模式但未开始会话就关闭，手动恢复标准聊天 UI
+            var levelBar = document.querySelector('.huihui-level-bar');
+            var feedbackBar = document.querySelector('.huihui-feedback-bar');
+            if (levelBar) levelBar.style.display = '';
+            if (feedbackBar) feedbackBar.style.display = 'none';
+            inputEl.placeholder = '聊聊《道德经》…';
         }
     }
 
@@ -299,6 +351,37 @@
                 break;
         }
         return prefix + userMessage;
+    }
+
+    // ===== 用户反馈关键词识别 =====
+    function detectFeedbackIntent(userMessage) {
+        var msg = userMessage.trim();
+        if (msg === '我要报错') return 'bug';
+        if (msg === '我要建议') return 'suggestion';
+        if (msg === '我要帮助') return 'help';
+        return null;
+    }
+
+    function handleFeedbackIntent(feedbackType, userMessage) {
+        return '[FEEDBACK:SOP=' + feedbackType + '] ' + userMessage;
+    }
+
+    // ===== 结束反馈会话 =====
+    function endFeedbackSession() {
+        if (!feedbackSessionActive) return;
+        feedbackSessionActive = false;
+        launchMode = 'normal';
+
+        // 恢复 L1-L4 按钮
+        var levelBar = document.querySelector('.huihui-level-bar');
+        var feedbackBar = document.querySelector('.huihui-feedback-bar');
+        if (levelBar) levelBar.style.display = '';
+        if (feedbackBar) feedbackBar.style.display = 'none';
+
+        // 恢复输入框提示
+        inputEl.placeholder = '聊聊《道德经》…';
+
+        console.log('[HuihuiChat] 反馈会话已结束');
     }
 
     // ===== 发送消息 =====
@@ -347,6 +430,9 @@
         // ===== 每日镜鉴关键词检测 =====
         var mirrorIntent = detectMirrorIntent(text);
 
+        // ===== 用户反馈关键词检测 =====
+        var feedbackIntent = detectFeedbackIntent(text);
+
         // 添加用户消息（UI 显示原文，不含技术标记）
         addMessage('user', text);
         inputEl.value = '';
@@ -375,6 +461,17 @@
                                 break;
                             }
                         }
+                    }
+                    if (feedbackIntent) {
+                        // 找到最后一条用户消息，添加反馈 SOP 标记
+                        for (var k = msgs.length - 1; k >= 0; k--) {
+                            if (msgs[k].role === 'user') {
+                                msgs[k].content = handleFeedbackIntent(feedbackIntent, msgs[k].content);
+                                break;
+                            }
+                        }
+                        // 进入反馈会话模式
+                        feedbackSessionActive = true;
                     }
                     return msgs;
                 })(),
@@ -409,6 +506,12 @@
 
                 if (data.choices && data.choices[0] && data.choices[0].message) {
                     addMessage('ai', data.choices[0].message.content);
+
+                    // 反馈会话：检测确认标记，仅重置会话标志（保持反馈界面）
+                    if (data._feedbackConfirmed && feedbackSessionActive) {
+                        feedbackSessionActive = false;
+                        inputEl.placeholder = '继续反馈或聊聊《道德经》…';
+                    }
                 } else if (data.error) {
                     addError(data.error);
                 } else {
@@ -563,17 +666,42 @@
 
     // ===== 用户反馈入口（全局函数） =====
     window.openHuihuiFeedback = function () {
-        console.log('[HuihuiChat] openHuihuiFeedback 被调用, isOpen=' + isOpen);
+        console.log('[HuihuiChat] openHuihuiFeedback 被调用, isOpen=' + isOpen + ', launchMode=' + launchMode);
+
+        launchMode = 'feedback';
+
+        // 在打开面板前设置反馈专用 UI，消除闪现
+        var levelBar = document.querySelector('.huihui-level-bar');
+        var feedbackBar = document.querySelector('.huihui-feedback-bar');
+        if (levelBar) levelBar.style.display = 'none';
+        if (feedbackBar) feedbackBar.style.display = 'flex';
+
+        // 重新启用反馈按钮（可能被之前的点击禁用）
+        var fbBtns = document.querySelectorAll('.huihui-feedback-btn');
+        for (var fb = 0; fb < fbBtns.length; fb++) {
+            fbBtns[fb].disabled = false;
+        }
+
+        // 显示反馈专属引导语（仅在非反馈会话中显示，避免重复）
+        if (!feedbackSessionActive) {
+            if (messagesEl) messagesEl.innerHTML = '';
+            addMessage('ai',
+                '你好呀！有什么想反馈的吗？\n\n' +
+                '请先点击上方三个按钮，选一个你想反馈的类型：\n' +
+                '  「我要报错」— 发现网站问题或错误\n' +
+                '  「我要建议」— 分享改进想法\n' +
+                '  「我要帮助」— 遇到使用困难\n\n' +
+                '选好后慧惠会一步步了解你的具体情况。'
+            );
+        }
+
         if (!isOpen) {
             openPanel();
         }
-        // 等待面板打开后显示引导语并预填反馈标记
-        setTimeout(function () {
-            addMessage('ai', '欢迎提交您的宝贵反馈！请告诉我您对《道德经》亲子体验营的想法和建议。');
-            inputEl.value = '[FEEDBACK] ';
-            inputEl.focus();
-            scrollToBottom();
-        }, 400);
+
+        inputEl.value = '';
+        inputEl.focus();
+        scrollToBottom();
     };
 })();
 // force deploy trigger
