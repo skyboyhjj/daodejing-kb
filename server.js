@@ -501,7 +501,7 @@ function handleChatAPI(req, res) {
                     'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
                 },
                 body: JSON.stringify({
-                    model: 'deepseek-chat',
+                    model: 'deepseek-v4-flash',
                     messages: [
                         { role: 'system', content: buildSystemPrompt(level) },
                     ].concat(messages),
@@ -771,7 +771,7 @@ function handleFamilyChatAPI(req, res) {
                     'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
                 },
                 body: JSON.stringify({
-                    model: 'deepseek-chat',
+                    model: 'deepseek-v4-flash',
                     messages: [
                         { role: 'system', content: systemPrompt }
                     ].concat(messages),
