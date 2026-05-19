@@ -176,6 +176,7 @@
     var isOpen = false;
     var isSending = false;
     var feedbackSessionActive = false;  // 反馈会话进行中
+    var currentFeedbackType = null;     // 当前反馈类型：'bug'|'suggestion'|'help'|null
     var launchMode = 'normal';  // 聊天入口来源：'normal' | 'feedback'
     var panelJustOpened = false; // 防止 openPanel() 后的同一个点击事件触发 closePanel()
 
@@ -370,6 +371,7 @@
     function endFeedbackSession() {
         if (!feedbackSessionActive) return;
         feedbackSessionActive = false;
+        currentFeedbackType = null;
         launchMode = 'normal';
 
         // 恢复 L1-L4 按钮
@@ -470,13 +472,15 @@
                                 break;
                             }
                         }
-                        // 进入反馈会话模式
+                        // 进入反馈会话模式，记录反馈类型（跨多轮请求传递）
                         feedbackSessionActive = true;
+                        currentFeedbackType = feedbackIntent;
                     }
                     return msgs;
                 })(),
                 user_id: userId,
-                level: getSavedLevel()
+                level: getSavedLevel(),
+                feedback_type: (feedbackIntent || (feedbackSessionActive ? currentFeedbackType : null)) || undefined
             }),
             signal: controller.signal
         })

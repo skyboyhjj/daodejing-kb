@@ -494,6 +494,7 @@ function handleChatAPI(req, res) {
             var messages = body.messages || [];
             var level = body.level || 'L2';
             var userId = body.user_id || '';
+            var feedbackTypeFromClient = body.feedback_type || '';
 
             fetch('https://api.deepseek.com/v1/chat/completions', {
                 method: 'POST',
@@ -526,12 +527,15 @@ function handleChatAPI(req, res) {
                         : '';
 
                     if (aiContent && aiContent.indexOf('[FEEDBACK:CONFIRM]') !== -1) {
-                        // 提取反馈类型
-                        var feedbackType = 'general';
-                        var firstUserMsg = messages.filter(function (m) { return m.role === 'user'; })[0];
-                        if (firstUserMsg && firstUserMsg.content) {
-                            var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
-                            if (typeMatch) feedbackType = typeMatch[1];
+                        // 提取反馈类型：优先使用前端显式传入的 feedback_type，
+                        // 回退到从第一条用户消息的 [FEEDBACK:SOP=*] 中解析
+                        var feedbackType = feedbackTypeFromClient || 'general';
+                        if (feedbackType === 'general') {
+                            var firstUserMsg = messages.filter(function (m) { return m.role === 'user'; })[0];
+                            if (firstUserMsg && firstUserMsg.content) {
+                                var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
+                                if (typeMatch) feedbackType = typeMatch[1];
+                            }
                         }
 
                         // 存储反馈

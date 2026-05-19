@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
     try {
         const body = req.body || {};
-        const { messages, level, user_id } = body;
+        const { messages, level, user_id, feedback_type } = body;
         const userLevel = level || 'L2';
 
         const deepseekResp = await fetch('https://api.deepseek.com/v1/chat/completions', {
@@ -69,13 +69,16 @@ export default async function handler(req, res) {
             : '';
 
         if (aiContent && aiContent.indexOf('[FEEDBACK:CONFIRM]') !== -1) {
-            // 提取反馈类型：从第一条用户消息的 [FEEDBACK:SOP=*] 中获取
-            var feedbackType = 'general';
-            var firstUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; })[0];
-            if (firstUserMsg && firstUserMsg.content) {
-                var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
-                if (typeMatch) {
-                    feedbackType = typeMatch[1];
+            // 提取反馈类型：优先使用前端显式传入的 feedback_type，
+            // 回退到从第一条用户消息的 [FEEDBACK:SOP=*] 中解析
+            var feedbackType = feedback_type || 'general';
+            if (feedbackType === 'general') {
+                var firstUserMsg = (messages || []).filter(function (m) { return m.role === 'user'; })[0];
+                if (firstUserMsg && firstUserMsg.content) {
+                    var typeMatch = firstUserMsg.content.match(/\[FEEDBACK:SOP=(\w+)\]/);
+                    if (typeMatch) {
+                        feedbackType = typeMatch[1];
+                    }
                 }
             }
 
