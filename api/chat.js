@@ -91,10 +91,9 @@ export default async function handler(req, res) {
             // 发送邮件通知（必须在 res.json 之前 await）
             try {
                 var emailBody = '[类型: ' + feedbackType + ']\n' +
-                    '[编号: ' + (savedRecord ? savedRecord.id : 'N/A') + ']\n' +
                     '[时间: ' + new Date().toISOString() + ']\n\n' +
                     aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
-                await sendFeedbackEmail(emailBody);
+                await sendFeedbackEmail(emailBody, feedbackType);
             } catch (err) {
                 console.error('[Feedback] 邮件发送失败:', err.message);
             }

@@ -492,7 +492,7 @@
    ============================================================ */
 .huihui-feedback-bar {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     padding: 8px 12px;
     background: #faf8f0;
     border-bottom: 1px solid #d4c9a8;
@@ -501,7 +501,8 @@
 }
 
 .huihui-feedback-btn {
-    padding: 6px 14px;
+    padding: 6px 16px;
+    margin: 0 2px;
     border-radius: 14px;
     border: 1px solid #2e5f5f;
     background: #f0ede0;

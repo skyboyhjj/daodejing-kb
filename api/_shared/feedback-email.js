@@ -8,12 +8,22 @@
  *   functions/api/chat.js   — Cloudflare Pages Function (context.env)
  *   server.js               — 本地开发服务器 (process.env)
  *
- * @param {string} content - 用户反馈内容（可能带 [FEEDBACK] 前缀）
- * @param {object} [env]    - Cloudflare Pages 环境变量对象 (context.env)
- *                            在 Vercel/Node.js 环境下留空，自动回退到 process.env
+ * @param {string} content      - 用户反馈内容（可能带 [FEEDBACK] 前缀）
+ * @param {string} feedbackType - 反馈类型：'bug' | 'suggestion' | 'help' | 'general'
+ * @param {object} [env]        - Cloudflare Pages 环境变量对象 (context.env)
+ *                                在 Vercel/Node.js 环境下留空，自动回退到 process.env
  */
 
-export async function sendFeedbackEmail(content, env) {
+var TYPE_LABELS = {
+    bug: '我要报错',
+    suggestion: '我要建议',
+    help: '我要帮助',
+    general: '用户反馈'
+};
+
+export async function sendFeedbackEmail(content, feedbackType, env) {
+    var label = TYPE_LABELS[feedbackType] || TYPE_LABELS['general'];
+
     // 兼容 Vercel/Node.js (process.env) 与 Cloudflare Pages (context.env)
     var resendKey = (env && env.RESEND_API_KEY) ||
         (typeof process !== 'undefined' && process.env && process.env.RESEND_API_KEY);
@@ -38,7 +48,7 @@ export async function sendFeedbackEmail(content, env) {
         body: JSON.stringify({
             from: '道德经亲子体验营 <noreply@hui-skill.org>',
             to: ['contact@metaskill.org.cn'],
-            subject: '【道德经亲子体验营】用户反馈',
+            subject: '【道德经亲子体验营】用户反馈 · ' + label,
             text: cleanContent
         })
     });

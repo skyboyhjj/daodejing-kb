@@ -544,10 +544,9 @@ function handleChatAPI(req, res) {
 
                         // 发送邮件
                         var emailBody = '[类型: ' + feedbackType + ']\n' +
-                            '[编号: ' + (savedRecord ? savedRecord.id : 'N/A') + ']\n' +
                             '[时间: ' + new Date().toISOString() + ']\n\n' +
                             aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
-                        sendFeedbackEmail(emailBody).catch(function (err) {
+                        sendFeedbackEmail(emailBody, feedbackType).catch(function (err) {
                             console.error('[Feedback] 邮件发送失败:', err.message);
                         });
 
@@ -586,7 +585,9 @@ function handleChatAPI(req, res) {
 // ===== 反馈邮件转发 =====
 // ⚠️ sendFeedbackEmail 的规范定义在 api/_shared/feedback-email.js
 // 修改邮件逻辑时请更新该文件，此处为本地开发便利保留副本
-async function sendFeedbackEmail(content) {
+async function sendFeedbackEmail(content, feedbackType) {
+    var typeLabels = { bug: '我要报错', suggestion: '我要建议', help: '我要帮助', general: '用户反馈' };
+    var label = typeLabels[feedbackType] || typeLabels['general'];
     var resendKey = process.env.RESEND_API_KEY;
     if (!resendKey) {
         console.warn('[Feedback] RESEND_API_KEY 环境变量未配置，跳过邮件发送');
@@ -606,7 +607,7 @@ async function sendFeedbackEmail(content) {
         body: JSON.stringify({
             from: '道德经亲子体验营 <noreply@hui-skill.org>',
             to: ['contact@metaskill.org.cn'],
-            subject: '【道德经亲子体验营】用户反馈',
+            subject: '【道德经亲子体验营】用户反馈 · ' + label,
             text: cleanContent
         })
     });

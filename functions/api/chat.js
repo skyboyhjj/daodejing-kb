@@ -105,7 +105,7 @@ export async function onRequest(context) {
                 '[时间: ' + new Date().toISOString() + ']\n\n' +
                 aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
             context.waitUntil(
-                sendFeedbackEmail(emailBody, env).catch(function (err) {
+                sendFeedbackEmail(emailBody, feedbackType, env).catch(function (err) {
                     console.error('[Feedback] 邮件发送失败:', err.message);
                 })
             );
