@@ -44,23 +44,7 @@
         }, 100);
     }
 
-    waitForReady(function () {
-        initUI();
-    });
-
-    // ===== 主初始化 =====
-    function initUI() {
-        // 初始化追踪器
-        SkillUP.init();
-
-        if (isHomePage()) {
-            injectGrowthCard();
-        } else if (isChapterPage()) {
-            injectChapterGuidance();
-        }
-    }
-
-    // ===== 阶段特定文本 =====
+    // ===== 阶段特定文本（必须在 waitForReady 之前赋值，否则同步回调中变量未初始化） =====
     var STAGE_OPENING = {
         '水滴': '你从一颗水滴出发。',
         '溪流': '你从一颗水滴出发，现在是潺潺的溪流了。',
@@ -76,6 +60,22 @@
     };
 
     var LEVEL_NAMES = { L1: '白话', L2: '精读', L3: '应用', L4: '学术' };
+
+    waitForReady(function () {
+        initUI();
+    });
+
+    // ===== 主初始化 =====
+    function initUI() {
+        // 初始化追踪器
+        SkillUP.init();
+
+        if (isHomePage()) {
+            injectGrowthCard();
+        } else if (isChapterPage()) {
+            injectChapterGuidance();
+        }
+    }
 
     // ===== 注入「我的成长」卡片（首页） =====
     function injectGrowthCard() {
