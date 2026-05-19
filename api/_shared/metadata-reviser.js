@@ -21,9 +21,9 @@ function _loadFS() {
 
 // ===== 配置 =====
 var DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
-// 模型可通过 DEEPSEEK_MODEL 环境变量配置，默认 deepseek-chat
-// 升级到更高版本时只需设置: DEEPSEEK_MODEL=deepseek-chat-v4 或对应新模型名
-var DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+// 模型: DEEPSEEK_MODEL 环境变量可覆盖，默认 deepseek-v4-flash
+// 需要更强推理质量时: DEEPSEEK_MODEL=deepseek-v4-pro
+var DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
 var PROJECT_ROOT;
 
 function _getRoot() {

@@ -15,8 +15,8 @@
  *
  * 依赖:
  *   - DEEPSEEK_API_KEY 环境变量
- *   - DEEPSEEK_MODEL 环境变量（可选，默认 deepseek-chat）
- *   - 升级模型: DEEPSEEK_MODEL=deepseek-chat-v4 或新版模型名
+ *   - DEEPSEEK_MODEL 环境变量（可选，默认 deepseek-v4-flash）
+ *   - 需要更强推理: DEEPSEEK_MODEL=deepseek-v4-pro
  *
  * 从 server.js 调用:
  *   POST http://127.0.0.1:8081/revise { "chapter": 53 }
@@ -32,7 +32,7 @@ var API_SHARED = path.join(__dirname, '..', 'api', '_shared');
 var reviser = require(path.join(API_SHARED, 'metadata-reviser'));
 
 var PORT = parseInt(process.env.REVISER_PORT || '8081', 10);
-var MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+var MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
 
 // ===== 辅助函数 =====
 function sendJSON(res, status, data) {

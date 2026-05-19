@@ -38,7 +38,7 @@ METADATA_FILE = os.path.join(PROJECT_ROOT, 'data', 'family_metadata.json')
 
 # ===== DeepSeek API 配置 =====
 DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions'
-DEEPSEEK_MODEL = 'deepseek-chat'
+DEEPSEEK_MODEL = 'deepseek-v4-flash'  # 需要更强推理: deepseek-v4-pro
 
 # 第一批核心章节（20 章，不含已审核的第 1、2、8 章）
 CORE_CHAPTERS = [3, 7, 9, 11, 12, 14, 16, 22, 25, 33,
