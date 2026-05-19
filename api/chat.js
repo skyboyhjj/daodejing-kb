@@ -3,7 +3,7 @@
  * POST /api/chat → DeepSeek 代理
  */
 import { buildSystemPrompt } from './_shared/system-prompt.js';
-import { sendFeedbackEmail } from './_shared/feedback-email.js';
+import { sendFeedbackEmail, buildFeedbackEmailBody } from './_shared/feedback-email.js';
 import { saveFeedback } from './_shared/feedback-store.js';
 
 export default async function handler(req, res) {
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
     try {
         const body = req.body || {};
-        const { messages, level } = body;
+        const { messages, level, user_id } = body;
         const userLevel = level || 'L2';
 
         const deepseekResp = await fetch('https://api.deepseek.com/v1/chat/completions', {
@@ -90,9 +90,7 @@ export default async function handler(req, res) {
 
             // 发送邮件通知（必须在 res.json 之前 await）
             try {
-                var emailBody = '[类型: ' + feedbackType + ']\n' +
-                    '[时间: ' + new Date().toISOString() + ']\n\n' +
-                    aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+                var emailBody = buildFeedbackEmailBody(messages, feedbackType, aiContent, user_id);
                 await sendFeedbackEmail(emailBody, feedbackType);
             } catch (err) {
                 console.error('[Feedback] 邮件发送失败:', err.message);

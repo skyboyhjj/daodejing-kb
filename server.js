@@ -493,6 +493,7 @@ function handleChatAPI(req, res) {
             var body = JSON.parse(Buffer.concat(bodyChunks).toString());
             var messages = body.messages || [];
             var level = body.level || 'L2';
+            var userId = body.user_id || '';
 
             fetch('https://api.deepseek.com/v1/chat/completions', {
                 method: 'POST',
@@ -543,9 +544,7 @@ function handleChatAPI(req, res) {
                         }
 
                         // 发送邮件
-                        var emailBody = '[类型: ' + feedbackType + ']\n' +
-                            '[时间: ' + new Date().toISOString() + ']\n\n' +
-                            aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+                        var emailBody = buildFeedbackEmailBody(messages, feedbackType, aiContent, userId);
                         sendFeedbackEmail(emailBody, feedbackType).catch(function (err) {
                             console.error('[Feedback] 邮件发送失败:', err.message);
                         });
@@ -585,9 +584,52 @@ function handleChatAPI(req, res) {
 // ===== 反馈邮件转发 =====
 // ⚠️ sendFeedbackEmail 的规范定义在 api/_shared/feedback-email.js
 // 修改邮件逻辑时请更新该文件，此处为本地开发便利保留副本
+
+// 格式化中国大陆北京时间 (UTC+8)，返回 YYYY-MM-DD HH:mm:ss
+function formatBeijingTime() {
+    var now = new Date();
+    var bj = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+    var y = bj.getUTCFullYear();
+    var m = String(bj.getUTCMonth() + 1).padStart(2, '0');
+    var d = String(bj.getUTCDate()).padStart(2, '0');
+    var h = String(bj.getUTCHours()).padStart(2, '0');
+    var min = String(bj.getUTCMinutes()).padStart(2, '0');
+    var s = String(bj.getUTCSeconds()).padStart(2, '0');
+    return y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + s;
+}
+
+function buildFeedbackEmailBody(messages, feedbackType, aiContent, userId) {
+    var typeLabels = { bug: '我要报错', suggestion: '我要建议', help: '我要帮助', general: '用户反馈' };
+    var label = typeLabels[feedbackType] || typeLabels['general'];
+    var bjTime = formatBeijingTime();
+    var parts = [];
+
+    parts.push('【反馈类型】' + label + ' (' + feedbackType + ')');
+    if (userId) parts.push('【用户ID】' + userId);
+    parts.push('【提交时间】' + bjTime + '（北京时间）');
+    parts.push('');
+
+    parts.push('━━━ 用户反馈内容 ━━━');
+    var userMsgs = (messages || []).filter(function (m) { return m.role === 'user'; });
+    for (var i = 0; i < userMsgs.length; i++) {
+        var msg = (userMsgs[i].content || '').replace(/\[FEEDBACK:SOP=\w+\]\s*/g, '');
+        if (msg.trim()) parts.push(msg.trim());
+    }
+    parts.push('');
+
+    var cleanAi = (aiContent || '').replace('[FEEDBACK:CONFIRM]', '').trim();
+    if (cleanAi) {
+        parts.push('━━━ AI 汇总确认 ━━━');
+        parts.push(cleanAi);
+    }
+
+    return parts.join('\n');
+}
+
 async function sendFeedbackEmail(content, feedbackType) {
     var typeLabels = { bug: '我要报错', suggestion: '我要建议', help: '我要帮助', general: '用户反馈' };
     var label = typeLabels[feedbackType] || typeLabels['general'];
+    var bjTime = formatBeijingTime();
     var resendKey = process.env.RESEND_API_KEY;
     if (!resendKey) {
         console.warn('[Feedback] RESEND_API_KEY 环境变量未配置，跳过邮件发送');
@@ -607,7 +649,7 @@ async function sendFeedbackEmail(content, feedbackType) {
         body: JSON.stringify({
             from: '道德经亲子体验营 <noreply@hui-skill.org>',
             to: ['contact@metaskill.org.cn'],
-            subject: '【道德经亲子体验营】用户反馈 · ' + label,
+            subject: '【道德经亲子体验营】用户反馈 · ' + label + ' · ' + bjTime,
             text: cleanContent
         })
     });

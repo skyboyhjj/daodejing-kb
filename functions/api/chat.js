@@ -4,7 +4,7 @@
  * 环境变量：DEEPSEEK_API_KEY（在 Cloudflare Pages 后台配置）
  */
 import { buildSystemPrompt } from '../../api/_shared/system-prompt.js';
-import { sendFeedbackEmail } from '../../api/_shared/feedback-email.js';
+import { sendFeedbackEmail, buildFeedbackEmailBody } from '../../api/_shared/feedback-email.js';
 import { saveFeedback } from '../../api/_shared/feedback-store.js';
 
 export async function onRequest(context) {
@@ -41,7 +41,7 @@ export async function onRequest(context) {
 
     try {
         const body = await request.json();
-        const { messages, level } = body;
+        const { messages, level, user_id } = body;
         const userLevel = level || 'L2';
 
         const deepseekResp = await fetch('https://api.deepseek.com/v1/chat/completions', {
@@ -101,9 +101,7 @@ export async function onRequest(context) {
             );
 
             // 发送邮件
-            var emailBody = '[类型: ' + feedbackType + ']\n' +
-                '[时间: ' + new Date().toISOString() + ']\n\n' +
-                aiContent.replace('[FEEDBACK:CONFIRM]', '').trim();
+            var emailBody = buildFeedbackEmailBody(messages, feedbackType, aiContent, user_id);
             context.waitUntil(
                 sendFeedbackEmail(emailBody, feedbackType, env).catch(function (err) {
                     console.error('[Feedback] 邮件发送失败:', err.message);
