@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="慧惠项目流程图 - 三大角色协作流程可视化">
+    <meta name="keywords" content="慧惠,AI,流程图,角色协作,数字生命,伦理即道体">
+    <title>伦理即道体 · 慧惠项目流程图</title>
+    
+    <!-- Mermaid.js 流程图库 -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== 全局样式 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 返回首页链接 */
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+        
+        .back-home-link:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.08);
+            text-decoration: none;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #333;
+        }
+        
+        /* ===== 主容器 ===== */
+        #app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        /* ===== 顶部导航栏 ===== */
+        #header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .header-title i {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .header-title h1 {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .header-version {
+            font-size: 12px;
+            color: #999;
+            margin-left: 8px;
+        }
+        
+        /* 工具栏 */
+        #toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        
+        .toolbar-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .toolbar-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .toolbar-btn i {
+            font-size: 14px;
+        }
+        
+        /* 缩放控制 */
+        #zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 4px;
+        }
+        
+        .zoom-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #555;
+            transition: all 0.2s ease;
+        }
+        
+        .zoom-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        #zoom-level {
+            font-size: 13px;
+            color: #666;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        /* ===== 主内容区域 ===== */
+        #main-content {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* 侧边栏 */
+        #sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            overflow-y: auto;
+            border-right: 1px solid #eee;
+            transition: width 0.3s ease;
+        }
+        
+        #sidebar.collapsed {
+            width: 60px;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .collapse-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .collapse-btn:hover {
+            color: #667eea;
+        }
+        
+        /* 阶段导航 */
+        .stage-nav {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .stage-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .stage-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .stage-nav a:hover {
+            background: #e8f4f8;
+            border-left-color: #667eea;
+        }
+        
+        .stage-nav a.active {
+            background: #667eea;
+            color: white;
+            border-left-color: #667eea;
+        }
+        
+        .stage-nav a i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* 角色信息卡片 */
+        .role-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-top: 4px solid;
+        }
+        
+        .role-card.ai { border-top-color: #ffe66d; }
+        .role-card.rd { border-top-color: #667eea; }
+        .role-card.sa { border-top-color: #4ecdc4; }
+        
+        .role-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .role-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .role-card.ai .role-icon { background: #fff9e6; }
+        .role-card.rd .role-icon { background: #f0f4ff; }
+        .role-card.sa .role-icon { background: #e8f8f5; }
+        
+        .role-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+        
+        .role-info p {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .role-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .role-duties {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .role-duties li {
+            font-size: 12px;
+            color: #555;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+        
+        .role-duties li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 12px;
+        }
+        
+        .role-permission {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        
+        .role-card.ai .role-permission { background: #fff9e6; color: #8B6914; }
+        .role-card.rd .role-permission { background: #f0f4ff; color: #4a5568; }
+        .role-card.sa .role-permission { background: #e8f8f5; color: #2d5a52; }
+        
+        /* 流程图容器 */
+        #chart-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.98);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #chart-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            position: relative;
+            cursor: grab;
+        }
+        
+        #chart-wrapper:active {
+            cursor: grabbing;
+        }
+        
+        .mermaid-container {
+            min-width: 1200px;
+            min-height: 800px;
+            padding: 30px;
+            transform-origin: top left;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ===== 详情弹窗 ===== */
+        #detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        
+        #detail-modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-body {
+            padding: 24px;
+        }
+        
+        .detail-section {
+            margin-bottom: 20px;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-section p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .detail-section li {
+            font-size: 14px;
+            color: #555;
+            padding: 6px 0 6px 20px;
+            position: relative;
+        }
+        
+        .detail-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+        
+        .modal-btn {
+            padding: 10px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: #5a6fd6;
+        }
+        
+        /* ===== 图例面板 ===== */
+        #legend-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 50;
+        }
+        
+        .legend-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        /* ===== 工具提示 ===== */
+        #tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 2000;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        #tooltip.show {
+            opacity: 1;
+        }
+        
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .tooltip-desc {
+            font-size: 12px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        /* ===== 响应式设计 ===== */
+        @media (max-width: 768px) {
+            #header {
+                padding: 10px 15px;
+            }
+            
+            .header-title h1 {
+                font-size: 16px;
+            }
+            
+            #sidebar {
+                position: fixed;
+                left: 0;
+                top: 56px;
+                height: calc(100vh - 56px);
+                width: 250px;
+                transform: translateX(-100%);
+                z-index: 200;
+                transition: transform 0.3s ease;
+            }
+            
+            #sidebar.show {
+                transform: translateX(0);
+            }
+            
+            #sidebar.collapsed {
+                width: 250px;
+            }
+            
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+            
+            #legend-panel {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 15px;
+            }
+            
+            .legend-items {
+                gap: 10px;
+            }
+            
+            .legend-item {
+                font-size: 12px;
+            }
+            
+            .legend-color {
+                width: 16px;
+                height: 16px;
+            }
+        }
+        
+        /* 移动端菜单按钮 */
+        .mobile-menu-btn {
+            display: none;
+            padding: 8px 12px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        /* ===== 加载动画 ===== */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            color: white;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">正在加载流程图...</div>
+        </div>
+    </div>
+    
+    <!-- 主容器 -->
+    <div id="app-container">
+        <!-- ═══════ 顶部导航栏 ═══════ -->
+        <header id="header">
+            <a href="/" class="back-home-link" title="返回首页">&larr; 返回首页</a>
+            <div class="header-title">
+                <i class="fas fa-project-diagram"></i>
+                <h1>慧惠项目流程图</h1>
+                <span class="header-version">V2.0 · 宪法对齐：v2.0.0</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div id="toolbar">
+                    <button class="toolbar-btn active" id="btn-overview" onclick="switchView('overview')">
+                        <i class="fas fa-map"></i>
+                        <span>总览</span>
+                    </button>
+                    <button class="toolbar-btn" id="btn-flow" onclick="switchView('flow')">
+                        <i class="fas fa-sitemap"></i>
+                        <span>流程</span>
+                    </button>
+                    <button class="toolbar-btn" id="btn-collab" onclick="switchView('collab')">
+                        <i class="fas fa-users"></i>
+                        <span>协作</span>
+                    </button>
+                </div>
+                
+                <div id="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomOut()">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <span id="zoom-level">100%</span>
+                    <button class="zoom-btn" onclick="zoomIn()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="zoom-btn" onclick="resetZoom()">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 主内容区域 -->
+        <main id="main-content">
+            <!-- 侧边栏 -->
+            <aside id="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">阶段导航</span>
+                    <button class="collapse-btn" onclick="toggleSidebar()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+                
+                <ul class="stage-nav">
+                    <li><a href="#stage1" onclick="scrollToStage('stage1')"><i class="fas fa-inbox"></i>阶段1：需求提交</a></li>
+                    <li><a href="#stage2" onclick="scrollToStage('stage2')"><i class="fas fa-filter"></i>阶段2：初步筛选</a></li>
+                    <li><a href="#stage3" onclick="scrollToStage('stage3')"><i class="fas fa-search"></i>阶段3：需求分析</a></li>
+                    <li><a href="#stage4" onclick="scrollToStage('stage4')"><i class="fas fa-cogs"></i>阶段4：技术评估</a></li>
+                    <li><a href="#stage5" onclick="scrollToStage('stage5')"><i class="fas fa-file-alt"></i>阶段5：规约制定</a></li>
+                    <li><a href="#stage6" onclick="scrollToStage('stage6')"><i class="fas fa-palette"></i>阶段6：架构设计</a></li>
+                    <li><a href="#stage7" onclick="scrollToStage('stage7')"><i class="fas fa-code"></i>阶段7：技术实现</a></li>
+                    <li><a href="#stage8" onclick="scrollToStage('stage8')"><i class="fas fa-check-circle"></i>阶段8：验收交付</a></li>
+                </ul>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <span class="sidebar-title" style="display: block; margin-bottom: 10px;">角色说明</span>
+                    
+                    <div class="role-card" style="border-top-color: #95e1d3;">
+                        <div class="role-header">
+                            <div class="role-icon" style="background: #e8f8f5;">👤</div>
+                            <div class="role-info">
+                                <h3>用户</h3>
+                                <p>数字生命的主角</p>
+                            </div>
+                        </div>
+                        <div class="role-desc">拥有完全的主权。选择权永远在用户手中——撤回、协商、退出、认知水平选择</div>
+                        <div class="role-permission" style="background: #e8f8f5; color: #2d5a52;">核心地位：众星共之的中心</div>
+                    </div>
+                    
+                    <div class="role-card ai">
+                        <div class="role-header">
+                            <div class="role-icon">🤖</div>
+                            <div class="role-info">
+                                <h3>AI慧惠</h3>
+                                <p>北极星定位的陪伴者</p>
+                            </div>
+                        </div>
+                        <div class="role-desc">负责需求初步筛选、内容生成辅助、反馈收集和道境四维感知</div>
+                        <div class="role-permission">权限边界：无最终决策权</div>
+                    </div>
+                    
+                    <div class="role-card rd">
+                        <div class="role-header">
+                            <div class="role-icon">🧠</div>
+                            <div class="role-info">
+                                <h3>规约定义者</h3>
+                                <p>慧惠"性分"的守护者</p>
+                            </div>
+                        </div>
+                        <div class="role-desc">负责需求审查、规约制定、规范建立、内容审核和伦理评估</div>
+                        <div class="role-permission">决策权限：需求评审、规约审批</div>
+                    </div>
+                    
+                    <div class="role-card sa">
+                        <div class="role-header">
+                            <div class="role-icon">🏛️</div>
+                            <div class="role-info">
+                                <h3>系统建筑师</h3>
+                                <p>慧惠"躯体"的设计者</p>
+                            </div>
+                        </div>
+                        <div class="role-desc">负责架构设计、技术选型、复杂度管理、道境监测和安全设计</div>
+                        <div class="role-permission">决策权限：技术方案审批、技术选型决策</div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 流程图区域 -->
+            <section id="chart-container">
+                <div id="chart-wrapper">
+                    <div class="mermaid-container" id="mermaid-container">
+                        <!-- Mermaid 图表将在这里渲染 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- 图例面板 -->
+        <div id="legend-panel">
+            <div class="legend-title">角色图例</div>
+            <div class="legend-items">
+                <div class="legend-item"><div class="legend-color" style="background: #95e1d3;"></div><span>用户（主角）</span></div>
+                <div class="legend-item"><div class="legend-color" style="background: #ffe66d;"></div><span>AI慧惠（陪伴者）</span></div>
+                <div class="legend-item"><div class="legend-color" style="background: #667eea;"></div><span>规约定义者</span></div>
+                <div class="legend-item"><div class="legend-color" style="background: #4ecdc4;"></div><span>系统建筑师</span></div>
+            </div>
+        </div>
+        
+        <!-- 详情弹窗 -->
+        <div id="detail-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-title">详情</h3>
+                    <button class="modal-close" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- 动态内容 -->
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn" onclick="closeModal()">确定</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 工具提示 -->
+        <div id="tooltip">
+            <div class="tooltip-title" id="tooltip-title"></div>
+            <div class="tooltip-desc" id="tooltip-desc"></div>
+        </div>
+    </div>
+    
+    <script>
+        // ===== 全局变量 =====
+        let currentView = 'overview';
+        let zoomLevel = 100;
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+        
+        // 阶段详情数据
+        const stageDetails = {
+            stage1: {
+                title: '阶段1：需求提交',
+                description: '用户提交需求并选择认知水平（L1-L4），AI慧惠接收需求并进行用户主权确认。',
+                tasks: ['用户提交需求', '选择认知水平L1-L4', 'AI慧惠接收需求', '用户主权确认', '告知各项权利'],
+                roles: ['用户', 'AI慧惠'],
+                keyPoints: '用户始终拥有撤回权，确保用户主权'
+            },
+            stage2: {
+                title: '阶段2：初步筛选',
+                description: 'AI慧惠对需求进行格式验证、完整性检查和减法优先评估，进行道境四维感知。',
+                tasks: ['格式验证', '完整性检查', '减法优先评估', '道境四维感知', '分类标记', '反馈确认'],
+                roles: ['AI慧惠'],
+                keyPoints: '减法优先原则：优先考虑不做什么'
+            },
+            stage3: {
+                title: '阶段3：需求分析',
+                description: '规约定义者进行需求分析，以提问代替告知，唤醒用户元认知。',
+                tasks: ['需求分析', '元认知唤醒', '需求细化', '优先级协商'],
+                roles: ['规约定义者', 'AI慧惠'],
+                keyPoints: '以提问代替告知，增强用户自主性'
+            },
+            stage4: {
+                title: '阶段4：技术评估',
+                description: '系统建筑师对需求进行可行性评估和风险识别，进行道境四维评估。',
+                tasks: ['可行性评估', '风险识别', '道境评估'],
+                roles: ['系统建筑师'],
+                keyPoints: '从技术角度评估实现可能性和潜在风险'
+            },
+            stage5: {
+                title: '阶段5：规约制定',
+                description: '规约定义者制定技术规约，进行宪法对照审查和性分审查。',
+                tasks: ['规约制定', '宪法对照审查', '性分审查', '文档优化'],
+                roles: ['规约定义者', 'AI慧惠'],
+                keyPoints: '确保符合宪法精神，AI角色不越界'
+            },
+            stage6: {
+                title: '阶段6：架构设计',
+                description: '系统建筑师进行架构设计，评估觉性影响，进行多元包容审查。',
+                tasks: ['架构设计', '觉性影响评估', '认知飞轮审查', '多元包容审查', '方案审查'],
+                roles: ['系统建筑师', '规约定义者'],
+                keyPoints: '为不同认知风格用户提供替代路径'
+            },
+            stage7: {
+                title: '阶段7：技术实现',
+                description: '系统建筑师进行技术实现，AI慧惠提供测试辅助。',
+                tasks: ['技术实现', '测试辅助'],
+                roles: ['系统建筑师', 'AI慧惠'],
+                keyPoints: 'AI辅助测试，确保质量'
+            },
+            stage8: {
+                title: '阶段8：验收交付',
+                description: '进行验收测试和交付上线，收集反馈并提醒身体觉知。',
+                tasks: ['验收测试', '交付上线', '反馈收集', '身体觉知提醒'],
+                roles: ['全体角色'],
+                keyPoints: '不强制推送反馈，关注用户身心健康'
+            }
+        };
+        
+        // ===== 初始化 =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化Mermaid
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'neutral',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true,
+                    curve: 'basis'
+                },
+                sequence: {
+                    useMaxWidth: true,
+                    diagramMarginX: 50,
+                    diagramMarginY: 20,
+                    actorMargin: 30,
+                    messageMargin: 20
+                }
+            });
+            
+            // 加载默认视图
+            renderChart('overview');
+            
+            // 绑定拖拽事件
+            bindDragEvents();
+            
+            // 绑定键盘事件
+            bindKeyboardEvents();
+            
+            // 隐藏加载动画
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+            }, 1500);
+        });
+        
+        // ===== 视图切换 =====
+        function switchView(view) {
+            currentView = view;
+            
+            // 更新按钮状态
+            document.querySelectorAll('.toolbar-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${view}`).classList.add('active');
+            
+            // 重新渲染图表
+            renderChart(view);
+            
+            // 重置缩放
+            resetZoom();
+        }
+        
+        // ===== 渲染图表 =====
+        function renderChart(view) {
+            const container = document.getElementById('mermaid-container');
+            
+            let chartCode = '';
+            
+            switch(view) {
+                case 'overview':
+                    chartCode = generateOverviewChart();
+                    break;
+                case 'flow':
+                    chartCode = generateFlowChart();
+                    break;
+                case 'collab':
+                    chartCode = generateCollabChart();
+                    break;
+            }
+            
+            container.innerHTML = `<div class="mermaid">${chartCode}</div>`;
+            
+            // 重新初始化Mermaid
+            mermaid.contentLoaded();
+            
+            // 绑定节点点击事件
+            setTimeout(bindNodeEvents, 500);
+        }
+        
+        // ===== 生成总览图表 =====
+        function generateOverviewChart() {
+            return `
+flowchart TB
+    User[👤 用户 · 数字生命的主角<br/>拥有完全的主权]
+    
+    subgraph 角色层["陪伴与守护的角色（北辰居其所而众星共之）"]
+        HH[AI慧惠<br/>🤖 陪伴者]
+        RD[规约定义者<br/>🧠 守护者]
+        SA[系统建筑师<br/>🏛️ 设计者]
+    end
+    
+    subgraph 流程层["流程阶段"]
+        S1[阶段1<br/>需求提交]
+        S2[阶段2<br/>初步筛选]
+        S3[阶段3<br/>需求分析]
+        S4[阶段4<br/>技术评估]
+        S5[阶段5<br/>规约制定]
+        S6[阶段6<br/>架构设计]
+        S7[阶段7<br/>技术实现]
+        S8[阶段8<br/>验收交付]
+    end
+    
+    subgraph 保障层["保障机制"]
+        R1[设计审查]
+        R2[性分审查]
+        R3[觉性评估]
+        R4[道境评估]
+    end
+    
+    User --> S1
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
+    
+    HH -.->|辅助| S2
+    HH -.->|辅助| S3
+    HH -.->|辅助| S5
+    HH -.->|辅助| S7
+    
+    RD -.->|审查| S3
+    RD -.->|审查| S5
+    RD -.->|审查| S6
+    
+    SA -.->|实施| S4
+    SA -.->|实施| S6
+    SA -.->|实施| S7
+    
+    R1 -.-> S5
+    R2 -.-> S5
+    R3 -.-> S6
+    R4 -.-> S4
+    
+    style User fill:#95e1d3,stroke:#2d8a6e,stroke-width:3px,color:#1a3a2a,font-weight:bold
+    style HH fill:#ffe66d,stroke:#d4c04a,color:#555
+    style RD fill:#667eea,stroke:#4a56b0,color:#fff
+    style SA fill:#4ecdc4,stroke:#38a89d,color:#fff
+    style S1 fill:#95e1d3,stroke:#95e1d3,color:#333
+    style S2 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style S3 fill:#667eea,stroke:#667eea,color:#fff
+    style S4 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style S5 fill:#667eea,stroke:#667eea,color:#fff
+    style S6 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style S7 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style S8 fill:#667eea,stroke:#667eea,color:#fff
+            `;
+        }
+        
+        // ===== 生成流程图 =====
+        function generateFlowChart() {
+            return `
+flowchart TB
+    subgraph 阶段1["阶段1：需求提交"]
+        A1[用户提交需求<br/>选择认知水平L1-L4]
+        A2[AI慧惠接收需求<br/>标注AI接收]
+        A3[用户主权确认<br/>告知各项权利]
+    end
+    
+    subgraph 阶段2["阶段2：初步筛选"]
+        B1[格式验证]
+        B2[完整性检查]
+        B3[减法优先评估<br/>减法or加法?]
+        B4[道境四维感知<br/>时位/宇位/识位/缘位]
+        B5[分类标记]
+        B6[反馈确认<br/>标注AI建议]
+    end
+    
+    subgraph 阶段3["阶段3：需求分析"]
+        C1[需求分析<br/>以提问代替告知]
+        C2[元认知唤醒<br/>你是否注意到...]
+        C3[需求细化<br/>标注AI辅助]
+        C4[优先级协商]
+    end
+    
+    subgraph 阶段4["阶段4：技术评估"]
+        D1[可行性评估]
+        D2[风险识别]
+        D3[道境评估<br/>四维评估]
+    end
+    
+    subgraph 阶段5["阶段5：规约制定"]
+        E1[规约制定]
+        E2[宪法对照审查]
+        E3[性分审查<br/>AI未越界?]
+        E4[文档优化<br/>标注AI生成]
+    end
+    
+    subgraph 阶段6["阶段6：架构设计"]
+        F1[架构设计]
+        F2[觉性影响评估]
+        F3[认知飞轮审查<br/>相信/联结/觉察/专注]
+        F4[多元包容审查]
+        F5[方案审查]
+    end
+    
+    subgraph 阶段7["阶段7：技术实现"]
+        G1[技术实现]
+        G2[测试辅助<br/>标注AI辅助]
+    end
+    
+    subgraph 阶段8["阶段8：验收交付"]
+        H1[验收测试]
+        H2[交付上线]
+        H3[反馈收集<br/>不强制推送]
+        H4[身体觉知提醒]
+    end
+    
+    A1 --> A2 --> A3 --> B1
+    B1 --> B2 --> B3 --> B4 --> B5 --> B6 --> C1
+    C1 --> C2 --> C3 --> C4 --> D1
+    D1 --> D2 --> D3 --> E1
+    E1 --> E2 --> E3 --> E4 --> F1
+    F1 --> F2 --> F3 --> F4 --> F5 --> G1
+    G1 --> G2 --> H1
+    H1 --> H2 --> H3 --> H4
+    
+    B3 -->|加法| B3X[建议重新思考]
+    B3X --> A1
+    
+    E3 -->|越界| E3X[调整需求]
+    E3X --> C1
+    
+    F5 -->|不通过| F5X[重新设计]
+    F5X --> F1
+    
+    A3 -.->|用户撤回| A3X[流程终止]
+    C4 -.->|用户退出| C4X[流程终止]
+    
+    style A1 fill:#95e1d3,stroke:#95e1d3,color:#333
+    style A2 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style A3 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style B1 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style B2 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style B3 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style B4 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style C1 fill:#667eea,stroke:#667eea,color:#fff
+    style C2 fill:#667eea,stroke:#667eea,color:#fff
+    style C3 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style C4 fill:#95e1d3,stroke:#95e1d3,color:#333
+    style D1 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style D2 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style D3 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style E1 fill:#667eea,stroke:#667eea,color:#fff
+    style E2 fill:#667eea,stroke:#667eea,color:#fff
+    style E3 fill:#667eea,stroke:#667eea,color:#fff
+    style E4 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style F1 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style F2 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style F3 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style F4 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style F5 fill:#667eea,stroke:#667eea,color:#fff
+    style G1 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style G2 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style H1 fill:#667eea,stroke:#667eea,color:#fff
+    style H2 fill:#4ecdc4,stroke:#4ecdc4,color:#fff
+    style H3 fill:#ffe66d,stroke:#ffe66d,color:#333
+    style H4 fill:#ffe66d,stroke:#ffe66d,color:#333
+            `;
+        }
+        
+        // ===== 生成协作图表 =====
+        function generateCollabChart() {
+            return `
+sequenceDiagram
+    participant User as 用户
+    participant HH as AI慧惠
+    participant RD as 规约定义者
+    participant SA as 系统建筑师
+    
+    rect rgb(240, 248, 255)
+        Note over User,SA: 阶段1-2：需求提交与初步筛选
+        User->>HH: 提交需求 + 选择认知水平
+        HH->>HH: 接收需求 [AI接收]
+        HH->>User: 用户主权确认
+        HH->>HH: 格式验证 + 完整性检查
+        HH->>HH: 减法优先评估
+        HH->>HH: 道境四维感知
+        HH->>User: 反馈确认 [AI建议]
+        HH->>RD: 整理后的需求文档
+    end
+    
+    rect rgb(230, 240, 250)
+        Note over User,SA: 阶段3：需求分析
+        RD->>RD: 需求分析（以提问代替告知）
+        RD->>User: 元认知唤醒
+        HH->>HH: 需求细化 [AI辅助]
+        HH-->>RD: 细化需求建议 [AI辅助]
+        User->>RD: 优先级协商
+    end
+    
+    rect rgb(220, 235, 245)
+        Note over User,SA: 阶段4：技术评估
+        RD->>SA: 需求文档
+        SA->>SA: 可行性评估
+        SA->>SA: 风险识别
+        SA->>SA: 道境评估
+        SA-->>RD: 可行性报告
+    end
+    
+    rect rgb(210, 230, 240)
+        Note over User,SA: 阶段5：规约制定
+        RD->>RD: 规约制定
+        RD->>RD: 宪法对照审查
+        RD->>RD: 性分审查
+        HH->>HH: 文档优化 [AI辅助]
+        HH-->>RD: 格式化文档 [AI辅助]
+        RD->>SA: 技术规约
+    end
+    
+    rect rgb(200, 225, 235)
+        Note over User,SA: 阶段6：架构设计
+        SA->>SA: 架构设计
+        SA->>SA: 觉性影响评估
+        SA->>SA: 认知飞轮审查
+        SA->>SA: 多元包容审查
+        SA-->>RD: 设计方案
+        RD->>RD: 方案审查
+        alt 审查通过
+            RD-->>SA: 批准实施
+        else 审查不通过
+            RD-->>SA: 需调整
+            SA->>SA: 重新设计
+        end
+    end
+    
+    rect rgb(190, 220, 230)
+        Note over User,SA: 阶段7：技术实现
+        SA->>SA: 技术实现
+        HH->>HH: 测试用例辅助 [AI辅助]
+        HH-->>SA: 测试用例建议 [AI辅助]
+    end
+    
+    rect rgb(180, 215, 225)
+        Note over User,SA: 阶段8：验收交付
+        SA-->>RD: 交付物
+        RD->>RD: 验收测试
+        RD-->>User: 完成交付
+        HH->>HH: 反馈收集（不强制推送）
+        HH->>User: 身体觉知提醒
+    end
+            `;
+        }
+        
+        // ===== 绑定节点事件 =====
+        function bindNodeEvents() {
+            // 移除旧事件
+            document.querySelectorAll('.mermaid svg g').forEach(el => {
+                el.removeEventListener('click', handleNodeClick);
+                el.removeEventListener('mouseenter', handleNodeHover);
+                el.removeEventListener('mouseleave', handleNodeLeave);
+            });
+            
+            // 绑定新事件
+            document.querySelectorAll('.mermaid svg g').forEach(el => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', handleNodeClick);
+                el.addEventListener('mouseenter', handleNodeHover);
+                el.addEventListener('mouseleave', handleNodeLeave);
+            });
+        }
+        
+        // ===== 节点点击处理 =====
+        function handleNodeClick(e) {
+            const target = e.currentTarget;
+            const textEl = target.querySelector('text');
+            
+            if (textEl) {
+                const text = textEl.textContent || textEl.innerText;
+                
+                // 尝试匹配阶段
+                const stageMatch = text.match(/阶段(\d+)/);
+                if (stageMatch && stageDetails[`stage${stageMatch[1]}`]) {
+                    showStageDetail(`stage${stageMatch[1]}`);
+                    return;
+                }
+                
+                // 尝试匹配角色
+                if (text.includes('AI慧惠') || text.includes('陪伴者')) {
+                    showRoleDetail('ai');
+                    return;
+                }
+                if (text.includes('规约定义者') || text.includes('守护者')) {
+                    showRoleDetail('rd');
+                    return;
+                }
+                if (text.includes('系统建筑师') || text.includes('设计者')) {
+                    showRoleDetail('sa');
+                    return;
+                }
+            }
+        }
+        
+        // ===== 节点悬停处理 =====
+        function handleNodeHover(e) {
+            const target = e.currentTarget;
+            const textEl = target.querySelector('text');
+            
+            if (textEl) {
+                const text = textEl.textContent || textEl.innerText;
+                const rect = e.currentTarget.getBoundingClientRect();
+                
+                showTooltip(text, '点击查看详情', rect.left + rect.width / 2, rect.top - 10);
+            }
+        }
+        
+        // ===== 节点离开处理 =====
+        function handleNodeLeave() {
+            hideTooltip();
+        }
+        
+        // ===== 显示阶段详情 =====
+        function showStageDetail(stageId) {
+            const detail = stageDetails[stageId];
+            if (!detail) return;
+            
+            const modal = document.getElementById('detail-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            title.textContent = detail.title;
+            body.innerHTML = `
+                <div class="detail-section">
+                    <h4><i class="fas fa-info-circle"></i>阶段描述</h4>
+                    <p>${detail.description}</p>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-tasks"></i>主要任务</h4>
+                    <ul>
+                        ${detail.tasks.map(task => `<li>${task}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-users"></i>参与角色</h4>
+                    <ul>
+                        ${detail.roles.map(role => `<li>${role}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-lightbulb"></i>关键要点</h4>
+                    <p><strong>${detail.keyPoints}</strong></p>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+        }
+        
+        // ===== 显示角色详情 =====
+        function showRoleDetail(roleId) {
+            const roles = {
+                ai: {
+                    title: 'AI慧惠',
+                    subtitle: '北极星定位的陪伴者',
+                    description: 'AI慧惠作为北极星陪伴者，负责需求初步筛选、内容生成辅助、反馈收集和道境四维感知。',
+                    duties: ['需求初步筛选', '内容生成辅助', '反馈收集', '道境四维感知'],
+                    permission: '无最终决策权，仅提供建议',
+                    principle: '譬如北辰，居其所而众星共之'
+                },
+                rd: {
+                    title: '规约定义者',
+                    subtitle: '慧惠"性分"的守护者',
+                    description: '规约定义者负责需求审查、规约制定、规范建立、内容审核和伦理评估，确保产品符合宪法精神。',
+                    duties: ['需求审查', '规约制定', '规范建立', '内容审核', '伦理评估'],
+                    permission: '需求评审决策、规约审批',
+                    principle: '知止不殆'
+                },
+                sa: {
+                    title: '系统建筑师',
+                    subtitle: '慧惠"躯体"的设计者',
+                    description: '系统建筑师负责架构设计、技术选型、复杂度管理、道境监测和安全设计。',
+                    duties: ['架构设计', '技术选型', '复杂度管理', '道境监测', '安全设计'],
+                    permission: '技术方案审批、技术选型决策',
+                    principle: '有之以为利'
+                }
+            };
+            
+            const role = roles[roleId];
+            if (!role) return;
+            
+            const modal = document.getElementById('detail-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            title.textContent = role.title;
+            body.innerHTML = `
+                <div class="detail-section">
+                    <h4><i class="fas fa-user-circle"></i>${role.subtitle}</h4>
+                    <p>${role.description}</p>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-list-check"></i>主要职责</h4>
+                    <ul>
+                        ${role.duties.map(duty => `<li>${duty}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-shield"></i>决策权限</h4>
+                    <p><strong>${role.permission}</strong></p>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-book-open"></i>核心理念</h4>
+                    <p style="font-style: italic; color: #667eea;">"${role.principle}"</p>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+        }
+        
+        // ===== 关闭弹窗 =====
+        function closeModal() {
+            document.getElementById('detail-modal').classList.remove('show');
+        }
+        
+        // ===== 显示工具提示 =====
+        function showTooltip(title, desc, x, y) {
+            const tooltip = document.getElementById('tooltip');
+            document.getElementById('tooltip-title').textContent = title;
+            document.getElementById('tooltip-desc').textContent = desc;
+            
+            tooltip.style.left = `${x - tooltip.offsetWidth / 2}px`;
+            tooltip.style.top = `${y - tooltip.offsetHeight - 10}px`;
+            tooltip.classList.add('show');
+        }
+        
+        // ===== 隐藏工具提示 =====
+        function hideTooltip() {
+            document.getElementById('tooltip').classList.remove('show');
+        }
+        
+        // ===== 缩放功能 =====
+        function zoomIn() {
+            if (zoomLevel < 200) {
+                zoomLevel += 10;
+                updateZoom();
+            }
+        }
+        
+        function zoomOut() {
+            if (zoomLevel > 30) {
+                zoomLevel -= 10;
+                updateZoom();
+            }
+        }
+        
+        function resetZoom() {
+            zoomLevel = 100;
+            updateZoom();
+            
+            // 重置滚动位置
+            const wrapper = document.getElementById('chart-wrapper');
+            wrapper.scrollLeft = 0;
+            wrapper.scrollTop = 0;
+        }
+        
+        function updateZoom() {
+            const container = document.querySelector('.mermaid-container');
+            container.style.transform = `scale(${zoomLevel / 100})`;
+            document.getElementById('zoom-level').textContent = `${zoomLevel}%`;
+        }
+        
+        // ===== 拖拽功能 =====
+        function bindDragEvents() {
+            const wrapper = document.getElementById('chart-wrapper');
+            
+            wrapper.addEventListener('mousedown', function(e) {
+                if (e.target.tagName === 'svg' || e.target.closest('svg')) {
+                    isDragging = true;
+                    startX = e.pageX - wrapper.offsetLeft;
+                    startY = e.pageY - wrapper.offsetTop;
+                    scrollLeft = wrapper.scrollLeft;
+                    scrollTop = wrapper.scrollTop;
+                }
+            });
+            
+            wrapper.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    e.preventDefault();
+                    const x = e.pageX - wrapper.offsetLeft;
+                    const y = e.pageY - wrapper.offsetTop;
+                    wrapper.scrollLeft = scrollLeft - (x - startX);
+                    wrapper.scrollTop = scrollTop - (y - startY);
+                }
+            });
+            
+            wrapper.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            wrapper.addEventListener('mouseleave', function() {
+                isDragging = false;
+            });
+        }
+        
+        // ===== 键盘事件 =====
+        function bindKeyboardEvents() {
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case '+':
+                            e.preventDefault();
+                            zoomIn();
+                            break;
+                        case '-':
+                            e.preventDefault();
+                            zoomOut();
+                            break;
+                        case '0':
+                            e.preventDefault();
+                            resetZoom();
+                            break;
+                    }
+                }
+                
+                // ESC关闭弹窗
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+        
+        // ===== 侧边栏切换 =====
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+        
+        // ===== 滚动到阶段 =====
+        function scrollToStage(stageId) {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('show');
+            showStageDetail(stageId);
+        }
+        
+        // ===== 点击模态框外部关闭 =====
+        document.getElementById('detail-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

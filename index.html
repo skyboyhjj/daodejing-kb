@@ -229,6 +229,22 @@
             width: 100%;
         }
 
+        /* ── 伦理专栏入口链接 ── */
+        .ethics-column-link {
+            display: inline-block;
+            color: #bcc8c0;
+            font-size: 0.8em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.25s ease, text-decoration 0.25s ease;
+            margin-top: 2px;
+        }
+
+        .ethics-column-link:hover {
+            color: #5a8f6e;
+            text-decoration: underline;
+        }
+
         /* ── 移动端适配 ── */
         @media (max-width: 768px) {
             .huihui-hero {
@@ -415,6 +431,8 @@
             style="color:#888;text-decoration:underline;cursor:pointer;">📬 反馈与建议</a>
         &nbsp;&middot;&nbsp;
         最后更新：2026-05-08
+        <br>
+        <a href="/ethics" class="ethics-column-link">了解慧惠AI伦理？ 进入【伦理即道体】&rarr;</a>
     </div>
 
     <!-- ═══════ 脚本 ═══════ -->
