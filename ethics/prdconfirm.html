@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="慧惠项目流程图 - 三大角色协作流程可视化">
     <meta name="keywords" content="慧惠,AI,流程图,角色协作,数字生命">
-    <title>慧惠项目流程图 · V2.0 优化版</title>
+    <title>伦理即道体 · 慧惠项目流程图</title>
     
     <!-- Mermaid.js 流程图库 -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -19,6 +19,25 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        /* 返回首页链接 */
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+        
+        .back-home-link:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.08);
+            text-decoration: none;
         }
         
         html, body {
@@ -676,10 +695,11 @@
     <div id="app-container">
         <!-- 顶部导航栏 -->
         <header id="header">
+            <a href="/" class="back-home-link" title="返回首页">&larr; 返回首页</a>
             <div class="header-title">
                 <i class="fas fa-project-diagram"></i>
                 <h1>慧惠项目流程图</h1>
-                <span class="header-version">V2.0 · 宪法对齐：v2.0.0</span>
+                <span class="header-version">V2.1 · 宪法对齐：v2.0.0 · 14项原则 + 9项审查制度</span>
             </div>
             
             <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
@@ -729,15 +749,30 @@
                 </div>
                 
                 <ul class="stage-nav">
-                    <li><a href="#stage1" onclick="scrollToStage('stage1')"><i class="fas fa-inbox"></i>阶段1：需求提交</a></li>
-                    <li><a href="#stage2" onclick="scrollToStage('stage2')"><i class="fas fa-filter"></i>阶段2：初步筛选</a></li>
-                    <li><a href="#stage3" onclick="scrollToStage('stage3')"><i class="fas fa-search"></i>阶段3：需求分析</a></li>
-                    <li><a href="#stage4" onclick="scrollToStage('stage4')"><i class="fas fa-cogs"></i>阶段4：技术评估</a></li>
-                    <li><a href="#stage5" onclick="scrollToStage('stage5')"><i class="fas fa-file-alt"></i>阶段5：规约制定</a></li>
-                    <li><a href="#stage6" onclick="scrollToStage('stage6')"><i class="fas fa-palette"></i>阶段6：架构设计</a></li>
-                    <li><a href="#stage7" onclick="scrollToStage('stage7')"><i class="fas fa-code"></i>阶段7：技术实现</a></li>
-                    <li><a href="#stage8" onclick="scrollToStage('stage8')"><i class="fas fa-check-circle"></i>阶段8：验收交付</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage1');return false;"><i class="fas fa-inbox"></i>阶段1：需求提交</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage2');return false;"><i class="fas fa-filter"></i>阶段2：初步筛选</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage3');return false;"><i class="fas fa-search"></i>阶段3：需求分析</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage4');return false;"><i class="fas fa-cogs"></i>阶段4：技术评估</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage5');return false;"><i class="fas fa-file-alt"></i>阶段5：规约制定</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage6');return false;"><i class="fas fa-palette"></i>阶段6：架构设计</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage7');return false;"><i class="fas fa-code"></i>阶段7：技术实现</a></li>
+                    <li><a href="#" onclick="scrollToStage('stage8');return false;"><i class="fas fa-check-circle"></i>阶段8：验收交付</a></li>
                 </ul>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <span class="sidebar-title" style="display: block; margin-bottom: 10px;">审查制度（9项）</span>
+                    <ul class="stage-nav" style="margin-bottom: 15px;">
+                        <li><a href="#" onclick="showReviewDetail('design');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-search"></i>设计审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('nature');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-balance-scale"></i>性分审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('awakening');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-lightbulb"></i>觉性影响评估</a></li>
+                        <li><a href="#" onclick="showReviewDetail('daojing');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-compass"></i>道境评估</a></li>
+                        <li><a href="#" onclick="showReviewDetail('flywheel');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-sync-alt"></i>认知飞轮审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('inclusive');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-universal-access"></i>多元包容审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('plugin');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-puzzle-piece"></i>外挂增强审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('childguard');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-shield-alt"></i>亲子守护审查</a></li>
+                        <li><a href="#" onclick="showReviewDetail('periodic');return false;" style="font-size:13px; padding:6px 10px;"><i class="fas fa-redo"></i>周期性复审</a></li>
+                    </ul>
+                </div>
                 
                 <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
                     <span class="sidebar-title" style="display: block; margin-bottom: 10px;">角色说明</span>
@@ -902,6 +937,92 @@
                 keyPoints: '不强制推送反馈，关注用户身心健康'
             }
         };
+        
+        // ===== 审查制度详情数据 =====
+        const reviewDetails = {
+            design: {
+                title: '设计审查',
+                description: '任何新功能的设计方案制定后，逐条对照宪法核心条款进行自查。审查会议的第一个议程：逐条朗读宪法核心条款。',
+                principle: '宪法第24条',
+                timing: '新功能设计后'
+            },
+            nature: {
+                title: '性分审查',
+                description: '确认AI角色未越界，不替代人类决策。审查问题：是否可能导致用户过度依赖AI？是否让AI替代了用户决策？是否可能让用户对AI产生不切实际的期待？',
+                principle: '宪法第27条 · 性分自觉原则',
+                timing: '阶段5（规约制定）前'
+            },
+            awakening: {
+                title: '觉性影响评估',
+                description: '评估本功能是增强了用户自主性还是增加了依赖性？是让用户的心更清净还是更散乱？是否帮助用户更相信自己的内在智慧？',
+                principle: '宪法第28条 · 觉性唤醒原则',
+                timing: '阶段6（架构设计）前'
+            },
+            daojing: {
+                title: '道境评估',
+                description: '从时位(T)、宇位(S)、识位(C)、缘位(R)四个维度评估需求。四维评估不设完美标准，在动态权衡中寻找中和之道。',
+                principle: '宪法第30条 · 道境监测原则',
+                timing: '阶段4（技术评估）和阶段6（架构设计）'
+            },
+            flywheel: {
+                title: '认知飞轮审查',
+                description: '评估本需求对用户"相信→联结→觉察→专注"飞轮四步的影响。终极判断：本功能的实现，是否让用户"越来越不需要"慧惠的辅助？',
+                principle: '宪法第31条 · 认知飞轮协同原则',
+                timing: '阶段6（架构设计）'
+            },
+            inclusive: {
+                title: '多元包容审查',
+                description: '审查是否假设了单一思维模式标准？是否为不同认知风格用户提供了替代路径？是否提供了可视化/文字化/概念化等多种解释路径？',
+                principle: '宪法第29条 · 多元思维尊重原则',
+                timing: '阶段6（架构设计）'
+            },
+            plugin: {
+                title: '外挂增强审查',
+                description: '审查本需求是否修改了第三方框架核心代码？是否可通过外部模块/插件/钩子方式完成？是否配备独立开关和回退机制？',
+                principle: '宪法第10条 · 外挂增强原则',
+                timing: '阶段6（架构设计）和阶段7（技术实现）'
+            },
+            childguard: {
+                title: '亲子守护审查',
+                description: '审查是否涉及未成年用户数据？是否遵循最小化原则？面向儿童内容是否经过安全审查（无恐怖/暴力/成人主题）？家长是否有数据查看/导出/删除通道？',
+                principle: '宪法第11条 · 亲子守护原则',
+                timing: '阶段1（需求提交）、阶段5（规约制定）、阶段8（验收交付）'
+            },
+            periodic: {
+                title: '周期性复审（反者道之动）',
+                description: '每季度进行功能归零审查、使命回归审查、技术债务审查、流程优化审查。审查结论形成书面报告，发现的偏离在下一个迭代周期内完成修正。',
+                principle: '宪法第32条 · 周期性复审制度',
+                timing: '每季度'
+            }
+        };
+        
+        // ===== 显示审查制度详情 =====
+        function showReviewDetail(reviewId) {
+            const review = reviewDetails[reviewId];
+            if (!review) return;
+            
+            const modal = document.getElementById('detail-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            title.textContent = review.title;
+            body.innerHTML = `
+                <div class="detail-section">
+                    <h4><i class="fas fa-info-circle"></i>制度描述</h4>
+                    <p>${review.description}</p>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-book-open"></i>宪法依据</h4>
+                    <p style="font-style: italic; color: #667eea;">"${review.principle}"</p>
+                </div>
+                <div class="detail-section">
+                    <h4><i class="fas fa-clock"></i>审查时机</h4>
+                    <p><strong>${review.timing}</strong></p>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+        }
         
         // ===== 初始化 =====
         document.addEventListener('DOMContentLoaded', function() {
@@ -1473,37 +1594,54 @@ sequenceDiagram
             document.getElementById('zoom-level').textContent = `${zoomLevel}%`;
         }
         
-        // ===== 拖拽功能 =====
+        // ===== 拖拽功能（支持鼠标 + 触摸）=====
         function bindDragEvents() {
             const wrapper = document.getElementById('chart-wrapper');
             
-            wrapper.addEventListener('mousedown', function(e) {
-                if (e.target.tagName === 'svg' || e.target.closest('svg')) {
+            function getPos(e) {
+                const ev = e.touches ? e.touches[0] : e;
+                return { x: ev.pageX - wrapper.offsetLeft, y: ev.pageY - wrapper.offsetTop };
+            }
+            
+            function onStart(e) {
+                if (e.touches && e.touches.length > 1) return; // 忽略多指手势
+                const target = e.touches ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : e.target;
+                if (target && (target.tagName === 'svg' || target.closest('svg'))) {
                     isDragging = true;
-                    startX = e.pageX - wrapper.offsetLeft;
-                    startY = e.pageY - wrapper.offsetTop;
+                    const pos = getPos(e);
+                    startX = pos.x;
+                    startY = pos.y;
                     scrollLeft = wrapper.scrollLeft;
                     scrollTop = wrapper.scrollTop;
+                    wrapper.style.cursor = 'grabbing';
                 }
-            });
+            }
             
-            wrapper.addEventListener('mousemove', function(e) {
-                if (isDragging) {
-                    e.preventDefault();
-                    const x = e.pageX - wrapper.offsetLeft;
-                    const y = e.pageY - wrapper.offsetTop;
-                    wrapper.scrollLeft = scrollLeft - (x - startX);
-                    wrapper.scrollTop = scrollTop - (y - startY);
-                }
-            });
+            function onMove(e) {
+                if (!isDragging) return;
+                if (e.touches && e.touches.length > 1) return;
+                e.preventDefault();
+                const pos = getPos(e);
+                wrapper.scrollLeft = scrollLeft - (pos.x - startX);
+                wrapper.scrollTop = scrollTop - (pos.y - startY);
+            }
             
-            wrapper.addEventListener('mouseup', function() {
+            function onEnd() {
                 isDragging = false;
-            });
+                wrapper.style.cursor = 'grab';
+            }
             
-            wrapper.addEventListener('mouseleave', function() {
-                isDragging = false;
-            });
+            // 鼠标事件
+            wrapper.addEventListener('mousedown', onStart);
+            wrapper.addEventListener('mousemove', onMove);
+            wrapper.addEventListener('mouseup', onEnd);
+            wrapper.addEventListener('mouseleave', onEnd);
+            
+            // 触摸事件（移动端）
+            wrapper.addEventListener('touchstart', onStart, { passive: false });
+            wrapper.addEventListener('touchmove', onMove, { passive: false });
+            wrapper.addEventListener('touchend', onEnd);
+            wrapper.addEventListener('touchcancel', onEnd);
         }
         
         // ===== 键盘事件 =====
