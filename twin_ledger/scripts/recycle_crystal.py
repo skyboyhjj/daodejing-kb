@@ -309,7 +309,7 @@ def extract_silent(md_text: str) -> list:
 
 
 
-TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）  # twin_ledger/ 根
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）
 
 
 def _resolve(p):
