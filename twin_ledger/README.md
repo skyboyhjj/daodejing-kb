@@ -48,7 +48,7 @@
 ## 目录结构
 
 ```
-twin-ledger/
+twin_ledger/
 ├── README.md                   ← 本文件
 ├── DEPLOY.md                   ← 部署说明
 ├── silent_log.md               ← 静默日志（不入图谱）
@@ -106,7 +106,7 @@ twin-ledger/
 ## 复跑命令
 
 ```bash
-cd twin-ledger/scripts
+cd twin_ledger/scripts
 
 # 步骤1：净化钩子
 python purify_crystal.py --md "<读解报告.md>" --chapter <N>

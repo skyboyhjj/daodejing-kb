@@ -36,7 +36,7 @@ Human Ledger (HL, 人读账)  ←→  Machine Ledger (ML, 机备账)
 ## 2. 目录结构
 
 ```
-twin-ledger/
+twin_ledger/
 ├── README.md
 ├── DEPLOY.md                          ← 本文件
 ├── silent_log.md                      ← 静默日志（不入图谱）
@@ -100,8 +100,8 @@ python --version
 ### 4.2 一键运行全流程
 
 ```bash
-# 进入 twin-ledger 根目录
-cd twin-ledger
+# 进入 twin_ledger 根目录
+cd twin_ledger
 
 # 步骤1：净化钩子（铸砖前静默审查）
 python scripts/purify_crystal.py --md "hl/chapters/<读解报告>.md" --chapter <N>
@@ -360,7 +360,7 @@ python backfill_crystal.py --chapter N --json    # 纯 JSON 输出
 
 ```bash
 # 完整流程（以第1章为例）
-cd twin-ledger
+cd twin_ledger
 
 # 步骤1：净化
 python scripts/purify_crystal.py \
