@@ -1,0 +1,279 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 1,
+ "generated": "2026-08-14T09:27:58Z",
+ "spo": [
+  {
+   "subject": "帛书甲本/乙本-1",
+   "subject_base": "帛书甲本/乙本",
+   "predicate": "异",
+   "edge_type": "实",
+   "object": "帛书作'两者同出，异名同谓'，王弼本作'此两者同出而异名，同谓之玄'-1",
+   "object_base": "帛书作'两者同出，异名同谓'，王弼本作'此两者同出而异名，同谓之玄'",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "帛书少'此'字，且'同谓之玄'作'异名同谓'，突出'同谓'而非'玄'的称谓，可能更原始"
+  },
+  {
+   "subject": "王弼本第1章-1",
+   "subject_base": "王弼本第1章",
+   "predicate": "异",
+   "edge_type": "实",
+   "object": "'常无欲以观其妙，常有欲以观其徼'-1",
+   "object_base": "'常无欲以观其妙，常有欲以观其徼'",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "可断作'常无欲，以观其妙；常有欲，以观其徼'，也可断作'常无，欲以观其妙；常有，欲以观其徼'"
+  },
+  {
+   "subject": "河上公本-1",
+   "subject_base": "河上公本",
+   "predicate": "从",
+   "edge_type": "实",
+   "object": "'常无欲，以观其妙；常有欲，以观其徼'-1",
+   "object_base": "'常无欲，以观其妙；常有欲，以观其徼'",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "河上公注以'无欲''有欲'为主体，偏重修养论"
+  },
+  {
+   "subject": "王安石、苏辙等-1",
+   "subject_base": "王安石、苏辙等",
+   "predicate": "从",
+   "edge_type": "实",
+   "object": "'常无，欲以观其妙；常有，欲以观其徼'-1",
+   "object_base": "'常无，欲以观其妙；常有，欲以观其徼'",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "以'无''有'为观照对象，'欲'作动词'想要'，偏重本体论"
+  },
+  {
+   "subject": "本章两大歧解-1",
+   "subject_base": "本章两大歧解",
+   "predicate": "谓",
+   "edge_type": "实",
+   "object": "'常无欲'与'常有欲'的断句，以及'同谓之玄'与'异名同谓'的文本差异-1",
+   "object_base": "'常无欲'与'常有欲'的断句，以及'同谓之玄'与'异名同谓'的文本差异",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "两者相互关联：若'两者'指'无''有'，则'异名同谓'更顺畅；若'两者'指'无欲''有欲'，则'同谓之玄'勉强"
+  },
+  {
+   "subject": "'两者'-1",
+   "subject_base": "'两者'",
+   "predicate": "指",
+   "edge_type": "实",
+   "object": "'无'与'有'-1",
+   "object_base": "'无'与'有'",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "无和有同出于道，名称不同但指谓同一，故称'异名同谓'"
+  },
+  {
+   "subject": "'常无''常有'-1",
+   "subject_base": "'常无''常有'",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "两种观照道的方式-1",
+   "object_base": "两种观照道的方式",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "'常'指恒常、无条件的；'无'观道的妙，'有'观道的徼（边界、显现）"
+  },
+  {
+   "subject": "'玄之又玄'-1",
+   "subject_base": "'玄之又玄'",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "从'无'观到'有'观、从'有'观到'无'观的反复切换-1",
+   "object_base": "从'无'观到'有'观、从'有'观到'无'观的反复切换",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "'玄'本义为幽暗深远，引申为双关交错；'又玄'是双重否定，不是神秘主义"
+  },
+  {
+   "subject": "修养论断句-1",
+   "subject_base": "修养论断句",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'无欲'和'有欲'是两种观照道的主观状态，通过调整欲望来获得不同面向的洞察-1",
+   "object_base": "'无欲'和'有欲'是两种观照道的主观状态，通过调整欲望来获得不同面向的洞察",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "优点：与后文'常使民无知无欲'等修养论呼应；缺点：'两者同出'难以解释无欲和有欲如何同出于道"
+  },
+  {
+   "subject": "本体论断句-1",
+   "subject_base": "本体论断句",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'无'和'有'是道的一体两面，通过无观道的微妙，通过有观道的显化-1",
+   "object_base": "'无'和'有'是道的一体两面，通过无观道的微妙，通过有观道的显化",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "优点：与'无名天地之始，有名万物之母'直接对应，'两者'指无有，同出异名同谓，逻辑贯通；缺点：'欲'字需训为'想要'，稍显突兀"
+  },
+  {
+   "subject": "综合动态解读-1",
+   "subject_base": "综合动态解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'无观'与'有观'不是两种静止的视角，而是持续的、交替的认知操作-1",
+   "object_base": "'无观'与'有观'不是两种静止的视角，而是持续的、交替的认知操作",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "'玄之又玄'正是这种交替的反复进行，产生对道的动态把握"
+  },
+  {
+   "subject": "传统理解-1",
+   "subject_base": "传统理解",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "对语言局限性的宣告，以及对不可言说之道的膜拜-1",
+   "object_base": "对语言局限性的宣告，以及对不可言说之道的膜拜",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "停留在否定性告诫层面，容易滑向神秘主义或不可知论"
+  },
+  {
+   "subject": "道-1",
+   "subject_base": "道",
+   "predicate": "不可被直接言说，但可通过",
+   "edge_type": "实",
+   "object": "'无'与'有'两个维度进行动态观照-1",
+   "object_base": "'无'与'有'两个维度进行动态观照",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "'无'观其妙，'有'观其徼；两者同出异名同谓"
+  },
+  {
+   "subject": "'玄之又玄'-1",
+   "subject_base": "'玄之又玄'",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "'无观'与'有观'反复交替的认知运动-1",
+   "object_base": "'无观'与'有观'反复交替的认知运动",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "不是神秘境界，而是持续的视角切换"
+  },
+  {
+   "subject": "'众妙之门'-1",
+   "subject_base": "'众妙之门'",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "进入一切奥妙的入口，而非终点-1",
+   "object_base": "进入一切奥妙的入口，而非终点",
+   "source": "1.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "门意味着持续通过的动作，不是静态的成就"
+  },
+  {
+   "subject": "老子第1章（战国语境）-1",
+   "subject_base": "老子第1章（战国语境）",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "先秦名实之辩中，如何超越语言的固化，保留对终极实在的开放性-1",
+   "object_base": "先秦名实之辩中，如何超越语言的固化，保留对终极实在的开放性",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "与儒家的正名、名家的诡辩形成对照，提出'名'的边界和'无名'的根基"
+  },
+  {
+   "subject": "不可说与可说之辩-1",
+   "subject_base": "不可说与可说之辩",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "任何系统都有不可约化的核心，但可以通过该系统的两个互补维度进行间接把握-1",
+   "object_base": "任何系统都有不可约化的核心，但可以通过该系统的两个互补维度进行间接把握",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "类似波粒二象性：光不能同时完全被描述为波或粒子，但通过两者互补可接近其本质"
+  },
+  {
+   "subject": "个人修养-1",
+   "subject_base": "个人修养",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "面对一个困扰你的问题，先尝试从'无'的角度看：它未发生前是什么状态？再从'有'的角度看：它现在显现的边界和条件是什么？交替观照-1",
+   "object_base": "面对一个困扰你的问题，先尝试从'无'的角度看：它未发生前是什么状态？再从'有'的角度看：它现在显现的边界和条件是什么？交替观照",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "不要急于给问题贴上'名称'，从无观看到可能性的海洋，从有观看到现实的约束"
+  },
+  {
+   "subject": "组织管理-1",
+   "subject_base": "组织管理",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "在战略制定中，'无'是尚未显现的机会空间，'有'是已有的资源和约束。领导者需在'无'与'有'之间反复切换，才能制定出既超越现实又不脱离现实的战略-1",
+   "object_base": "在战略制定中，'无'是尚未显现的机会空间，'有'是已有的资源和约束。领导者需在'无'与'有'之间反复切换，才能制定出既超越现实又不脱离现实的战略",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "只观'有'会陷入路径依赖，只观'无'会陷入空想"
+  },
+  {
+   "subject": "科学研究-1",
+   "subject_base": "科学研究",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "科学理论的突破往往发生在从'有'（现有范式）回到'无'（未被定义的现象）的时刻。物理学中的暗物质、暗能量，就是从'有'观到'无'观的产物-1",
+   "object_base": "科学理论的突破往往发生在从'有'（现有范式）回到'无'（未被定义的现象）的时刻。物理学中的暗物质、暗能量，就是从'有'观到'无'观的产物",
+   "source": "1.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "'无'不是虚无，而是尚未被'有名'捕捉的实在"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "**当你说出“道不可说”时，你已经说了一个关于道的命题",
+   "reason": "一句止语（最想强调却决定不写）"
+  },
+  {
+   "●": "损去浮尘：“常无欲”就是让人一辈子清心寡欲，不看世界",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“道不可道”意味着所有人谈论道都是在胡说",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“玄之又玄”是故弄玄虚",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“众妙之门”是一个可以进入的终极境界",
+   "reason": "过度解读，划掉不说"
+  }
+ ],
+ "silent_count": 5,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}

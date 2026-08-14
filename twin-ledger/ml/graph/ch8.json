@@ -1,0 +1,247 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 8,
+ "generated": "2026-08-14T08:59:50Z",
+ "spo": [
+  {
+   "subject": "帛书甲本-8",
+   "subject_base": "帛书甲本",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "予善天-8",
+   "object_base": "予善天",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "与通行本'与善仁'形成关键异文，涉及儒家'仁'概念是否渗入"
+  },
+  {
+   "subject": "通行本'与善仁'-8",
+   "subject_base": "通行本'与善仁'",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "帛书作'予善天'或'予善信'-8",
+   "object_base": "帛书作'予善天'或'予善信'",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "可能为汉代儒道融合期的文本改动，也可能为不同传承谱系的原始差异"
+  },
+  {
+   "subject": "水的三德-8",
+   "subject_base": "水的三德",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "'几于道'的充分条件-8",
+   "object_base": "'几于道'的充分条件",
+   "source": "8.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "利万物是方向，不争是策略，处下是位置；三者缺一不可"
+  },
+  {
+   "subject": "七善句-8",
+   "subject_base": "七善句",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "'不争'在七个具体行动域中的展开-8",
+   "object_base": "'不争'在七个具体行动域中的展开",
+   "source": "8.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "七善不是并列的道德条目，而是'不争'的操作分解"
+  },
+  {
+   "subject": "夫唯不争-8",
+   "subject_base": "夫唯不争",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "故无尤-8",
+   "object_base": "故无尤",
+   "source": "8.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "'夫唯'表排他性因果，即'只有不争'才能'无尤'"
+  },
+  {
+   "subject": "道德化解读-8",
+   "subject_base": "道德化解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'不争'是谦让美德，通过道德感化获得无尤-8",
+   "object_base": "'不争'是谦让美德，通过道德感化获得无尤",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "假设了他人对不争者的道德认同，但缺少对'处众人之所恶'的结构性解释"
+  },
+  {
+   "subject": "策略化解读-8",
+   "subject_base": "策略化解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'不争'是以退为进的竞争策略-8",
+   "object_base": "'不争'是以退为进的竞争策略",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "将不争工具化，但无法解释'利万物'的非功利面向"
+  },
+  {
+   "subject": "结构-系统化解读-8",
+   "subject_base": "结构-系统化解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'不争'是对低势能系统位置的选择，该位置天然具有利万物、低对抗、无怨尤的结构性优势-8",
+   "object_base": "'不争'是对低势能系统位置的选择，该位置天然具有利万物、低对抗、无怨尤的结构性优势",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "'无尤'不是道德奖励，而是低对抗位置的系统自然结果"
+  },
+  {
+   "subject": "传统理解-8",
+   "subject_base": "传统理解",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "以水为喻的道德修养论，教导人谦让不争-8",
+   "object_base": "以水为喻的道德修养论，教导人谦让不争",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "停留在品格论层面，将'善'道德化，将'不争'被动化"
+  },
+  {
+   "subject": "不争-8",
+   "subject_base": "不争",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "对低势能系统位置的选择，该位置天然具有利万物、无对抗、无怨尤的结构性优势-8",
+   "object_base": "对低势能系统位置的选择，该位置天然具有利万物、无对抗、无怨尤的结构性优势",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "无尤的因果链条：处下→不争→不制造对抗→不产生怨尤→近道"
+  },
+  {
+   "subject": "水的三德-8",
+   "subject_base": "水的三德",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "方向（利万物）—策略（不争）—位置（处下）三位一体的行动系统-8",
+   "object_base": "方向（利万物）—策略（不争）—位置（处下）三位一体的行动系统",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "三者缺一不可：有利无争无位=不落地；有争有利有位=耗散；无利有争有下=自毁"
+  },
+  {
+   "subject": "七善-8",
+   "subject_base": "七善",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "不争原则在七个行动域中的操作实例-8",
+   "object_base": "不争原则在七个行动域中的操作实例",
+   "source": "8.",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "居、心、与、言、政、事、动——覆盖了空间、心理、关系、沟通、组织、执行、时间七个维度"
+  },
+  {
+   "subject": "老子第8章（战国语境）-8",
+   "subject_base": "老子第8章（战国语境）",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "战国时代'争霸—争位—争名'的全面竞争格局下，个体如何在结构性困局中找到非对抗的生存与行动路径-8",
+   "object_base": "战国时代'争霸—争位—争名'的全面竞争格局下，个体如何在结构性困局中找到非对抗的生存与行动路径",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "'处众人之所恶'在战国语境中指不入仕途、不争名利、甘居下位的隐逸路线"
+  },
+  {
+   "subject": "不争原理-8",
+   "subject_base": "不争原理",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "在任何竞争性系统中，最优效能往往来自低势能位置的选择，而非高势能位置的对抗-8",
+   "object_base": "在任何竞争性系统中，最优效能往往来自低势能位置的选择，而非高势能位置的对抗",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "低势能位置 = 最小阻力 + 最大连通性 + 最长润滑功能"
+  },
+  {
+   "subject": "个人修养-8",
+   "subject_base": "个人修养",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "在人际冲突中，不争辩（言善信），不夺位（居善地），先利人而后利己（与善仁）-8",
+   "object_base": "在人际冲突中，不争辩（言善信），不夺位（居善地），先利人而后利己（与善仁）",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "重点不是压抑自己，而是主动选择低对抗的互动位置"
+  },
+  {
+   "subject": "组织管理-8",
+   "subject_base": "组织管理",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "领导者主动下行至信息流通的节点，而非权力金字塔的顶端（处众人之所恶）；做事时不留名（不争），让团队获得成就感（利万物）-8",
+   "object_base": "领导者主动下行至信息流通的节点，而非权力金字塔的顶端（处众人之所恶）；做事时不留名（不争），让团队获得成就感（利万物）",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "心善渊=深度倾听；动善时=把握组织节奏而非强行推进"
+  },
+  {
+   "subject": "文明批判-8",
+   "subject_base": "文明批判",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "现代文明的'争'已升级为增长强迫症、注意力争夺战、身份军备竞赛。'上善若水'提供了另一种文明想象：以利他为方向的系统设计-8",
+   "object_base": "现代文明的'争'已升级为增长强迫症、注意力争夺战、身份军备竞赛。'上善若水'提供了另一种文明想象：以利他为方向的系统设计",
+   "source": "8.",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "不争不是取消竞争，而是改变竞争的基础设施"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "**水从来不知道自己“利万物”",
+   "reason": "一句止语（最想强调却决定不写）"
+  },
+  {
+   "●": "损去浮尘：水是“至柔”的传统联想",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“上善若水”是赞美女性气质",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：七善是七种美德",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“几于道”意味着人可以通过模仿水而成为道",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "几于道不可等同为道",
+   "reason": "防范畴错误"
+  }
+ ],
+ "silent_count": 6,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}
