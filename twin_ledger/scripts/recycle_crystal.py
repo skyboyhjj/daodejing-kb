@@ -9,24 +9,22 @@ recycle_crystal.py —— P1 回收站：读解报告 → 规范化铸砖 → �
   ① 提取：从五步读解报告提取 SPO（第二步/第三步的 JSON 块）
   ② 规范化：实体→本体-分相双层；谓词→最小谓词集；边型→喻/实/逻辑/玄；状态→四态
   ③ Validator：格式校验（缺字段/非法谓词/subtype 缺失 → 拒收）
-  ④ 入库：写入 ml/graph/<chapter>.json (ML)
+  ④ 入库：写入 output/machine_ledger/graph/<chapter>.json
 
 物理隔离：本脚本只读 人读账 Markdown，只写 机备账 JSON——不碰对方账本文件。
 
 用法：
-  python recycle_crystal.py --md "../hl/chapters/《道德经》第8章 · 上善若水 · 五步协同读解.md" \
-      --chapter 8
+  python recycle_crystal.py --md "uploads/《道德经》第8章 · 上善若水 · 五步协同读解.md" \
+      --chapter 8 --db ../../daojing_database_v2.json（或绝对路径）
 """
 
 import argparse
+import os
 import json
 import re
 import sys
 from datetime import datetime
 from pathlib import Path
-
-# 脚本自身目录（用于解析默认相对路径）
-SCRIPT_DIR = Path(__file__).parent.resolve()
 
 # ============ 机备账 schema v1.1 常量（与 contracts.py 同源，独立防耦合） ============
 EDGE_TYPES = ["喻", "实", "逻辑", "玄"]
@@ -182,6 +180,16 @@ def infer_status(spo: dict, subject: str = "", pred: str = "") -> str:
     obj = spo.get("object", "")
     if pred == "是谓" and isinstance(obj, str) and len(obj) > 25:
         return "EXTENSION"
+    # 或然性标注（更可能/可能/似乎）→ EXTENSION（不确定直陈）
+    if any(w in note for w in ("更可能", "可能", "似乎", "或")):
+        return "EXTENSION"
+    # source 无原文短句（仅章号）→ 默认 EXTENSION，但逻辑谓词（故/则/因/以）且主体含原文词 → 放行 ACTIVE
+    src = spo.get("source", "") or spo.get("context", "")
+    if not src or re.match(r"^\d+\.?\s*$", src):
+        # 逻辑谓词 + 主体是原文词（夫唯不争/水/道等短词）→ 视为文本直陈
+        if pred in ("故", "则", "因", "以") and subject and len(subject) <= 8:
+            return "ACTIVE"
+        return "EXTENSION"
     return "ACTIVE"
 
 
@@ -210,6 +218,10 @@ def normalize_spo(raw: dict, chapter: int) -> dict:
         edge_type = "喻"
     status = infer_status(raw, subject, pred)
     note = raw.get("note", "")
+    # 或然性标注：原文谓词含"更可能/可能/似乎"时，note 补注"非确定"（DeepSeek 反馈4）
+    raw_pred = raw.get("predicate", "")
+    if any(w in raw_pred for w in ("更可能", "可能", "似乎", "或许")):
+        note = (note + "；" if note else "") + "更可能，非确定（或然性推演）"
     subtype = infer_subtype(pred, note, edge_type)
 
     brick = {
@@ -296,16 +308,26 @@ def extract_silent(md_text: str) -> list:
     return silent
 
 
+
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）  # twin_ledger/ 根
+
+
+def _resolve(p):
+    """相对路径锚定到 twin_ledger/ 根（CWD 无关）"""
+    if Path(p).is_absolute():
+        return p
+    return str(TL_ROOT / p)
+
 def main():
     parser = argparse.ArgumentParser(description="P1 回收站：读解→规范化→入库")
     parser.add_argument("--md", required=True, help="五步读解报告路径")
     parser.add_argument("--chapter", type=int, required=True, help="章号")
-    parser.add_argument("--db", default="verify/daojing_database_v2.json", help="结构库（取 core_concepts 补实体）")
-    parser.add_argument("--out", default=str(SCRIPT_DIR / "../ml/graph"), help="图谱输出目录 (ML)")
-    parser.add_argument("--purity-dir", default=str(SCRIPT_DIR / "../ml/purity"), help="净化报告目录 (ML, P2 钩子读取)")
+    parser.add_argument("--db", default="../verify/daojing_database_v2.json", help="结构库（取 core_concepts 补实体）")
+    parser.add_argument("--out", default="ml/graph", help="图谱输出目录")
+    parser.add_argument("--purity-dir", default="ml/purity", help="净化报告目录（P2 钩子读取）")
     args = parser.parse_args()
 
-    md_path = Path(args.md)
+    md_path = Path(_resolve(args.md))
     if not md_path.exists():
         print(f"错误: 读解文件不存在 {md_path}", file=sys.stderr)
         sys.exit(1)
@@ -317,7 +339,7 @@ def main():
 
     # P2 净化钩子：读取净化报告（若已执行 purify_crystal.py），联动 silent_count
     purity_review = None
-    purity_path = Path(args.purity_dir) / f"purity_ch{args.chapter}.json"
+    purity_path = Path(_resolve(args.purity_dir)) / f"purity_ch{args.chapter}.json"
     if purity_path.exists():
         try:
             purity_review = json.loads(purity_path.read_text(encoding="utf-8"))
@@ -348,7 +370,7 @@ def main():
         print(f"    ❌ {r['brick']['subject']} --{r['brick']['predicate']}--> {r['brick']['object']}: {r['errors']}")
 
     # ④ 入库
-    out_path = write_graph(args.chapter, bricks, silent, Path(args.out), purity_review)
+    out_path = write_graph(args.chapter, bricks, silent, Path(_resolve(args.out)), purity_review)
     print(f"[入库] {out_path}（{len(bricks)} 条标准砖 + {len(silent)} 枚静默）")
     print("=" * 68)
 

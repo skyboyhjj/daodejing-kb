@@ -21,14 +21,12 @@ purify_crystal.py —— P2 净化钩子：静默审查前置 + silent_log 空�
 """
 
 import argparse
+import os
 import json
 import re
 import sys
 from datetime import datetime
 from pathlib import Path
-
-# 脚本自身目录（用于解析默认相对路径）
-SCRIPT_DIR = Path(__file__).parent.resolve()
 
 # ============ 静默审查三问（小澄真·Validator 前置） ============
 PURITY_QUESTIONS = [
@@ -77,37 +75,52 @@ def run_purity_review(chapter: int, md_text: str, silent_auto: list) -> dict:
 
 
 # ============ silent_log 空白日志（不入图谱，仅记录） ============
+# 三类静默分开记录（DeepSeek 反馈：止语/损去浮尘 ≠ 静默晶体）
 SILENT_LOG_HEADER = """# ● 静默日志（silent_log）
 
 > 此日志记录每一章"决定不提取"的静默晶体。
 > **它不属于机备账图谱，不参与任何推理，不接受任何版本冻结。**
 > 窗在纸外，此页留白。
+>
+> **三类分列（不混同）**：
+> - **A 止语边界**：写作者"不说"的话（自我约束）
+> - **B 损去浮尘**：被划掉的过度解读（去断见）
+> - **C 静默晶体**：不提取的原文"妙"（不入库的专指）
 
-| 章 | 静默晶体 | 理由 | 类型 | 记录时间 |
-|----|---------|------|------|---------|
+---
 """
 
 
+def classify_silent(item: dict) -> str:
+    """静默类型分类：A 止语边界 / B 损去浮尘 / C 静默晶体"""
+    text = item.get("●", "")
+    reason = item.get("reason", "")
+    if "止语" in reason or "最想强调" in text:
+        return "A"
+    if "损去" in text or "划掉" in reason or "过度解读" in reason:
+        return "B"
+    return "C"  # 静默晶体（不提取的原文妙词）
+
+
 def append_silent_log(log_path: Path, review: dict) -> Path:
-    """将审查记录追加到 silent_log.md（空白日志，非图谱）"""
+    """将审查记录追加到 silent_log.md（空白日志，非图谱），三类分列"""
     if not log_path.exists():
         log_path.write_text(SILENT_LOG_HEADER, encoding="utf-8")
 
-    lines = []
+    sections = {"A": [], "B": [], "C": []}
     for s in review.get("auto_silent", []) + review.get("manual_silent", []):
+        cls = classify_silent(s)
         item = s.get("●", "").replace("|", "\\|").strip()
         reason = s.get("reason", "").replace("|", "\\|").strip()
-        stype = "auto" if s in review.get("auto_silent", []) else "manual"
-        # 判断类型：一句止语/损去浮尘/玄
-        if "一句止语" in reason:
-            stype = "止语"
-        elif "损去浮尘" in item or "损去" in reason:
-            stype = "损去"
-        lines.append(f"| {review['chapter']} | {item} | {reason} | {stype} | {review['reviewed_at'][:10]} |")
+        sections[cls].append(f"| {review['chapter']} | {item} | {reason} |")
 
-    if lines:
+    if any(sections.values()):
         with log_path.open("a", encoding="utf-8") as f:
-            f.write("\n".join(lines) + "\n")
+            for cls, label in [("A", "A · 止语边界"), ("B", "B · 损去浮尘"), ("C", "C · 静默晶体")]:
+                if sections[cls]:
+                    f.write(f"\n### {label}\n")
+                    f.write("| 章 | 静默内容 | 理由 |\n|---|---|---|\n")
+                    f.write("\n".join(sections[cls]) + "\n")
     return log_path
 
 
@@ -119,17 +132,27 @@ def write_purity_report(review: dict, out_dir: Path) -> Path:
     return path
 
 
+
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）  # twin_ledger/ 根
+
+
+def _resolve(p):
+    """相对路径锚定到 twin_ledger/ 根（CWD 无关）"""
+    if Path(p).is_absolute():
+        return p
+    return str(TL_ROOT / p)
+
 def main():
     parser = argparse.ArgumentParser(description="P2 净化钩子：静默审查 + 空白日志")
     parser.add_argument("--md", required=True, help="五步读解报告路径")
     parser.add_argument("--chapter", type=int, required=True, help="章号")
     parser.add_argument("--add", action="append", default=[], help="人工补充静默（可多次）：--add '句子' --add '理由' 成对使用")
-    parser.add_argument("--log", default=str(SCRIPT_DIR / "../silent_log.md"), help="空白日志路径")
-    parser.add_argument("--report-dir", default=str(SCRIPT_DIR / "../ml/purity"), help="净化报告输出目录 (ML)")
+    parser.add_argument("--log", default="silent_log.md", help="空白日志路径")
+    parser.add_argument("--report-dir", default="ml/purity", help="净化报告输出目录")
     parser.add_argument("--view", action="store_true", help="仅查看，不写入日志")
     args = parser.parse_args()
 
-    md_path = Path(args.md)
+    md_path = Path(_resolve(args.md))
     if not md_path.exists():
         print(f"错误: 读解文件不存在 {md_path}", file=sys.stderr)
         sys.exit(1)
@@ -169,8 +192,8 @@ def main():
         return
 
     # 写入空白日志 + 净化报告
-    log_path = append_silent_log(Path(args.log), review)
-    report_path = write_purity_report(review, Path(args.report_dir))
+    log_path = append_silent_log(Path(_resolve(args.log)), review)
+    report_path = write_purity_report(review, Path(_resolve(args.report_dir)))
     print(f"\n[空白日志] {log_path}（追加 {len(silent_auto) + len(manual)} 行）")
     print(f"[净化报告] {report_path}")
     print(f"[silent_count] {len(silent_auto) + len(manual)}（仅监控元数据，不入图谱推理）")

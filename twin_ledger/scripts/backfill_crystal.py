@@ -16,18 +16,16 @@ backfill_crystal.py —— P3 回灌：机备账图谱 → 人读账读解提示
   - 回灌只召回与提示，不自动推导新结论
 
 用法：
-  python backfill_crystal.py --chapter 8 --graph output/machine_ledger/graph
+  python backfill_crystal.py --chapter 8 --graph ../machine-ledger/graph
   python backfill_crystal.py --chapter 8 --graph ... --json   # JSON 输出
 """
 
 import argparse
+import os
 import json
 import sys
 from datetime import datetime
 from pathlib import Path
-
-# 脚本自身目录（用于解析默认相对路径）
-SCRIPT_DIR = Path(__file__).parent.resolve()
 
 # ============ schema v1.1 推理策略 ============
 EDGE_POLICY = {
@@ -123,15 +121,25 @@ def render_response_zone(chapter: int, prompts: list) -> str:
     return "\n".join(lines)
 
 
+
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）  # twin_ledger/ 根
+
+
+def _resolve(p):
+    """相对路径锚定到 twin_ledger/ 根（CWD 无关）"""
+    if Path(p).is_absolute():
+        return p
+    return str(TL_ROOT / p)
+
 def main():
     parser = argparse.ArgumentParser(description="P3 回灌：图谱→读解提示")
     parser.add_argument("--chapter", type=int, required=True, help="待读解章号")
-    parser.add_argument("--graph", default=str(SCRIPT_DIR / "../ml/graph"), help="图谱目录 (ML)")
+    parser.add_argument("--graph", default="ml/graph", help="图谱目录")
     parser.add_argument("--json", action="store_true", help="JSON 输出")
     parser.add_argument("--include-self", action="store_true", help="含当前章自身（默认排除）")
     args = parser.parse_args()
 
-    graphs = load_graphs(Path(args.graph))
+    graphs = load_graphs(Path(_resolve(args.graph)))
     if not graphs:
         print(f"错误: 图谱目录无数据 {args.graph}", file=sys.stderr)
         sys.exit(1)

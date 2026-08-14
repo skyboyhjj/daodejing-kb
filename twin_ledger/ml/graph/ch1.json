@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 1,
- "generated": "2026-08-14T09:27:58Z",
+ "generated": "2026-08-14T10:48:52Z",
  "spo": [
   {
    "subject": "帛书甲本/乙本-1",
@@ -71,9 +71,9 @@
    "object": "'无'与'有'-1",
    "object_base": "'无'与'有'",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "无和有同出于道，名称不同但指谓同一，故称'异名同谓'"
+   "note": "无和有同出于道，名称不同但指谓同一，故称'异名同谓'；更可能，非确定（或然性推演）"
   },
   {
    "subject": "'常无''常有'-1",
@@ -83,7 +83,7 @@
    "object": "两种观照道的方式-1",
    "object_base": "两种观照道的方式",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
    "note": "'常'指恒常、无条件的；'无'观道的妙，'有'观道的徼（边界、显现）"
   },
@@ -95,7 +95,7 @@
    "object": "从'无'观到'有'观、从'有'观到'无'观的反复切换-1",
    "object_base": "从'无'观到'有'观、从'有'观到'无'观的反复切换",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
    "note": "'玄'本义为幽暗深远，引申为双关交错；'又玄'是双重否定，不是神秘主义"
   },
@@ -155,7 +155,7 @@
    "object": "'无'与'有'两个维度进行动态观照-1",
    "object_base": "'无'与'有'两个维度进行动态观照",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
    "note": "'无'观其妙，'有'观其徼；两者同出异名同谓"
   },
@@ -167,7 +167,7 @@
    "object": "'无观'与'有观'反复交替的认知运动-1",
    "object_base": "'无观'与'有观'反复交替的认知运动",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
    "note": "不是神秘境界，而是持续的视角切换"
   },
@@ -179,7 +179,7 @@
    "object": "进入一切奥妙的入口，而非终点-1",
    "object_base": "进入一切奥妙的入口，而非终点",
    "source": "1.",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
    "note": "门意味着持续通过的动作，不是静态的成就"
   },
@@ -267,13 +267,5 @@
   }
  ],
  "silent_count": 5,
- "purity": {
-  "reviewed": true,
-  "questions": [
-   "这一章，哪一句/哪个词，是我决定'不提取'的？",
-   "这条边/这颗晶体，是文本直陈，还是我的推演？",
-   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
-  ],
-  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
- }
+ "purity": null
 }
