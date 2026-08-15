@@ -1,0 +1,279 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 2,
+ "generated": "2026-08-15T22:35:16Z",
+ "spo": [
+  {
+   "subject": "帛书甲本-2",
+   "subject_base": "帛书甲本",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'万物作而弗始也'-2",
+   "object_base": "'万物作而弗始也'",
+   "source": "万物作而弗始也",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "帛书作'弗始'，王弼本作'不辞'。'弗始'意为不创始、不居首，'不辞'意为不推辞、不拒绝。义理指向不同，'弗始'更契合'不有''不恃'的并列逻辑"
+  },
+  {
+   "subject": "王弼本第2章-2",
+   "subject_base": "王弼本第2章",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'万物作焉而不辞'-2",
+   "object_base": "'万物作焉而不辞'",
+   "source": "万物作焉而不辞",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "王弼本作'不辞'，注云'不辞谢而逆止之'，释为不拒绝万物生长。但与前句'处无为之事'和后句'生而不有'的耦合度不如'弗始'"
+  },
+  {
+   "subject": "帛书甲本第2章-2",
+   "subject_base": "帛书甲本第2章",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'长短之相刑也'-2",
+   "object_base": "'长短之相刑也'",
+   "source": "长短之相刑也",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "帛书作'刑'（通'形'），王弼本作'较'。'相形'是相互彰显，'相较'是相互比较。'相形'更偏存在论，'相较'更偏认知论"
+  },
+  {
+   "subject": "帛书甲本第2章-2",
+   "subject_base": "帛书甲本第2章",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "'恒也'（帛书甲本）-2",
+   "object_base": "'恒也'（帛书甲本）",
+   "source": "恒也",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "帛书甲本在'前后相随'后有'恒也'二字，王弼本无。'恒也'明确点出六对相生是永恒规律，不是偶然现象"
+  },
+  {
+   "subject": "天下皆知美之为美-2",
+   "subject_base": "天下皆知美之为美",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "斯恶已-2",
+   "object_base": "斯恶已",
+   "source": "天下皆知美之为美，斯恶已",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "美的确立同时制造了恶的范畴，价值判断是相互依存的"
+  },
+  {
+   "subject": "有无相生-2",
+   "subject_base": "有无相生",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "六对范畴相互生成-2",
+   "object_base": "六对范畴相互生成",
+   "source": "故有无相生，难易相成，长短相较，高下相倾，音声相和，前后相随",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "六对范畴不是六种不同现象，而是同一'相生'结构的六种显现"
+  },
+  {
+   "subject": "六对相生-2",
+   "subject_base": "六对相生",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "圣人处无为之事，行不言之教-2",
+   "object_base": "圣人处无为之事，行不言之教",
+   "source": "是以圣人处无为之事，行不言之教",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "圣人的无为不是独立的选择，而是对'相生'规律的认知应用"
+  },
+  {
+   "subject": "弗居-2",
+   "subject_base": "弗居",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "是以不去-2",
+   "object_base": "是以不去",
+   "source": "夫唯弗居，是以不去",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "不占据→不失去，这是第2章的终极因果律。不是道德劝诫，而是存在论逻辑"
+  },
+  {
+   "subject": "消极无为解读-2",
+   "subject_base": "消极无为解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "圣人完全不干涉世界，纯粹顺应自然-2",
+   "object_base": "圣人完全不干涉世界，纯粹顺应自然",
+   "source": "处无为之事",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "优点：与'道法自然'呼应；缺点：无法解释'处'和'行'两个动词，也无法解释圣人为何还要'行不言之教'——'教'本身就是一种主动影响"
+  },
+  {
+   "subject": "积极无为解读-2",
+   "subject_base": "积极无为解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "无为是'为'的一种方式：行动但不占有，成就但不控制，成功但不居功-2",
+   "object_base": "无为是'为'的一种方式：行动但不占有，成就但不控制，成功但不居功",
+   "source": "生而不有，为而不恃，功成而弗居",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "优点：四不（不辞/不有/不恃/弗居）直接定义无为，与'弗居是以不去'的因果链完整衔接；缺点：需要区分'为'和'恃'，对读者的反思能力要求较高"
+  },
+  {
+   "subject": "结构无为解读-2",
+   "subject_base": "结构无为解读",
+   "predicate": "曰",
+   "edge_type": "实",
+   "object": "无为是制度设计的结果，通过'不尚贤''不贵难得之货'等结构性安排，使民自然无为-2",
+   "object_base": "无为是制度设计的结果，通过'不尚贤''不贵难得之货'等结构性安排，使民自然无为",
+   "source": "是以圣人处无为之事",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "优点：与第3章'不尚贤，使民不争'有连续性；缺点：将第2章过度政治化，遮蔽了'弗居'的个人修养维度"
+  },
+  {
+   "subject": "传统理解-2",
+   "subject_base": "传统理解",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "相对主义宣言：一切价值都是相对的，不必执着-2",
+   "object_base": "相对主义宣言：一切价值都是相对的，不必执着",
+   "source": "天下皆知美之为美，斯恶已",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "停留在'一切都是相对的'层面，容易滑向虚无主义或消极避世"
+  },
+  {
+   "subject": "六对相生-2",
+   "subject_base": "六对相生",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "一切对立范畴相互生成的永恒规律-2",
+   "object_base": "一切对立范畴相互生成的永恒规律",
+   "source": "故有无相生，难易相成，长短相较，高下相倾，音声相和，前后相随",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "六对范畴是同一'相生'结构的六种显现，不是六种不同现象"
+  },
+  {
+   "subject": "无为-2",
+   "subject_base": "无为",
+   "predicate": "是",
+   "edge_type": "实",
+   "object": "为而不恃：行动但不占有、不控制、不居功-2",
+   "object_base": "为而不恃：行动但不占有、不控制、不居功",
+   "source": "生而不有，为而不恃，功成而弗居",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "无为不是不为，而是'为'减去'恃'；文本以四不定义无为，全书三度重复此公式"
+  },
+  {
+   "subject": "弗居-2",
+   "subject_base": "弗居",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "是以不去-2",
+   "object_base": "是以不去",
+   "source": "夫唯弗居，是以不去",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "不占据→不失去，这是第2章的终极因果律，不是道德劝诫，而是存在论逻辑"
+  },
+  {
+   "subject": "老子第2章（战国语境）-2",
+   "subject_base": "老子第2章（战国语境）",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "战国时期价值混乱与名实之争中，如何超越二元对立的价值判断，找到一种不依赖标签的行动方式-2",
+   "object_base": "战国时期价值混乱与名实之争中，如何超越二元对立的价值判断，找到一种不依赖标签的行动方式",
+   "source": "天下皆知美之为美，斯恶已",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "与儒家'正名'（以名正实）形成对照：老子不是要纠正名，而是要超越名"
+  },
+  {
+   "subject": "对立统一的操作化-2",
+   "subject_base": "对立统一的操作化",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "任何系统都存在对立面的相互生成；认知这一规律后，正确的行动方式不是消除对立，而是'不居'——在行动中不附加占有的冲动-2",
+   "object_base": "任何系统都存在对立面的相互生成；认知这一规律后，正确的行动方式不是消除对立，而是'不居'——在行动中不附加占有的冲动",
+   "source": "有无相生",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "类似黑格尔'扬弃'（Aufhebung）：不是取消对立，而是在更高层次上保留和超越"
+  },
+  {
+   "subject": "个人修养-2",
+   "subject_base": "个人修养",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "当你做了一件好事，觉察到'想让别人知道'的冲动——这就是'居'。不压抑它，只是看着它，然后继续做该做的事-2",
+   "object_base": "当你做了一件好事，觉察到'想让别人知道'的冲动——这就是'居'。不压抑它，只是看着它，然后继续做该做的事",
+   "source": "功成而弗居",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "弗居不是压抑，是觉察后的放下"
+  },
+  {
+   "subject": "组织管理-2",
+   "subject_base": "组织管理",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "领导者完成一个项目后，把功劳归于团队（弗居），反而获得更大的权威和信任（不去）。这不是权谋，而是'弗居是以不去'的自然因果-2",
+   "object_base": "领导者完成一个项目后，把功劳归于团队（弗居），反而获得更大的权威和信任（不去）。这不是权谋，而是'弗居是以不去'的自然因果",
+   "source": "夫唯弗居，是以不去",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "刻意'归功于团队'以获取更多信任，仍是'居'的一种形式。真正的弗居是内在的"
+  },
+  {
+   "subject": "亲子教育-2",
+   "subject_base": "亲子教育",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "父母'生而不有'：孩子经由你而来，但不属于你。不以'我为你好'之名控制孩子，孩子的自主性反而更强-2",
+   "object_base": "父母'生而不有'：孩子经由你而来，但不属于你。不以'我为你好'之名控制孩子，孩子的自主性反而更强",
+   "source": "生而不有",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "不有不是不爱，而是不以占有为爱"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "**\"夫唯弗居，是以不去\"——如果你真的理解了这句话，你就不会在读到它时，心里默默盘算\"我是不是应该假装弗居，这样就能不去了\"",
+   "reason": "一句止语（最想强调却决定不写）"
+  },
+  {
+   "●": "损去浮尘：\"美之为美，斯恶已\"就是\"美就是丑\"",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：\"无为\"就是不做事，等着事情自然发生",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：\"不言之教\"就是不要说话，不要教育",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：\"弗居\"就是做完了悄悄走开，不让人知道",
+   "reason": "过度解读，划掉不说"
+  }
+ ],
+ "silent_count": 5,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}
