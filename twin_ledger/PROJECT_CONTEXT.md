@@ -1,6 +1,6 @@
 # PROJECT_CONTEXT.md — Twin Ledger 项目上下文
 
-> AI 辅助开发共享文件。新对话中引用此文件即可快速理解项目全貌。
+> AI 辅助开发共享文件。三方分块维护，新对话中引用此文件即可快速理解项目全貌。
 >
 > 使用方式：在新对话中说 "参考 PROJECT_CONTEXT.md 继续开发 twin_ledger"
 
@@ -13,20 +13,25 @@
 > "Two ledgers, one spiral. Human reads, machine reasons, but the Dao remains unledgered."
 
 - [GitHub 仓库](https://github.com/skyboyhjj/daodejing-kb) — `twin_ledger/` 目录
+- **协作模式**: P4 v1.2 双炉分审制（生产炉 / 审阅炉 / 人工复核）
+- **当前批次**: 批1（样章验证）— 第1-10章
 
 核心模块：
 
 | 模块 | 状态 | 说明 |
 |------|:---:|------|
-| HL (Human Ledger) | 🟢 稳定版 | 人读账，五步读解报告（从体起用，把道读成话） |
-| ML (Machine Ledger) | 🟢 稳定版 | 机备账，SPO 标准砖图谱（摄用归体，把话铸成砖） |
+| HL (Human Ledger) | 🟢 稳定版 | 人读账，五步读解报告（`hl/chapters/ch{N:02d}.md`） |
+| ML (Machine Ledger) | 🟢 稳定版 | 机备账，SPO 标准砖图谱（`ml/graph/ch{N}.json`） |
 | 接口① 回收站 | 🟢 稳定版 | `recycle_crystal.py` — HL→ML 铸砖入库 |
 | 接口② 净化钩子 | 🟢 稳定版 | `purify_crystal.py` — 铸砖前静默审查 |
 | 接口③ 回灌 | 🟢 稳定版 | `backfill_crystal.py` — ML→HL 跨章提示 |
+| 基准章 | 🔒 已锁定 | ch1_base / ch8_base（2026-08-15） |
 
-## 关键文件
+---
 
-### 架构文档
+## 架构/质量（慧惠）
+
+### Schema 与判据
 
 | 文件 | 用途 |
 |------|------|
@@ -34,55 +39,90 @@
 | `docs/02_机备账Schema_v1.1_总纲.md` | ML 图谱 schema（三层构件 + 四态 + 窗在纸外） |
 | `docs/03_若字谓词分判规范_附录A.md` | "若"字 41 处四类分判规则 |
 
-### 脚本（三接口）
+### 铸砖脚本
 
 | 文件 | 用途 |
 |------|------|
-| `scripts/recycle_crystal.py` | 接口① — 读解 → 谓词映射 → Validator → 入库 ml/graph/ |
+| `scripts/recycle_crystal.py` | 接口① — 读解 → 谓词映射（32条）→ Validator → 入库 |
 | `scripts/purify_crystal.py` | 接口② — 静默三问 + 三区分类（A 止语/B 损去/C 静默） |
 | `scripts/backfill_crystal.py` | 接口③ — 跨章召回 + 推理策略 + 回灌响应区 |
 
-### 数据（ML 侧）
+### 质量门（每批强制）
 
-| 文件 | 用途 |
+| 门 | 检查项 | 阈值 | 责任 |
+|----|--------|------|------|
+| G1 铸砖率 | 入库砖 / 批内章数 | 100%（0 拒收） | 慧惠 |
+| G2 ACTIVE 纯度 | ACTIVE 砖逐字对应原文直陈 | 100% | 慧惠 |
+| G3 谓词合规 | 全部最小谓词集 | 100%（Validator 强制） | 慧惠 |
+| G4 静默记录 | 有则记，无则记"无" | 100% 执行 | 慧惠 |
+| G5 跨章召回 | 图谱实体可被其他章召回 | 抽查 ≥5 实体 | 慧惠 |
+| G6a 污染级 | ACTIVE 误标/静默造假/谓词越界 | = 0 项 | 审阅炉 |
+| G6b 优化级 | 止语/note 可改进 | 记录在案 | 审阅炉 |
+
+### ML 数据
+
+| 文件 | 说明 |
 |------|------|
 | `ml/graph/ch1.json` | 第1章 20 砖（0 ACTIVE / 20 EXTENSION） |
 | `ml/graph/ch8.json` | 第8章 17 砖（1 ACTIVE / 16 EXTENSION） |
-| `ml/purity/purity_ch1.json` | 第1章净化报告（5 静默） |
-| `ml/purity/purity_ch8.json` | 第8章净化报告（5 静默） |
+| `ml/graph/ch1_base.json` | 🔒 第1章基准版（锁定） |
+| `ml/graph/ch8_base.json` | 🔒 第8章基准版（锁定） |
+| `ml/purity/purity_ch1.json` | 第1章净化报告 |
+| `ml/purity/purity_ch8.json` | 第8章净化报告 |
+| `ml/purity/purity_ch1_base.json` | 🔒 第1章净化基准版（锁定） |
+| `ml/purity/purity_ch8_base.json` | 🔒 第8章净化基准版（锁定） |
 | `silent_log.md` | 静默日志（A 止语 2 + B 损去 8，不入图谱） |
 
-### 入口文档
+---
 
-| 文件 | 用途 |
-|------|------|
-| `README.md` | 项目总纲索引 + 命名体系（TLA/HL/ML） |
-| `DEPLOY.md` | 部署说明（环境、命令、谓词集、schema、FAQ） |
-| `hl/README.md` | 人读账说明（HL 定位 + 谓词规范 + 静默标记格式） |
-| `ml/README.md` | 机备账说明（ML 定位 + schema + 四态定义） |
+## 工程/部署（TRAE）
 
-### 交付报告
+### 双炉配置（P4 v1.2）
 
-| 文件 | 用途 |
-|------|------|
-| `reports/P1_回收站_交付报告.md` | 回收站验证（17/17 通过，0 拒收） |
-| `reports/P2_净化钩子_交付报告.md` | 净化钩子验证（silent_log 三区格式） |
-| `reports/P3_回灌脚本_交付报告.md` | 回灌验证（33 实体/34 提示跨章召回） |
-| `reports/第1章双账本全流程验证报告.md` | 第1章端到端验证（含 6→0 ACTIVE 修正） |
-| `twin_ledger_GitHub更新_CHANGELOG.md` | v1.2 四项修正更新记录 |
+| 参数 | 生产炉 | 审阅炉 |
+|------|--------|--------|
+| 执行方 | TRAE 生产对话实例 | TRAE 审阅对话实例 |
+| 模型 | DeepSeek（TRAE 任务对话框可选） | 与生产不同模型（GLM-5.3/kimi-k3 等） |
+| 温度 | 0.7–0.9（高） | 0.1–0.3（低） |
+| top_p | 0.85–0.95 | 0.7–0.9 |
+| 上下文 | 32k–64k（含原文、考辨、互文） | 4k–8k（只读提交物） |
+| 提示词 | `烧火童子01` | `小澄真Validator` |
+| 对话模式 | **单章独立对话** | 每批一个对话 |
+| 输出 | Markdown 读解（含 SPO 块） | VALID/INVALID/XUAN + 问题编号 |
 
-## 部署命令
+> 注：温度、top_p、上下文等参数的具体设定方式需在 TRAE 任务对话框中进一步确认。
+
+### 目录结构
+
+```
+twin_ledger/
+├── hl/chapters/          # 人读账（慧惠/TRAE 生产）
+│   ├── ch01.md           # 命名规范：ch{N:02d}.md
+│   └── ...
+├── ml/
+│   ├── graph/            # 标准砖图谱（回收站产出）
+│   └── purity/           # 净化报告（净化钩子产出）
+├── scripts/              # 三接口脚本（TL_ROOT 锚定）
+├── reports/              # 交付报告
+├── changelog/            # 变更日志（CHANGELOG-YYYY-MM-DD.md）
+├── docs/                 # 架构文档
+├── PROJECT_CONTEXT.md    # 本文件（三方共享上下文）
+├── README.md
+├── DEPLOY.md
+└── silent_log.md
+```
+
+### 部署命令
 
 ```bash
 # 前置条件：Python 3.8+（无外部依赖，仅标准库）
-
 cd twin_ledger
 
 # 步骤1：净化钩子
-python scripts/purify_crystal.py --md "hl/chapters/<读解报告>.md" --chapter <N>
+python scripts/purify_crystal.py --md "hl/chapters/ch{N:02d}.md" --chapter <N>
 
 # 步骤2：回收站
-python scripts/recycle_crystal.py --md "hl/chapters/<读解报告>.md" --chapter <N>
+python scripts/recycle_crystal.py --md "hl/chapters/ch{N:02d}.md" --chapter <N>
 
 # 步骤3：回灌
 python scripts/backfill_crystal.py --chapter <N>
@@ -93,34 +133,41 @@ python scripts/backfill_crystal.py --chapter <N> --json
 
 脚本默认路径已通过 `TL_ROOT`（`Path(__file__).parent.parent`）锚定到 `twin_ledger/` 根，CWD 无关。
 
-## 架构
+### Git 工作流
 
-```
-          ┌──────────────────────────────────┐
-          │        Twin Ledger (TLA)          │
-          │                                   │
-          │  ┌─────────┐       ┌───────────┐ │
-          │  │   HL    │ ═══①══> │    ML     │ │
-          │  │ 人读账  │ <══③═══ │  机备账   │ │
-          │  │ (话)    │       │  (砖)     │ │
-          │  └────┬────┘       └─────┬─────┘ │
-          │       │                  │        │
-          │       └──── ② ●静默 ────┘        │
-          └──────────────────────────────────┘
-```
+- 单分支 `main`，直接提交
+- 每批结束后：`git add` → `git commit` → `git push`
+- 提交后更新本文件的相关条目
+- CHANGELOG 按日期命名：`changelog/CHANGELOG-YYYY-MM-DD.md`
 
-| 组件 | 部署方式 | 说明 |
-|------|----------|------|
-| recycle_crystal.py | 本地 Python 脚本 | 谓词映射表（32条）+ 最小谓词集（41个） |
-| purify_crystal.py | 本地 Python 脚本 | 静默三问 + classify_silent() 三区分类 |
-| backfill_crystal.py | 本地 Python 脚本 | 推理策略（逻辑/实 1.0，喻 0.5，玄 0.2） |
-| ml/graph/ | JSON 静态文件 | 手工/脚本产出，Git 版本控制 |
-| ml/purity/ | JSON 静态文件 | 净化报告，回收站联动 |
-| silent_log.md | Markdown 静态文件 | 不入图谱，不参与推理，不接受版本冻结 |
+---
 
-## 分支管理 SOP
+## 读解/审阅（DeepSeek → 审阅炉）
 
-单分支 `main`，直接提交。
+### 基准章（已锁定）
+
+| 章 | 基准文件 | 图谱 | 净化 |
+|----|----------|------|------|
+| 第1章 | `ml/graph/ch1_base.json` | 0 ACTIVE / 20 EXTENSION | 5 静默 |
+| 第8章 | `ml/graph/ch8_base.json` | 1 ACTIVE / 16 EXTENSION | 5 静默 |
+
+### 读解进度
+
+| 批 | 章节 | 状态 | 说明 |
+|----|------|:--:|------|
+| 基准章 | 第1、8章 | 🔒 已锁定 | 2026-08-15 |
+| 批1 | 第2-7、9-10章 | ⏳ 待生产 | 生产炉单章独立对话 |
+| 批2 | 第11-20章 | ⏳ 待启动 | 批1 静默期后 |
+| 批3 | 第21-30章 | ⏳ 待启动 | |
+| 批4 | 第31-37章 | ⏳ 待启动 | |
+
+### 审阅记录
+
+| 批次 | 审阅炉判定 | 污染级 | 优化级 | 人工复核 |
+|------|-----------|:--:|:--:|:--:|
+| 批1 | 待执行 | — | — | — |
+
+---
 
 ## 版本控制约定
 
@@ -132,6 +179,22 @@ python scripts/backfill_crystal.py --chapter <N> --json
    - API 密钥、Token、密码 — 本项目无外部 API 依赖，无此风险
    - 个人邮箱、手机号 — 检查 `DEPLOY.md` 和报告中的示例数据
    - 检查工具：`git diff --staged` 人工复核
+
+## 待办 / 已完成 工作流
+
+- 新任务 → 先添加到 **待办事项** 列表
+- 任务完成 → 从待办移至 **已完成** 列表，标注编号、根因、修复、文件
+- 更新 `PROJECT_CONTEXT.md` 时，检查待办列表中是否有已完成的项，一并移动
+
+## 待办
+
+- [ ] P4 批1：第2-7、9-10章生产炉产读解 → 净化回收 → 审阅炉 → 人工复核
+- [ ] P4 批2-4：第11-37章批量重铸
+- [ ] P5：全书（第1-81章）重铸
+- [ ] 工程：编写 batch_crystal.py 批量执行 wrapper
+- [ ] 工程：确认 TRAE 任务对话框中审阅炉模型参数的具体设定方式
+
+---
 
 ## 已完成
 
@@ -145,7 +208,7 @@ python scripts/backfill_crystal.py --chapter <N> --json
 - 文件：`scripts/recycle_crystal.py`, `ml/graph/ch8.json`
 
 ### 3. P2 净化钩子（接口②）实现
-- 内容：`purify_crystal.py` — 静默三问 + silent_log 空白日志
+- 内容：`purify_crystal.py` — 静默三问 + silent_log
 - 联动：回收站检测净化报告 → silent_count 写入图谱
 - 文件：`scripts/purify_crystal.py`, `silent_log.md`
 
@@ -156,33 +219,32 @@ python scripts/backfill_crystal.py --chapter <N> --json
 
 ### 5. TLA 命名与目录重构
 - 根目录定名 `twin_ledger/`（下划线统一）
-- HL/ML 分列两侧，三接口脚本守于 `scripts/`
-- 命名体系：TLA（Twin Ledger Architecture）/ HL（Human Ledger）/ ML（Machine Ledger）
 - 提交：`0cf83cc`（rename）, `d981e1b`（feat: add TLA v1.1）
 
 ### 6. v1.2 四项修正（DeepSeek 审阅反馈）
-- 提交：`4e48a42`（twin_ledger: sync v1.2 four fixes）
-- 修正 1：ACTIVE/EXTENSION 判据升级 — source 无原文短句 → 默认 EXTENSION（宁降勿升）；逻辑谓词（故/则/因/以）+ 原文短主体（≤8字）放行 ACTIVE
-- 修正 2：或然性 note 自动补注 — 谓词含"更可能/可能/似乎/或许"时补"更可能，非确定（或然性推演）"
-- 修正 3：silent_log 三区分类 — `classify_silent()` 函数，A 止语边界 / B 损去浮尘 / C 静默晶体
-- 修正 4：TL_ROOT 路径锚定 — `Path(__file__).parent.parent`，CWD 无关化
-- 数据影响：ch1 6→0 ACTIVE（全 EXTENSION），ch8 1 ACTIVE 保留
-- 文件：`scripts/recycle_crystal.py`, `scripts/purify_crystal.py`, `scripts/backfill_crystal.py`, `ml/graph/ch1.json`, `ml/graph/ch8.json`, `ml/purity/purity_ch1.json`, `ml/purity/purity_ch8.json`, `silent_log.md`, `reports/*`
+- 提交：`4e48a42`
+- 修正 1：ACTIVE/EXTENSION 判据升级
+- 修正 2：或然性 note 自动补注
+- 修正 3：silent_log 三区分类
+- 修正 4：TL_ROOT 路径锚定
+- 文件：`scripts/*`, `ml/graph/*`, `ml/purity/*`, `silent_log.md`, `reports/*`
 
 ### 7. 注释清理
-- 提交：`6aaabd3`（fix: remove duplicate comment in recycle_crystal.py L312）
+- 提交：`6aaabd3`
 - 文件：`scripts/recycle_crystal.py`
 
-## 待办 / 已完成 工作流
+### 8. changelog 目录 + PROJECT_CONTEXT 创建
+- 提交：`a7d0791`（PROJECT_CONTEXT.md）, `1bc43a9`（changelog/ 目录）
+- 文件：`PROJECT_CONTEXT.md`, `changelog/twin_ledger_GitHub更新_CHANGELOG.md`
 
-- 新任务 → 先添加到 **待办事项** 列表
-- 任务完成 → 从待办移至 **已完成** 列表，标注编号、根因、修复、文件
-- 更新 `PROJECT_CONTEXT.md` 时，检查待办列表中是否有已完成的项，一并移动
+### 9. P4 v1.2 双炉分审制启动
+- 基准章锁定：ch1_base / ch8_base（2026-08-15）
+- PROJECT_CONTEXT.md 改造为三方分块结构
+- HL 章节目录创建（`hl/chapters/`，命名 `ch{N:02d}.md`）
+- 生产炉模式：单章独立对话
+- 审阅炉模型：TRAE 任务对话框可选（温度/上下文等参数待进一步确认）
 
-## 待办
-
-- [ ] P4：第1-37章（道经上篇）批量重铸
-- [ ] P5：全书（第1-81章）重铸
+---
 
 ## 新对话快速启动
 
