@@ -1,0 +1,171 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 6,
+ "generated": "2026-08-17T17:13:29Z",
+ "spo": [
+  {
+   "subject": "谷神-6",
+   "subject_base": "谷神",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "不死-6",
+   "object_base": "不死",
+   "source": "谷神不死",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "文本事实晶体：谷神具有不死之属性"
+  },
+  {
+   "subject": "谷神不死-6",
+   "subject_base": "谷神不死",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "玄牝-6",
+   "object_base": "玄牝",
+   "source": "谷神不死，是谓玄牝",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "命名晶体：不死的谷神被命名为玄牝。是谓为功能性命名，非本体论断言"
+  },
+  {
+   "subject": "玄牝之门-6",
+   "subject_base": "玄牝之门",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "天地根-6",
+   "object_base": "天地根",
+   "source": "玄牝之门，是谓天地根",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "命名晶体：玄牝之门被命名为天地之根"
+  },
+  {
+   "subject": "玄牝之门-6",
+   "subject_base": "玄牝之门",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "绵绵若存-6",
+   "object_base": "绵绵若存",
+   "source": "绵绵若存",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "状态晶体：绵延不绝，若有若无之存续。若字同时表似乎与如此"
+  },
+  {
+   "subject": "玄牝之门-6",
+   "subject_base": "玄牝之门",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "用之不勤-6",
+   "object_base": "用之不勤",
+   "source": "用之不勤",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "功能晶体：用之不尽、不竭"
+  },
+  {
+   "subject": "不死-6",
+   "subject_base": "不死",
+   "predicate": "指",
+   "edge_type": "实",
+   "object": "不竭-6",
+   "object_base": "不竭",
+   "source": "不死",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "训诂晶体：勤读为堇，尽也。不死与不勤互文，不死即不竭。更可能，非确定（或然性推演）"
+  },
+  {
+   "subject": "谷-6",
+   "subject_base": "谷",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "虚空能容-6",
+   "object_base": "虚空能容",
+   "source": "谷神不死",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "语义晶体（EXTENSION）：谷为虚空能容之象，非动词「养」"
+  },
+  {
+   "subject": "神-6",
+   "subject_base": "神",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "生化不测-6",
+   "object_base": "生化不测",
+   "source": "谷神不死",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "语义晶体（EXTENSION）：神为生化不可测度之能"
+  },
+  {
+   "subject": "玄牝-6",
+   "subject_base": "玄牝",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "深远母性之门-6",
+   "object_base": "深远母性之门",
+   "source": "玄牝之门，是谓天地根",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "语义晶体（EXTENSION）：玄为深远，牝为母体，合为深远母性之门"
+  },
+  {
+   "subject": "谷神不死-6",
+   "subject_base": "谷神不死",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "虚空生化机制不竭-6",
+   "object_base": "虚空生化机制不竭",
+   "source": "谷神不死，是谓玄牝",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "核心智慧晶体（EXTENSION）：谷神不死是谓虚空生化机制的不竭运行。更可能，非确定（或然性推演）"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "损去浮尘：“道就是女性生殖器”",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“谷神是一个具体的神灵”",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“不死”即“灵魂不灭”",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“玄牝”可单独抽出来做性别政治解读",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“谷”解为“养也”，引入“谷养万物”的动词义",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“玄牝”关联“女阴崇拜”",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“不死”关联“灵魂不灭”",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“浴神”解读为“洗涤灵魂”",
+   "reason": "过度解读，划掉不说"
+  }
+ ],
+ "silent_count": 8,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}
