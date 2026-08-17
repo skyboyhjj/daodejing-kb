@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 7,
- "generated": "2026-08-17T17:16:53Z",
+ "generated": "2026-08-17T20:02:22Z",
  "spo": [
   {
    "subject": "私-7",
@@ -11,9 +11,10 @@
    "object": "私人、自身、个我，而非自私之心-7",
    "object_base": "私人、自身、个我，而非自私之心",
    "source": "故能成其私",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "《说文》以私为禾主，引申为属己者。此私为中性描述，非道德贬义。"
+   "note": "《说文》以私为禾主，引申为属己者。此私为中性描述，非道德贬义。",
+   "direct_evidence": "故能成其私"
   },
   {
    "subject": "自生-7",
@@ -23,9 +24,10 @@
    "object": "以自身存续为运作目的-7",
    "object_base": "以自身存续为运作目的",
    "source": "以其不自生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "河上公注“不贪生”，王弼注“自生则与物争”，均指向“自利性存在方式”。"
+   "note": "河上公注“不贪生”，王弼注“自生则与物争”，均指向“自利性存在方式”。",
+   "direct_evidence": "以其不自生"
   },
   {
    "subject": "后其身而身先，外其身而身存-7",
@@ -35,9 +37,10 @@
    "object": "曲则全，枉则直-7",
    "object_base": "曲则全，枉则直",
    "source": "后其身而身先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第22章互文，同为逆反句式，构成老子“反者道之动”的表达范式。"
+   "note": "第22章互文，同为逆反句式，构成老子“反者道之动”的表达范式。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "后其身而身先-7",
@@ -47,9 +50,10 @@
    "object": "欲先民，必以身后之-7",
    "object_base": "欲先民，必以身后之",
    "source": "外其身而身存",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": "metaphor",
-   "note": "第66章显性呼应，同一逻辑在政治治理中的展开。"
+   "note": "第66章显性呼应，同一逻辑在政治治理中的展开。",
+   "direct_evidence": "外其身而身存"
   },
   {
    "subject": "是以圣人后其身而身先-7",
@@ -59,9 +63,10 @@
    "object": "从天地不自生而长生之理，推演人亦当后身而身先-7",
    "object_base": "从天地不自生而长生之理，推演人亦当后身而身先",
    "source": "是以圣人后其身而身先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "“是以”为逻辑推演标记，不是类比修辞，而是严格的法则引申。"
+   "note": "“是以”为逻辑推演标记，不是类比修辞，而是严格的法则引申。",
+   "direct_evidence": "是以圣人后其身而身先"
   },
   {
    "subject": "后其身-7",
@@ -73,7 +78,8 @@
    "source": "后其身而身先",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "逆反因果：在存在方式上的后置，产生在存在结果上的前置。"
+   "note": "逆反因果：在存在方式上的后置，产生在存在结果上的前置。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "外其身-7",
@@ -85,7 +91,8 @@
    "source": "外其身而身存",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "逆反因果：将自身置于外围，反而获得可持续的存在。"
+   "note": "逆反因果：将自身置于外围，反而获得可持续的存在。",
+   "direct_evidence": "外其身而身存"
   },
   {
    "subject": "后其身而身先-7",
@@ -95,9 +102,10 @@
    "object": "贵以身为天下-7",
    "object_base": "贵以身为天下",
    "source": "后其身而身先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第13章互文。身不是被否定的对象，而是需要转化其存在指向。"
+   "note": "第13章互文。身不是被否定的对象，而是需要转化其存在指向。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "后其身而身先-7",
@@ -109,7 +117,8 @@
    "source": "后其身而身先",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "“先”非序位先后，乃存在论的“先在性”——他人存在性存续对你的功能产生依赖。"
+   "note": "“先”非序位先后，乃存在论的“先在性”——他人存在性存续对你的功能产生依赖。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "外其身而身存-7",
@@ -121,7 +130,8 @@
    "source": "外其身而身存",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "“存”非保命，乃功能不可缺之存续。"
+   "note": "“存”非保命，乃功能不可缺之存续。",
+   "direct_evidence": "外其身而身存"
   },
   {
    "subject": "身先-7",
@@ -131,9 +141,10 @@
    "object": "序位排名之义-7",
    "object_base": "序位排名之义",
    "source": "后其身而身先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "“先”不是竞争中胜出，不是第一名。"
+   "note": "“先”不是竞争中胜出，不是第一名。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "成其私-7",
@@ -143,9 +154,10 @@
    "object": "成其个我之真实存续，而非达成自私之目的-7",
    "object_base": "成其个我之真实存续，而非达成自私之目的",
    "source": "故能成其私",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "“私”是中性指代——真实自我作为存在者的完整在场。"
+   "note": "“私”是中性指代——真实自我作为存在者的完整在场。",
+   "direct_evidence": "故能成其私"
   },
   {
    "subject": "外其身而身存-7",
@@ -155,9 +167,10 @@
    "object": "夫唯弗居，是以不去-7",
    "object_base": "夫唯弗居，是以不去",
    "source": "外其身而身存",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第2章互文。弗居即外身，不去即身存。同一存在论因果。"
+   "note": "第2章互文。弗居即外身，不去即身存。同一存在论因果。",
+   "direct_evidence": "外其身而身存"
   },
   {
    "subject": "后其身而身先-7",
@@ -167,9 +180,10 @@
    "object": "万物归焉而不为主，可名为大-7",
    "object_base": "万物归焉而不为主，可名为大",
    "source": "后其身而身先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第34章互文。不为主即后身，万物归即身先。"
+   "note": "第34章互文。不为主即后身，万物归即身先。",
+   "direct_evidence": "后其身而身先"
   },
   {
    "subject": "后身而身先-7",
@@ -179,9 +193,10 @@
    "object": "淡然无极而众美从之-7",
    "object_base": "淡然无极而众美从之",
    "source": "外其身而身存",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": "metaphor",
-   "note": "《庄子·刻意》互证。淡然无极即不自生，众美从之即长生。"
+   "note": "《庄子·刻意》互证。淡然无极即不自生，众美从之即长生。",
+   "direct_evidence": "外其身而身存"
   },
   {
    "subject": "天长地久-7",
@@ -191,9 +206,10 @@
    "object": "不自生-7",
    "object_base": "不自生",
    "source": "天地所以能长且久者，以其不自生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "此乃全章核心智慧晶体：存在方式决定存在持久性。"
+   "note": "此乃全章核心智慧晶体：存在方式决定存在持久性。",
+   "direct_evidence": "天地所以能长且久者，以其不自生"
   },
   {
    "subject": "不自生-7",
@@ -205,7 +221,8 @@
    "source": "以其不自生，故能长生",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "不是道德因果（不自私→有善报），而是存在因果（不自利→不可缺）。"
+   "note": "不是道德因果（不自私→有善报），而是存在因果（不自利→不可缺）。",
+   "direct_evidence": "以其不自生，故能长生"
   },
   {
    "subject": "无私-7",
@@ -217,7 +234,8 @@
    "source": "非以其无私邪？故能成其私",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "无私不是手段，而是存在方式；成其私不是补偿，而是必然。"
+   "note": "无私不是手段，而是存在方式；成其私不是补偿，而是必然。",
+   "direct_evidence": "非以其无私邪？故能成其私"
   },
   {
    "subject": "自我中心的存在方式-7",
@@ -227,9 +245,10 @@
    "object": "存在根基的脆弱性-7",
    "object_base": "存在根基的脆弱性",
    "source": "以其不自生，故能长生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "自我中心等于自我孤立，等于存在意义的单点故障。"
+   "note": "自我中心等于自我孤立，等于存在意义的单点故障。",
+   "direct_evidence": "以其不自生，故能长生"
   },
   {
    "subject": "不自生的存在方式-7",
@@ -239,9 +258,10 @@
    "object": "存在的系统嵌入性与持久性-7",
    "object_base": "存在的系统嵌入性与持久性",
    "source": "天地所以能长且久者，以其不自生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "自身成为系统不可缺的功能条件，是持久存在的唯一可靠路径。"
+   "note": "自身成为系统不可缺的功能条件，是持久存在的唯一可靠路径。",
+   "direct_evidence": "天地所以能长且久者，以其不自生"
   },
   {
    "subject": "无私-7",
@@ -251,9 +271,10 @@
    "object": "存在论功能不自指，而非道德上的自我牺牲-7",
    "object_base": "存在论功能不自指，而非道德上的自我牺牲",
    "source": "非以其无私邪",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "无私即自身不作为自身的目的，让自身成为他者生成的条件。"
+   "note": "无私即自身不作为自身的目的，让自身成为他者生成的条件。",
+   "direct_evidence": "非以其无私邪"
   },
   {
    "subject": "成其私-7",
@@ -263,9 +284,10 @@
    "object": "个我作为存在者的完整实现，而非私利的最大化-7",
    "object_base": "个我作为存在者的完整实现，而非私利的最大化",
    "source": "故能成其私",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "私=个我存在，成=充分实现。非私利成就，乃存在完成。"
+   "note": "私=个我存在，成=充分实现。非私利成就，乃存在完成。",
+   "direct_evidence": "故能成其私"
   },
   {
    "subject": "目标指向-7",
@@ -275,9 +297,10 @@
    "object": "行为模式的扭曲-7",
    "object_base": "行为模式的扭曲",
    "source": "以其不自生，故能长生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "以自身名誉为指向的行动，会造成对真实目标的偏离。"
+   "note": "以自身名誉为指向的行动，会造成对真实目标的偏离。",
+   "direct_evidence": "以其不自生，故能长生"
   },
   {
    "subject": "管理权威-7",
@@ -289,7 +312,8 @@
    "source": "是以圣人后其身而身先",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "以权威为指向的管理导致控制；以功能为指向的管理自然产生权威。"
+   "note": "以权威为指向的管理导致控制；以功能为指向的管理自然产生权威。",
+   "direct_evidence": "是以圣人后其身而身先"
   },
   {
    "subject": "人类世文明-7",
@@ -299,9 +323,10 @@
    "object": "自生性存在方式-7",
    "object_base": "自生性存在方式",
    "source": "以其不自生，故能长生",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "人类文明以人类繁荣为唯一目的，正在破坏生态系统的功能完整性。"
+   "note": "人类文明以人类繁荣为唯一目的，正在破坏生态系统的功能完整性。",
+   "direct_evidence": "以其不自生，故能长生"
   }
  ],
  "silent_crystals": [

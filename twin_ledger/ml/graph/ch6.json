@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 6,
- "generated": "2026-08-17T17:13:29Z",
+ "generated": "2026-08-17T20:02:20Z",
  "spo": [
   {
    "subject": "谷神-6",
@@ -13,7 +13,8 @@
    "source": "谷神不死",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "文本事实晶体：谷神具有不死之属性"
+   "note": "文本事实晶体：谷神具有不死之属性",
+   "direct_evidence": "谷神不死"
   },
   {
    "subject": "谷神不死-6",
@@ -25,7 +26,8 @@
    "source": "谷神不死，是谓玄牝",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "命名晶体：不死的谷神被命名为玄牝。是谓为功能性命名，非本体论断言"
+   "note": "命名晶体：不死的谷神被命名为玄牝。是谓为功能性命名，非本体论断言",
+   "direct_evidence": "谷神不死，是谓玄牝"
   },
   {
    "subject": "玄牝之门-6",
@@ -37,7 +39,8 @@
    "source": "玄牝之门，是谓天地根",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "命名晶体：玄牝之门被命名为天地之根"
+   "note": "命名晶体：玄牝之门被命名为天地之根",
+   "direct_evidence": "玄牝之门，是谓天地根"
   },
   {
    "subject": "玄牝之门-6",
@@ -49,7 +52,8 @@
    "source": "绵绵若存",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "状态晶体：绵延不绝，若有若无之存续。若字同时表似乎与如此"
+   "note": "状态晶体：绵延不绝，若有若无之存续。若字同时表似乎与如此",
+   "direct_evidence": "绵绵若存"
   },
   {
    "subject": "玄牝之门-6",
@@ -59,9 +63,10 @@
    "object": "用之不勤-6",
    "object_base": "用之不勤",
    "source": "用之不勤",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "功能晶体：用之不尽、不竭"
+   "note": "功能晶体：用之不尽、不竭",
+   "direct_evidence": "用之不勤"
   },
   {
    "subject": "不死-6",
@@ -73,7 +78,8 @@
    "source": "不死",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "训诂晶体：勤读为堇，尽也。不死与不勤互文，不死即不竭。更可能，非确定（或然性推演）"
+   "note": "训诂晶体：勤读为堇，尽也。不死与不勤互文，不死即不竭。更可能，非确定（或然性推演）",
+   "direct_evidence": "不死"
   },
   {
    "subject": "谷-6",
@@ -83,9 +89,10 @@
    "object": "虚空能容-6",
    "object_base": "虚空能容",
    "source": "谷神不死",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "语义晶体（EXTENSION）：谷为虚空能容之象，非动词「养」"
+   "note": "语义晶体（EXTENSION）：谷为虚空能容之象，非动词「养」",
+   "direct_evidence": "谷神不死"
   },
   {
    "subject": "神-6",
@@ -95,9 +102,10 @@
    "object": "生化不测-6",
    "object_base": "生化不测",
    "source": "谷神不死",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "语义晶体（EXTENSION）：神为生化不可测度之能"
+   "note": "语义晶体（EXTENSION）：神为生化不可测度之能",
+   "direct_evidence": "谷神不死"
   },
   {
    "subject": "玄牝-6",
@@ -107,9 +115,10 @@
    "object": "深远母性之门-6",
    "object_base": "深远母性之门",
    "source": "玄牝之门，是谓天地根",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "语义晶体（EXTENSION）：玄为深远，牝为母体，合为深远母性之门"
+   "note": "语义晶体（EXTENSION）：玄为深远，牝为母体，合为深远母性之门",
+   "direct_evidence": "玄牝之门，是谓天地根"
   },
   {
    "subject": "谷神不死-6",
@@ -121,7 +130,8 @@
    "source": "谷神不死，是谓玄牝",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "核心智慧晶体（EXTENSION）：谷神不死是谓虚空生化机制的不竭运行。更可能，非确定（或然性推演）"
+   "note": "核心智慧晶体（EXTENSION）：谷神不死是谓虚空生化机制的不竭运行。更可能，非确定（或然性推演）",
+   "direct_evidence": "谷神不死，是谓玄牝"
   }
  ],
  "silent_crystals": [

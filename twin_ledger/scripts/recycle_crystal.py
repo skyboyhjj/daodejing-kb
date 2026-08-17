@@ -76,25 +76,22 @@ def extract_spo_blocks(md_text: str) -> list:
 # ============ ② 规范化 ============
 # 人读账谓词 → 机备账最小谓词集 映射表（回收站核心：把"话"铸成"砖"）
 PREDICATE_MAP = {
-    # 因果/逻辑
-    "导致": "故", "推出": "故", "引发": "故", "推出结论": "故", "推出结论是": "故",
-    "构成": "是谓", "共同构成": "是谓", "组成": "是谓",
-    "回应的是": "以", "应用": "以", "可被普遍化为": "是谓",
-    # 判断/定义
-    "是": "是", "即是": "是", "在本质上，是": "是谓", "将本章理解为": "是谓",
-    "主张": "曰", "认为": "曰",
-    # 版本/文本
-    "记录七善第三项为": "曰", "存在核心版本争议": "是谓",
-    # 动作
+    # 因果（3 → 故）
+    "导致": "故", "推出": "故",
+    # 判断/定义（7 → 是谓/曰）
+    "构成": "是谓", "组成": "是谓",
+    "可被普遍化为": "是谓", "理解为": "是谓", "版本争议": "是谓", "本质上": "是谓",
+    "主张": "曰", "认为": "曰", "第三项为": "曰", "描述的是": "是",
+    # 目的/应用（2 → 以）
+    "回应的是": "以", "应用": "以",
+    # 动作（7）
     "作用于": "利", "利益": "利", "不与之争": "不争", "处于": "处", "接近": "几",
-    "如同": "若", "类似": "若",
-    # 第1章特有（本体论）
-    "超越": "不", "为……之始": "始", "为……之母": "母", "与……同出": "同出", "通向": "生",
-    # 版本考辨类（第1章新读解）
-    "与王弼本存在关键差异": "异", "存在核心断句争议": "异", "支持第一种断句": "从",
-    "支持第二种断句": "从", "聚焦于": "谓", "在帛书'异名同谓'的印证下，更可能指": "指",
-    # 生成/存在
-    "生": "生", "化": "化", "成为": "成",
+    "如同": "若",
+    # 版本考辨（6）
+    "关键差异": "异", "断句争议": "异", "支持": "从",
+    "聚焦于": "谓", "更可能指": "指",
+    # 第1章本体论（5）
+    "超越": "不", "不可被直接言说": "不", "之始": "始", "之母": "母", "通向": "生",
 }
 def to_base_name(name: str) -> str:
     """实体 → 本体节点名（去分相后缀：'水-8-上善'→'水'；但'故无尤'这类实体名保留）"""
@@ -110,21 +107,18 @@ def to_base_name(name: str) -> str:
 def normalize_predicate(pred: str) -> str:
     """谓词 → 最小谓词集（先查映射表，再直接匹配，去修饰）"""
     pred = pred.strip()
-    # 1. 映射表优先（人读账语言 → 机备账谓词）
-    if pred in PREDICATE_MAP:
-        return PREDICATE_MAP[pred]
+    # 1. 映射表优先（人读账语言 → 机备账谓词，子串匹配）
+    for k, v in PREDICATE_MAP.items():
+        if k in pred:
+            return v
     # 2. 直接匹配最小谓词集
     for edges in PREDICATES.values():
         if pred in edges:
             return pred
-    # 3. '不X' 否定式 → 保留
+    # 3. '不X' 否定式 → 保留（≤3字：不争/不言/无为）
     if pred.startswith("不") and len(pred) <= 3:
         return pred
-    # 4. 尝试从长谓词中提取核心动词（如"在本质上，是"→"是"）
-    for core in ["是谓", "是", "曰", "以", "故", "则", "若", "如", "似", "有", "无", "生", "成"]:
-        if core in pred:
-            return core
-    # 无法归入 → 原样返回（由 Validator 裁决）
+    # 4. v1.2 严格化：长谓词不再提取核心字（防漏洞），映射表无匹配则原样返回由 Validator 拒收
     return pred
 
 
@@ -186,11 +180,19 @@ def infer_status(spo: dict, subject: str = "", pred: str = "") -> str:
     # source 无原文短句（仅章号）→ 默认 EXTENSION，但逻辑谓词（故/则/因/以）且主体含原文词 → 放行 ACTIVE
     src = spo.get("source", "") or spo.get("context", "")
     if not src or re.match(r"^\d+\.?\s*$", src):
-        # 逻辑谓词 + 主体是原文词（夫唯不争/水/道等短词）→ 视为文本直陈
-        if pred in ("故", "则", "因", "以") and subject and len(subject) <= 8:
+        return "EXTENSION"  # v1.2 G2 严格化：无原文短句一律不 ACTIVE（含逻辑谓词）
+    # v1.2 G2 强化：ACTIVE 须逐字对应——source 原文短句中须能指认 subject 与 object
+    src_clean = re.sub(r"^\d+\.\s*", "", src.strip())
+    if pred in ("故", "则", "因", "以"):
+        # 逻辑谓词：subject 须在原文短句中
+        if subject and len(subject) <= 8 and subject in src_clean:
             return "ACTIVE"
         return "EXTENSION"
-    return "ACTIVE"
+    # 一般谓词：subject 与 object 均须在原文短句中指认
+    obj_str = spo.get("object", "")
+    if subject in src_clean and (not obj_str or (isinstance(obj_str, str) and obj_str[:6] in src_clean)):
+        return "ACTIVE"
+    return "EXTENSION"
 
 
 def normalize_spo(raw: dict, chapter: int) -> dict:
@@ -237,6 +239,13 @@ def normalize_spo(raw: dict, chapter: int) -> dict:
     }
     if note:
         brick["note"] = note
+    # v1.2 直陈证据字段（G2 强化）：source 为原文短句时记录，供审阅炉查 ACTIVE 纯度
+    src_clean = source.strip()
+    if src_clean and not re.match(r"^\d+\.?\s*$", src_clean):
+        # 提取原文短句（去掉章号前缀，如 "8.上善若水" → "上善若水"）
+        ev = re.sub(r"^\d+\.\s*", "", src_clean)
+        if len(ev) <= 40:
+            brick["direct_evidence"] = ev
     return brick
 
 
@@ -248,7 +257,7 @@ def validate_brick(b: dict) -> list:
         errors.append("缺 subject")
     if not b.get("predicate"):
         errors.append("缺 predicate")
-    elif b["predicate"] not in set().union(*PREDICATES.values()) and not b["predicate"].startswith("不"):
+    elif b["predicate"] not in set().union(*PREDICATES.values()) and not (b["predicate"].startswith("不") and len(b["predicate"]) <= 3):
         errors.append(f"谓词非法（不在最小谓词集）: {b['predicate']}")
     if b.get("edge_type") not in EDGE_TYPES:
         errors.append(f"edge_type 非法: {b.get('edge_type')}")
@@ -309,7 +318,7 @@ def extract_silent(md_text: str) -> list:
 
 
 
-TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根
 
 
 def _resolve(p):
@@ -322,7 +331,7 @@ def main():
     parser = argparse.ArgumentParser(description="P1 回收站：读解→规范化→入库")
     parser.add_argument("--md", required=True, help="五步读解报告路径")
     parser.add_argument("--chapter", type=int, required=True, help="章号")
-    parser.add_argument("--db", default="../verify/daojing_database_v2.json", help="结构库（取 core_concepts 补实体）")
+    parser.add_argument("--db", default="verify/daojing_database_v2.json", help="结构库（取 core_concepts 补实体）")
     parser.add_argument("--out", default="ml/graph", help="图谱输出目录")
     parser.add_argument("--purity-dir", default="ml/purity", help="净化报告目录（P2 钩子读取）")
     args = parser.parse_args()
@@ -363,6 +372,12 @@ def main():
             rejected.append({"brick": brick, "errors": errs})
         else:
             bricks.append(brick)
+
+    # G7 映射表防膨胀红线（v1.2）：谓词总数硬上限 30 条
+    map_count = len(PREDICATE_MAP)
+    print(f"[G7 映射红线] 谓词映射 {map_count}/30 条" + (" ⚠ 接近上限" if map_count >= 25 else " ✅"))
+    if map_count > 30:
+        print("[G7 违规] 谓词映射超 30 条上限！启动谓词归并，禁止继续新增", file=sys.stderr)
 
     print(f"[规范化] 通过: {len(bricks)} 条")
     print(f"[Validator] 拒收: {len(rejected)} 条")

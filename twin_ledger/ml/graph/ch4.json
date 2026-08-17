@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 4,
- "generated": "2026-08-17T16:47:34Z",
+ "generated": "2026-08-17T20:02:09Z",
  "spo": [
   {
    "subject": "道-4",
@@ -13,7 +13,8 @@
    "source": "道冲",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "冲通盅，器虚也；帛甲作盅"
+   "note": "冲通盅，器虚也；帛甲作盅",
+   "direct_evidence": "道冲"
   },
   {
    "subject": "道之用-4",
@@ -25,7 +26,8 @@
    "source": "而用之或不盈",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "帛乙作又弗盈；或通又，非或许"
+   "note": "帛乙作又弗盈；或通又，非或许",
+   "direct_evidence": "而用之或不盈"
   },
   {
    "subject": "道冲-4",
@@ -37,7 +39,8 @@
    "source": "道冲而用之或不盈",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "体用相即：冲虚为因，不盈为果"
+   "note": "体用相即：冲虚为因，不盈为果",
+   "direct_evidence": "道冲而用之或不盈"
   },
   {
    "subject": "道-4",
@@ -47,9 +50,10 @@
    "object": "万物之宗-4",
    "object_base": "万物之宗",
    "source": "渊兮似万物之宗",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "渊深之喻，非人格祖神"
+   "note": "渊深之喻，非人格祖神",
+   "direct_evidence": "渊兮似万物之宗"
   },
   {
    "subject": "道-4",
@@ -59,9 +63,10 @@
    "object": "或存-4",
    "object_base": "或存",
    "source": "湛兮似或存",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "似存非实，非确定存在"
+   "note": "似存非实，非确定存在",
+   "direct_evidence": "湛兮似或存"
   },
   {
    "subject": "道-4",
@@ -71,9 +76,10 @@
    "object": "帝之先-4",
    "object_base": "帝之先",
    "source": "象帝之先",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "本根优先于帝，非生成时序"
+   "note": "本根优先于帝，非生成时序",
+   "direct_evidence": "象帝之先"
   },
   {
    "subject": "挫其锐-4",
@@ -83,9 +89,10 @@
    "object": "道之玄德-4",
    "object_base": "道之玄德",
    "source": "挫其锐",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "王弼注：锐挫而无损"
+   "note": "王弼注：锐挫而无损",
+   "direct_evidence": "挫其锐"
   },
   {
    "subject": "挫其锐-4",
@@ -95,9 +102,10 @@
    "object": "玄同修持-4",
    "object_base": "玄同修持",
    "source": "挫其锐",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第56章：是谓玄同"
+   "note": "第56章：是谓玄同",
+   "direct_evidence": "挫其锐"
   },
   {
    "subject": "道冲-4",
@@ -109,7 +117,8 @@
    "source": "道冲",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "冲虚之用自然挫锐；体用一如"
+   "note": "冲虚之用自然挫锐；体用一如",
+   "direct_evidence": "道冲"
   },
   {
    "subject": "道-4",
@@ -119,9 +128,10 @@
    "object": "虚而不屈之体-4",
    "object_base": "虚而不屈之体",
    "source": "道冲",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "第5章互证"
+   "note": "第5章互证",
+   "direct_evidence": "道冲"
   },
   {
    "subject": "道之用-4",
@@ -131,9 +141,10 @@
    "object": "不盈之动-4",
    "object_base": "不盈之动",
    "source": "而用之或不盈",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "动而愈出，却永不穷竭"
+   "note": "动而愈出，却永不穷竭",
+   "direct_evidence": "而用之或不盈"
   }
  ],
  "silent_crystals": [

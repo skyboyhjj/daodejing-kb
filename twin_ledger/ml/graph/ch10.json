@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 10,
- "generated": "2026-08-17T17:24:57Z",
+ "generated": "2026-08-17T20:02:27Z",
  "spo": [
   {
    "subject": "载营魄抱一-10",
@@ -11,9 +11,10 @@
    "object": "身魂魄形神不离于一-10",
    "object_base": "身魂魄形神不离于一",
    "source": "载营魄抱一",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "身之营魄本有离散之虞，故以抱一为活态整合。"
+   "note": "身之营魄本有离散之虞，故以抱一为活态整合。",
+   "direct_evidence": "载营魄抱一"
   },
   {
    "subject": "能无离乎-10",
@@ -23,9 +24,10 @@
    "object": "反问揭破‘我能不离’之执-10",
    "object_base": "反问揭破‘我能不离’之执",
    "source": "能无离乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "反问不答，是损去‘我已抱一’的妄念。"
+   "note": "反问不答，是损去‘我已抱一’的妄念。",
+   "direct_evidence": "能无离乎"
   },
   {
    "subject": "专气致柔-10",
@@ -35,9 +37,10 @@
    "object": "聚气于柔而不刚-10",
    "object_base": "聚气于柔而不刚",
    "source": "专气致柔",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "‘专’通‘抟’，非死守，是聚而不散、柔而不折。"
+   "note": "‘专’通‘抟’，非死守，是聚而不散、柔而不折。",
+   "direct_evidence": "专气致柔"
   },
   {
    "subject": "能婴儿乎-10",
@@ -47,9 +50,10 @@
    "object": "婴儿之气全德不亏-10",
    "object_base": "婴儿之气全德不亏",
    "source": "能婴儿乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": "metaphor",
-   "note": "婴儿非退化，而是象征心气未裂、纯而未凿。"
+   "note": "婴儿非退化，而是象征心气未裂、纯而未凿。",
+   "direct_evidence": "能婴儿乎"
   },
   {
    "subject": "涤除玄览-10",
@@ -59,9 +63,10 @@
    "object": "涤去玄观之疵-10",
    "object_base": "涤去玄观之疵",
    "source": "涤除玄览",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "‘玄览’即玄妙观照，‘涤除’即损去观照中的执着。"
+   "note": "‘玄览’即玄妙观照，‘涤除’即损去观照中的执着。",
+   "direct_evidence": "涤除玄览"
   },
   {
    "subject": "能无疵乎-10",
@@ -71,9 +76,10 @@
    "object": "观照本身亦不可执-10",
    "object_base": "观照本身亦不可执",
    "source": "能无疵乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "纵然‘涤除’亦不落‘我已涤净’之疵。"
+   "note": "纵然‘涤除’亦不落‘我已涤净’之疵。",
+   "direct_evidence": "能无疵乎"
   },
   {
    "subject": "爱民治国-10",
@@ -85,7 +91,8 @@
    "source": "爱民治国",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "‘爱’‘治’皆易沦为有为宰制，故以无为节之。"
+   "note": "‘爱’‘治’皆易沦为有为宰制，故以无为节之。",
+   "direct_evidence": "爱民治国"
   },
   {
    "subject": "能无为乎-10",
@@ -95,9 +102,10 @@
    "object": "对治理者‘我能有为’之执的悬置-10",
    "object_base": "对治理者‘我能有为’之执的悬置",
    "source": "能无为乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "无为非不作为，是不以私意宰制民物。"
+   "note": "无为非不作为，是不以私意宰制民物。",
+   "direct_evidence": "能无为乎"
   },
   {
    "subject": "天门开阖-10",
@@ -107,9 +115,10 @@
    "object": "天人出入开阖之枢机-10",
    "object_base": "天人出入开阖之枢机",
    "source": "天门开阖",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "不指实为某一器官，而是道在人身人世的通口。"
+   "note": "不指实为某一器官，而是道在人身人世的通口。",
+   "direct_evidence": "天门开阖"
   },
   {
    "subject": "能为雌乎-10",
@@ -119,9 +128,10 @@
    "object": "于开阖枢机中守阴柔-10",
    "object_base": "于开阖枢机中守阴柔",
    "source": "能为雌乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "雌为受、静、下，故开阖而不为开阖所逐。"
+   "note": "雌为受、静、下，故开阖而不为开阖所逐。",
+   "direct_evidence": "能为雌乎"
   },
   {
    "subject": "明白四达-10",
@@ -131,9 +141,10 @@
    "object": "智照通达四方-10",
    "object_base": "智照通达四方",
    "source": "明白四达",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "‘明’与‘白’叠言，极状‘知’之周遍。"
+   "note": "‘明’与‘白’叠言，极状‘知’之周遍。",
+   "direct_evidence": "明白四达"
   },
   {
    "subject": "能无知乎-10",
@@ -143,9 +154,10 @@
    "object": "通达后仍不落分别知-10",
    "object_base": "通达后仍不落分别知",
    "source": "能无知乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "‘无知’非蒙昧，是损去知见之执。"
+   "note": "‘无知’非蒙昧，是损去知见之执。",
+   "direct_evidence": "能无知乎"
   },
   {
    "subject": "生之畜之-10",
@@ -155,9 +167,10 @@
    "object": "道之生养万物-10",
    "object_base": "道之生养万物",
    "source": "生之畜之",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "‘畜’通‘蓄’，养而不伤。"
+   "note": "‘畜’通‘蓄’，养而不伤。",
+   "direct_evidence": "生之畜之"
   },
   {
    "subject": "生而不有-10",
@@ -167,9 +180,10 @@
    "object": "生养而不占有-10",
    "object_base": "生养而不占有",
    "source": "生而不有",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "玄德第一义：生非私有。"
+   "note": "玄德第一义：生非私有。",
+   "direct_evidence": "生而不有"
   },
   {
    "subject": "为而不恃-10",
@@ -179,9 +193,10 @@
    "object": "作为而不依凭-10",
    "object_base": "作为而不依凭",
    "source": "为而不恃",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "玄德第二义：为不恃功。"
+   "note": "玄德第二义：为不恃功。",
+   "direct_evidence": "为而不恃"
   },
   {
    "subject": "长而不宰-10",
@@ -191,9 +206,10 @@
    "object": "长养而不主宰-10",
    "object_base": "长养而不主宰",
    "source": "长而不宰",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "玄德第三义：长不主控。"
+   "note": "玄德第三义：长不主控。",
+   "direct_evidence": "长而不宰"
   },
   {
    "subject": "是谓玄德-10",
@@ -203,9 +219,10 @@
    "object": "不有、不恃、不宰之深德-10",
    "object_base": "不有、不恃、不宰之深德",
    "source": "是谓玄德",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "玄德为生养者内在的否定性深度，非世俗德目。"
+   "note": "玄德为生养者内在的否定性深度，非世俗德目。",
+   "direct_evidence": "是谓玄德"
   },
   {
    "subject": "能无离乎-10",
@@ -217,7 +234,8 @@
    "source": "能无离乎",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "以反问为刀，不落‘修成’之执。"
+   "note": "以反问为刀，不落‘修成’之执。",
+   "direct_evidence": "能无离乎"
   },
   {
    "subject": "六问-10",
@@ -227,9 +245,10 @@
    "object": "为道日损之具体展开-10",
    "object_base": "为道日损之具体展开",
    "source": "能无离乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "呼应第48章‘损之又损，以至于无为’。"
+   "note": "呼应第48章‘损之又损，以至于无为’。",
+   "direct_evidence": "能无离乎"
   },
   {
    "subject": "玄德-10",
@@ -239,9 +258,10 @@
    "object": "生而不有、为而不恃、长而不宰-10",
    "object_base": "生而不有、为而不恃、长而不宰",
    "source": "生而不有",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "玄德是生养活动中内在的否定性三维。"
+   "note": "玄德是生养活动中内在的否定性三维。",
+   "direct_evidence": "生而不有"
   },
   {
    "subject": "六问-10",
@@ -253,7 +273,8 @@
    "source": "能无离乎",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "反问不指实境，只作悬置之刀。"
+   "note": "反问不指实境，只作悬置之刀。",
+   "direct_evidence": "能无离乎"
   },
   {
    "subject": "爱民治国-10",
@@ -265,7 +286,8 @@
    "source": "爱民治国",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "历史语境：针对战国君主以‘爱民治国’之名行专制之实。"
+   "note": "历史语境：针对战国君主以‘爱民治国’之名行专制之实。",
+   "direct_evidence": "爱民治国"
   },
   {
    "subject": "一切生养性活动-10",
@@ -275,9 +297,10 @@
    "object": "生而不有、为而不恃、长而不宰-10",
    "object_base": "生而不有、为而不恃、长而不宰",
    "source": "生而不有",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "普遍化为创造—爱的伦理：给予生命而不占有其未来。"
+   "note": "普遍化为创造—爱的伦理：给予生命而不占有其未来。",
+   "direct_evidence": "生而不有"
   },
   {
    "subject": "一切修为性活动-10",
@@ -289,7 +312,8 @@
    "source": "能无离乎",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "普遍化为‘非目标导向的自我觉照’。"
+   "note": "普遍化为‘非目标导向的自我觉照’。",
+   "direct_evidence": "能无离乎"
   },
   {
    "subject": "正念觉察-10",
@@ -299,9 +323,10 @@
    "object": "不占有觉察的状态本身-10",
    "object_base": "不占有觉察的状态本身",
    "source": "涤除玄览",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "若以‘我很正念’为成就，即成疵。"
+   "note": "若以‘我很正念’为成就，即成疵。",
+   "direct_evidence": "涤除玄览"
   },
   {
    "subject": "成长型思维-10",
@@ -311,9 +336,10 @@
    "object": "不自恃所成-10",
    "object_base": "不自恃所成",
    "source": "为而不恃",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": "metaphor",
-   "note": "成长不止于‘我有某项能力’，而在‘能而不恃’。"
+   "note": "成长不止于‘我有某项能力’，而在‘能而不恃’。",
+   "direct_evidence": "为而不恃"
   },
   {
    "subject": "优秀领导者-10",
@@ -323,9 +349,10 @@
    "object": "生养组织而不将其私有化-10",
    "object_base": "生养组织而不将其私有化",
    "source": "长而不宰",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "真正的领导不是控制，是托举与成全。"
+   "note": "真正的领导不是控制，是托举与成全。",
+   "direct_evidence": "长而不宰"
   },
   {
    "subject": "无为管理-10",
@@ -337,7 +364,8 @@
    "source": "爱民治国",
    "status": "EXTENSION",
    "subtype": "metaphor",
-   "note": "现代‘服务型领导’的价值内核。"
+   "note": "现代‘服务型领导’的价值内核。",
+   "direct_evidence": "爱民治国"
   },
   {
    "subject": "技术文明-10",
@@ -347,9 +375,10 @@
    "object": "明白四达而或丧无知之虚灵-10",
    "object_base": "明白四达而或丧无知之虚灵",
    "source": "明白四达",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "算法越是明达，越需警惕失去‘不知之知’。"
+   "note": "算法越是明达，越需警惕失去‘不知之知’。",
+   "direct_evidence": "明白四达"
   },
   {
    "subject": "知识生产-10",
@@ -361,7 +390,8 @@
    "source": "能无知乎",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "AI时代：知识越可存取，虚灵即心越不可占。"
+   "note": "AI时代：知识越可存取，虚灵即心越不可占。",
+   "direct_evidence": "能无知乎"
   }
  ],
  "silent_crystals": [

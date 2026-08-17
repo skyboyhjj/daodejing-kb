@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 5,
- "generated": "2026-08-17T17:08:06Z",
+ "generated": "2026-08-17T20:02:10Z",
  "spo": [
   {
    "subject": "天地不仁-5",
@@ -11,9 +11,10 @@
    "object": "无偏私之自然运作-5",
    "object_base": "无偏私之自然运作",
    "source": "天地不仁",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "哲学解释：天地的运作中没有人伦之仁，只有虚静之自然"
+   "note": "哲学解释：天地的运作中没有人伦之仁，只有虚静之自然",
+   "direct_evidence": "天地不仁"
   },
   {
    "subject": "圣人不仁-5",
@@ -23,9 +24,10 @@
    "object": "去私仁而任自然-5",
    "object_base": "去私仁而任自然",
    "source": "圣人不仁",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "圣人对天地之虚的效法，超越偏私之仁的小养"
+   "note": "圣人对天地之虚的效法，超越偏私之仁的小养",
+   "direct_evidence": "圣人不仁"
   },
   {
    "subject": "刍狗-5",
@@ -35,9 +37,10 @@
    "object": "时过则弃的祭祀之物-5",
    "object_base": "时过则弃的祭祀之物",
    "source": "以万物为刍狗",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "《庄子·天运》证：刍狗未陈则尊，已陈则弃；喻天地任万物自然"
+   "note": "《庄子·天运》证：刍狗未陈则尊，已陈则弃；喻天地任万物自然",
+   "direct_evidence": "以万物为刍狗"
   },
   {
    "subject": "橐籥-5",
@@ -47,9 +50,10 @@
    "object": "中虚之象-5",
    "object_base": "中虚之象",
    "source": "其犹橐籥乎",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "橐籥为风箱，中空而鼓风不竭；虚的具象"
+   "note": "橐籥为风箱，中空而鼓风不竭；虚的具象",
+   "direct_evidence": "其犹橐籥乎"
   },
   {
    "subject": "守中-5",
@@ -59,9 +63,10 @@
    "object": "虚静之持守-5",
    "object_base": "虚静之持守",
    "source": "不如守中",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "守中即守虚，如橐籥之中空，故不穷竭"
+   "note": "守中即守虚，如橐籥之中空，故不穷竭",
+   "direct_evidence": "不如守中"
   },
   {
    "subject": "输入过载-5",
@@ -71,9 +76,10 @@
    "object": "数穷-5",
    "object_base": "数穷",
    "source": "多言数穷",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "现实应用：信息过载导致主体耗竭；闻与言本质同一，皆外求"
+   "note": "现实应用：信息过载导致主体耗竭；闻与言本质同一，皆外求",
+   "direct_evidence": "多言数穷"
   },
   {
    "subject": "虚静-5",
@@ -83,9 +89,10 @@
    "object": "不枯竭-5",
    "object_base": "不枯竭",
    "source": "虚而不屈",
-   "status": "ACTIVE",
+   "status": "EXTENSION",
    "subtype": null,
-   "note": "心理与组织皆然：虚静缓冲是持续运作的前提"
+   "note": "心理与组织皆然：虚静缓冲是持续运作的前提",
+   "direct_evidence": "虚而不屈"
   },
   {
    "subject": "守中-5",
@@ -97,7 +104,8 @@
    "source": "不如守中",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "从哲学宇宙论向心理实践的迁移：守虚即复源"
+   "note": "从哲学宇宙论向心理实践的迁移：守虚即复源",
+   "direct_evidence": "不如守中"
   }
  ],
  "silent_crystals": [
