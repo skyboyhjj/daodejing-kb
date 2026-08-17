@@ -1,0 +1,163 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 4,
+ "generated": "2026-08-17T16:47:34Z",
+ "spo": [
+  {
+   "subject": "道-4",
+   "subject_base": "道",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "冲-4",
+   "object_base": "冲",
+   "source": "道冲",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "冲通盅，器虚也；帛甲作盅"
+  },
+  {
+   "subject": "道之用-4",
+   "subject_base": "道之用",
+   "predicate": "有属性",
+   "edge_type": "实",
+   "object": "不盈-4",
+   "object_base": "不盈",
+   "source": "而用之或不盈",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "帛乙作又弗盈；或通又，非或许"
+  },
+  {
+   "subject": "道冲-4",
+   "subject_base": "道冲",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "用之不盈-4",
+   "object_base": "用之不盈",
+   "source": "道冲而用之或不盈",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "体用相即：冲虚为因，不盈为果"
+  },
+  {
+   "subject": "道-4",
+   "subject_base": "道",
+   "predicate": "似",
+   "edge_type": "喻",
+   "object": "万物之宗-4",
+   "object_base": "万物之宗",
+   "source": "渊兮似万物之宗",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "渊深之喻，非人格祖神"
+  },
+  {
+   "subject": "道-4",
+   "subject_base": "道",
+   "predicate": "似",
+   "edge_type": "喻",
+   "object": "或存-4",
+   "object_base": "或存",
+   "source": "湛兮似或存",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "似存非实，非确定存在"
+  },
+  {
+   "subject": "道-4",
+   "subject_base": "道",
+   "predicate": "似",
+   "edge_type": "喻",
+   "object": "帝之先-4",
+   "object_base": "帝之先",
+   "source": "象帝之先",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "本根优先于帝，非生成时序"
+  },
+  {
+   "subject": "挫其锐-4",
+   "subject_base": "挫其锐",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "道之玄德-4",
+   "object_base": "道之玄德",
+   "source": "挫其锐",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "王弼注：锐挫而无损"
+  },
+  {
+   "subject": "挫其锐-4",
+   "subject_base": "挫其锐",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "玄同修持-4",
+   "object_base": "玄同修持",
+   "source": "挫其锐",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第56章：是谓玄同"
+  },
+  {
+   "subject": "道冲-4",
+   "subject_base": "道冲",
+   "predicate": "以",
+   "edge_type": "逻辑",
+   "object": "挫其锐-4",
+   "object_base": "挫其锐",
+   "source": "道冲",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "冲虚之用自然挫锐；体用一如"
+  },
+  {
+   "subject": "道-4",
+   "subject_base": "道",
+   "predicate": "谓",
+   "edge_type": "实",
+   "object": "虚而不屈之体-4",
+   "object_base": "虚而不屈之体",
+   "source": "道冲",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第5章互证"
+  },
+  {
+   "subject": "道之用-4",
+   "subject_base": "道之用",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "不盈之动-4",
+   "object_base": "不盈之动",
+   "source": "而用之或不盈",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "动而愈出，却永不穷竭"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "损去浮尘：过度神学解读",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：过度科学附会",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：过度庸俗化",
+   "reason": "过度解读，划掉不说"
+  }
+ ],
+ "silent_count": 3,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}

@@ -53,7 +53,7 @@ PROMPT_FILE = Path(os.environ.get(
 # ===== DeepSeek API 配置 =====
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 DEEPSEEK_MODEL = "deepseek-v4-pro"  # 需要强推理能力
-MAX_TOKENS = 12288
+MAX_TOKENS = 16384
 TEMPERATURE = 0.8
 TOP_P = 0.9
 
