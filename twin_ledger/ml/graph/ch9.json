@@ -1,0 +1,203 @@
+{
+ "schema": "machine_ledger_v1.1",
+ "chapter": 9,
+ "generated": "2026-08-17T17:22:28Z",
+ "spo": [
+  {
+   "subject": "帛书甲本第九章首句-9",
+   "subject_base": "帛书甲本第九章首句",
+   "predicate": "异",
+   "edge_type": "实",
+   "object": "王弼本章首句-9",
+   "object_base": "王弼本章首句",
+   "source": "持而盈之",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "甲本作“植”，王弼本作“持”，“植”疑为“持”之借字"
+  },
+  {
+   "subject": "王弼本“金玉满堂”-9",
+   "subject_base": "王弼本“金玉满堂”",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "帛书“金玉盈室”之避讳改字-9",
+   "object_base": "帛书“金玉盈室”之避讳改字",
+   "source": "金玉满堂",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "汉避刘盈讳，改“盈”为“满”"
+  },
+  {
+   "subject": "帛书乙本“功遂身退”-9",
+   "subject_base": "帛书乙本“功遂身退”",
+   "predicate": "从",
+   "edge_type": "实",
+   "object": "王弼本“功遂身退”-9",
+   "object_base": "王弼本“功遂身退”",
+   "source": "功遂身退",
+   "status": "EXTENSION",
+   "subtype": null,
+   "note": "“退”字在乙本与王弼本一致"
+  },
+  {
+   "subject": "持而盈之-9",
+   "subject_base": "持而盈之",
+   "predicate": "若",
+   "edge_type": "喻",
+   "object": "金玉满堂-9",
+   "object_base": "金玉满堂",
+   "source": "持而盈之",
+   "status": "ACTIVE",
+   "subtype": "metaphor",
+   "note": "同构：人主动追求过度状态"
+  },
+  {
+   "subject": "揣而锐之-9",
+   "subject_base": "揣而锐之",
+   "predicate": "若",
+   "edge_type": "喻",
+   "object": "富贵而骄-9",
+   "object_base": "富贵而骄",
+   "source": "揣而锐之",
+   "status": "ACTIVE",
+   "subtype": "metaphor",
+   "note": "同构：过度状态导致自身瓦解"
+  },
+  {
+   "subject": "功遂身退-9",
+   "subject_base": "功遂身退",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "功成而弗居-9",
+   "object_base": "功成而弗居",
+   "source": "功遂身退",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第2章互文印证"
+  },
+  {
+   "subject": "反者道之动-9",
+   "subject_base": "反者道之动",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "功遂身退之哲学基础-9",
+   "object_base": "功遂身退之哲学基础",
+   "source": "反者道之动",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第40章互文印证"
+  },
+  {
+   "subject": "天之道-9",
+   "subject_base": "天之道",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "损有余而补不足-9",
+   "object_base": "损有余而补不足",
+   "source": "天之道",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第77章互文印证"
+  },
+  {
+   "subject": "持而盈之-9",
+   "subject_base": "持而盈之",
+   "predicate": "指",
+   "edge_type": "实",
+   "object": "把持不放直至满溢-9",
+   "object_base": "把持不放直至满溢",
+   "source": "持而盈之",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "“持”释为把持、执持"
+  },
+  {
+   "subject": "盈-9",
+   "subject_base": "盈",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "过度状态的象征-9",
+   "object_base": "过度状态的象征",
+   "source": "盈",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "盈=满溢=过度"
+  },
+  {
+   "subject": "盈-9",
+   "subject_base": "盈",
+   "predicate": "故",
+   "edge_type": "逻辑",
+   "object": "自我否定-9",
+   "object_base": "自我否定",
+   "source": "盈",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "盈满本身导致自身瓦解，非外力"
+  },
+  {
+   "subject": "揣而锐之-9",
+   "subject_base": "揣而锐之",
+   "predicate": "指",
+   "edge_type": "实",
+   "object": "捶击使锋利-9",
+   "object_base": "捶击使锋利",
+   "source": "揣而锐之",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "“揣”释为锤炼（zhuī）"
+  },
+  {
+   "subject": "功遂身退-9",
+   "subject_base": "功遂身退",
+   "predicate": "指",
+   "edge_type": "实",
+   "object": "在成功时刻主动反向运动-9",
+   "object_base": "在成功时刻主动反向运动",
+   "source": "功遂身退",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "“反者道之动”的具体实践"
+  },
+  {
+   "subject": "天之道-9",
+   "subject_base": "天之道",
+   "predicate": "是谓",
+   "edge_type": "实",
+   "object": "损有余而补不足-9",
+   "object_base": "损有余而补不足",
+   "source": "天之道",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "第77章互文印证"
+  }
+ ],
+ "silent_crystals": [
+  {
+   "●": "损去浮尘：“金玉满堂”是反资本主义宣言",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“揣而锐之”是反对锻炼能力",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“功遂身退”是逃避责任",
+   "reason": "过度解读，划掉不说"
+  },
+  {
+   "●": "损去浮尘：“不如其已”是鼓励安于现状",
+   "reason": "过度解读，划掉不说"
+  }
+ ],
+ "silent_count": 4,
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
+}
