@@ -46,8 +46,7 @@ TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent
 PROJECT_ROOT = TL_ROOT.parent  # daodejing-kb/
 PROMPT_FILE = Path(os.environ.get(
     "FURNACE_PROMPT",
-    str(PROJECT_ROOT.parent / "docs" / "03-twin_ledger" / "01-Prompt" /
-        "烧火童子01_读解生成20260815.md")
+    str(TL_ROOT / "prompts" / "烧火童子01_读解生成20260815.md")
 ))
 
 # ===== DeepSeek API 配置 =====
