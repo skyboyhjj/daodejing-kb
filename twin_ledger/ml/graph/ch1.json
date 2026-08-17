@@ -1,7 +1,7 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 1,
- "generated": "2026-08-14T10:48:52Z",
+ "generated": "2026-08-15T13:45:51Z",
  "spo": [
   {
    "subject": "帛书甲本/乙本-1",
@@ -150,7 +150,7 @@
   {
    "subject": "道-1",
    "subject_base": "道",
-   "predicate": "不可被直接言说，但可通过",
+   "predicate": "不",
    "edge_type": "实",
    "object": "'无'与'有'两个维度进行动态观照-1",
    "object_base": "'无'与'有'两个维度进行动态观照",
@@ -267,5 +267,13 @@
   }
  ],
  "silent_count": 5,
- "purity": null
+ "purity": {
+  "reviewed": true,
+  "questions": [
+   "这一章，哪一句/哪个词，是我决定'不提取'的？",
+   "这条边/这颗晶体，是文本直陈，还是我的推演？",
+   "若在推演，我是否已准备标注为'🟠创见延伸'而非'🔵文本事实'？"
+  ],
+  "note": "静默审查前置：净化钩子（purify_crystal.py）执行于铸砖前"
+ }
 }
