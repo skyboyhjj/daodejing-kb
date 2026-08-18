@@ -56,6 +56,17 @@ def extract_silent_auto(md_text: str) -> list:
         item = m.group(1).strip()
         if item and len(item) > 3:
             silent.append({"●": f"损去浮尘：{item}", "reason": "过度解读，划掉不说"})
+    # 格式4：静默晶体表格（生产炉 v1.1 输出：| "原文词" | 理由 | 或 | 原文词 | 理由 |）
+    # 匹配 "## 静默晶体" 后的表格行——静默项支持带引号或无引号（G6b-2 优化）
+    m = re.search(r"##\s*静默晶体(.*?)(?:\n##|\Z)", md_text, re.S)
+    if m:
+        for row in re.finditer(r"\|\s*(?:[“\"](.+?)[”\"]|([^|]+?))\s*\|\s*(.+?)\s*\|", m.group(1)):
+            item = row.group(1) or row.group(2)
+            reason = row.group(3).strip()
+            item = item.strip() if item else ""
+            # 过滤表头（静默项）与分隔行（纯 - 组成）
+            if item and len(item) > 1 and item != "静默项" and not re.fullmatch(r"-+", item):
+                silent.append({"●": item, "reason": reason[:30] or "静默晶体（不提取的原文）"})
     return silent
 
 
@@ -133,7 +144,7 @@ def write_purity_report(review: dict, out_dir: Path) -> Path:
 
 
 
-TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根（scripts/ 在根下）  # twin_ledger/ 根
+TL_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent  # twin_ledger/ 根
 
 
 def _resolve(p):
@@ -147,8 +158,8 @@ def main():
     parser.add_argument("--md", required=True, help="五步读解报告路径")
     parser.add_argument("--chapter", type=int, required=True, help="章号")
     parser.add_argument("--add", action="append", default=[], help="人工补充静默（可多次）：--add '句子' --add '理由' 成对使用")
-    parser.add_argument("--log", default="silent_log.md", help="空白日志路径")
-    parser.add_argument("--report-dir", default="ml/purity", help="净化报告输出目录")
+    parser.add_argument("--log", default="machine-ledger/silent_log.md", help="空白日志路径")
+    parser.add_argument("--report-dir", default="machine-ledger/purity", help="净化报告输出目录")
     parser.add_argument("--view", action="store_true", help="仅查看，不写入日志")
     args = parser.parse_args()
 
