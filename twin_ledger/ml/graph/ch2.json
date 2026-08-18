@@ -1,50 +1,37 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 2,
- "generated": "2026-08-17T20:01:55Z",
+ "generated": "2026-08-18T21:01:59Z",
  "spo": [
   {
-   "subject": "长短相较-2",
-   "subject_base": "长短相较",
-   "predicate": "异",
+   "subject": "有无-2",
+   "subject_base": "有无",
+   "predicate": "生",
    "edge_type": "实",
-   "object": "长短相形-2",
-   "object_base": "长短相形",
-   "source": "长短相较",
-   "status": "EXTENSION",
+   "object": "相-2",
+   "object_base": "相",
+   "source": "有无相生",
+   "status": "ACTIVE",
    "subtype": null,
-   "note": "帛书本作'长短相形'，'形'为古字，'较'为后起假借（俞樾说）",
-   "direct_evidence": "长短相较"
+   "note": "有无互相生成，互为存在条件",
+   "direct_evidence": "有无相生"
   },
   {
-   "subject": "前后相随-2",
-   "subject_base": "前后相随",
-   "predicate": "异",
+   "subject": "难易-2",
+   "subject_base": "难易",
+   "predicate": "成",
    "edge_type": "实",
-   "object": "先后相随-2",
-   "object_base": "先后相随",
-   "source": "前后相随",
-   "status": "EXTENSION",
+   "object": "相-2",
+   "object_base": "相",
+   "source": "难易相成",
+   "status": "ACTIVE",
    "subtype": null,
-   "note": "帛书本作'先后相随'，语义相通",
-   "direct_evidence": "前后相随"
+   "note": "难易互相成就，非孤立即成",
+   "direct_evidence": "难易相成"
   },
   {
-   "subject": "高下相倾-2",
-   "subject_base": "高下相倾",
-   "predicate": "异",
-   "edge_type": "实",
-   "object": "高下相盈-2",
-   "object_base": "高下相盈",
-   "source": "高下相倾",
-   "status": "EXTENSION",
-   "subtype": null,
-   "note": "帛书本作'高下相盈'，'盈'与'倾'均为依存关系",
-   "direct_evidence": "高下相倾"
-  },
-  {
-   "subject": "天下皆知美之为美-2",
-   "subject_base": "天下皆知美之为美",
+   "subject": "知美之为美-2",
+   "subject_base": "知美之为美",
    "predicate": "故",
    "edge_type": "逻辑",
    "object": "斯恶已-2",
@@ -52,12 +39,12 @@
    "source": "天下皆知美之为美，斯恶已",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "认知行为本身产生对立面",
+   "note": "执取美名，恶之对待即生",
    "direct_evidence": "天下皆知美之为美，斯恶已"
   },
   {
-   "subject": "皆知善之为善-2",
-   "subject_base": "皆知善之为善",
+   "subject": "知善之为善-2",
+   "subject_base": "知善之为善",
    "predicate": "故",
    "edge_type": "逻辑",
    "object": "斯不善已-2",
@@ -65,47 +52,8 @@
    "source": "皆知善之为善，斯不善已",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "善与不善同体而生",
+   "note": "执取善名，不善之对待即生",
    "direct_evidence": "皆知善之为善，斯不善已"
-  },
-  {
-   "subject": "有无-2",
-   "subject_base": "有无",
-   "predicate": "同出",
-   "edge_type": "实",
-   "object": "异名-2",
-   "object_base": "异名",
-   "source": "此两者同出而异名",
-   "status": "EXTENSION",
-   "subtype": null,
-   "note": "第1章互文，有无同源异名",
-   "direct_evidence": "此两者同出而异名"
-  },
-  {
-   "subject": "有-2",
-   "subject_base": "有",
-   "predicate": "利",
-   "edge_type": "实",
-   "object": "无-2",
-   "object_base": "无",
-   "source": "有之以为利，无之以为用",
-   "status": "ACTIVE",
-   "subtype": null,
-   "note": "第11章互文，有无功能合一",
-   "direct_evidence": "有之以为利，无之以为用"
-  },
-  {
-   "subject": "分别性概念-2",
-   "subject_base": "分别性概念",
-   "predicate": "无",
-   "edge_type": "实",
-   "object": "独立存在-2",
-   "object_base": "独立存在",
-   "source": "有无相生",
-   "status": "EXTENSION",
-   "subtype": null,
-   "note": "对待性原理：任何分别概念不能脱离对立面独立存在",
-   "direct_evidence": "有无相生"
   },
   {
    "subject": "圣人-2",
@@ -117,34 +65,47 @@
    "source": "圣人处无为之事",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "圣人的实践：不以任何一端为固定立场",
+   "note": "不执一端，以无为为事",
    "direct_evidence": "圣人处无为之事"
   },
   {
    "subject": "圣人-2",
    "subject_base": "圣人",
-   "predicate": "言",
-   "edge_type": "实",
+   "predicate": "以",
+   "edge_type": "逻辑",
    "object": "不言之教-2",
    "object_base": "不言之教",
-   "source": "行不言之教",
+   "source": "圣人处无为之事，行不言之教",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "圣人的教化：不借助标签化言语",
-   "direct_evidence": "行不言之教"
+   "note": "以不言为教法，身教胜言教",
+   "direct_evidence": "圣人处无为之事，行不言之教"
   },
   {
-   "subject": "圣人-2",
-   "subject_base": "圣人",
+   "subject": "万物-2",
+   "subject_base": "万物",
    "predicate": "生",
    "edge_type": "实",
-   "object": "万物-2",
-   "object_base": "万物",
+   "object": "不有-2",
+   "object_base": "不有",
    "source": "生而不有",
    "status": "EXTENSION",
    "subtype": null,
-   "note": "圣人对万物：生养却不占有",
+   "note": "生养而不占有，不有为限定语",
    "direct_evidence": "生而不有"
+  },
+  {
+   "subject": "功成-2",
+   "subject_base": "功成",
+   "predicate": "居",
+   "edge_type": "实",
+   "object": "弗居-2",
+   "object_base": "弗居",
+   "source": "功成而弗居",
+   "status": "ACTIVE",
+   "subtype": null,
+   "note": "功成而不居功，弗居为否定限定",
+   "direct_evidence": "功成而弗居"
   },
   {
    "subject": "弗居-2",
@@ -156,25 +117,25 @@
    "source": "夫唯弗居，是以不去",
    "status": "ACTIVE",
    "subtype": null,
-   "note": "不居功，功业反而长存（全书'反者道之动'的第一个实例）",
+   "note": "正因不居，功反不失",
    "direct_evidence": "夫唯弗居，是以不去"
   }
  ],
  "silent_crystals": [
   {
-   "●": "损去浮尘：将\"音声相和\"与《乐论》\"审声以知音\"建立音乐学谱系",
+   "●": "损去浮尘：“音声相和”是古代音乐治疗理论",
    "reason": "过度解读，划掉不说"
   },
   {
-   "●": "损去浮尘：将\"前后相随\"引申为\"时间之箭\"的热力学讨论",
+   "●": "损去浮尘：“前后相随”证明老子有进步史观",
    "reason": "过度解读，划掉不说"
   },
   {
-   "●": "损去浮尘：将\"高下相倾\"与\"山高水低\"的生态学比喻强行对应",
+   "●": "损去浮尘：“夫唯弗居，是以不去”是职场生存鸡汤",
    "reason": "过度解读，划掉不说"
   },
   {
-   "●": "损去浮尘：为六对排比的\"六\"赋以阴阳数术含义",
+   "●": "损去浮尘：“处无为之事”等于政府彻底不作为",
    "reason": "过度解读，划掉不说"
   }
  ],

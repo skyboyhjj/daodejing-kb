@@ -1,21 +1,8 @@
 {
  "schema": "machine_ledger_v1.1",
  "chapter": 9,
- "generated": "2026-08-17T20:02:25Z",
+ "generated": "2026-08-18T21:02:02Z",
  "spo": [
-  {
-   "subject": "帛书甲本第九章首句-9",
-   "subject_base": "帛书甲本第九章首句",
-   "predicate": "异",
-   "edge_type": "实",
-   "object": "王弼本章首句-9",
-   "object_base": "王弼本章首句",
-   "source": "持而盈之",
-   "status": "EXTENSION",
-   "subtype": null,
-   "note": "甲本作“植”，王弼本作“持”，“植”疑为“持”之借字",
-   "direct_evidence": "持而盈之"
-  },
   {
    "subject": "王弼本“金玉满堂”-9",
    "subject_base": "王弼本“金玉满堂”",
