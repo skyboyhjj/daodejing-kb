@@ -275,7 +275,7 @@ def validate_brick(b: dict) -> list:
 # ============ ④ 入库 ============
 def write_graph(chapter: int, bricks: list, silent: list, out_dir: Path, purity_review: dict = None) -> Path:
     graph = {
-        "schema": "machine_ledger_v1.1",
+        "schema": "machine_ledger_v1.3",
         "chapter": chapter,
         "generated": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "spo": bricks,
