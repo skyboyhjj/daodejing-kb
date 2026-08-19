@@ -1,12 +1,12 @@
 {
- "schema": "machine_ledger_v1.1",
+ "schema": "machine_ledger_v1.3",
  "chapter": 1,
  "generated": "2026-08-15T13:45:51Z",
  "spo": [
   {
    "subject": "帛书甲本/乙本-1",
    "subject_base": "帛书甲本/乙本",
-   "predicate": "异",
+   "predicate": "是谓",
    "edge_type": "实",
    "object": "帛书作'两者同出，异名同谓'，王弼本作'此两者同出而异名，同谓之玄'-1",
    "object_base": "帛书作'两者同出，异名同谓'，王弼本作'此两者同出而异名，同谓之玄'",
@@ -18,7 +18,7 @@
   {
    "subject": "王弼本第1章-1",
    "subject_base": "王弼本第1章",
-   "predicate": "异",
+   "predicate": "是谓",
    "edge_type": "实",
    "object": "'常无欲以观其妙，常有欲以观其徼'-1",
    "object_base": "'常无欲以观其妙，常有欲以观其徼'",
