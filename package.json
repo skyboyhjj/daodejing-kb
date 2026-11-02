@@ -13,6 +13,7 @@
         "pipeline": "node scripts/batch-runner.js",
         "build:public-metadata": "node scripts/build-public-metadata.js",
         "check:metadata": "node scripts/build-public-metadata.js --check",
+        "restore:metadata": "node scripts/restore-family-metadata.js",
         "test:metadata": "node scripts/test-metadata.js",
         "test:metadata:verbose": "node scripts/test-metadata.js --verbose",
         "ci": "node scripts/validate.js && node scripts/build-index.js --check && node scripts/build-public-metadata.js --check && node scripts/test-metadata.js"

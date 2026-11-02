@@ -679,6 +679,23 @@ if (hash !== currentPublicMetadata._content_hash) {
 | `data/family_metadata_public.json`  | **是**          | 脱敏版本，生产部署所需            |
 | `data/family_metadata_staging.json` | **否**          | 临时暂存区，不应进入版本库        |
 
+#### 本地开发：恢复完整版元数据文件
+
+`data/family_metadata.json` 不进版本库；本地缺此文件时，`GET /api/metadata` 会返回 **500**（`元数据加载失败`）。开发环境需从 git 历史恢复：
+
+```bash
+# 一键恢复（Node 标准库 + 系统 git，跨平台；已存在则跳过，加 --force 覆盖）
+npm run restore:metadata
+```
+
+恢复后校验一致性（应得到 `hash=1bcf082b`）：
+
+```bash
+npm run check:metadata
+```
+
+> ⚠️ 该文件被 `.gitignore`（第 47 行）忽略，**切勿提交**；恢复动作只影响本地开发环境。
+
 **Commit 信息规范：**
 ```
 metadata: [动作] [章节范围] — [摘要说明]
