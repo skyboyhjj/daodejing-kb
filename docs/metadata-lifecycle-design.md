@@ -417,7 +417,7 @@ data/
 | `POST`   | `/api/metadata/sync`              | ADMIN_TOKEN | 暂存区同步到生产环境（body: `{chapters?: [N]}`）                                  | `server.js`     |
 | `DELETE` | `/api/metadata/staging?chapter=N` | ADMIN_TOKEN | 删除暂存区中的某章修订                                                            | `server.js`     |
 | `POST`   | `/api/reviser/revise`             | ADMIN_TOKEN | 触发 AI 修订某章节 → 写入暂存区                                                   | `server.js`     |
-| `GET`    | `/api/metadata/version`           | 无          | （计划中）返回版本信息 `{content_hash, generated, chapter_count, approved_count}` | —               |
+| `GET`    | `/api/metadata/version`           | 无          | 返回版本信息 `{content_hash, generated, chapter_count, approved_count}`           | —               |
 
 ### 6.2 `GET /api/metadata` — 章节列表/详情
 
@@ -708,7 +708,7 @@ metadata: [动作] [章节范围] — [摘要说明]
 🤖 Generated with Qoder (https://qoder.com)
 ```
 
-### 8.6 版本查询 API（计划中）
+### 8.6 版本查询 API
 
 ```
 GET /api/metadata/version
@@ -732,6 +732,9 @@ GET /api/metadata/version
 | `api/_shared/metadata-store.js`     | 355   | CRUD、状态机、缓存、审计日志          |
 | `api/_shared/metadata-reviser.js`   | 595   | AI 修订流水线、暂存区管理、同步       |
 | `scripts/extract_meta.py`           | 500   | 初始元数据生成（HTML → JSON）         |
+| `scripts/build-public-metadata.js`  | 312   | 完整版脱敏构建 + 一致性检查           |
+| `scripts/restore-family-metadata.js` | 62    | 从 git 历史恢复本地完整版元数据       |
+| `scripts/test-metadata.js`          | 462   | 元数据一致性测试套件（--verbose）     |
 | `server.js`                         | ~900  | 本地开发服务器 + 所有管理 API 路由    |
 | `admin/family-review.html`          | —     | 审核控制台 UI                         |
 | `admin/family-review.js`            | ~1587 | 审核控制台前端逻辑                    |
@@ -740,7 +743,7 @@ GET /api/metadata/version
 | `js/family.js`                      | —     | 前端消费者（元数据缓存 + parentTips） |
 | `data/family_metadata.json`         | —     | 完整版元数据（81 章节）               |
 | `data/family_metadata_staging.json` | —     | AI 修订暂存区                         |
-| `data/family_metadata_public.json`  | —     | 脱敏公开版（计划生成）                |
+| `data/family_metadata_public.json`  | —     | 脱敏公开版（已构建）                |
 
 ## 附录 B：状态机速查表
 
