@@ -235,40 +235,52 @@ export default async function handler(req, res) {
             }
         }
 
-        // 调用 DeepSeek API
-        var deepseekResp = await fetch('https://api.deepseek.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + apiKey
-            },
-            body: JSON.stringify({
-                model: 'deepseek-v4-flash',
-                messages: [
-                    { role: 'system', content: systemPrompt }
-                ].concat(messages),
-                temperature: 0.8,
-                max_tokens: 400
-            }),
-            signal: AbortSignal.timeout(15000)
-        });
-
-        var data = await deepseekResp.json();
-
-        if (!deepseekResp.ok) {
-            return res.status(deepseekResp.status).json({
-                error: 'DeepSeek API error: ' + deepseekResp.status,
-                detail: data
-            });
-        }
-
+        // 调用 DeepSeek API（content 为空回退 reasoning_content，仍空则重试一次）
         var responseText = '';
-        if (data.choices && data.choices.length > 0) {
-            responseText = data.choices[0].message.content.trim();
+        for (var attempt = 0; attempt < 2; attempt++) {
+            var deepseekResp = await fetch('https://api.deepseek.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + apiKey
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-v4-flash',
+                    messages: [
+                        { role: 'system', content: systemPrompt }
+                    ].concat(messages),
+                    temperature: 0.8,
+                    max_tokens: 800
+                }),
+                signal: AbortSignal.timeout(15000)
+            });
+
+            var data = await deepseekResp.json();
+
+            if (!deepseekResp.ok) {
+                return res.status(deepseekResp.status).json({
+                    error: 'DeepSeek API error: ' + deepseekResp.status,
+                    detail: data
+                });
+            }
+
+            var msg = (data.choices && data.choices.length > 0) ? data.choices[0].message : null;
+            if (msg) {
+                if (msg.content && String(msg.content).trim()) {
+                    responseText = String(msg.content).trim();
+                } else if (msg.reasoning_content && String(msg.reasoning_content).trim()) {
+                    responseText = String(msg.reasoning_content).trim();
+                }
+            }
+            if (responseText) {
+                break;
+            }
         }
 
-        // 写入缓存
-        cacheSet(ck, responseText);
+        // 写入缓存（空回复不缓存）
+        if (responseText) {
+            cacheSet(ck, responseText);
+        }
 
         return res.status(200).json({
             huihui_response: responseText,

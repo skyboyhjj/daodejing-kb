@@ -810,39 +810,58 @@ function handleFamilyChatAPI(req, res) {
                 }
             }
 
-            fetch('https://api.deepseek.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
-                },
-                body: JSON.stringify({
-                    model: 'deepseek-v4-flash',
-                    messages: [
-                        { role: 'system', content: systemPrompt }
-                    ].concat(messages),
-                    temperature: 0.8,
-                    max_tokens: 400
-                }),
-                signal: AbortSignal.timeout(15000)
-            })
-                .then(function (apiResp) {
-                    if (!apiResp.ok) {
-                        return apiResp.text().then(function (errText) {
-                            throw new Error('DeepSeek API ' + apiResp.status + ': ' + errText);
-                        });
-                    }
-                    return apiResp.json();
+            var attemptReply = function () {
+                return fetch('https://api.deepseek.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
+                    },
+                    body: JSON.stringify({
+                        model: 'deepseek-v4-flash',
+                        messages: [
+                            { role: 'system', content: systemPrompt }
+                        ].concat(messages),
+                        temperature: 0.8,
+                        max_tokens: 800
+                    }),
+                    signal: AbortSignal.timeout(15000)
                 })
-                .then(function (data) {
-                    var responseText = '';
-                    if (data.choices && data.choices.length > 0) {
-                        responseText = data.choices[0].message.content.trim();
+                    .then(function (apiResp) {
+                        if (!apiResp.ok) {
+                            return apiResp.text().then(function (errText) {
+                                throw new Error('DeepSeek API ' + apiResp.status + ': ' + errText);
+                            });
+                        }
+                        return apiResp.json();
+                    })
+                    .then(function (data) {
+                        var msg = (data.choices && data.choices.length > 0) ? data.choices[0].message : null;
+                        var text = '';
+                        if (msg) {
+                            if (msg.content && String(msg.content).trim()) {
+                                text = String(msg.content).trim();
+                            } else if (msg.reasoning_content && String(msg.reasoning_content).trim()) {
+                                text = String(msg.reasoning_content).trim();
+                            }
+                        }
+                        return text;
+                    });
+            };
+
+            attemptReply()
+                .then(function (responseText) {
+                    if (responseText) {
+                        return responseText;
                     }
-
-                    // 写入缓存
-                    familyCacheSet(ck, responseText);
-
+                    // 空回复兜底：重试一次
+                    return attemptReply();
+                })
+                .then(function (responseText) {
+                    // 空回复不写入缓存
+                    if (responseText) {
+                        familyCacheSet(ck, responseText);
+                    }
                     res.writeHead(200, {
                         'Content-Type': 'application/json; charset=utf-8',
                         'Access-Control-Allow-Origin': '*'
