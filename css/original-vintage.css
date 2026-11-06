@@ -1,0 +1,84 @@
+/* =====================================================================
+   《道德经》原文古版展示（外挂增强模块，kebab-case）
+   水墨道风 tokens：墨绿 #2e5f5f / 淡金 #d4c9a8 / 宣纸 #faf8f0
+   约束（AGENTS.md）：无 box-shadow / blur / gradient
+   版式：writing-mode vertical-rl —— 从右向左铺列，每列自上而下
+   ===================================================================== */
+
+/* 古版竖排正文容器 */
+.original-vintage {
+    /* 关键：竖排 + 从右到左推进（古籍版式的本质） */
+    writing-mode: vertical-rl;
+
+    background: #faf8f0;           /* 宣纸 */
+    border: 1px solid #d4c9a8;     /* 淡金 */
+    border-radius: 6px;
+
+    padding: 34px 26px;
+    margin: 20px 0;
+
+    /* 页高受限：列填满后向左换列；列多时横向滚动 */
+    height: 62vh;
+    min-height: 420px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    color: #2c2c2c;                /* 墨色正文 */
+    font-family: "Kaiti TC", "TW-Kai", "DFKai-SB", "STKaiti", "Kaiti SC", "KaiTi", "FangSong", "SimSun", serif;
+    font-size: 23px;
+    line-height: 1.9;
+    letter-spacing: 0.06em;
+}
+
+/* 竖排下的"首列章名"（可选的竖排装饰列） */
+.original-vintage__head {
+    border-left: 2px solid #d4c9a8;   /* 竖排时 border-left 呈列间分隔线 */
+    margin-left: 0.8em;               /* 与正文拉开一列距离 */
+    padding-left: 0.6em;
+    color: #2e5f5f;                 /* 墨绿 */
+    letter-spacing: 0.22em;
+    font-weight: 600;
+}
+
+/* 古版/今文切换按钮组 */
+.vintage-toggle {
+    display: inline-flex;
+    gap: 8px;
+    margin: 6px 0 2px;
+}
+.vintage-toggle button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 6px 14px;
+    cursor: pointer;
+    background: #faf8f0;
+    color: #2e5f5f;
+    border: 1px solid #d4c9a8;
+    border-radius: 6px;
+}
+.vintage-toggle button.is-active {
+    background: #2e5f5f;
+    color: #faf8f0;
+    border-color: #2e5f5f;
+}
+
+/* 底本 / 异文 / AI 标注（坦诚透明 · 第9条） */
+.vintage-meta {
+    margin: 2px 0 16px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #8a7a55;
+}
+
+/* 工具类：视图显隐（!important 避免与作者样式冲突，可完整回退） */
+.vintage-hide {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    .original-vintage {
+        height: 70vh;
+        font-size: 20px;
+        padding: 24px 18px;
+    }
+}

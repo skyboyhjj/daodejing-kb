@@ -82,3 +82,25 @@ SkillUP 认知成长追踪实现偏离设计文档的 12 处偏差（反面案�
 - `npm run validate:docs` — 设计文档格式验证
 - `npm run ci` — 完整质量检查流水线
 - 搜索索引覆盖：chapters/ + concepts/ + docs/
+
+---
+
+## 六、原文繁体展示与简繁检查
+
+《道德经》原文支持「古版·竖排（繁体）⇄ 今文·横排（简体）」切换（外挂增强，见 `js/original-vintage.js`、`css/original-vintage.css`）。
+
+### 繁体转换机制
+
+- 简体→繁体由 `js/s2t-data.js` 提供（约 253 对差异字映射 + 「不谷→不穀」词组特例），**竖排视图运行时转繁，横排原文保持简体不变**。
+- `js/s2t-data.js` 是「自动生成，勿手改」的产物，数据源在 `scripts/make-s2t-data.js` 的 `MAP`（含按王弼本语境定字的二义字，如 后→後、发→發、复→復、谷/不谷 区分）。
+- 同形字（简繁相同、无需转繁）快照存于 `scripts/s2t-known-same.txt`。
+
+### 文本修改后的复查流程（必须执行）
+
+**改动 `chapters/*.html` 中 `<div class="original-text">` 的原文后，必须复查繁体映射：**
+
+1. `npm run s2t:check` — 检查是否有「新增未审核」的字
+2. 若有新增字：
+   - 简体需转繁体 → 在 `scripts/make-s2t-data.js` 的 `MAP` 中补映射，再 `npm run s2t`
+   - 简繁同形 → `npm run s2t:accept` 更新同形快照
+3. `npm run s2t` — 重新生成 `js/s2t-data.js` 并打印第一章转换预览供核验

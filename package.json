@@ -16,6 +16,9 @@
         "restore:metadata": "node scripts/restore-family-metadata.js",
         "test:metadata": "node scripts/test-metadata.js",
         "test:metadata:verbose": "node scripts/test-metadata.js --verbose",
+        "s2t": "node scripts/make-s2t-data.js",
+        "s2t:check": "node scripts/make-s2t-data.js --check",
+        "s2t:accept": "node scripts/make-s2t-data.js --accept-same",
         "ci": "node scripts/validate.js && node scripts/build-index.js --check && node scripts/build-public-metadata.js --check && node scripts/test-metadata.js"
     },
     "engines": {
