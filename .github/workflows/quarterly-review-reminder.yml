@@ -1,0 +1,94 @@
+name: 季度复审提醒（反者道之动）
+
+on:
+  schedule:
+    # 每季度第一天 00:00 UTC（1/4/7/10 月 1 日，北京时间 08:00）
+    - cron: '0 0 1 1,4,7,10 *'
+  workflow_dispatch: # 支持手动触发
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  remind:
+    name: Quarterly Review Reminder
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ═══════════════════════════════════════════════
+      # Step 1: 自动收集审查素材
+      # ═══════════════════════════════════════════════
+      - name: 收集审查素材
+        id: collect
+        shell: bash
+        run: |
+          # 本季度提交次数
+          COMMITS=$(git rev-list --count HEAD --since="3 months ago")
+          # 最近一次提交日期
+          LAST_COMMIT=$(git log -1 --format='%ad' --date=short)
+          # 伦理页版本记录最后更新日期（反映上次复审时间）
+          ETHICS_DATE=$(git log -1 --format='%ad' --date=short -- ethics/index.html)
+          echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
+          echo "last_commit=$LAST_COMMIT" >> "$GITHUB_OUTPUT"
+          echo "ethics_date=$ETHICS_DATE" >> "$GITHUB_OUTPUT"
+          echo "  ✓ 本季度提交 $COMMITS 次，最近提交 $LAST_COMMIT，版本记录最后更新 $ETHICS_DATE"
+
+      # ═══════════════════════════════════════════════
+      # Step 2: 创建复审提醒 Issue（避免重复）
+      # ═══════════════════════════════════════════════
+      - name: 创建复审提醒 Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commits = '${{ steps.collect.outputs.commits }}';
+            const lastCommit = '${{ steps.collect.outputs.last_commit }}';
+            const ethicsDate = '${{ steps.collect.outputs.ethics_date }}';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // 避免重复：若已存在 open 的季度复审 Issue 则跳过
+            const { data: openIssues } = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open'
+            });
+            const exists = openIssues.some(i => i.title.includes('季度复审提醒'));
+            if (exists) {
+              console.log('已存在 open 的季度复审 Issue，跳过创建');
+              return;
+            }
+
+            const body = [
+              '## 📅 季度复审提醒（反者道之动）',
+              '',
+              '根据《最高产品宪法》第 32 条「周期性复审制度」，本季度需完成以下四项审查：',
+              '',
+              '### 审查清单',
+              '- [ ] **功能归零审查**：是否存在功能过度增生、偏离「减法优先」？',
+              '- [ ] **使命回归审查**：当前迭代是否仍服务于「陪伴者」定位？',
+              '- [ ] **技术债务审查**：是否有技术债入侵宿主核心？',
+              '- [ ] **流程优化审查**：八阶段流程是否有可优化环节？',
+              '',
+              '### 自动收集的素材（供参考）',
+              '| 指标 | 数值 |',
+              '| --- | --- |',
+              `| 本季度提交次数 | ${commits} |`,
+              `| 最近一次提交日期 | ${lastCommit} |`,
+              `| 伦理页版本记录最后更新 | ${ethicsDate} |`,
+              '',
+              '### 复审后动作',
+              '1. 确认四项审查结论（可让 AI 辅助生成初稿，人主机辅拍板）',
+              '2. 更新 `ethics/index.html` 版本记录，追加 V3.x 条目',
+              '3. 关闭本 Issue',
+              '',
+              '> 本提醒由 GitHub Actions 自动创建（`.github/workflows/quarterly-review-reminder.yml`）',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner, repo,
+              title: '【季度复审提醒】本季度四项审查待执行',
+              body
+            });
+            console.log('已创建季度复审提醒 Issue');
