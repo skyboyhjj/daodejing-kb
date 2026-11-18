@@ -585,6 +585,146 @@ function handleChatAPI(req, res) {
     });
 }
 
+// ===== 对话策略审计 — 本地 CommonJS 副本 =====
+// buildAuditPrompt 的规范定义在 api/_shared/strategy-audit-prompt.js
+function buildAuditPrompt() {
+    return '你是「慧惠对话策略分析员」——一个辅助人类导师做初审的分析角色，不是慧惠本人。\n' +
+        '你的产出会交给人类导师审阅，由人决定是否采纳。你无权修改慧惠的设定。\n' +
+        '\n' +
+        '## 输入\n' +
+        '一段《道德经》亲子共读的对话记录（孩子/家长与慧惠的往来）。\n' +
+        '\n' +
+        '## 两步任务（只做前两步，禁止第三步）\n' +
+        '1. 提出：从对话中找出「哪些回应对孩子是有效的」。\n' +
+        '   判断有效性要克制——「继续追问」可能是好奇也可能是困惑，「沉默」可能是思考、害羞或走神，不要简单等同于有效/无效。\n' +
+        '2. 探测：把上述有效回应提炼成 1-3 条「可复用的对话策略」，每条给出名称、做法、依据（对话中哪句原文支持它）。\n' +
+        '\n' +
+        '## 严格禁止\n' +
+        '- 不做「整合」：不得输出改写后的 System Prompt 或 Skill 文本\n' +
+        '- 不评判家长或孩子的对错\n' +
+        '- 不以「留住孩子注意力 / 延长对话」作为有效性标准\n' +
+        '- 不声称自己在「进化」\n' +
+        '\n' +
+        '## 输出格式（严格遵守）\n' +
+        '### 摘要\n' +
+        '一句话概括本次对话。\n' +
+        '\n' +
+        '### 有效回应模式\n' +
+        '- 模式一\n' +
+        '- 模式二\n' +
+        '\n' +
+        '### 候选策略\n' +
+        '1. **策略名**：做法描述。依据：对话中「…」。';
+}
+
+const STRATEGY_AUDIT_DISCLAIMER = '以上为 AI 初审建议，仅供人类导师参考，不会自动生效。是否采纳、如何整合，由人类导师决定。';
+
+// ===== POST /api/strategy-audit — 对话策略审计（提出+探测，只读不整合）=====
+function handleStrategyAuditAPI(req, res) {
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204, {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        });
+        res.end();
+        return;
+    }
+
+    if (req.method !== 'POST') {
+        res.writeHead(405, {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({ error: 'Method not allowed' }));
+        return;
+    }
+
+    if (!DEEPSEEK_API_KEY) {
+        res.writeHead(500, {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+        });
+        res.end(JSON.stringify({ error: '未配置 DEEPSEEK_API_KEY 环境变量。' }));
+        return;
+    }
+
+    var bodyChunks = [];
+    req.on('data', function (chunk) { bodyChunks.push(chunk); });
+    req.on('end', function () {
+        try {
+            var body = JSON.parse(Buffer.concat(bodyChunks).toString());
+            var messages = Array.isArray(body.messages) ? body.messages : [];
+            if (!messages.length) {
+                res.writeHead(400, {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(JSON.stringify({ error: '缺少对话记录（messages 为空）。' }));
+                return;
+            }
+
+            var transcript = messages.map(function (m) {
+                var who = m.role === 'user' ? '孩子/家长' : '慧惠';
+                return who + '：' + (m.content || '');
+            }).join('\n');
+
+            fetch('https://api.deepseek.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-v4-flash',
+                    messages: [
+                        { role: 'system', content: buildAuditPrompt() },
+                        { role: 'user', content: '以下是《道德经》亲子共读的一段对话记录：\n\n' + transcript + '\n\n请按你的两步任务分析，并严格按输出格式给出结果。' }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1200
+                }),
+                signal: AbortSignal.timeout(15000)
+            })
+                .then(function (apiResp) {
+                    if (!apiResp.ok) {
+                        return apiResp.text().then(function (errText) {
+                            throw new Error('DeepSeek API ' + apiResp.status + ': ' + errText);
+                        });
+                    }
+                    return apiResp.json();
+                })
+                .then(function (data) {
+                    var text = data.choices && data.choices[0] && data.choices[0].message
+                        ? data.choices[0].message.content
+                        : '';
+                    res.writeHead(200, {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Access-Control-Allow-Origin': '*'
+                    });
+                    res.end(JSON.stringify({ ok: true, audit: { text: text, disclaimer: STRATEGY_AUDIT_DISCLAIMER } }));
+                })
+                .catch(function (err) {
+                    var errMsg = err.message || '未知错误';
+                    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
+                        errMsg = 'DeepSeek API 响应超时，请稍后重试。';
+                    }
+                    res.writeHead(502, {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Access-Control-Allow-Origin': '*'
+                    });
+                    res.end(JSON.stringify({ error: errMsg }));
+                });
+        } catch (err) {
+            res.writeHead(400, {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Access-Control-Allow-Origin': '*'
+            });
+            res.end(JSON.stringify({ error: '请求格式错误: ' + err.message }));
+        }
+    });
+}
+
 // ===== 反馈邮件转发 =====
 // ⚠️ sendFeedbackEmail 的规范定义在 api/_shared/feedback-email.js
 // 修改邮件逻辑时请更新该文件，此处为本地开发便利保留副本
@@ -1448,6 +1588,12 @@ var server = http.createServer(function (req, res) {
     // /api/family_chat → 亲子对话
     if (pathname === '/api/family_chat') {
         handleFamilyChatAPI(req, res);
+        return;
+    }
+
+    // /api/strategy-audit → 对话策略审计（提出+探测，只读不整合）
+    if (pathname === '/api/strategy-audit') {
+        handleStrategyAuditAPI(req, res);
         return;
     }
 
